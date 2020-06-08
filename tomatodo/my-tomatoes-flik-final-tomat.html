@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My TomaToes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="keywords" content="your, tags">
+        <meta name="description" content="150 words">
+        <meta name="robots" content="index,follow">
+        <meta name="owner" content="">
+        <meta name="url" content="">
+        <script src="https://kit.fontawesome.com/e593b97041.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <link href="tomat-timer-to-do.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    </head>
+    <body> 
+        <nav class="nvbar-mindre">
+            <ul class="nvbar-list-mindre">
+                <li class="nav-länkar"><a href='quick-start-flik-final-tomat.html'><i class="fas fa-stopwatch-20 fa-2x"></i></i></a></li>
+                <li class="nav-länkar"><a href="time-new-tomato-flik-final-tomat.html"><i class="fas fa-plus fa-2x"></i></a></li>
+                <li class="nav-länkar"><a href="my-tomatoes-flik-final-tomat.html"><i class="fas fa-list fa-2x"></i></a></li>
+                <li class="nav-länkar"><a href="to-do-flik-final-tomat.html"><i class="fas fa-tasks fa-2x"></i></a></li>
+            </ul>
+        </nav>
+        <nav class="nvbar">
+            <ul class="nvbar-list">
+                <li class="nav-länkar"><a  class="nava"href='index.html'>About</a></li>
+                <li class="nav-länkar"><a  class="nava"href="quick-start-flik-final-tomat.html">Quick Start</a></li>
+                <li class="nav-länkar"><a class="nava" href="time-new-tomato-flik-final-tomat.html">Time new TomaTo</a></li>
+                <li class="nav-länkar aktuell-sida" style="color:white">My TomaTo<span class="tomato-E-s">e</span>s</li>
+                <li class="nav-länkar"><a class="nava" href="to-do-flik-final-tomat.html">My TomaToDo-list</a></li>
+            </ul>
+        </nav>
+        <nav id="nvbar-toggle" class="navbar-view">
+            <ul id="nvbar-list-toggle"class="navbar-view">
+                <li class="nav-länkar"><a  class="nava"href='index.html'>About</a></li>
+                <li class="nav-länkar"><a  class="nava"href="quick-start-flik-final-tomat.html">Quick Start</a></li>
+                <li class="nav-länkar"><a class="nava" href="time-new-tomato-flik-final-tomat.html">Time new TomaTo</a></li>
+                <li class="nav-länkar aktuell-sida">My TomaTo<span class="tomato-E-s">e</span>s</li>
+                <li class="nav-länkar"><a class="nava" href="to-do-flik-final-tomat.html">My TomaToDo-list</a></li>
+            </ul>
+        </nav>
+        <header class="header"><i class="fas fa-bars fa-2x" style="width: 20px; height: 20px; color: white;"></i></i>
+            <img id="navbar-logga" style="height:145px; width: auto;" src="tomat-vit-vector.png">
+            <h1 class="display-4 text-center text">TomaTo-Do!</h1>
+        </header>
+
+
+        <main>
+                    <div id="länk-öppna-form-sök">
+                <a href="#" id="visa-add-tomato"><i class="fas fa-plus"></i> Add new TomaTo</a>
+                <span><a href="#" id="visa-sökfält" style="text-decoration: none;"><i class="fas fa-search"></i><input type="text" class="form-control" id="filterInput"placeholder="Search TomaTo"></a></span>
+            </div>
+            <form id="tomato-form" class="view">
+                <div class="form-group">
+                <label for="name" id="label-for-name">Name TomaTo </label><a href="#"><i class="fas fa-chevron-circle-up" style="padding: 0 10px; color:#007bff;"></i></a>
+                <input type="text" id="name" class="form-control" placeholder="Name">
+                </div>
+                <div class="form-group">
+                <label for="author"><img src="tomat-outline-röd.png" style="height: 100px; width: 100px;"></label>
+                </div>
+                <div class="form-group input-timer-minne">
+                    <label for="time">Work Time</label>
+                    <input type="text" id="time1" maxlength="2" placeholder="HH"> : 
+                    <input type="text" id="time2" maxlength="2" placeholder="MM">
+                </div>
+                <input type="submit" value="Add TomaTo" class="btn btn-primary btn-block">
+            </form>
+            <div id="tomat-start">
+                <!--DOLD INPUT-TIMER-->
+                        <div class="input-timer" style="display: none;">
+                            <input type="text" id="fyll-i-tid1" maxlength="2" placeholder="HH"> : 
+                            <input type="text" id="fyll-i-tid2" maxlength="2" placeholder="MM">
+                        </div>
+                <!--DOLD NEDRÄKNINGS-TIMER SOM SYNS NÄR MAN KLICKAR PÅ TIMERN-->
+                        
+                            <div class="nedräkningstimer" style="display: none;">
+                                <h2 id="time-left"></h2>
+                                <h2 id="minutes-left"></h2>
+                                <h2 id="seconds-left"></h2>
+                            </div>
+                            <div class="timer-buttons"  style="display: none;">
+                                <button type="button" class="btn-danger btn" id="ned-stopp">Pause</button>
+                                <button type="button" class="btn-primary btn" id="ned-resume">Resume</button>
+                                <button type="button" class="btn-info btn" id="ned-restart"><i class="fas fa-redo-alt" style="color:white"></i></button>
+                                <button type="button" class="btn-secondary btn tyst" id="ljud-av">Volume on</button>
+                            </div>        
+                        
+                <!--DOLD KNAPP-->    
+                        <button type="button" id="start-button" class="button btn btn-success btn-block" style="display: none;">Start1</button> 
+            </div>
+                <!--DOLD-->
+                    <div class="angiven-starttid-spara" style="display: none;">
+                        <h2 id="timer-text"></h2>
+                        <h2 id="minutes-text"></h2>
+                        <h2 id="seconds-text"></h2>
+                    </div>
+                    <button type="submit" value="Submit" class="btn btn-primary btn-lg" id="save-btn" style="display: none;">Save TomaTo</button>
+                <!---->
+            
+            <section class="anime-test-my-tomatos">
+                <div class="box red">
+                    <img class="mini-tomat" style="height: 100px; width: 100px;" src="tomat-outline-röd.png">
+                </div>
+                <div class="box blue">
+                    <img class="mini-tomat" style="height: 100px; width: 100px;" src="tomat-genomskinlig-vector.png">
+                </div>
+                <div class="box green">
+                <img class="mini-tomat" style="height: 100px; width: 100px;" src="tomat-outline-röd.png">
+                </div>
+                <div class="box yellow">
+                <img class="mini-tomat" style="height: 100px; width: 100px;" src="tomat-genomskinlig-vector.png">
+                </div>
+            </section>
+            
+            <section id="animera-logga-new">
+                <img class="tomaToDoLogga" src="tomat-genomskinlig-vector.png" alt="TomaToDo-logo">
+            </section>
+            <section id="animera-h1-mytomatoes">
+                <h1>My TomaTo<span class="tomatoEs">e</span>s</h1>
+            </section>
+            
+
+
+            <section class="tomater container">
+                <div class="tomater-innehåll">
+                    <table class="my-tomatoes-table table table-striped mt-5">
+                        <thead>
+                            <tr>
+                                <th>TomaTo</th>
+                                <th>Work Time</th>
+                                <th><h4></h4></th>
+                                <th><h4></h4></th>
+                                <th><h4></h4></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tomato-list"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <section>
+                <div class="sociala-länkar-container">
+                    <ul id="social-media">
+                        <a href='https://github.com/elisabethdeborah' target="_blank"><i class="fab fa-github"></i></a>
+                        <a href='https://linkedin.com/in/elisabethrumar' target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </ul>    
+                </div>
+                <div class="footer-nav-länkar-container">
+                    <ul id="footer-nav-länkar">
+                        <li class="footer-nav"><a  href='index.html'>About</a></li>
+                        <li class="footer-nav"><a href='quick-start-flik-final-tomat.html'>Quick Start</a></li>            
+                        <li class="nav-nav"><a href='time-new-tomato-flik-final-tomat.html'>Time new TomaTo</a></li>
+                        <li class="footer-nav"><a href="my-tomatoes-flik-final-tomat.html">My TomaToes</a></li>
+                        <li class="footer-nav"><a href="to-do-flik-final-tomat.html">My TomaToDo-list</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <img id="footer-logga" src="tomat-logga-svart.png"/>
+                </div>
+                <div class="footer-credits-container">
+                    <div class="footer-credits">
+                        <span>Sound from <a href="https://www.zapsplat.com/" target="_blank">Zapsplat.com</a></span>
+                    </div>
+                </div>
+            </section>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>  
+        <script src="tomat.js" charset="utf-8"></script> 
+        <script src="my-tomatos.js" charset="utf-8"></script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
