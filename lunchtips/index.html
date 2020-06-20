@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Lunchtips Borås</title>
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='lunchtips.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Monoton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+   <meta http-equiv="Refresh" content="1800"> 
+   <script src="https://kit.fontawesome.com/e593b97041.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+        <div id="navbar">
+            <ul>
+                <li class="aktuell-sida">Lunchtips start</li>
+                <li><a class="navbar-länk" href="/Users/elisabethrumar/Documents/träning-code/portfolio/lunchtips/lunchtips-about.html">Om Lunchtips</a></li>
+                <li><a class="navbar-länk" href="/Users/elisabethrumar/Documents/träning-code/portfolio/lunchtips/lunchtips-restauranglista.html">Lunchtips restauranger</a></li>
+            </ul>
+        </div>
+        <div id="navbar-mindre">
+            <ul>
+                <li class="aktuell-sida">Start</li>
+                <li><a class="navbar-länk" href="/Users/elisabethrumar/Documents/träning-code/portfolio/lunchtips/lunchtips-about.html">Om</a></li>
+                <li><a class="navbar-länk" href="/Users/elisabethrumar/Documents/träning-code/portfolio/lunchtips/lunchtips-restauranglista.html">Restauranger</a></li>
+            </ul>
+        </div>
+    </nav>
+    <header>
+        <img id="logga" src="img/logga-lunchtips.svg"/>
+        <h1>Lunchtips Borås</h1>
+    </header>
+    <main>
+        <section class="dagens-info"> 
+            <div class="datum-tid">
+                <fieldset class="fieldset-dagensdatum">
+                    <legend>
+                        <span class="dagens-datum"></span>
+                    </legend>
+                    <span class="tid"></span>
+                    <span class="ny-tid"></span>
+                    <table>
+                        <thead>
+                            <th>Temperatur</th>
+                            <th>Molnighet</th>
+                            <th>Nederbörd</th>
+                        </thead>
+                        <tbody>
+                            <td class="temp-nu"></td>
+                            <td class="moln-nu"></td>
+                            <td class="regn-nu"></td> 
+                        </tbody>
+                    </table>
+                    <div id="tableResponsive">
+                        <div class="ruta1">temperatur</div>
+                        <div class="ruta2"></div>
+                        <div class="ruta3">molnighet</div>
+                        <div class="ruta4"></div>
+                        <div class="ruta5">nederbörd</div>
+                        <div class="ruta6"></div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="väder-bakgrund"></div>
+        </section>
+        <div class="restauranger-lista">
+            <fieldset class="fieldset-restaurang">
+                <legend>
+                    <h2 id="restauranger-rubrik"></h2>
+                </legend>
+                <ul id="yes-restauranger"></ul>
+                <div id="info-restauranger"></div>
+            </fieldset>
+            <div class="välja">
+                <h2 class="slump-rubrik">Svårt att välja?</h2>
+                <button class="slumpa-knapp">Slumpa restaurang</button>
+                <span id="slump-restaurang"></span>
+            </div>
+        </div>
+        <div class="karta">
+            <div id="mapid"></div>
+        </div>
+    </main>
+    <footer>
+        <section class="footer-container">
+            <ul class="footer-länkar">
+                <li class="footer-länkar-listobj"><a class="footer-länk" href="https://elisabethdeborah.github.io"><i class="fab fa-github fa-3x"></i></a></li>
+                <li class="footer-länkar-listobj"><a class="footer-länk" href="https://linkedin.com/in/elisabethrumar"><i class="fab fa-linkedin-in fa-3x"></i></a></li>
+            </ul>
+        </section>
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+    <script src='lunchtips.js'></script>
+</body>
+</html>
