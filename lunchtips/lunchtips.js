@@ -3,6 +3,7 @@ const header=document.querySelector('header');
 const tid=document.querySelector('.tid');
 const nyTidVisa=document.querySelector('.ny-tid');
 const regnNu=document.querySelector('.regn-nu');
+const regnImorgon = document.querySelector('.regn-imorgon')
 const yesRestauranger=document.querySelector('ul#yes-restauranger');
 const infoRestauranger=document.querySelector('#info-restauranger');
 const slumpaKnapp=document.querySelector('.slumpa-knapp');
@@ -18,6 +19,34 @@ let kl=date.split(' ').splice(4,1).join('')
 let klTimme=kl.split('').splice(0,2).join('')
 let tList
 let wList
+const idagSection=document.querySelector('.vit');
+const imorgonSection=document.querySelector('.blå');
+const visaVäderKnapp=document.querySelector('.header__vädret-nu-knapp');
+
+
+
+
+
+
+const rubrik = document.querySelector('.header__rubrik');
+
+rubrikArr = [];
+
+rubrik.textContent.split('').forEach((e)=>{
+    rubrikArr.push(e);
+})
+
+
+
+rubrikArr.forEach((bokstav)=> {
+    console.log(bokstav);
+});
+
+
+
+
+
+
 
 //KARTA ETC
 const api_url = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/12.939/lat/57.7210/data.json'
@@ -187,21 +216,21 @@ setInterval(getSMHI, 3600000) //uppdatera 1 gång/h
 function vädertext(väderNu){
     if(väderNu<=2){
         document.querySelector('.moln-nu').textContent='soligt';
-        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/sol-orange-grå-outline.svg"/>'
+        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/sol-ikon.svg"/>'
     }else if(väderNu==3){
         document.querySelector('.moln-nu').textContent='växlande molnighet';
-        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/sol-moln-ljus.svg"/>'
+        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/sol-moln-light.svg"/>'
     } else if(väderNu==4){
         document.querySelector('.moln-nu').textContent='halvklart';
-        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/sol-moln.svg"/>'
+        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/sol-moln-dark.svg"/>'
     }else if((väderNu>=5)&&(väderNu<21)){
         document.querySelector('.moln-nu').textContent='molnigt';
         if((regnNu.innerText=="ingen nederbörd")&&(väderNu>=5)){
-            document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/moln.svg"/>';
+            document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/molnigt.svg"/>';
         }
     }else if(väderNu==21){
         document.querySelector('.moln-nu').textContent='åska';
-        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/åska.svg"/>';
+        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/thunder.svg"/>';
     }
 }
 
@@ -211,23 +240,26 @@ function nederbördText(nederbördNu){
         document.querySelector('.regn-nu').textContent="ingen nederbörd";
     }else if(nederbördNu==1){
         document.querySelector('.regn-nu').textContent="snö";
-        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/snö.svg"/>'
+        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/snow.svg"/>'
     }else if(nederbördNu==2){
         document.querySelector('.regn-nu').textContent="snöblandat regn";
-        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/snöblandatregn.svg"/>'
+        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/snowrain.svg"/>'
     }else if(nederbördNu==3){
         document.querySelector('.regn-nu').textContent="regn";
-        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/regn.svg"/>'
+       // document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/regnigt.svg"/>'
+       document.querySelector('.väder-bakgrund').innerHTML='<svg class="regn-bild" width="261" height="242" viewBox="0 0 261 242" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="140" cy="37.5" rx="52" ry="37.5" fill="#858484"/><ellipse cx="207" cy="75" rx="54" ry="42" fill="#858484"/><ellipse cx="50.5" cy="103.5" rx="50.5" ry="28.5" fill="#858484"/><ellipse cx="168.5" cy="107.5" rx="50.5" ry="28.5" fill="#858484"/><ellipse cx="99" cy="79" rx="54" ry="42" fill="#858484"/><ellipse cx="177" cy="85" rx="48" ry="47" fill="#858484"/><line "regn-linje1" x1="97.3216" y1="145.709" x2="46.3216" y2="240.709" stroke="#19526A" stroke-width="3"/><line "regn-linje2" x1="131.322" y1="145.709" x2="80.3216" y2="240.709" stroke="#19526A" stroke-width="3"/><line "regn-linje3" x1="205.322" y1="145.709" x2="154.322" y2="240.709" stroke="#19526A" stroke-width="3"/><line "regn-linje4" x1="169.322" y1="145.709" x2="118.322" y2="240.709" stroke="#19526A" stroke-width="3"/></svg>'
     }else if(nederbördNu==4){
         document.querySelector('.regn-nu').textContent="duggregn";
-        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/duggregn.svg"/>'
+        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/duggigt.svg"/>'
     } else if(nederbördNu==5){
         document.querySelector('.regn-nu').textContent="underkylt regn";
-        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/regn.svg"/>'
+       // document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/regnigt.svg"/>'
+        document.querySelector('.väder-bakgrund').innerHTML='<svg class="regn-bild" width="261" height="242" viewBox="0 0 261 242" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="140" cy="37.5" rx="52" ry="37.5" fill="#858484"/><ellipse cx="207" cy="75" rx="54" ry="42" fill="#858484"/><ellipse cx="50.5" cy="103.5" rx="50.5" ry="28.5" fill="#858484"/><ellipse cx="168.5" cy="107.5" rx="50.5" ry="28.5" fill="#858484"/><ellipse cx="99" cy="79" rx="54" ry="42" fill="#858484"/><ellipse cx="177" cy="85" rx="48" ry="47" fill="#858484"/><line "regn-linje1" x1="97.3216" y1="145.709" x2="46.3216" y2="240.709" stroke="#19526A" stroke-width="3"/><line "regn-linje2" x1="131.322" y1="145.709" x2="80.3216" y2="240.709" stroke="#19526A" stroke-width="3"/><line "regn-linje3" x1="205.322" y1="145.709" x2="154.322" y2="240.709" stroke="#19526A" stroke-width="3"/><line "regn-linje4" x1="169.322" y1="145.709" x2="118.322" y2="240.709" stroke="#19526A" stroke-width="3"/></svg>'
     }else if(nederbördNu==6){
         document.querySelector('.regn-nu').textContent="fryst duggregn";
-        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/duggregn.svg"/>'
+        document.querySelector('.väder-bakgrund').innerHTML='<img id="prognos-bild" src="img/duggigt.svg"/>'
     }
+    console.log(document.querySelector('.väder-bakgrund').innerHTML);
 }
 
 
@@ -331,6 +363,13 @@ function prognosData(element){
     } 
 } 
 
+visaVäderKnapp.style.transform="translateX(100vw)";
+visaVäderKnapp.addEventListener('click', (visaVäder)=>{
+    idagSection.style.transform='translateX(0vw)';
+    idagSection.style.height='initial';
+    imorgonSection.style.backgroundColor='#48bcd959';
+    
+})
 
 //LUNCHTIPS-LISTAN NÄR NUVARANDE TID ÄR EFTER LUNCHTID, REKOMMENDATION FÖR IMORGON
 function prognosDataImorgon(element){
@@ -342,7 +381,28 @@ function prognosDataImorgon(element){
     let w;
     if((element.validTime.split('').splice(8,2).join('')==Number(dagensDatumUppg)+1)&&((element.validTime[11]==1 && element.validTime[12]==1)||(element.validTime[11]==1 && element.validTime[12]==2)||(element.validTime[11]==1 && element.validTime[12]==3))){
         console.log('imorgon den ' +(Number(dagensDatumUppg)+1)+':e kl '+ element.validTime.split('').splice(11,5).join(''))
-       
+        
+        idagSection.style.transform='translateX(100vw)';
+        idagSection.style.height='0px';
+        imorgonSection.style.backgroundColor='white';
+        visaVäderKnapp.style.transform="translateX(0vw)";
+        
+        //TESTING TESTING 23 SEPTEMBER
+        
+        if((element.validTime.split('').splice(8,2).join('')==Number(dagensDatumUppg)+1)&&((element.validTime[11]==1 && element.validTime[12]==1)||(element.validTime[11]==1 && element.validTime[12]==2)||(element.validTime[11]==1 && element.validTime[12]==3))){
+            console.log('funkar kl 11')
+        } 
+        if((element.validTime.split('').splice(8,2).join('')==Number(dagensDatumUppg)+1)&&((element.validTime[11]==1 && element.validTime[12]==2))){
+            console.log('funkar kl 12')
+        }
+        if((element.validTime.split('').splice(8,2).join('')==Number(dagensDatumUppg)+1)&&((element.validTime[11]==1 && element.validTime[12]==3))){
+            console.log('funkar kl 13')
+        }
+
+                //TESTING TESTING SLUT 23 SEPTEMBER
+
+
+
         // FIXA MÅNADSKIFTE-DATUM
        // morgonDatum.textContent='Imorgon den ' +(Number(dagensDatumUppg)+1);
         listaOlikaTW.push(element.validTime.split('').splice(11,5).join(''))
@@ -355,22 +415,23 @@ function prognosDataImorgon(element){
                 listaOlikaTW.push(t)
                 document.querySelector('.temp-imorgon').textContent=t+" C";
             }  
-             if(element.name==="pcat"){
+              if(element.name==="pcat"){
                 let nederbördNu=element.values
                 nederbördImorgonText(nederbördNu)
-            }
-            if(element.name=="Wsymb2"){
+            }  
+             if(element.name=="Wsymb2"){
                 w=element.values[0]
                 console.log('wsymb2 imorgon: ', w)
                 listaOlikaTW.push(w)
-                väderImorgonText(w);
-            }
+                 väderImorgonText(w);
+            }  
         }); 
          return restaurangerVäder(t, w);
     } 
+
+   
+
 }
-
-
 ////
 ////
 ////
@@ -380,29 +441,8 @@ function prognosDataImorgon(element){
 ////
 
 
-const regnImorgon = document.querySelector('-regn-imorgon')
 
-//VÄDER IMORGON, I TABELLEN
-function väderImorgonText(väderNu){
-    if(väderNu<=2){
-        document.querySelector('.moln-imorgon').textContent='soligt';
-        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/sol-orange-grå-outline.svg"/>'
-    }else if(väderNu==3){
-        document.querySelector('.moln-imorgon').textContent='växlande molnighet';
-        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/sol-moln-ljus.svg"/>'
-    } else if(väderNu==4){
-        document.querySelector('.moln-imorgon').textContent='halvklart';
-        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/sol-moln.svg"/>'
-    }else if((väderNu>=5)&&(väderNu<21)){
-        document.querySelector('.moln-imorgon').textContent='molnigt';
-        if((regnImorgon.innerText=="ingen nederbörd")&&(väderNu>=5)){
-            document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/moln.svg"/>';
-        }
-    }else if(väderNu==21){
-        document.querySelector('.moln-imorgon').textContent='åska';
-        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/åska.svg"/>';
-    }
-}
+
 
 //NEDERBÖRD IMORGON, I TABELLEN
 function nederbördImorgonText(nederbördNu){
@@ -410,26 +450,59 @@ function nederbördImorgonText(nederbördNu){
         document.querySelector('.regn-imorgon').textContent="ingen nederbörd";
     }else if(nederbördNu==1){
         document.querySelector('.regn-imorgon').textContent="snö";
-        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/snö.svg"/>'
+        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/snow.svg"/>'
     }else if(nederbördNu==2){
         document.querySelector('.regn-imorgon').textContent="snöblandat regn";
-        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/snöblandatregn.svg"/>'
+        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/snowrain.svg"/>'
     }else if(nederbördNu==3){
         document.querySelector('.regn-imorgon').textContent="regn";
-        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/regn.svg"/>'
+      //  document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/regnigt.svg"/>'
+        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<svg class="regn-bild" width="261" height="242" viewBox="0 0 261 242" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="140" cy="37.5" rx="52" ry="37.5" fill="#858484"/><ellipse cx="207" cy="75" rx="54" ry="42" fill="#858484"/><ellipse cx="50.5" cy="103.5" rx="50.5" ry="28.5" fill="#858484"/><ellipse cx="168.5" cy="107.5" rx="50.5" ry="28.5" fill="#858484"/><ellipse cx="99" cy="79" rx="54" ry="42" fill="#858484"/><ellipse cx="177" cy="85" rx="48" ry="47" fill="#858484"/><line "regn-linje1" x1="97.3216" y1="145.709" x2="46.3216" y2="240.709" stroke="#19526A" stroke-width="3"/><line "regn-linje2" x1="131.322" y1="145.709" x2="80.3216" y2="240.709" stroke="#19526A" stroke-width="3"/><line "regn-linje3" x1="205.322" y1="145.709" x2="154.322" y2="240.709" stroke="#19526A" stroke-width="3"/><line "regn-linje4" x1="169.322" y1="145.709" x2="118.322" y2="240.709" stroke="#19526A" stroke-width="3"/></svg>'
     }else if(nederbördNu==4){
         document.querySelector('.regn-imorgon').textContent="duggregn";
-        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/duggregn.svg"/>'
+        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/duggigt.svg"/>'
     } else if(nederbördNu==5){
         document.querySelector('.regn-imorgon').textContent="underkylt regn";
-        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/regn.svg"/>'
+      //  document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/regnigt.svg"/>'
+        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<svg class="regn-bild" width="261" height="242" viewBox="0 0 261 242" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="140" cy="37.5" rx="52" ry="37.5" fill="#858484"/><ellipse cx="207" cy="75" rx="54" ry="42" fill="#858484"/><ellipse cx="50.5" cy="103.5" rx="50.5" ry="28.5" fill="#858484"/><ellipse cx="168.5" cy="107.5" rx="50.5" ry="28.5" fill="#858484"/><ellipse cx="99" cy="79" rx="54" ry="42" fill="#858484"/><ellipse cx="177" cy="85" rx="48" ry="47" fill="#858484"/><line "regn-linje1" x1="97.3216" y1="145.709" x2="46.3216" y2="240.709" stroke="#19526A" stroke-width="3"/><line "regn-linje2" x1="131.322" y1="145.709" x2="80.3216" y2="240.709" stroke="#19526A" stroke-width="3"/><line "regn-linje3" x1="205.322" y1="145.709" x2="154.322" y2="240.709" stroke="#19526A" stroke-width="3"/><line "regn-linje4" x1="169.322" y1="145.709" x2="118.322" y2="240.709" stroke="#19526A" stroke-width="3"/></svg>'
     }else if(nederbördNu==6){
         document.querySelector('.regn-imorgon').textContent="fryst duggregn";
-        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/duggregn.svg"/>'
+        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/duggigt.svg"/>'
     }
 }
- 
+  
+//VÄDER IMORGON, I TABELLEN
+function väderImorgonText(väderNu){
+    if(väderNu<=2){
+        document.querySelector('.moln-imorgon').textContent='soligt';
+        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/sol-ikon.svg"/>'
+    }else if(väderNu==3){
+        document.querySelector('.moln-imorgon').textContent='växlande molnighet';
+        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/sol-moln-light.svg"/>'
+    } else if(väderNu==4){
+        document.querySelector('.moln-imorgon').textContent='halvklart';
+        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/sol-moln-dark.svg"/>'
+    }else if((väderNu>=5)&&(väderNu<21)){
+        document.querySelector('.moln-imorgon').textContent='molnigt';
 
+
+
+
+        if((regnImorgon.innerText=="ingen nederbörd")&&(väderNu>=5)){
+            document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/molnigt.svg"/>';
+        }       /* else if((regnImorgon.innerText!=="ingen nederbörd")&&(väderNu>=5)){
+                    document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/moln.svg"/>';
+                } */
+
+
+
+
+
+    } else if(väderNu==21){
+        document.querySelector('.moln-imorgon').textContent='åska';
+        document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/thunder.svg"/>';
+    }
+}
 
 //SLUMPA RESTAURANGFÖRSLAG VID KNAPPTRYCK
 slumpaKnapp.addEventListener('click', (e)=>{

@@ -21,7 +21,7 @@ body{
     color: white;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     width: 100vw;
-    transition-duration: 250ms;
+    scroll-behavior: smooth;
 }
 
 #navbar{
@@ -37,9 +37,69 @@ body{
 .nav-logga {
     height: 40px;
     width: auto;
+    transition: transform 3s ease-in 0s;
+}
+
+.nav-logga:hover {
+    transform: rotate3d(0,1,2,360deg); 
+    transform: rotate(360deg); 
+    transform-origin: 50%;
+}
+
+
+
+ .nav-logga:hover .navbar__nav-logga__circle, .nav-logga:hover .navbar__nav-logga__ray1, .nav-logga:hover .navbar__nav-logga__ray2, .nav-logga:hover .navbar__nav-logga__ray3, .nav-logga:hover .navbar__nav-logga__ray4, .nav-logga:hover .navbar__nav-logga__ray5, .nav-logga:hover .navbar__nav-logga__ray6, .nav-logga:hover .navbar__nav-logga__ray7, .nav-logga:hover .navbar__nav-logga__ray8 {
+     fill: var(--accentblå);
+     transition: fill 2s linear;
+}
+
+/* .navbar__nav-logga__circle {
+    transition: all 1s ease-in 0s;
+}
+
+.navbar__nav-logga__ray1 {
+    transition: all 1s ease-in .25s;
+}
+
+.navbar__nav-logga__ray2 {
+    transition: all 1s ease-in .5s;
+}
+
+ .navbar__nav-logga__ray3 {
+    transition: all 1s ease-in .75s;
+}
+
+.navbar__nav-logga__ray4 {
+    transition: all 1s ease-in 1s;
+}
+
+ .navbar__nav-logga__ray5 {
+    transition: all 1s ease-in 1.25s;
+}
+
+.navbar__nav-logga__ray6 {
+    transition: all 1s ease-in 1.5s;
+}
+
+.navbar__nav-logga__ray7 {
+    transition: all 1s ease-in 1.75s;
+}
+
+.navbar__nav-logga__ray8 {
+    transition: all 1s ease-in 2s;
+} */
+
+
+
+
+
+.nav-logga-länk {
+    height: 40px;
+    width: auto;
     margin-left: 10%;
     align-self: center;
 }
+
 #navbar>ul{
     width: 75%;
     list-style: none;
@@ -58,13 +118,13 @@ body{
     color:white;
     text-decoration: none;
     font-weight: 100;
+    transition: all .25s ease-in .01s;
 }
 
 .navbar-länk:hover{
     color: var(--accentorange);
-    transition-delay: 100ms;
-    transition-duration: 250ms;
     font-weight: 900;
+    color: linear-gradient(to right, rgba(255,151,6,1) 0%, rgba(255,151,6,1) 10%, rgba(255,81,0,1) 63%, rgba(255,81,0,1) 100%);
 }
 
 .aktuell-sida{
@@ -81,24 +141,62 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     margin: 0 auto;
-    padding: 200px 0px 50px;
+    padding: 150px 0 0;
     z-index: 1;
-    width: 100%;
+    width: 80%;
     background-color: white;
 }
 
-header>#logga{
-    height: auto;
-    width: 50vw;
-    position: absolute;
-   z-index: 1;
-   left:20%;
-   bottom: -50px;
-   filter: brightness(1);
-   transform: rotate(-5deg);
-} 
+
+
+/*****************************/
+/*****************************/
+/*****************************/
+/* 
+.square {
+    width: 150px;
+    height: 25px;
+    margin: 1rem 0 2rem 1rem;
+    background-color: blue;
+    display: inline-block;
+}
+
+#circle .square {
+    -webkit-transition:border-radius 2s 0s, background-color 3s 0s;
+    -moz-transition: border-radius 2s 0s, background-color 3s 0s;
+    -o-transition: border-radius 2s 0s, background-color 3s 0s;
+    -ms-transition: border-radius 2s 0s, background-color 3s 0s;
+    transition: border-radius 3s 1s, background-color 3s 0s, transform 2s 0s;
+    z-index: 1;
+    position: relative;
+    margin: 0;
+    top: 3px;
+    display: inline-block;
+}
+
+#circle .square {
+    border-radius: 50%;
+    background-color: purple;
+    transform: translateX(175px) scaleX(0.1875);
+}
+#circle .square:hover {
+    transform: translateY(150px) translateX(175px) scaleX(0.1875);
+}
+
+ */
+
+
+/*****************************/
+/*****************************/
+/*****************************/
+/*****************************/
+
+
+
+
+
 
 h1{
     font-weight: 300;
@@ -107,10 +205,9 @@ h1{
     flex-direction: row;
     justify-content: center;
     z-index: 2;
-    margin: 0 auto;
-    padding-bottom: 65px;
+    margin: 0;/* 
+    padding-bottom: 65px; */
     color: var(--accentblå);
-    width: 80%;
 }
 
 main{
@@ -126,11 +223,13 @@ main{
     background-color: var(--bakgrundsblå);
 }
 
+
 .väder-bakgrund, .väder-bakgrund-imorgon{
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin: 0px auto;
+    padding-top: 50px;
 }
 
 
@@ -142,6 +241,32 @@ img#prognos-bild{
     filter: brightness(1);
 }
 
+.regn-bild {
+    transition: all 2s ease;
+    animation-name: väder-in;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    z-index: 999;
+    height: 250px;
+    width: auto;
+}
+
+.regn-bild>ellipse {
+    transition: all 2s ease;
+}
+.regn-bild>ellipse:hover {
+    fill: rgb(68, 67, 67);
+}
+
+@keyframes väder-in {
+    0% {
+        transform: translateX(-100vw);
+    }
+
+    100% {
+        transform: translateX(0vw);
+    }
+}
 
 
 .tid{
@@ -309,27 +434,30 @@ position: absolute;
 text-align: center;
 }
 
-.slumpa-knapp{
-    background-color: white;
+.slumpa-knapp, .header__vädret-nu-knapp {
+    background-color: rgba(255, 255, 255, 0);
     border-radius: 20px;
     padding:10px;
     color: var(--accentorange);
     border: 2px solid var(--accentorange);
     font-size: 18px;
     cursor: pointer;
+    transition: all 0.5s ease-in;
 }
-
-.slumpa-knapp:hover{
+.header__vädret-nu-knapp {
+    margin-top: 20px;
+}
+.slumpa-knapp:hover, .header__vädret-nu-knapp:hover {
     background-color: var(--accentorange);
     transition-duration: 250ms;
     color: white;
 }
 
-.slumpa-knapp:focus{ 
+.slumpa-knapp:focus, .header__vädret-nu-knapp:focus { 
     outline: none;
 }
 
-.slumpa-knapp:active {
+.slumpa-knapp:active, .header__vädret-nu-knapp:active {
     transform: translate(0px, 4px);
     box-shadow: inset 0px 4px 4px #535353; 
     border-top: 2px solid #535353; 
@@ -439,6 +567,69 @@ h3{
 }
 
 
+
+/* 3D Cube */
+
+.view_3d {
+    width: 250px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+    perspective: 1000px;
+  }
+  
+  .cube_3d {
+    width: 100%;
+    height: 100%;
+    display: inline-block;  
+    text-align: center;
+    position: relative; 
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .front, .top, .bottom, .back {
+    position: absolute; 
+    width: 250px;
+    height: 100px;
+    border: 1px solid #fff;
+    opacity: 0.8;
+
+    backface-visibility: hidden;
+  }
+
+  .left, .right {
+    position: absolute; 
+    width: 100px;
+    height: 100px;
+    border: 1px solid #fff;
+    opacity: 0.8;
+  }
+  
+  
+  figure {
+    color: white;
+  }
+  
+
+.front {
+    background: hsla(0, 100%, 50%, 0.7 );
+   /* background: url(http://lorempixel.com/300/300/nature/1);*/
+   z-index: 2;
+   transform: translate3d(0,0,50px);
+  }
+
+  .bottom {    
+    background: hsla( 180, 100%, 50%, 0.7 );
+  /*  background: url(http://lorempixel.com/300/300/nature/5);*/
+  transform: rotateX(-90deg) translate3d(0,0,50px);
+  }
+
+  .view_3d:hover .cube_3d{
+    transform: rotateX(90deg);
+  }
+
+
 .grid-container-1, .grid-container-2 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -453,6 +644,11 @@ h3{
 }
 
 
+.item {
+    transition: background-color 300ms ease-in-out, border 250ms linear;
+} 
+
+
 .item-1, .item2-1 {
     grid-column: 1 / span 3;
     grid-row: 1;
@@ -462,6 +658,7 @@ h3{
     justify-content: center;
     font-size: 35px;
 }
+
 
 .item-3 , .item2-3{
     grid-column: 1 / span 3;
@@ -484,6 +681,7 @@ h3{
     background-color: var(--accentorange);
     color: white;
 }
+
 .item-5, .item2-5 {
     grid-column: 2;
     grid-row: 4;
@@ -516,6 +714,12 @@ h3{
     font-size: 20px;
     background-color:  rgb(212, 211, 211);
 }
+
+
+.item-4:hover ~ .item-7, .item-5:hover ~.item-8, .item-6:hover ~.item-9, .item2-4:hover ~ .item2-7, .item2-5:hover ~ .item2-8, .item2-6:hover ~ .item2-9 {
+    background-color: white;
+    border: 2px solid lightgray;
+}
 .item-8, .item2-8 {
     grid-column: 2;
     grid-row: 5;
@@ -536,7 +740,6 @@ h3{
     font-size: 20px;
     background-color:  rgb(212, 211, 211);
 }
-
 
 
 
