@@ -13,7 +13,7 @@ let circle = L.circle([57.72040, 12.94101], {
             radius: 280
         }).addTo(mymap);
 const myIcon = L.icon({
-            iconUrl: 'img/sol-gul.png',
+            iconUrl: 'img/sol-ikon-svart-kontur.svg',
             iconSize: [38, 38],
             popupAnchor: [0, -10]  
         });

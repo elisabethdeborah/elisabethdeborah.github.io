@@ -62,7 +62,7 @@ let circle = L.circle([57.72040, 12.94101], {
     radius: 280
 }).addTo(mymap);
 const myIcon = L.icon({
-    iconUrl: 'img/sol-gul.png',
+    iconUrl: 'img/sol-ikon-svart-kontur.svg',
     iconSize: [38, 38],
     popupAnchor: [0, -10]  
 });
@@ -363,13 +363,16 @@ function prognosData(element){
     } 
 } 
 
-visaVäderKnapp.style.transform="translateX(100vw)";
+ //visaVäderKnapp.style.transform="translateX(100vw)";
 visaVäderKnapp.addEventListener('click', (visaVäder)=>{
+    idagSection.classList.toggle('dagens-väder-synligt');
+    imorgonSection.classList.toggle('dagens-väderbakgrund-synligt');
+/* 
     idagSection.style.transform='translateX(0vw)';
     idagSection.style.height='initial';
-    imorgonSection.style.backgroundColor='#48bcd959';
+    imorgonSection.style.backgroundColor='#48bcd959'; */
     
-})
+}) 
 
 //LUNCHTIPS-LISTAN NÄR NUVARANDE TID ÄR EFTER LUNCHTID, REKOMMENDATION FÖR IMORGON
 function prognosDataImorgon(element){
@@ -382,6 +385,8 @@ function prognosDataImorgon(element){
     if((element.validTime.split('').splice(8,2).join('')==Number(dagensDatumUppg)+1)&&((element.validTime[11]==1 && element.validTime[12]==1)||(element.validTime[11]==1 && element.validTime[12]==2)||(element.validTime[11]==1 && element.validTime[12]==3))){
         console.log('imorgon den ' +(Number(dagensDatumUppg)+1)+':e kl '+ element.validTime.split('').splice(11,5).join(''))
         
+        
+
         idagSection.style.transform='translateX(100vw)';
         idagSection.style.height='0px';
         imorgonSection.style.backgroundColor='white';
