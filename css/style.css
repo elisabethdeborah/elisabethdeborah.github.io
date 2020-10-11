@@ -1,0 +1,293 @@
+:root {
+    --light-grey: #d6d6d4;
+    --dark-grey: #4b4b4a;
+    --mörkblå: #130080;
+    --mörklila: #342680;
+    --ljuslila: #674DFF;
+    --mellanblå: #1F00CC;
+}
+
+body {
+    background: #2600ff;
+    background: -moz-linear-gradient(-45deg, rgba(38,0,255,1) 0%, rgba(38,0,255,1) 1%, rgba(3,175,255,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(38,0,255,1)), color-stop(1%, rgba(38,0,255,1)), color-stop(100%, rgba(3,175,255,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(38,0,255,1) 0%, rgba(38,0,255,1) 1%, rgba(3,175,255,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(38,0,255,1) 0%, rgba(38,0,255,1) 1%, rgba(3,175,255,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(38,0,255,1) 0%, rgba(38,0,255,1) 1%, rgba(3,175,255,1) 100%);
+    background: linear-gradient(135deg, rgba(38,0,255,1) 0%, rgba(38,0,255,1) 1%, rgba(3,175,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2600ff', endColorstr='#03afff', GradientType=1 );
+    background-repeat: no-repeat;
+    background-size: cover;   
+    color: var(--light-grey);
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    margin: 0;
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color:inherit;
+    text-decoration: none;
+}
+
+p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.navicon {
+    z-index: 9999;
+    color: var(--light-grey);
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background: var(--mörklila);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    padding: 0.3rem;
+    margin: .6rem;
+    transform: rotate(90deg);
+    transition: all .3s ease;
+}
+
+.navbar__ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+    opacity: 1;
+    background-color: var(--dark-grey);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    font-family: sans-serif;
+    transform: translateX(100vw);
+    transition: all .5s ease-in;
+}
+nav.synlig .navbar__ul {
+    transform: translateX(0vw);
+}
+nav.synlig .navicon {
+    content: 'X';
+    transform: rotate(0deg);
+    transition: all .3s ease;
+}
+
+.navbar__listitem {
+    display: flex;
+    flex-direction: column;
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+    text-align: center;
+}
+.navbar__listitem__my-projects-rubrik>p, .navbar__listitem__rubrik {
+    transition: all .3s ease-in;
+}
+.navbar__listitem__my-projects-rubrik>p:hover, .navbar__listitem__rubrik:hover {
+    transform: scale(1.2);
+    color: var(--mörkblå);
+    text-decoration: none;
+} 
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    transition: transform .5s ease-in .5s, height 1s linear, opacity 1s linear .25s;
+}
+
+
+.dropdown > a {
+    width: 100%;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+.dropdown > a:hover {
+    background-color: var(--ljuslila);
+    width: 100%;
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--light-grey);
+}
+
+.navbar__listitem__listlink1,.navbar__listitem__listlink2 {
+    font-size: 1.5rem;
+}
+
+ /* header {
+    height: 90vh;
+}  */
+
+.header__hero {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 85%;
+    max-width: 500px;
+    min-height: 300px; 
+    margin: 200px auto 0;
+    align-items: center;
+    padding: 0;
+}
+.header__hero__bild-container {
+    background: var(--dark-grey) url(../img/profilbild.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-position: 50% 50%;
+}
+
+.header__hero__rubrik {
+    text-align: center;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Sansita Swashed', cursive;
+    font-family: 'Kaushan Script', cursive;
+   font-size: 3rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header__hero__button-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 500px;
+    justify-content: space-around;
+    margin: 2rem auto 3rem;
+}
+
+.header__hero__button-section__project-button {
+    border-radius: 25px;
+    padding: .7rem 1.5rem;
+    min-width: 200px;
+    margin: 1rem auto;
+    border: none;
+    background-color: var(--mörklila);
+    color: var(--light-grey);
+    font-size: 0.9rem;
+    transition: all .3s ease-in;
+}
+
+.header__hero__button-section__project-button:hover, .navicon:hover {
+    background-color: var(--ljuslila);
+    box-shadow: 0 0 5px var(--mellanblå);
+    text-decoration: none;
+}
+
+.about-me {
+    padding: 1rem;
+    line-height: 1.5rem;
+    text-align: center;
+}
+
+
+
+@media screen and (min-width: 600px) {
+
+    .navbar {
+        height: 50px;
+    }
+
+    .navbar__ul {
+        flex-direction: row;
+        justify-content: space-around;
+        height: 50px;
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: rgba(0,0,0,0);
+        transform: translateX(0);
+    }
+
+    .navbar__listitem, .navbar__listitem a, .navbar__listitem, .navbar__listitem h2 {
+        font-size: 1rem;
+        text-decoration: none;
+    }
+
+    .navbar__listitem__my-projects-rubrik {
+        flex-direction: column;
+        height: 60px;
+        cursor: pointer;
+        transition: all 0s linear;
+    }
+    .navbar__listitem__my-projects-rubrik>p::after {
+        content: ' ';
+        margin-left: .3rem;
+        height: 30px;
+        width: 30px;
+    }
+
+    .dropdown {
+        transform: translateY(-150px);
+        opacity: 0;
+        height: 0px;
+        border-radius: 5px;
+        width: 158px;
+    } 
+    .visa-dropdown {
+        transform: translateY(-0px);
+        background-color: #3b3b3b67; 
+        opacity: .9;
+        height: 200%;
+    }
+
+    .navicon {
+        height: 0;
+        width: 0; 
+        font-size: 0;
+        padding: 0;
+        transform: translateY(-300%);
+    }
+    .header__hero {
+        margin: 250px auto 20px;
+    } 
+
+    .header__hero__bild-container {
+        width: 150px;
+        height: 150px;
+
+    }
+
+    main {
+        width: 80%;
+        max-width: 1000px;
+        margin: 0 auto;
+        height: 100vh;
+    }
+}
