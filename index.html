@@ -1,96 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Elisabeth Rumar</title>
-
-  <!-- Bootstrap Core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom Fonts -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link href="css/stylish-portfolio.min.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elisabeth Rumar portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&family=Kaushan+Script&family=Montserrat+Alternates&family=Sansita+Swashed&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
-
 <body id="page-top">
-
-  <!-- Navigation -->
-  <a class="menu-toggle rounded" href="#">
-    <i class="fas fa-bars"></i>
-  </a>
-  <nav id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li class="sidebar-brand">
-        <a class="js-scroll-trigger" href="#page-top">My projects</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#page-top">TomaTo-Do!</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#page-top">Lunchtips Borås</a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Header -->
-  <header class="masthead d-flex">
-    <div class="container text-center my-auto">
-      <h1 class="mb-1">Elisabeth Rumar Portfolio</h1>
-      <h3 class="mb-5">
-        <em>Have a look at my projects</em>
-      </h3>
-      <a class="btn btn-primary btn-xl" href="tomatodo/">View TomaTo-Do!</a>
-      <a class="btn btn-primary btn-xl" href="lunchtips/">View Lunchtips Borås</a>
-    </div>
-    <div class="overlay"></div>
-  </header>
-
-
-  <!-- Footer -->
-  <footer class="footer text-center">
-    <div class="container">
-      <ul class="list-inline mb-5">
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white mr-3" href="https://linkedin.com/in/elisabethrumar">
-            <i class="icon-social-linkedin"></i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white" href="https://github.com/elisabethdeborah">
-            <i class="icon-social-github"></i>
-          </a>
-        </li>
-      </ul>
-      <p class="text-muted small mb-0"></p>
-    </div>
-  </footer>
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="js/stylish-portfolio.min.js"></script>
-
+    <header>
+        <nav class="navbar">
+            <a class="navicon" href="#">|||</a>
+            <ul class="navbar__ul">
+                <li class="navbar__listitem navbar__listitem__my-projects-rubrik"><p>My projects</p>
+                    <section class="dropdown">
+                        <a href="tomatodo/" class="navbar__listitem__listlink1">Pomodoro project</a>
+                        <a href="lunchtips/" class="navbar__listitem__listlink2">Lunchtips i Borås</a> 
+                    </section>
+                </li>
+                <li class="navbar__listitem navbar__listitem__about">
+                    <a href="../elisabethdeborah.github.io/about-me.html" class="navbar__listitem__listlink3 navbar__listitem__rubrik">About me</a>
+                </li>
+            </ul>
+        </nav>
+        <hero class="header__hero">
+            <article class="header__hero__bild-container"></article>
+            <h1 class="header__hero__rubrik">Elisabeth Rumar portfolio</h1>
+        </hero>
+    </header>
+    <main>
+      <h2 class="header__hero__underrubrik">Have a look at my projects</h2>
+            <section class="header__hero__button-section">
+                <button class="header__hero__button-section__project-button button-1">
+                    <a href="#" class="button-link1">View pomodoro project</a>
+                </button>
+                <button class="header__hero__button-section__project-button button-2">
+                    <a href="#" class="button-link2">View lunctips i Borås</a>
+                </button>
+            </section>
+    </main>
+    <!-- <footer>
+        <ul class="footer__footer-list">
+            <li class="footer__footer-list__list-item">
+              <a class="social-link rounded-circle text-white mr-3 footer-list__list-item__link1" href="https://linkedin.com/in/elisabethrumar">
+                <i class="icon-social-linkedin"></i>
+              </a>
+            </li>
+            <li class="footer__footer-list__list-item">
+              <a href="#" class="footer-list__list-item__link2 social-link rounded-circle text-white" href="https://github.com/elisabethdeborah">
+                <i class="icon-social-github"></i>
+              </a>
+            </li>
+        </ul>
+    </footer> -->
+    <script src="../elisabethdeborah.github.io/script.js"></script>
 </body>
-
 </html>
+
