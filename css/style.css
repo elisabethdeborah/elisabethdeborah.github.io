@@ -56,7 +56,7 @@ p {
 .navbar {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: flex-start;
     position: fixed;
     top: 0;
     left: 0;
@@ -98,7 +98,7 @@ p {
     right: 0;
     z-index: 99;
     font-family: sans-serif;
-    transform: translateX(100vw);
+    transform: translateX(-100vw);
     transition: all .5s ease-in;
 }
 nav.synlig .navbar__ul {
@@ -230,7 +230,7 @@ main {
 
 .project-cards-container img {
     height: auto;
-    width: 250px;
+    width: 300px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -248,15 +248,19 @@ main {
 .project-cards-container>figure {
     height: fit-content;
     min-height: 415px;
-    width: 250px;
+    width: 300px;
     border-radius: 5px;
     background-color: white;
     color: var(--dark-grey);
-    box-shadow: 1px 2px 5px var(--light-grey);
+    box-shadow: 1px 2px 5px var(--dark-grey);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     filter: brightness(0.9);
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }
 
 .project-cards-container>figure ul {
@@ -267,11 +271,11 @@ main {
 
 .project-cards-container>figure:hover {
     filter: brightness(1);
-    box-shadow: 1px 2px 5px var(--dark-grey);
+    box-shadow: 1px 4px 10px var(--dark-grey);
 }
 
-.project-cards-container__card.large, .project-cards-container__card.large>img {
-    width: 80vw;
+    .project-cards-container__card__image.large {
+    width: 70vw;
     max-width: 900px;
     margin: 0 auto;
     height: auto;
@@ -291,16 +295,15 @@ main {
 }
 
 .project-cards-container__card.large figcaption h3 {
-    width: 250px;
+    width: 300px;
     margin: 20px auto;
     color: var(--light-grey);
 } 
-
+/* 
 .project-cards-container.container-large {
     width: 100vw;
-    margin: 0 auto;
     height: auto;
-}
+} */
 .about-me {
     padding: 1rem;
     line-height: 1.5rem;
@@ -396,29 +399,118 @@ main {
         margin: 100px auto;
     }
 
-    .project-cards-container__card1__image.large {
+    .project-cards-container>figure {
+        height: fit-content;
+        min-height: 415px;
+        width: 300px;
+        border-radius: 5px;
+        background-color: white;
+        color: var(--dark-grey);
+        box-shadow: 1px 2px 5px var(--dark-grey);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        filter: brightness(0.9);
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 40px;
+        margin-inline-end: 40px;
+    }
+
+
+
+    figure.large-figure{
         max-width: 900px;
         margin: 0 auto;
-        height: auto;
         width: 70vw;
+        position: fixed;
+        top: 0;
     } 
-    .project-cards-container.container-large {
+    
+    figure.large-figure {
+        position: fixed;
+        top: 60px;
+        z-index: 9999;
+        width: 70vw;
+        margin: 0 auto;
+    }
+
+    figure.large-figure .project-cards-container__card__image {
+         width: 70vw;
+         height: auto;
+         max-width: 900px;
+        margin: 0 auto;
+        width: 70vw;
+        position: fixed;
+        top: 0;
+     }
+
+   /*  .project-cards-container.container-large {
         width: 70vw;
         margin: 0 auto;
         height: auto;
-    }
+    } */
 }
 
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 800px) {
 
     .project-cards-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        margin: 0;
     }
+
+       
+    figure.large-figure {
+        position: fixed;
+        top: 60px;
+        z-index: 9999;
+        width: 70vw;
+        margin: 0 auto;
+    }
+
+    figure.large-figure .project-cards-container__card__image {
+         width: 70vw;
+         height: auto;
+         max-width: 900px;
+        margin: 0 auto;
+        width: 90vw;
+        position: fixed;
+        top: 0;
+     }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1050px) {
+
+    figure.large-figure{
+        max-width: 900px;
+        margin: 0 auto;
+        width: 70vw;
+        position: fixed;
+        top: 0;
+    } 
+    
+    figure.large-figure {
+        position: fixed;
+        top: 60px;
+        z-index: 9999;
+        width: 70vw;
+        margin: 0 auto;
+    }
+
+    figure.large-figure .project-cards-container__card__image {
+         width: 70vw;
+         height: auto;
+         max-width: 900px;
+        margin: 0 auto;
+        width: 70vw;
+        position: fixed;
+        top: 0;
+     }
+}
+
+@media screen and (min-width: 1300px) {
     .project-cards-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);

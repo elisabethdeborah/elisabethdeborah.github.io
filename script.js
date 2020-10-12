@@ -2,8 +2,9 @@ const nav = document.querySelector('nav');
 const navicon = document.querySelector('.navicon')
 const dropdown = document.querySelector('.dropdown')
 const projects = document.querySelector('.navbar__listitem__my-projects-rubrik')
-const screenshot = document.querySelectorAll('.project-cards-container__card')
+const screenshot = document.querySelectorAll('.project-cards-container__card__image')
 const screenshotContainer = document.querySelector('.project-cards-container')
+const figure = document.querySelectorAll('.project-cards-container__card')
 
 navicon.addEventListener('click', (event) => {
     nav.classList.toggle('synlig');
@@ -24,12 +25,15 @@ projects.addEventListener('mouseout', (event) => {
     dropdown.classList.remove('visa-dropdown');
 })
 
-screenshot.forEach(kort => {
-    kort.addEventListener('click', (event) => {
+figure.forEach(figure => {
+    figure.addEventListener('click', (event) => {
         if(window.innerWidth>600) {
-        kort.classList.toggle('large');
-        screenshotContainer.classList.toggle('container-large');
-         }
+            figure.classList.toggle('large-figure');
+           /*  figure.forEach(figure => {
+                figure.classList.toggle('large-figure');
+            }) */
+            screenshotContainer.classList.toggle('container-large');
+            }
     })
 })
 
