@@ -16,10 +16,11 @@
                     <section class="dropdown">
                         <a href="tomatodo/" class="navbar__listitem__listlink1">Pomodoro project</a>
                         <a href="lunchtips/" class="navbar__listitem__listlink2">Lunchtips i Borås</a> 
+                        <a href="HTML-CSS-slutprojekt/" class="navbar__listitem__listlink3">Kampsport project</a>
                     </section>
                 </li>
                 <li class="navbar__listitem navbar__listitem__about">
-                    <a href="../elisabethdeborah.github.io/about-me.html" class="navbar__listitem__listlink3 navbar__listitem__rubrik">About me</a>
+                    <a href="/about-me.html" class="navbar__listitem__listlink4 navbar__listitem__rubrik">About me</a>
                 </li>
             </ul>
         </nav>
@@ -30,15 +31,41 @@
     </header>
     <main>
       <h2 class="header__hero__underrubrik">Have a look at my projects</h2>
-            <section class="header__hero__button-section">
+            <!-- <section class="header__hero__button-section">
                 <button class="header__hero__button-section__project-button button-1">
                     <a href="tomatodo/" class="button-link1">View pomodoro project</a>
                 </button>
                 <button class="header__hero__button-section__project-button button-2">
                     <a href="lunchtips/" class="button-link2">View lunctips i Borås</a>
                 </button>
-            </section>
+            </section> -->
+            <section class="project-cards-container">
+              <figure class="project-cards-container__card project-cards-container__card1">
+                  <img src="/img/pomodoro-screenshot.jpg" alt="Pomodoro screenshot" class="project-cards-container__card1__image">
+                  <figcaption class="project-cards-container__card1__caption"><h3>Pomodoro project</h3><ul><li>countdown timer</li><li>stopwatch</li><li>to do list</li><li>local storage</li></ul></figcaption>
+                  <button class="header__hero__button-section__project-button button-1">
+                    <a href="tomatodo/" class="button-link1">Go to pomodoro project</a>
+                </button>
+              </figure>
+            
+            <figure class="project-cards-container__card project-cards-container__card2">
+           <img src="/img/lunchtips-screenshot.jpg" alt="Lunchtips screenshot" class="project-cards-container__card2__image">
+              <figcaption class="project-cards-container__card2__caption"><h3>Lunchtips project</h3><ul><li>Fetch API</li><li>JSON</li><li>async</li></ul></figcaption>
+              <button class="header__hero__button-section__project-button button-1">
+                <a href="lunchtips/" class="button-link1">Go to Lunchtips project</a>
+            </button>
+            </figure>
+
+            <figure class="project-cards-container__card project-cards-container__card3">
+              <img src="/img/kampsport-screenshot.jpg" alt="Kampsport screenshot" class="project-cards-container__card3__image">
+              <figcaption class="project-cards-container__card3__caption"><h3>Kampsport project</h3><ul><li>CSS grid</li><li>CSS flexbox</li><li>CSS transitions</li><li>CSS animations</li></ul></figcaption>
+              <button class="header__hero__button-section__project-button button-1">
+                <a href="HTML-CSS-slutprojekt/" class="button-link3">Go to Kampsport project</a>
+            </button>
+            </figure>
+          </section>
     </main>
+
     <!-- <footer>
         <ul class="footer__footer-list">
             <li class="footer__footer-list__list-item">
@@ -53,7 +80,7 @@
             </li>
         </ul>
     </footer> -->
-    <script src="../elisabethdeborah.github.io/script.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
 
