@@ -27,6 +27,13 @@ body {
     box-sizing: border-box;
 }
 
+h1 {
+    color: #001056;
+}
+h2 {
+    font-size: 1.7rem;
+    color: var(--light-grey);
+}
 ul {
     list-style: none;
 }
@@ -72,7 +79,7 @@ p {
     padding: 0.3rem;
     margin: .6rem;
     transform: rotate(90deg);
-    transition: all .3s ease;
+    transition: all .5s ease;
 }
 
 .navbar__ul {
@@ -115,15 +122,16 @@ nav.synlig .navicon {
     transition: all .3s ease-in;
 }
 .navbar__listitem__my-projects-rubrik>p:hover, .navbar__listitem__rubrik:hover {
-    transform: scale(1.2);
-    color: white;
+    color: rgb(250, 153, 7);
     text-decoration: none;
 } 
-
+.navbar__listitem__my-projects-rubrik>p {
+    z-index: 100000;
+}
 .dropdown {
     display: flex;
     flex-direction: column;
-    transition: transform .5s ease-in .5s, height 1s linear, opacity 1s linear .25s;
+    transition: all .5s ease-in;
 }
 
 
@@ -136,7 +144,7 @@ nav.synlig .navicon {
 .dropdown > a:hover {
     background-color: var(--ljuslila);
     width: 100%;
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
     text-decoration: none;
     color: var(--light-grey);
 }
@@ -144,10 +152,6 @@ nav.synlig .navicon {
 .navbar__listitem__listlink1,.navbar__listitem__listlink2,.navbar__listitem__listlink3 {
     font-size: 1.5rem;
 }
-
- /* header {
-    height: 90vh;
-}  */
 
 .header__hero {
     z-index: 1;
@@ -169,6 +173,7 @@ nav.synlig .navicon {
     height: 100px;
     border-radius: 100%;
     background-position: 50% 50%;
+    filter: grayscale(1);
 }
 
 .header__hero__rubrik {
@@ -183,6 +188,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    margin: 0 auto 200px;
 }
 
 .header__hero__button-section {
@@ -218,6 +225,7 @@ main {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     z-index: 1;
+    margin: 50px auto;
 }
 
 .project-cards-container img {
@@ -303,6 +311,10 @@ main {
 
 @media screen and (min-width: 600px) {
 
+    h2 {
+        font-size: 2.5rem;
+    }
+
     .navbar {
         height: 50px;
         background-color: var(--mörkblå);
@@ -323,6 +335,14 @@ main {
         text-decoration: none;
     }
 
+    .navbar__listitem__my-projects-rubrik>p {
+        background-color: var(--mörkblå);
+        height: 55px;
+    }
+
+    .navbar__listitem__my-projects-rubrik>p:hover, .navbar__listitem__rubrik:hover {
+        font-size: 1.2rem;
+    } 
     .navbar__listitem__my-projects-rubrik {
         flex-direction: column;
         height: 60px;
@@ -340,7 +360,7 @@ main {
         transform: translateY(-200px);
         opacity: 0;
         height: 0px;
-        border-radius: 5px;
+        border-radius: 0 0 5px 5px;
         width: 158px;
     } 
     .visa-dropdown {
@@ -370,8 +390,10 @@ main {
     main {
         width: 80%;
         max-width: 1000px;
-        margin: 0 auto;
-        height: 100vh;
+    }
+
+    .project-cards-container {
+        margin: 100px auto;
     }
 
     .project-cards-container__card1__image.large {
@@ -389,6 +411,7 @@ main {
 
 
 @media screen and (min-width: 700px) {
+
     .project-cards-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
