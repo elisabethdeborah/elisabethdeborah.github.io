@@ -338,6 +338,49 @@ function restauranginfo(element){
 } 
 
 
+
+
+////////////////////////
+////////////////////////
+////////////////////////
+
+//INFORUTA FÖR VARJE RESTAURANG, SYNS EFTER KLICKNING
+function restauranginfo(element){
+    infoRestauranger.style.display="initial"
+    infoRestauranger.innerHTML=
+        `<ul id="info">
+            <li class="delete-container"><a href="#fieldset-restaurang" id="delete">X</a></li>
+            <li class="restaurang-namn">${element.name}</li>
+            <li>${element.foodType}</li>
+            <li>${element.ikon}</li>
+            <li>${element.address}</li>
+            <li>${element.website}</li>
+            <li class="restaurang-src">${element.src}</li>
+        </ul>`
+    L.marker([element.latitude, element.longitude], {icon: myIcon}).bindPopup(`<h3 class="popup-namn">${element.name}</h3> <br> <p id="popup">${element.address} <br>${element.website}</p>`).addTo(mymap).openPopup().riseOnHover;
+    document.querySelector('#delete').addEventListener('click', (event)=>{
+        infoRestauranger.style.display="none";
+    })
+} 
+
+
+////////////////////////
+////////////////////////
+////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //LUNCHTIPS-LISTAN NÄR NUVARANDE TID ÄR FÖRE LUNCHTID/UNDER LUNCHTID, REKOMMENDATION FÖR IDAG
 function prognosData(element){
     restaurangRubrik.innerText='Lunchtips'
@@ -359,39 +402,41 @@ function prognosData(element){
                 console.log('wsymb2 idag: ', w)
             } 
         });           
+        imorgonSection.classList.add('dölj'); //blå
+        visaVäderKnapp.classList.add('dölj');
     return restaurangerVäder(t, w); 
     } 
 } 
 
- //visaVäderKnapp.style.transform="translateX(100vw)";
+
 visaVäderKnapp.addEventListener('click', (visaVäder)=>{
-    idagSection.classList.toggle('dagens-väder-synligt');
-    imorgonSection.classList.toggle('dagens-väderbakgrund-synligt');
-/* 
-    idagSection.style.transform='translateX(0vw)';
-    idagSection.style.height='initial';
-    imorgonSection.style.backgroundColor='#48bcd959'; */
-    
-}) 
+    idagSection.classList.toggle('dölj'); //vit
+visaVäderKnapp.classList.toggle('dölj-visa');
+
+imorgonSection.classList.toggle('vit');
+imorgonSection.classList.toggle('blå');
+if(visaVäderKnapp.classList.contains('dölj-visa')){
+    visaVäderKnapp.innerHTML='Dölj nuvarande väder';
+    }
+    else {
+        visaVäderKnapp.innerHTML='Visa nuvarande väder';
+    }
+});
 
 //LUNCHTIPS-LISTAN NÄR NUVARANDE TID ÄR EFTER LUNCHTID, REKOMMENDATION FÖR IMORGON
 function prognosDataImorgon(element){
     restaurangRubrik.innerText='Lunchtips imorgon'
     let dagensDatum=document.querySelector('.dagens-datum');  
-    //let morgonDatum=document.querySelector('.morgondagens-datum');
     let dagensDatumUppg=dagensDatum.textContent.split(' ').splice(1, 1).join('')  
     let t;
     let w;
     if((element.validTime.split('').splice(8,2).join('')==Number(dagensDatumUppg)+1)&&((element.validTime[11]==1 && element.validTime[12]==1)||(element.validTime[11]==1 && element.validTime[12]==2)||(element.validTime[11]==1 && element.validTime[12]==3))){
         console.log('imorgon den ' +(Number(dagensDatumUppg)+1)+':e kl '+ element.validTime.split('').splice(11,5).join(''))
-        
-        
 
-        idagSection.style.transform='translateX(100vw)';
-        idagSection.style.height='0px';
-        imorgonSection.style.backgroundColor='white';
-        visaVäderKnapp.style.transform="translateX(0vw)";
+        idagSection.classList.add('dölj');
         
+        imorgonSection.className ='vit';
+
         //TESTING TESTING 23 SEPTEMBER
         
         if((element.validTime.split('').splice(8,2).join('')==Number(dagensDatumUppg)+1)&&((element.validTime[11]==1 && element.validTime[12]==1)||(element.validTime[11]==1 && element.validTime[12]==2)||(element.validTime[11]==1 && element.validTime[12]==3))){
@@ -495,10 +540,7 @@ function väderImorgonText(väderNu){
 
         if((regnImorgon.innerText=="ingen nederbörd")&&(väderNu>=5)){
             document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/molnigt.svg"/>';
-        }       /* else if((regnImorgon.innerText!=="ingen nederbörd")&&(väderNu>=5)){
-                    document.querySelector('.väder-bakgrund-imorgon').innerHTML='<img id="prognos-bild" src="img/moln.svg"/>';
-                } */
-
+        }       
 
 
 
