@@ -125,8 +125,21 @@ h1{
     z-index: 2;
     margin: 0;
     color: var(--accentblå);
+    animation-name: rubrik-in;
+    animation-duration: 2s;
+    animation-iteration-count: 1; 
 }
+ 
+@keyframes rubrik-in {
+    0% {
+        transform: translateX(100vw);
+    }
 
+    100% {
+        transform: translateX(0vw);
+    }
+}
+ 
 main{
     height: 100%; 
     width: 100vw;
@@ -367,6 +380,9 @@ text-align: center;
     margin: 20px 0;
     width: fit-content;
     align-self: center;
+    animation-name: rubrik-in;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
 }
 .slumpa-knapp:hover, .header__vädret-nu-knapp:hover {
     background-color: var(--accentorange);
