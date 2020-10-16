@@ -1,4 +1,4 @@
-
+/* 
 const toggleMeny=document.querySelector('.fa-bars')
 const navbarToggle=document.querySelector('#nvbar-toggle')
 const navbarList=document.querySelector('.nvbar-list')
@@ -8,11 +8,11 @@ toggleMeny.addEventListener('click', (e)=>{
     navbarToggle.classList.toggle('navbar-view');
     navbarListToggle.classList.toggle('navbar-view');
 })
-
+ */
 
 ////////    ADD A TOMATO
         
-//TOMATO CLASS: EN  TOMAT
+/* //TOMATO CLASS: EN  TOMAT
 class Tomato{
     constructor(name, time1, time2){
         this.name=name;                 
@@ -120,9 +120,22 @@ class Store {
         });
         localStorage.setItem('tomatos', JSON.stringify(tomatos));
     }
-}
+} */
   
+const startaTidtagning = document.querySelector('#starta-tidtagning');
+startaTidtagning.addEventListener('click', (event) => {
+    stopwatch.start();
+})
+const stoppaTidtagning = document.querySelector('#stoppa-tidtagning');
+stoppaTidtagning.addEventListener('click', (event) => {
+    stopwatch.stop();
+})
+const nollställTidtagning = document.querySelector('#nollställ-tidtagning');
+nollställTidtagning.addEventListener('click', (event) => {
+    stopwatch.nollställ();
+})
 
+const nedräkningsSiffror = document.querySelector('#timer-text');
     // VARJE NY TIDTAGNING
 class Stopwatch {
     constructor(display, results) {
@@ -136,12 +149,16 @@ class Stopwatch {
     reset() {
             this.times = [ 0, 0, 0, 0 ];
     }
+
+  
+
     start() {
         if (!this.time) this.time = performance.now();
         if (!this.running) {
             console.log(this.times);
             this.running = true;
             requestAnimationFrame(this.step.bind(this));
+            nedräkningsSiffror.classList.toggle('synlig');
         }
     }
         stop() {
@@ -235,11 +252,11 @@ let stopwatch = new Stopwatch(
 //SPARAR TOMATTID TILL FORMULÄRET FÖR NY TOMATO    
 const addFormulär=document.querySelector('.container');
 const tomatTimerTidtagning=document.querySelector('.tomat-timer-tidtagning'); 
-const visaFormulär=document.querySelector('#visa-formulär');
+const sparaTomat=document.querySelector('#spara-tomat');
     
-visaFormulär.addEventListener('click', (ev)=>{    
+sparaTomat.addEventListener('click', (ev)=>{    
     addFormulär.style.display='block';
-    visaFormulär.style.opacity='0';
+    sparaTomat.style.opacity='0';
     tomatTimerTidtagning.style.margin='200px auto 20px';
 })
 
@@ -259,9 +276,12 @@ document.querySelector('#stopwatch-save-tomato-form').addEventListener('submit',
 
         let rättTid=[avrundadtid[0],avrundadtid[1]];
         console.log(rättTid)
-        let formateradTid=[pad0(rättTid[0], 2),pad0(rättTid[1], 2)]
+        //let formateradTid=[pad0(rättTid[0], 2),pad0(rättTid[1], 2)]
+        let formateradTid=pad0(rättTid[0], 2)+pad0(rättTid[1], 2)
         console.log(formateradTid)
-        return formateradTid
+       // const tidsSträng = formateradTid[0].toString+formateradTid[1].toString
+        return formateradTid;
+       // return tidsSträng;
     };
 
     avrundning();

@@ -12,6 +12,7 @@ const navbarListToggle=document.querySelector('#nvbar-list-toggle');
 const tomatoForm=document.querySelector('#tomato-form');
 const tomatodoForm =document.querySelector('.tomatodo-form');
 const tomatLista = document.querySelector('#tomato-list');
+const todoLista = document.querySelector('#todo-list');
 
 if (visaAddTomat){
    visaAddTomat.addEventListener('click', (ev)=>{
@@ -59,8 +60,8 @@ class UI{
     }
 
     static addTomatoToList(tomato){
-        const list=document.querySelector('#tomato-list');
-
+       // const list=document.querySelector('#tomato-list');
+       // const list=tomatLista;
         const row=document.createElement('tr');
 
         row.innerHTML=`
@@ -68,12 +69,12 @@ class UI{
         
         <td class="column3"><h4 class="timer">${tomato.time}</h4></td>
         
-        <td><a href="#tomater" class="btn btn-success btn-sm" alt="Start countdown-timer"><i class="fas fa-stopwatch-20 startTimer"></i></a></td>
-        <td><a href="#tomater" class="btn btn-info btn-sm addFromMyTomatoesToTodo" alt="Add to TomaTo-do"><i class="fas fa-tasks addFromMyTomatoesToTodo"></i></a></td>
-        <td><a href="#tomater" class="btn btn-danger btn-sm"><i class="fas fa-times delete"></i></a></td>
+        <td><a href="#td" class="btn btn-success btn-sm" alt="Start countdown-timer"><i class="fas fa-stopwatch-20 startTimer"></i></a></td>
+        <td><a href="#td" class="btn btn-info btn-sm addFromMyTomatoesToTodo" alt="Add to TomaTo-do"><i class="fas fa-tasks addFromMyTomatoesToTodo"></i></a></td>
+        <td><a href="#td" class="btn btn-danger btn-sm"><i class="fas fa-times delete"></i></a></td>
         `;
 
-        list.appendChild(row);
+        tomatLista.appendChild(row);
     }
 
     
@@ -92,16 +93,16 @@ class UI{
     }
 
     static addTodoToList(todo){
-        const list=document.querySelector('#tomato-list');
+       // const list=tomatLista;
         const row=document.createElement('tr');
         row.innerHTML=`
         <td class="column1"><h4>${todo.name}</h4><img src="tomat-vit-vector.png" style="height:100px; width:100px" class="added-tomato"></td>
         <td class="column3"><h4>${todo.time}</h4></td>
-        <td class="countdown-column"><a href="#" class="btn btn-success btn-sm" alt="Start countdown-timer"><i class="fas fa-stopwatch-20 startTimer"></i></a></td>
-        <td class="delete-column"><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+        <td class="countdown-column"><a href="#td" class="btn btn-success btn-sm" alt="Start countdown-timer"><i class="fas fa-stopwatch-20 startTimer"></i></a></td>
+        <td class="delete-column"><a href="#td" class="btn btn-danger btn-sm delete">X</a></td>
         `;
 
-        list.appendChild(row);
+        todoLista.appendChild(row);
     }
 
     static deleteTodo(el){
@@ -116,7 +117,10 @@ class UI{
         div.appendChild(document.createTextNode(message));
         const container=document.querySelector('.container');
         const form=document.querySelector('.tomater-innehåll');
-        container.insertBefore(div, form);
+        const rad = document.querySelector('tr');
+        container.insertBefore(div,form);
+        //div.tomater-innehåll
+        //form.tomattodo
         //Vanish in 3 seconds
         setTimeout(()=>document.querySelector('.alert').remove(), 3000);
     }
@@ -180,7 +184,7 @@ class Store {
         const todos = Store.getTodos();
         todos.forEach((todo, index) => {
             if(todo.name === name) {
-            todo.splice(index, 1);
+            todos.splice(index, 1);
             }
         });
         localStorage.setItem('todos', JSON.stringify(todos));
@@ -310,12 +314,6 @@ function filterNames(){
 
 
 
-
-
-
-
-
-
 function addAnime(todo){(anime({
     targets: todo,
     scale:[
@@ -326,77 +324,140 @@ function addAnime(todo){(anime({
 }))}
  
 
+const todoTabell=document.querySelector('.to-do-tabell');
+//TODO-FUNKTIONER
 // Event: Add a Todo
-if (tomatodoForm) {
-    tomatodoForm.addEventListener('submit', (e) => {
-    // Prevent actual submit
-    e.preventDefault();
+if (todoLista) {
 
-    // Get form values
-    const name = document.querySelector('#name').value;  
-    let time=["00,00,00"];
-    if(time=null,null){
-        time=["00,00,00"]
-    }
+    console.log(todoLista)
 
-    // Validate
-    if(name === '') {
-        UI.showAlert('Please fill in all fields', 'danger');
-    } else {
-    // Instatiate todo
-        const todo = new Todo(name);
-    // Add Todo to UIT
-        UI.addTodoToList(todo);
-    // Add todo to store
-        Store.addTodo(todo);
-    // Show success message
-        UI.showAlert('To-Do Added', 'success');
-    // Clear fields
-        UI.clearFields();
-    }
-});
+     //HÄMTA TOMAT-ARRAY FRÅN LOCAL STORAGE OCH SPARA I EN LISTA
+     let todoData=[Store.getTodos()];
+                
+     //HÄMTAR TOMATER-ARRAY FRÅN LOCAL STORAGE       //LOCAL STORAGE FUNKTIONER DEKLARERAS I TOMAT.JS-FILEN. HÄMTAR JSON-DATA FRÅN LOCAL STORAGE OCH PARSE-AR/STRINGIFY-AR FÖR ANVÄNDNING I JS. // I TOMAT.JS DEKLARERAS CLASSERNA STORE, UI, TOMATO, TODO. EFTERSOM FUNKTIONERNA ÄR STATIC SÅ KAN DE ANVÄNDAS ÄVEN HÄR UTAN ATT FÖRST DEKLARERAS
+     let todos=Store.getTodos();
 
 
-document.addEventListener('click', (e)=>{
-    if(e.target.classList.contains('column1')){
-        e.target.classList.toggle('checked');
-        if(e.target.classList.contains('checked')){
-            addAnime(e.target);
+
+     tomatodoForm.addEventListener('submit', (e) => {
+        //    console.log(e, e.parentElement, e.parentElement.parentElement)
+        // Prevent actual submit
+        e.preventDefault();
+
+        // Get form values
+        const name = document.querySelector('#name').value;  
+        let time=["00,00,00"];
+        if(time=null,null){
+            time=["00,00,00"]
         }
-    }
-    if(e.target.parentElement.classList.contains('column1')){
-        e.target.parentElement.classList.toggle('checked');
-        if(e.target.parentElement.classList.contains('checked')){
-            addAnime(e.target);
+
+        // Validate
+        if(name === '') {
+            UI.showAlert('Please fill in all fields', 'danger');
+        } else {
+        // Instatiate todo
+            const todo = new Todo(name);
+        // Add Todo to UIT
+            UI.addTodoToList(todo);
+        // Add todo to store
+            Store.addTodo(todo);
+        // Show success message
+            UI.showAlert('To-Do Added', 'success');
+        // Clear fields
+            UI.clearFields();
         }
-    }
-})
+    });
 
-// Event: Remove a Todo
-document.querySelector('#tomato-list').addEventListener('click', (e) => {
-    if(e.target.classList.contains('delete')){
-    // Remove Todo from UIT
-        UI.deleteTodo(e.target);
-    // Remove todo from store NÅ TODO:S NAMN, INTE INNEHÅLL
-        Store.removeTodo(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent)
-    // Show success message
-        UI.showAlert('To-Do Removed', 'success');
-    }
-});
+    //CHECKA AV TASKS =======>> GÅR DET ATT SPARA AVCHECKNING? ANNARS FÖRSVINNER DEN NÄR MAN GÖR NÄSTA TASK, EFTERSOM SIDAN LADDAS OM NÄR MAN STÄNGER AV LARMET
+    todoLista.addEventListener('click', (e)=>{
 
-document.querySelector('#tomato-list').addEventListener('click', (e)=>{
-    if(e.target.classList.contains('btn-danger')){
-  // Remove ToDo from UI
-        UI.deleteTodo(e.target);
-        UI.showAlert('To-Do Removed', 'success');
-    // Remove toDo from store FÖRSÖKER NÅ TOMATENS NAMN, INTE INNEHÅLL
-        Store.removeTodo(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent)
-    }
-})
+        if (e.target.classList.contains('startTimer')) {
+            timmar=e.target.parentElement.parentElement.previousElementSibling.innerText[0]+e.target.parentElement.parentElement.previousElementSibling.innerText[1]
+            minuter=e.target.parentElement.parentElement.previousElementSibling.innerText[3]+e.target.parentElement.parentElement.previousElementSibling.innerText[4]
+            if (!isNaN(timmar), !isNaN(minuter)) {
+                countDown(timmar, minuter);
+            } else {
+                console.log(!isNaN(timmar), !isNaN(minuter))
+                e.target.style.cursor='default'
+            }  
+        } else if (e.target.classList.contains('btn-success')) {
+            timmar=e.target.parentElement.previousElementSibling.innerText[0]+e.target.parentElement.previousElementSibling.innerText[1]
+            minuter=e.target.parentElement.previousElementSibling.innerText[3]+e.target.parentElement.previousElementSibling.innerText[4]
+            if (!isNaN(timmar), !isNaN(minuter)) {
+                countDown(timmar, minuter);
+            } else {
+                console.log(!isNaN(timmar), !isNaN(minuter))
+                e.target.innerHTML='<i class="fas fa-ban"></i>'
+                e.target.style.cursor='default'
+            }  
+        }
+
+
+
+        if(e.target.classList.contains('column1')){
+            e.target.classList.toggle('checked');
+            if(e.target.classList.contains('checked')){
+                addAnime(e.target);
+            }
+        }
+        if(e.target.parentElement.classList.contains('column1')){
+            e.target.parentElement.classList.toggle('checked');
+            if(e.target.parentElement.classList.contains('checked')){
+                addAnime(e.target);
+            }
+        }
+
+        if(e.target.classList.contains('delete')){
+            console.log(e.target.parentElement);
+            console.log((e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent))
+        // Remove Todo from UIT
+            UI.deleteTodo(e.target);
+        // Remove todo from store NÅ TODO:S NAMN, INTE INNEHÅLL
+            Store.removeTodo(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent)
+            
+        // Show success message
+            UI.showAlert('To-Do Removed', 'success');
+        }
+    })
+
+
+
+    // Event: Remove a Todo
+  /*   todoTabell.addEventListener('click', (e) => {
+        if(e.target.classList.contains('delete')){
+            console.log(e.target.parentElement);
+            console.log((e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent))
+        // Remove Todo from UIT
+            UI.deleteTodo(e.target);
+        // Remove todo from store NÅ TODO:S NAMN, INTE INNEHÅLL
+            Store.removeTodo(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent)
+            
+        // Show success message
+            UI.showAlert('To-Do Removed', 'success');
+        }
+    }); */
+
+    /* tomatodoForm.addEventListener('click', (e)=>{
+        if(e.target.classList.contains('btn-danger')){
+    // Remove ToDo from UI
+            UI.deleteTodo(e.target);
+            UI.showAlert('To-Do Removed', 'success');
+        // Remove toDo from store FÖRSÖKER NÅ TOMATENS NAMN, INTE INNEHÅLL
+            Store.removeTodo(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent)
+        }
+    })  */
+
 }
+
+
+
+
+
+
 
 //FUNKTIONER FÖR VARJE TOMAT I LISTAN
 if (tomatLista) {
+    console.log(tomatLista)
     tomatLista.addEventListener('click', (e) => {
 
         //SÄTTA IGÅNG NEDRÄKNINGEN NÄR MAN KLICKAR PÅ TIMER-IKON ELLER GRÖN BAKGRUND PÅ TIMER-IKONEN
@@ -469,3 +530,80 @@ if (tomatLista) {
         }
     });
 }
+
+
+
+/*
+
+//TODO-FUNKTIONER
+// Event: Add a Todo
+if (tomatodoForm) {
+    tomatodoForm.addEventListener('submit', (e) => {
+    // Prevent actual submit
+    e.preventDefault();
+
+    // Get form values
+    const name = document.querySelector('#name').value;  
+    let time=["00,00,00"];
+    if(time=null,null){
+        time=["00,00,00"]
+    }
+
+    // Validate
+    if(name === '') {
+        UI.showAlert('Please fill in all fields', 'danger');
+    } else {
+    // Instatiate todo
+        const todo = new Todo(name);
+    // Add Todo to UIT
+        UI.addTodoToList(todo);
+    // Add todo to store
+        Store.addTodo(todo);
+    // Show success message
+        UI.showAlert('To-Do Added', 'success');
+    // Clear fields
+        UI.clearFields();
+    }
+});
+
+//CHECKA AV TASKS =======>> GÅR DET ATT SPARA AVCHECKNING? ANNARS FÖRSVINNER DEN NÄR MAN GÖR NÄSTA TASK, EFTERSOM SIDAN LADDAS OM NÄR MAN STÄNGER AV LARMET
+document.addEventListener('click', (e)=>{
+    if(e.target.classList.contains('column1')){
+        e.target.classList.toggle('checked');
+        if(e.target.classList.contains('checked')){
+            addAnime(e.target);
+        }
+    }
+    if(e.target.parentElement.classList.contains('column1')){
+        e.target.parentElement.classList.toggle('checked');
+        if(e.target.parentElement.classList.contains('checked')){
+            addAnime(e.target);
+        }
+    }
+})
+
+
+
+// Event: Remove a Todo
+document.querySelector('#tomato-list').addEventListener('click', (e) => {
+    if(e.target.classList.contains('delete')){
+    // Remove Todo from UIT
+        UI.deleteTodo(e.target);
+    // Remove todo from store NÅ TODO:S NAMN, INTE INNEHÅLL
+        Store.removeTodo(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent)
+    // Show success message
+        UI.showAlert('To-Do Removed', 'success');
+    }
+});
+
+document.querySelector('#tomato-list').addEventListener('click', (e)=>{
+    if(e.target.classList.contains('btn-danger')){
+  // Remove ToDo from UI
+        UI.deleteTodo(e.target);
+        UI.showAlert('To-Do Removed', 'success');
+    // Remove toDo from store FÖRSÖKER NÅ TOMATENS NAMN, INTE INNEHÅLL
+        Store.removeTodo(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent)
+    }
+})
+}
+*/

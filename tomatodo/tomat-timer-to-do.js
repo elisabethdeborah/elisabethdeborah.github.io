@@ -31,8 +31,10 @@ anime({
 
 const toggleMeny=document.querySelector('.fa-bars')
 const navbarToggle=document.querySelector('#nvbar-toggle')
+//const navbarList=document.querySelector('.nvbar-list')
 const navbarListToggle=document.querySelector('#nvbar-list-toggle')
 
+//const restartKnapp=document.querySelector('#ned-restart')
  
 
 toggleMeny.addEventListener('click', (e)=>{

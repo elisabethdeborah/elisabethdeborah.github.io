@@ -67,10 +67,10 @@
 
             <div class="body-knappar">
                 <div class="btn group">
-                    <button type="button" class="btn btn-success bt-lg" onClick="stopwatch.start();">Start</button>
-                    <button type="button" class="btn btn-danger bt-lg" onClick="stopwatch.stop();">Stop</button>
-                    <button type="button" class="btn btn-info bt-lg" onClick="stopwatch.nollställ();">Reset</button>
-                    <input type="button" id="visa-formulär" class="btn btn-primary" value="Create new TomaTo">  
+                    <button type="button" class="btn btn-success bt-lg" id="starta-tidtagning">Start</button>
+                    <button type="button" class="btn btn-danger bt-lg" id="stoppa-tidtagning">Stop</button>
+                    <button type="button" class="btn btn-info bt-lg" id="nollställ-tidtagning">Reset</button>
+                    <input type="button" id="spara-tomat" class="btn btn-primary" value="Create new Tomato">  
                 </div>
             </div>
         </div>
@@ -135,6 +135,7 @@
     </footer>
     
        <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+       <script src="tomat.js" charset="utf-8"></script>
         <script src="tomat-tidtagning-spara.js" charset="utf-8"></script>
     </body>
 </html>

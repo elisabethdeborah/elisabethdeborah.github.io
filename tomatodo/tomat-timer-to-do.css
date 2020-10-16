@@ -300,6 +300,11 @@ h4{
 .input-timer-minne{
     margin: 30px auto;
 }
+
+#tomat-start-tidtagning > #timer-text.synlig {
+    display: initial;
+}
+
 .nedräkningstimer, #timer-text {
     display: none;
 }
@@ -1433,7 +1438,7 @@ footer.footer-credits>span{
       text-align: center;
   }
 
-  #tomato-list{
+  #tomato-list, #todo-lista{
       display: flex;
       flex-direction: column;
   } 

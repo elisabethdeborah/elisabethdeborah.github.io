@@ -4,12 +4,6 @@
         <title>TomaToDo-list</title>
         <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-       <meta name="keywords" content="your, tags">
-       <meta name="description" content="150 words">
-       <meta name="robots" content="index,follow">
-       <meta name="owner" content="">
-       <meta name="url" content="">
        <script src="https://kit.fontawesome.com/e593b97041.js" crossorigin="anonymous"></script>
        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -30,7 +24,7 @@
             <ul class="nvbar-list">
                 <li class="nav-länkar"><a  class="nava"href='index.html'>About</a></li>
                 <li class="nav-länkar"><a  class="nava"href='quick-start-flik-final-tomat.html'>Quick Start</a></li>            
-                <li class="nav-länkar"><a class="nava"href='time-new-tomato-flik-final-tomat'>Time new TomaTo</a></li>
+                <li class="nav-länkar"><a class="nava"href='time-new-tomato-flik-final-tomat.html'>Time new TomaTo</a></li>
                 <li class="nav-länkar"><a class="nava" href="my-tomatoes-flik-final-tomat.html">My TomaTo<span class="tomato-E-s">e</span>s</a></li>
                 <li class="nav-länkar aktuell-sida" style="color:white">My TomaToDo-list</a></li>
             </ul>
@@ -53,32 +47,32 @@
             
             <div id="tomat-start">
 
-                <div class="nedräkningstimer" style="display: none;">
+                <div class="nedräkningstimer"><!-- style="display: none;"-->
                     <h2 id="time-left"></h2>
                     <h2 id="minutes-left"></h2>
                     <h2 id="seconds-left"></h2>     
                 </div>
-                <div class="timer-buttons"  style="display: none;">
+                <div class="timer-buttons"><!--  style="display: none;"-->
                     <button type="button" class="btn-danger btn" id="ned-stopp">Pause</button>
                     <button type="button" class="btn-primary btn" id="ned-resume">Resume</button>
                     <button type="button" class="btn-info btn" id="ned-restart"><i class="fas fa-redo-alt" style="color:white"></i></button>
                     <button type="button" class="btn-secondary btn ljud-på" id="volym">Volume on</button>
                 </div>
-                <!--DOLD INPUT-TIMER-->
-                          <div class="input-timer" style="display: none;">
+                <!--DOLD INPUT-TIMER     style="display: none;"-->
+                        <!--   <div class="input-timer">
                               <input type="text" id="fyll-i-tid1" maxlength="2" placeholder="HH"> : 
                               <input type="text" id="fyll-i-tid2" maxlength="2" placeholder="MM">
-                          </div>
+                          </div> -->
                 <!--DOLD KNAPP-->    
-                          <button type="button" id="start-button" class="button btn btn-success btn-block" style="display: none;">Start1</button> 
-                      </div>
-                <!--DOLD-->
-                      <div class="angiven-starttid-spara" style="display: none;">
+                          <!-- <button type="button" id="start-button" class="button btn btn-success btn-block" style="display: none;">Start1</button>  -->
+            </div>
+                <!--DOLD    style="display: none;"-->
+                      <!-- <div class="angiven-starttid-spara" >
                           <h2 id="timer-text"></h2>
                           <h2 id="minutes-text"></h2>
                           <h2 id="seconds-text"></h2>
                       </div>
-                      <button type="submit" value="Submit" class="btn btn-primary btn-lg" id="save-btn" style="display: none;">Save TomaTo</button>
+                      <button type="submit" value="Submit" class="btn btn-primary btn-lg" id="save-btn" style="display: none;">Save TomaTo</button> -->
                 <!---->
             
             <section id="animera-logga-new">
@@ -87,18 +81,18 @@
             <section id="animera-h1-todolist">
                 <h1>My TomaTo-Do-list<span class="tomatoEs"></span></h1>
             </section>
-            <!-- <section id="logga-när-tid-slut">
+             <section id="logga-när-tid-slut">
                 <section id="animera-logga-new">
                     <img class="tomaToDoLogga" src="tomat-genomskinlig-vector.png" alt="TomaToDo-logo">
                 </section>
-            </section> -->
+            </section> 
             <section class="tomater tomat-container container">
                 <div class="tomater-innehåll">
                     <form class="tomatodo-form">
                         <input type="text" id="name" class="form-control" placeholder="Name TomaTo-Do">
                         <input type="submit" value="Add TomaTo-Do" class="btn btn-info addTomaTo-Do">
                     </form>
-                    <table class="my-tomatoes-table table table-striped mt-5">
+                    <table class="my-tomatoes-table table table-striped mt-5 to-do-tabell">
                         <thead>
                             <tr>
                                 <th><h4>TomaTo-Do</h4></th>
@@ -107,7 +101,8 @@
                                 <th><h4></h4></th>
                             </tr>
                         </thead>
-                        <tbody id="tomato-list"></tbody>
+                        <tbody id="todo-list"></tbody>
+                      <!--   <tbody id="tomato-list"></tbody> -->
                     </table>
                 </div>
             </section>
