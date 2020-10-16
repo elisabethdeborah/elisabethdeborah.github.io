@@ -4,12 +4,6 @@
        <title>Quick-start TomaToDo</title>
        <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-       <meta name="keywords" content="your, tags">
-       <meta name="description" content="150 words">
-       <meta name="robots" content="index,follow">
-       <meta name="owner" content="">
-       <meta name="url" content="">
        <script src="https://kit.fontawesome.com/e593b97041.js" crossorigin="anonymous"></script>
        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
        <link href="tomat-timer-to-do.css" rel="stylesheet">
@@ -51,16 +45,16 @@
 
          <main>
             <div id="tomat-start">
-                <div class="nedräkningstimer" style="display:none;">
+                <div class="nedräkningstimer">
                     <h2 id="time-left"></h2>
                     <h2 id="minutes-left"></h2>
                     <h2 id="seconds-left"></h2>   
                 </div>
-                <div class="timer-buttons"  style="display: none;">
+                <div class="timer-buttons">
                     <button type="button" class="btn-danger btn" id="ned-stopp">Pause</button>
                     <button type="button" class="btn-primary btn" id="ned-resume">Resume</button>
                     <button type="button" class="btn-info btn" id="ned-restart"><i class="fas fa-redo-alt" style="color:white"></i></button>
-                    <button type="button" class="btn-secondary btn tyst" id="ljud-av">Volume on</button>
+                    <button type="button" class="btn-secondary btn ljud-på" id="volym">Volume on</button>
                 </div>
             </div>
             <section id="animeringar">
@@ -85,6 +79,11 @@
                     <h2 id="seconds-text"></h2>
                 </div>
             <button type="submit" value="Submit" class="btn btn-primary btn-lg" id="save-btn" style="display: none;">Save TomaTo</button>
+            </section>
+            <section id="logga-när-tid-slut">
+                <section id="animera-logga-new">
+                    <img class="tomaToDoLogga" src="tomat-genomskinlig-vector.png" alt="TomaToDo-logo">
+                </section>
             </section>
         </main>
         <footer>
@@ -115,7 +114,8 @@
             </section>
         </footer>
         
-        <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>    
+        <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>  
+        <script src="countdown.js" charset="utf-8"></script>  
         <script src="tomat-timer-to-do.js" charset="utf-8"></script>
     </body>
 </html>

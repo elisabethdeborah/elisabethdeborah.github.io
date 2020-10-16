@@ -62,7 +62,7 @@
                     <button type="button" class="btn-danger btn" id="ned-stopp">Pause</button>
                     <button type="button" class="btn-primary btn" id="ned-resume">Resume</button>
                     <button type="button" class="btn-info btn" id="ned-restart"><i class="fas fa-redo-alt" style="color:white"></i></button>
-                    <button type="button" class="btn-secondary btn Tyst" id="ljud-av">Volume on</button>
+                    <button type="button" class="btn-secondary btn ljud-på" id="volym">Volume on</button>
                 </div>
                 <!--DOLD INPUT-TIMER-->
                           <div class="input-timer" style="display: none;">
@@ -87,9 +87,14 @@
             <section id="animera-h1-todolist">
                 <h1>My TomaTo-Do-list<span class="tomatoEs"></span></h1>
             </section>
-            <section class="tomater tomat-container">
+            <!-- <section id="logga-när-tid-slut">
+                <section id="animera-logga-new">
+                    <img class="tomaToDoLogga" src="tomat-genomskinlig-vector.png" alt="TomaToDo-logo">
+                </section>
+            </section> -->
+            <section class="tomater tomat-container container">
                 <div class="tomater-innehåll">
-                    <form id="tomatodo-form">
+                    <form class="tomatodo-form">
                         <input type="text" id="name" class="form-control" placeholder="Name TomaTo-Do">
                         <input type="submit" value="Add TomaTo-Do" class="btn btn-info addTomaTo-Do">
                     </form>
@@ -105,7 +110,6 @@
                         <tbody id="tomato-list"></tbody>
                     </table>
                 </div>
-
             </section>
             </div>
           </div>
@@ -139,6 +143,8 @@
         </footer>
         
         <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+        <script src="/tomatodo/tomat.js"></script>
+        <script src="/tomatodo/countdown.js"></script>
         <script src="tomato-do-list.js" charset="utf-8"></script>
     </body>
 </html>                
