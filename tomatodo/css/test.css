@@ -1,0 +1,1431 @@
+:root {
+    --primary: #da0e0e;
+    --secondary: #4f30fc;
+    --gray: #444343;
+    --light-gray: #928f8f;
+
+    --knapp1-färg: #23be0e; 
+    --knapp2-färg: rgb(223, 8, 8);
+    --knapp3-färg: rgb(11, 175, 240);
+    --knapp4-färg: #2a15e7;
+}
+
+.knapp-1 {
+    background-color: var(--knapp1-färg);
+}
+.knapp-2 {
+    background-color: var(--knapp2-färg);
+}
+.knapp-3 {
+    background-color: var(--knapp3-färg);
+}
+.knapp-4 {
+    background-color: var(--knapp4-färg);
+}
+.save-tomato {
+    background-color: var(--secondary);
+}
+
+.quick-start-add-time {
+    background-color: var(--knapp1-färg);
+}
+
+.pause-ikon, .resume-play-knapp-ikon, .reoad-knapp-ikon, .volume {
+    height: 30px;
+    width: 30px;
+    padding: 3px;
+    background-color: rgba(255, 0, 0, 0);
+    margin: 10px;
+}
+
+.knapp {
+    line-height: 2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    margin: 0.2rem auto;
+    transition: all .2s ease;
+    display: block;
+    cursor: pointer;
+}
+
+.knapp-stor {
+    width: 80vw;
+    max-width: 400px;
+    padding: .3rem 2rem;
+}
+
+.knapp-liten {
+    height: 50px;
+    width: 50px;
+    padding: 3px;
+    background-color: rgba(255, 0, 0, 0);
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.knapp:hover {
+    transform: scale(1.02);
+    filter: brightness(1.3);
+}
+
+.knapp:focus {
+    outline: var(--light-gray);
+}
+
+.knapp:active {
+    transform: scale(1);
+    border: 0.2rem inset var(--gray);
+}
+
+.skapa-new-tomato-h1 {
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.skapa-new-tomato-h1>span {
+    color: var(--primary);
+}
+
+.name-new-tomato-input {
+    width: 80vw;
+    max-width: 400px;
+    margin: 0.2rem auto;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 1rem;
+}
+
+.upp-pil {
+    height: 2rem;
+    width: auto;
+    margin: 0 auto;
+    padding: 2rem;
+    display: block;
+    transform: rotate(180deg);
+}
+
+
+
+.green, .yellow, .red {
+    width: 80vw;
+    max-width: 400px;
+    margin: 0.2rem;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 1rem;
+    color: white;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+
+svg {
+    overflow: visible;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: all .3s ease-in;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body.body--light-theme {
+    background-color: rgb(182, 181, 181);
+    color: var(--gray);
+   
+}
+
+header, main, .header__top, .logo-navicon,a.logo-link, nav.navbar-container, ul.navbar-container__link-list-container, aside.navbar-container__color-schemes, section.hero, .tomat-about-grid > article, section.about-intro > article, #animeringar, section#animera-logga-new, figure, footer > section, #social-media,  a.howtoadhdh-länk {
+    display: flex;
+}
+
+main, a.howtoadhdh-länk, header, nav.navbar-container, .tomat-about-grid > article, ul.navbar-container__link-list-container, section.hero, #animeringar, section.about-intro, section.about-intro > article, footer > section {
+    flex-direction: column;
+}
+
+/* HEADER */
+
+header {
+    min-height: 50vh;
+    width: 100vw;
+    justify-content: space-between;
+}
+
+header.header--light-theme {
+    background-color: var(--gray);
+}
+
+section.ytter-container {
+    width: 100vw;
+}
+/* LOGGA-NAVICON-DEL */
+.header__top {
+    height: 70px;
+    background-color: var(--gray);
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 10px;
+    z-index: 9999;
+}
+
+.logo-navicon {
+    z-index: 9999;
+    justify-content: space-between;
+    width: 100vw;
+    padding: 0 1rem;
+    transition: all .1s ease-in;
+}
+
+svg.logo {
+    justify-self: flex-start;
+    align-self: center;
+    height: 50px;
+    width: auto;
+}
+
+h1.logo-navicon__header {
+    margin: 0;
+    font-size: 2.3rem;
+    color: #fff;
+}
+
+.logo-navicon__header {
+    color: var(--light-gray);
+    width: fit-content;
+    display: inline-block;
+}
+
+svg.navicon {
+    padding-right: .5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+svg.navicon:hover {
+    transform: scale(1.2);
+}
+
+/* NAVBAR-LÄNKLISTA */
+nav.navbar-container {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(68, 67, 67, 0.9);
+    z-index: 999;
+    font-size: 2rem;
+    justify-content: space-between;
+    align-items: stretch;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100vw);
+    transition: all .3s ease-in;
+}
+
+
+header.open nav.navbar-container {
+    transform: translateX(0vw);
+}
+header .logo-navicon > .navicon >rect {
+    transition: all .3s ease-in;
+}
+
+header.open .logo-navicon > .navicon >rect {
+    fill: var(--primary);
+    transition: all .3s ease-in;
+}
+ header.open .linje-1 {
+    transform: translate(.9rem, 0rem) rotate(45deg);
+}
+header.open .linje-2 {
+    opacity: 0;
+}
+header.open .linje-3 {
+    transform: translate(-1rem, 1rem) rotate(-45deg);
+} 
+
+ul.navbar-container__link-list-container {
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 100px;
+    height: 60vh;
+}
+
+ul.navbar-container__link-list-container > li.navbar-container__link-list-container__nav-list-item > a.nav-link {
+    color: #fff;
+    transition: all 0.2s ease-in;
+}
+
+ul.navbar-container__link-list-container > li.navbar-container__link-list-container__nav-list-item > a.nav-link:hover {
+    color: var(--primary);
+    font-size: 2.5rem;
+}
+
+
+/* NAVBAR-FÄRGTEMA-KNAPPAR */
+aside.navbar-container__color-schemes {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 200px;
+    margin: 50px auto;
+}
+
+aside.navbar-container__color-schemes > article {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    border: 2px double var(--primary);
+    transition: all 0.2s ease-in;
+}
+
+aside.navbar-container__color-schemes > article.body--dark-theme {
+    background-color: var(--gray);
+}
+
+aside.navbar-container__color-schemes > article.body--light-theme {
+    background-color: var(--light-gray);
+}
+
+aside.navbar-container__color-schemes > article.body--dark-theme:hover {
+    background-color: #141313;
+} 
+
+aside.navbar-container__color-schemes > article.body--light-theme:hover {
+    background-color: #fff;
+} 
+
+section.hero {
+    height: 80vh;
+    justify-content: flex-end;
+    align-items: center;
+}
+section.hero > svg.hero__svg {
+    max-width: 80vw;
+  /*   transform: translateY(-600px); */
+}
+
+/* SVG- LINEAR-GRADIENT */
+
+  
+  .shape .gradient-bg {
+    fill: url(#header-shape-gradient) #fff;
+  }
+  
+  #header-shape-gradient {
+    --color-stop: #f12c06;
+    --color-bot: #fae634;
+  }
+/* SLUT PÅ SVG- LINEAR-GRADIENT */
+
+/* MAIN */
+ main {
+/*     width: 0vw; */
+    z-index: 1;
+   /*  margin-bottom: 3rem; */
+} 
+
+/* FÄRG-ANIMATIONER */ 
+section.hero {
+    animation-name: bakgrund;
+    animation-timing-function: ease-in;
+}
+
+@keyframes bakgrund {
+    0% {
+        background-color: green;
+    } 
+    100% {
+        background-color: red;
+    }
+}
+
+.steg-1, .steg-2, .steg-3, .steg-4, .steg-5, .steg-6, .steg-7, .steg-8, .steg-9 {
+    background-repeat: no-repeat;
+}
+.steg-1 {
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(50,205,50,0.86) 14%, rgba(246,246,246,0) 100%);
+    color: #686868;
+}
+.steg-2 {
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(173,255,47,0.86) 14%, rgba(173,255,47,0) 100%);
+}
+.steg-3 {
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(210,255,50,0.86) 14%, rgba(50,205,50,0) 100%);
+}
+.steg-4 {
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,0,0.86) 14%, rgba(255,255,0,0) 100%);
+}
+.steg-5 {
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,217,0,0.86) 14%, rgba(255,217,0,0) 100%);
+}
+.steg-6 {
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,165,0,0.86) 14%, rgba(255,165,0,0) 100%);
+}
+.steg-7 {
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,140,0,0.86) 14%, rgba(255,140,0,0) 100%);
+}
+.steg-8 {
+    background: linear-gradient(to bottom, rgba(255,100,0,1) 0%, rgba(255,100,0,1) 45%, rgba(246,246,246,1) 94%, rgba(255,255,255,1) 100%);
+}
+.steg-9 {
+    background: linear-gradient(to bottom, rgba(255,35,10,1) 0%, rgba(255,35,10,1) 6%, rgba(254,32,16,1) 25%, rgba(255,30,5,1) 35%, rgba(255,69,41,1) 51%, rgba(255,97,77,1) 74%, rgba(255,97,77,1) 91%, rgba(255,97,77,1) 100%);
+}
+
+.bar-steg-1, .bar-steg-2, .bar-steg-3, .bar-steg-4, .bar-steg-5, .bar-steg-6, .bar-steg-7, .bar-steg-8, .bar-steg-9 {
+    height: 1.3rem;
+    background-color: blue;
+    transition: all .5s linear;
+}
+
+.bar-steg-1 {
+    width: 0vw;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.bar-steg-2 {
+    width: 10vw;
+}
+
+.bar-steg-3 {
+    width: 20vw;
+}
+
+.bar-steg-4 {
+    width: 30vw;
+}
+
+.bar-steg-5 {
+    width: 40vw;
+}
+
+.bar-steg-6 {
+    width: 50vw;
+}
+
+.bar-steg-7 {
+    width: 60vw;
+}
+
+.bar-steg-8 {
+    width: 70vw;
+}
+
+.bar-steg-9 {
+    width: 80vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+
+section.time-bar-container.synlig {
+    width: 85vw; 
+    padding: 0 2.5vw;
+   /*  width: 450px; */
+    height: 2rem;
+    border: 2px solid var(--gray);
+    border-radius: 20px;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+}
+
+
+.startTimer, .fa-tasks, .delete{
+    padding:5px;
+}
+
+
+
+#animeringar {
+    height: auto;
+    max-width: 100vw;
+    align-items: center;
+    position: relative;
+}
+
+section#animera-logga-new {
+    width: 100vw;
+}
+
+img.tomaToDoLogga {
+    width: 60vw;
+    margin: 10px auto;
+}
+
+
+img#footer-logga {
+    width: 60vw;
+    padding: 0 20px;
+    margin: 20px auto;
+}
+
+ #about-logga {
+     filter: opacity(0.9);
+} 
+
+/* ABOUT-SIDA*/
+
+.tomat-about-grid {
+    display: grid;
+    grid-template-areas: 
+    "frågetecken"
+    "ruta2"
+    "ruta3"
+    "ruta4"
+    "ruta5"
+    "avslut"
+    ;
+    row-gap: 1rem;
+    width: 100vw;/* 
+    max-width: 100vw; */
+  /*   padding: 3rem; */
+    margin: 0 auto;
+    line-height: 2.2rem;
+    font-size: 1.4rem;
+}
+
+.about-grid-item1 {
+    grid-area: frågetecken;
+}
+.about-grid-item2 {
+   grid-area: ruta2;
+}
+.about-grid-item3 {
+   grid-area: ruta3;
+}
+.about-grid-item4 {
+   grid-area: ruta4;
+}
+.about-grid-item5 {
+   grid-area: ruta5;
+}
+.about-grid-item6 {
+   grid-area: avslut;
+}
+
+.tomat-about-grid > article {
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    min-height: 70vh;
+    max-width: 80vw;
+    margin: 20px auto;
+}
+.tomat-about-grid > article:first-child {
+    margin-top: 0;
+}
+
+.tomat-about-grid > article > p {
+    margin-bottom: 50px;
+}
+
+
+section.about-intro {
+    min-height: 150vh;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+    margin: 0 auto;
+}
+
+section.about-intro > article {
+    padding: 30px 0;
+    background-color: var(--light-gray);
+    width: 80vw;
+    height: 65vw;
+    margin: 50px auto;
+    border-radius: 100%;
+    justify-content: center;
+}
+
+section.about-intro > article h2 {
+    margin-bottom: 0;
+}
+
+.tomat-about-grid>article:first-child{
+    margin-bottom: 0;
+}
+
+p.about-avslut a {
+    color: var(--secondary);
+    font-weight: 600;
+    transition: all .3s ease-in;
+}
+
+.howtoadhd-bild {
+    width: 80vw;
+    height: auto;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+
+a.howtoadhdh-länk:hover figcaption, article.about-grid-item6 a:hover {
+    color: var(--primary);
+}
+
+a.howtoadhdh-länk:hover {
+    filter: contrast(1.2);
+}
+
+ figcaption {
+    text-align: center;
+    margin: 0rem auto 3rem;
+    font-size: 2rem;
+    color: var(--gray);
+    transition: all .3s ease;
+}
+
+/* SLUT PÅ ABOUT-SIDA*/
+/**/
+
+
+.view{
+    transition: 250ms ease-in-out;
+    display: none;
+}
+
+.timer-buttons {
+    display: none;
+}
+#tomat-start.synlig .timer-buttons{
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+margin-right: 10px;
+background-color: rgba(255, 255, 255, 0.219);
+margin-right: 0;
+border-radius: 10px;
+}
+#länk-öppna-form-sök{
+display:flex; flex-direction: row; justify-content: space-evenly;
+}
+
+
+#tomatodo-form>#name{
+width:49%;
+display: inline-block;
+}
+#tomatodo-form>.btn{
+width: 49%;
+display: inline-block;
+vertical-align:0px;
+}
+.timer-contain{
+position: relative;
+/* margin-top:100px; */
+}
+
+
+
+
+
+
+
+/**/
+
+/* FOOTER */
+footer {
+    width: 100vw;
+    background-color: white;
+    padding: 2rem 0;
+}
+
+footer > section {
+    width: 80vw;
+    margin: 2rem auto;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+#social-media {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40vw;
+    margin: 2rem auto;
+}
+
+#social-media > a {
+    font-size: 3rem;
+    color: var(--gray);
+}
+
+#footer-nav-länkar a {
+    color: var(--gray);
+    line-height: 2.2rem;
+    font-size: 1.5rem;
+}
+
+.footer-credits-container {
+    margin: 4rem auto 1rem;
+}
+
+.main-container {
+    width: 80vw;
+}
+
+
+/** TIME NEW TOMATO, TIDTAGNING **/
+
+#new-tomato-section, #new-tomato-section.osynlig, #new-tomato-section.synlig  {
+    transition: all .3s ease-in;
+}
+
+#new-tomato-section.synlig {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 650px;
+}
+
+section.tomat-timer-tidtagning{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px auto;
+    width: 100vw;
+    padding-bottom: 50px;
+    background-color: var(--gray);
+}
+
+.green {
+    background-color: rgb(22, 243, 33);
+}
+.yellow {
+    background-color: yellow;
+}
+.red {
+    background-color: var(--primary);
+}
+.tomat-container{
+    margin-bottom: 100px;
+    margin-top: 200px;
+    max-width: 1140px;
+    margin: 200px auto;
+}
+.tomatoEs{
+    color: rgb(168, 167, 167);
+}
+
+.tomaToDo-logga{
+    height: 100%;
+    width: auto;
+}
+
+.body-knappar-timer-start{
+    margin-top: 50px;
+}
+
+.btn{
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+#btn{
+    width: 80vw;
+    max-width: 300px;
+    flex-wrap: wrap;
+}
+
+#bortKnapp{
+    margin-top: 0px;
+    width: 100px;
+    border:none;
+}
+
+.form-group{
+    text-align: center;
+}
+
+.tomater{
+    position: relative;
+    top: 0px;
+    padding: 0;
+}
+
+.tomater-innehåll{
+    padding: 0 10px;
+    border-radius: 10px;
+}
+
+.länk-öppna-form-sök{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    vertical-align: middle;
+    flex-wrap: nowrap;
+}
+
+#filterInput{
+    display: inline-block;
+    width: fit-content;
+    text-align: center;
+}
+
+.fa-search{
+    padding-right: 5px;
+}
+
+#visa-add-tomato{
+    padding-top:7px;
+    vertical-align: text-bottom;
+}
+
+.tomaTo{
+    height:100px;
+    width: auto;
+}
+
+#myUL>li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.tomat-to-do-list-rubrik{
+    padding: 10px;
+}
+
+.to-do-container{
+    margin-top:0;
+    position: relative;
+    top:200px;
+}
+
+.mt-4{
+    margin-top:0;
+}
+
+  .checked {
+    background: rgba(158,158,158,1);
+background: -moz-linear-gradient(left, rgba(158,158,158,1) 0%, rgba(246,246,246,0.65) 70%, rgba(246, 246, 246, 0.4) 85%, rgba(255,255,255,0) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(158,158,158,1)), color-stop(70%, rgba(246,246,246,0.4) 85%, rgba(246,246,246,0.65)), color-stop(100%, rgba(255,255,255,0)));
+background: -webkit-linear-gradient(left, rgba(158,158,158,1) 0%, rgba(246,246,246,0.65) 70%, rgba(246,246,246,0.4) 85%, rgba(255,255,255,0) 100%);
+background: -o-linear-gradient(left, rgba(158,158,158,1) 0%, rgba(246,246,246,0.65) 70%, rgba(246,246,246,0.4) 85%, rgba(255,255,255,0) 100%);
+background: -ms-linear-gradient(left, rgba(158,158,158,1) 0%, rgba(246,246,246,0.65) 70%, rgba(246,246,246,0.4) 85%, rgba(255, 255, 255, 0) 100%);
+background: linear-gradient(to right, rgba(158,158,158,1) 0%, rgba(246,246,246,0.65) 70%, rgba(246,246,246,0.4) 85%, rgba(255, 255, 255, 0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9e9e9e', endColorstr='#ffffff', GradientType=1 );
+    text-decoration: line-through;
+
+    transition-duration: 250ms;
+  }
+
+  .checked::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    position: relative;
+    display: inline-block;
+    padding-left: 3px;
+    font-size: 45px;
+    color: red;
+    vertical-align: middle;
+    font-weight: 900;
+  }
+
+.bild{
+ margin: 10px 25px;
+}
+
+#filter{
+    width: 100%;
+}
+
+
+.tomat-timer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+}
+/* .tomat-timer-tidtagning{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: -50px auto;
+    width: 100vw;
+    padding-bottom: 50px;
+    background-color: var(--gray);
+} */
+
+#tomat-start-tidtagning > h2 {
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#tomat-start{
+    margin:  0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: auto;
+    position: sticky;
+    top:100px;
+    left: 10vw;
+    right: 10vw;
+    width: 100vw;
+    max-width: 1000px;
+    margin: 0 auto;
+    z-index: 3;
+}
+
+.timer-buttons {
+    display: none;
+}
+
+#tomat-start.synlig .angiven-starttid-spara, #tomat-start.synlig #start-button, #tomat-start.synlig .input-timer, #tomat-start.synlig #tomato-form {
+    display: none;
+    transition-duration: .25s;
+}
+
+#tomat-start.synlig .nedräkningstimer, #tomat-start.synlig .timer-buttons{
+    transition-duration: .25s;
+}
+
+#tomat-start-tidtagning{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    position: sticky;
+    top:0;
+    z-index: 3;
+}
+
+.input-timer, .input-timer-minne{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    margin: 50px auto 20px;
+}
+
+
+#tomato-form, #stopwatch-save-tomato-form{
+    font-size: 30px;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.times-up{
+    font-family: roboto, sans-serif;
+    font-size: 75px;
+    color: white;
+}
+thead{
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+}
+
+tr:nth-child(even){
+    background-color: #007bff3a;
+}
+
+h4{
+    vertical-align: middle;
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.column1{
+    position: relative;
+    height: 150px;
+    color:#007bff;
+}
+
+.added-tomato{
+    position: relative;
+    left: -10px;
+    z-index: 1;
+}
+
+.column1>h4{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 2;
+    text-transform: uppercase;
+    margin-bottom:0;
+    left:60px;  
+}
+
+.column3>h4{
+    color:#007bff;
+    text-align: center;
+    position: relative;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 2;
+    text-transform: uppercase;
+    margin-bottom:0;
+}
+
+.table td{
+    vertical-align: middle;
+}
+
+.view{
+    transition: 250ms ease-in-out;
+    display: none;
+}
+
+#label-for-name{
+    padding: 30px 10px 20px 10px;
+}
+
+#name, #author{
+    background-color: rgba(243, 241, 241, 0.171);
+}
+
+.input-timer-minne{
+    margin: 30px auto;
+}
+
+#tomat-start-tidtagning > #timer-text.synlig {
+    display: initial;
+}
+
+.nedräkningstimer, #timer-text {
+    display: none;
+}
+#tomat-start.synlig .nedräkningstimer, #tomat-start.synlig #timer-text{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(248, 247, 247, 0);
+    width: 85%;
+    border-radius: 50%;
+    flex-wrap: nowrap;
+    font-size: 75px;
+    padding: 10px 0px;
+    margin-top: 20px;
+}
+
+#tomat-start.synlig .nedräkningstimer>h2{
+    min-width: 100px;
+    width: 20%;
+    background-color: rgba(243, 241, 241, 0.342);
+    border-radius: 10px;
+    text-align: center;
+    color: rgb(255, 0, 0);
+    font-weight: 500;
+    margin:3px;
+    border: 1px outset white;
+    font-size: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#paragraph{
+    display: none;
+}
+.tyst{
+    display: none;
+}
+
+#fyll-i-tid1, #fyll-i-tid2, #time1, #time2{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: nowrap;
+    font-size: 40px;
+    margin: 10px;
+    background-color: rgba(243, 241, 241, 0.171);
+    border-radius: 10px;
+    text-align: center;
+    width: 120px;
+}
+
+#timer-text{
+    /* width: 440px; */
+    position: relative;
+    height: 100%;
+    background-color: rgba(243, 241, 241, 0.171);
+    text-align: center;
+    color: rgb(94, 93, 93);
+    font-weight: 500;
+    margin:3px;
+    font-size: 60px;
+}
+
+.angiven-starttid-spara{
+    position: relative;
+    background-color: rgba(158, 158, 158, 0);
+    display: flex;
+    flex-direction: row;
+}
+
+.angiven-starttid-spara>h2{
+    padding: 2rem;
+    background-color: rgba(243, 241, 241, 0.945);
+    border-radius: 50%;
+    color: rgb(255, 0, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+}
+
+.osynlig {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 650px) {
+
+    .logo-navicon {
+        padding: 0 2rem;
+    }
+
+    section.hero {
+        height: 600px;
+        animation-name: bakgrund;
+        animation-timing-function: ease-in;
+    }
+
+    @keyframes bakgrund {
+        0% {
+            background-color: green;
+        } 
+        100% {
+            background-color: red;
+        }
+    }
+
+
+    section.hero > svg.hero__svg {
+        max-height: 400px;
+        transform: translateY(100px);
+    }
+
+
+
+
+
+    /* PROGRESS BAR */
+
+    .bar-steg-1, .bar-steg-2, .bar-steg-3, .bar-steg-4, .bar-steg-5, .bar-steg-6, .bar-steg-7, .bar-steg-8, .bar-steg-9 {
+        height: 80px;
+        background-color: blue;
+        transition: all .5s linear;
+    }
+
+.bar-steg-1 {
+    width: 0px;
+}
+
+.bar-steg-2 {
+    width: 50px;
+}
+
+.bar-steg-3 {
+    width: 100px;
+}
+
+.bar-steg-4 {
+    width: 150px;
+}
+
+.bar-steg-5 {
+    width: 200px;
+}
+
+.bar-steg-6 {
+    width: 250px;
+}
+
+.bar-steg-7 {
+    width: 300px;
+}
+
+.bar-steg-8 {
+    width: 350px;
+}
+
+.bar-steg-9 {
+    width: 400px;
+}
+
+
+section.time-bar-container.synlig {
+  /*   width: 80vw; */
+    width: 410px;
+    padding: 0 10px;
+    height: 100px;
+    border: 2px solid var(--gray);
+    margin: 50px auto;
+}
+
+
+
+
+
+#tomat-start {
+    flex-direction: row;
+}
+
+
+
+
+    /* ABOUT-SIDA */
+    .howtoadhd-bild {
+        margin: 0;
+    }
+
+
+    a.howtoadhdh-länk:hover figcaption, article.about-grid-item6 a:hover {
+        color: var(--primary);
+    }
+
+    a.howtoadhdh-länk:hover {
+        filter: none;
+    }
+
+    a.howtoadhdh-länk {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .howtoadhd-bild {
+        width: 500px;
+        height: auto;
+        margin: 10px auto;
+        border-radius: 10px;
+    }
+
+     #howtoadhdh-part1:hover .howtoadhdh-länk1::before,#howtoadhdh-part2:hover .howtoadhdh-länk2::before  {
+        position: absolute;
+        width: 500px;
+        height: 375px;
+        font-size: 40px;
+        color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(250,250,250,0.5);
+        border-radius: 10px;
+    }
+
+    #howtoadhdh-part1:hover  .howtoadhdh-länk1::before{
+    content: 'Watch part 1 here!';
+    }
+
+    #howtoadhdh-part2:hover  .howtoadhdh-länk2::before {
+        content: 'Watch part 2 here!';
+    }
+ 
+    .howtoadhdh-länk >figcaption {
+        font-size: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    /*SLUT PÅ ABOUT-SIDA*/
+
+
+
+    /**/
+
+    .tomater-innehåll{
+        width: 80%;
+        max-width: 1140px;
+        margin: 0px auto;
+    }
+    
+    .mt-4>img{
+        margin: 0px auto;
+    }
+
+    #tomato-form>#name{
+        width: 68%;
+    }
+    #tomato-form>.add-TomaTo-Do{
+        width:30%;
+    }
+#tomato-form>#name{
+    width: 90%;
+}
+#tomato-form>.add-TomaTo-Do{
+    width:90%;
+}
+  #tomato-form{
+      flex-direction: column;
+      align-items: center;
+}
+
+
+
+
+#btns{
+    padding: 20px;
+    background: #f4f4f4;
+    margin-bottom: 20px;
+}
+
+#btns button{
+    background:#fff;
+    padding: 5px 10px;
+    border: 0;
+}
+
+.button{
+    border-radius: 5px;
+    background-color: rgb(74, 74, 131);
+}
+
+#btns .fa{
+    font-size: 30px;
+}
+.timer-buttons {
+    display: none;
+}
+#tomat-start.synlig .timer-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+
+
+    .tomater-innehåll{
+        margin: 0px auto;
+    }
+    #tomato-form>#name{
+        width: 90%;
+    }
+    #tomato-form>.add-TomaTo-Do{
+        width:90%;
+    }
+    /**/
+}
+
+@media screen and (min-width: 1000px) {
+     
+    /*ABOUT-SIDA*/
+
+    .tomat-about-grid {
+        display: grid;
+        grid-template-areas: 
+        "frågetecken frågetecken"
+        "ruta2 ruta3"
+        "ruta4 ruta5"
+        "avslut avslut";
+        row-gap: 2rem;
+        line-height: 2.2rem;
+        font-size: 1.4rem;
+    }
+
+     .tomat-about-grid > article {
+        justify-content: space-evenly;
+        align-items: center;
+        text-align: center;
+        min-height: 70vh;
+        max-width: 50vw;
+        margin: 20px auto;
+        padding: 0 1rem;
+        background-color: white;
+    }
+
+    .tomat-about-grid > article:first-child {
+        margin-top: 0;
+    }
+    
+    .tomat-about-grid > article > p {
+        margin-bottom: 50px;
+        max-width: 40vw;
+        margin: 0 auto;
+    }
+     
+    section.about-intro {
+        min-height: 150vh;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1;
+        background-color: rgba(255, 255, 255, 0);
+        width: 50vw;
+        margin: 0 auto;
+    }
+
+    section.about-intro > article {
+        padding: 30px 0;
+        background-color: var(--light-gray);
+        width: 40vw;
+        height: 40vw;
+        margin: 50px auto;
+        border-radius: 100%;
+        justify-content: center;
+    }
+
+    section.about-intro > article h2 {
+        margin-bottom: 0;
+    }
+
+    .about-grid-item6 {
+        width: 80vw;
+    }
+    /* SLUT PÅ ABOUT-SIDA*/
+
+
+
+}

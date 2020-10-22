@@ -1,6 +1,7 @@
 :root {
     --primary: #ff5a00;
-    --secondary: #00B395;
+    --secondary: #00b395;
+    --tomato: #F41212;
 }
 
 
@@ -10,14 +11,30 @@
     padding: 0;
 }
 
-body{
+article {
+    display: flex;
+}
+
+body.body--light-theme{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     background-color: rgb(255, 255, 255);
     color: #181717;
-    overflow-x: hidden;
     transition: background .3s ease-in;
     scroll-behavior: smooth;
 }
+body.body--dark-theme {
+    background-color: #181717;
+    color: whitesmoke;
+}
+
+section.ytter-container {
+    width: 100vw;
+    background-color: gray;
+}
+
+
+/* FÄRG-ANIMATIONER */
+
 .steg-1, .steg-2, .steg-3, .steg-4, .steg-5, .steg-6, .steg-7, .steg-8, .steg-9 {
     background-repeat: no-repeat;
 }
@@ -53,6 +70,371 @@ body{
 .startTimer, .fa-tasks, .delete{
     padding:5px;
 }
+
+
+
+
+
+
+
+
+/* 
+.view{
+    transition: 250ms ease-in-out;
+    display: none;
+}
+.fa-bars{
+    display: inline-block;
+    position: relative;
+    bottom: 10px;
+    vertical-align: middle;
+    padding: 10%
+}
+
+#nvbar-toggle{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+} 
+
+.navbar-view{
+    display: none; 
+}
+
+.nvbar-list-toggle{
+    list-style: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+} */
+
+ .nav-länkar{
+    padding: 25px;
+    border-bottom: 1px solid white;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+} 
+
+
+body{
+box-sizing: border-box;
+width: 100vw;
+}
+
+#animera-logga{
+    width: 90%;
+}
+#animera-logga-new{
+    width: 90%;
+}
+.nvbar-mindre{
+    display: none;
+}
+
+
+#animera-logga{
+    margin: 0px auto;
+    height: 200px;
+    text-align: center;
+    position: relative;
+    top: -1000px;
+}
+#animera-logga-new{
+    height: 200px;
+    text-align: center;
+    position: relative;
+    top: -400px;
+    left:-100vw;
+    width: 100vw;
+    margin: 100px 0px 0px 0px;
+}
+
+.container{
+    margin-top: 20px;
+}
+
+#animera-h1-todolist{
+    position: relative;
+    top: -1000px;
+}
+#animera-h1-mytomatoes{
+    position: relative;
+    text-align: center;
+    top:-400px;
+}
+
+.anime-test-my-tomatos{
+    display: none;
+}
+#animera-h1-new{
+    position: relative;
+    top: -1000px;
+}
+
+#animera-h1-quickstart{
+    position: relative;
+    top: -1000px;
+}
+
+#animera-h1>h1, #animera-h1-todolist>h1, #animera-h1-mytomatoes>h1, #animera-h1-new>h1, #animera-h1-quickstart>h1{
+    background-color: rgba(255, 255, 255, 0);
+    color:red;
+    font-size: 75px;
+    line-height: 100px;
+    text-align: center;
+    font-weight: 200;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+.tomaToDoLogga{
+    position:relative;
+    margin: 4px;
+    display: inline-block;
+    height: 200px;
+    width: auto;
+}
+.tomatToDoLogga.tid-slut {
+    background: radial-gradient(ellipse at center, rgba(255,222,10,1) 0%, rgba(255,211,13,1) 3%, rgba(255,10,59,0.13) 57%, rgba(255,10,59,0) 65%);
+    padding:10px;
+}
+
+
+/**** 
+KOPERAT FRÅN INLÄMNING 
+***/
+
+
+.header .ytter-container {
+    left: 0;
+    right: 0;
+    padding: 0.6rem 0;
+    z-index: 9999;
+    transition: background-color 1s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.header .header__top {
+    height: 3.1rem;
+    width: 100vw;
+    background-color: red;
+}
+
+svg.logo {
+    height: 50px;
+    width: auto;
+}
+
+svg.logo>path.tomato-kropp {
+   fill: rgba(0, 0, 255, 0);
+   stroke: red;
+   stroke-width: 50;
+}
+svg.logo>path.tomato-blast {
+    fill: rgba(255, 255, 255,1);
+    stroke: red;
+    stroke-width: 50;
+}
+/* NAVBAR */
+header .logo-navicon {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: center;
+    z-index: 999;
+    cursor: pointer;
+    width: 100vw;
+    height: 50px;
+}
+
+header .logo-navicon a.logo-link {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    width: 70vw;
+}
+
+.logo-navicon__header{
+    display: flex;
+    background-color: red;
+    color: white;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-block-start: 0em;
+margin-block-end: 0em;
+}
+
+header .logo-navicon svg.navicon rect {
+    transform-origin: center;
+}
+
+/* NAVICON BLIR ETT KRYSS NÄR MENYN ÄR ÖPPEN */
+header.open svg.navicon .navicon__linje-1 {
+    fill: white;
+    transform: translate(-15px, 10px) rotate(45deg);
+} 
+
+header.open svg.navicon .navicon__linje-2 {
+    fill: rgba(58, 58, 58, 0);
+    transform: rotate(45deg);
+} 
+
+header.open svg.navicon .navicon__linje-3 {
+    fill: white;
+    transform: translate(-15px, -15px) rotate(-45deg);
+}
+/**/
+
+header nav.navbar-container {
+  /*   left: -100vw; */
+    justify-content: flex-end;
+    transition: transform 0.5s ease-in;
+}
+
+header.open nav.navbar-container {
+    transform: translateX(100vw);
+}
+
+.navbar-container ul.navbar-container__link-list-container {
+    list-style: none;
+    height: 60vh;
+    justify-content: space-evenly;
+}
+
+.navbar-container ul.navbar-container__link-list-container .nav-link {
+    color: rgb(59, 57, 57);
+    text-decoration: none;
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+    transition: all .2s ease-in;
+    border-radius: 10px;
+} 
+
+.navbar-container .navbar-container__color-schemes {
+    margin: 5rem auto;
+}
+
+.navbar-container .navbar-container__color-schemes > article {
+    height: 2.5rem;
+    width: 2.5rem;
+    border: .2rem double white;
+    margin: 0 .5rem;
+}
+
+.navbar-container .navbar-container__color-schemes> article.body--dark-theme {
+    background: var(--dark-blue);
+}
+
+.navbar-container .navbar-container__color-schemes> article.body--colorful-theme{
+    background: var(--light-orange);
+}
+
+.navbar-container .navbar-container__color-schemes> article.body--light-theme {
+    background: var(--light-gray);
+}
+
+/* HOVER-EFFEKTER PÅ COLOR-SCHEME-CIRKLARNA */
+.navbar-container .navbar-container__color-schemes > article:hover {
+    transform: rotate(1280deg);
+}
+
+.navbar-container .navbar-container__color-schemes body.body--dark-theme:hover {
+    border: .2rem solid var(--light-orange);
+    background: rgba(22,69,112,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(22,69,112,1) 0%, rgba(22,69,112,1) 5%, rgba(1,38,74,1) 74%, rgba(1,38,74,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(22,69,112,1)), color-stop(5%, rgba(22,69,112,1)), color-stop(74%, rgba(1,38,74,1)), color-stop(100%, rgba(1,38,74,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(22,69,112,1) 0%, rgba(22,69,112,1) 5%, rgba(1,38,74,1) 74%, rgba(1,38,74,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(22,69,112,1) 0%, rgba(22,69,112,1) 5%, rgba(1,38,74,1) 74%, rgba(1,38,74,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(22,69,112,1) 0%, rgba(22,69,112,1) 5%, rgba(1,38,74,1) 74%, rgba(1,38,74,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(22,69,112,1) 0%, rgba(22,69,112,1) 5%, rgba(1,38,74,1) 74%, rgba(1,38,74,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#164570', endColorstr='#01264a', GradientType=1 );
+}
+
+.navbar-container .navbar-container__color-schemes body.body--colorful-theme:hover {
+    border: .2rem solid var(--dark-blue);
+    background: rgba(242,164,128,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(242,164,128,1) 0%, rgba(242,164,128,1) 5%, rgba(240,113,50,1) 74%, rgba(240,113,50,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(242,164,128,1)), color-stop(5%, rgba(242,164,128,1)), color-stop(74%, rgba(240,113,50,1)), color-stop(100%, rgba(240,113,50,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(242,164,128,1) 0%, rgba(242,164,128,1) 5%, rgba(240,113,50,1) 74%, rgba(240,113,50,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(242,164,128,1) 0%, rgba(242,164,128,1) 5%, rgba(240,113,50,1) 74%, rgba(240,113,50,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(242,164,128,1) 0%, rgba(242,164,128,1) 5%, rgba(240,113,50,1) 74%, rgba(240,113,50,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(242,164,128,1) 0%, rgba(242,164,128,1) 5%, rgba(240,113,50,1) 74%, rgba(240,113,50,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2a480', endColorstr='#f07132', GradientType=1 );
+}
+
+.navbar-container .navbar-container__color-schemes body.body--light-theme:hover {
+    border: .2rem solid var(--accent-green);
+    background: rgba(189,185,189,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(189,185,189,1) 0%, rgba(189,185,189,1) 5%, rgba(137,137,137,1) 74%, rgba(137,137,137,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(189,185,189,1)), color-stop(5%, rgba(189,185,189,1)), color-stop(74%, rgba(137,137,137,1)), color-stop(100%, rgba(137,137,137,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(189,185,189,1) 0%, rgba(189,185,189,1) 5%, rgba(137,137,137,1) 74%, rgba(137,137,137,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(189,185,189,1) 0%, rgba(189,185,189,1) 5%, rgba(137,137,137,1) 74%, rgba(137,137,137,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(189,185,189,1) 0%, rgba(189,185,189,1) 5%, rgba(137,137,137,1) 74%, rgba(137,137,137,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(189,185,189,1) 0%, rgba(189,185,189,1) 5%, rgba(137,137,137,1) 74%, rgba(137,137,137,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bdb9bd', endColorstr='#898989', GradientType=1 );
+}
+
+nav.navbar-container .nav-link:hover, body.body--light-theme nav.navbar-container .nav-link:hover, body.body--dark-theme nav.navbar-container .nav-link:hover, body.body--colorful-theme nav.navbar-container .nav-link:hover {
+    color: white;
+    padding: 0.5rem;
+    border-radius: 10px;
+    font-weight: 800;
+}
+
+body.body--dark-theme nav.navbar-container .nav-link:hover {
+    border: 2px dashed var(--light-orange);
+}
+
+body.body--colorful-theme nav.navbar-container .nav-link:hover {
+    border: 2px dashed var(--light-gray);
+}
+
+nav.navbar-container .nav-link:hover, body.body--light-theme nav.navbar-container .nav-link:hover{
+     border: 2px dashed var(--dark-blue);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SLUT PÅ TIDIGARE MAX-WIDTH 500PX */
 
 td>a{
     padding: 0px;
@@ -426,14 +808,7 @@ h4{
     border:none;
 }
 
-.display-4{
-    background-color: red;
-    color: white;
-    padding: 20px 0;
-    margin-bottom: 20px;
-    border-radius: 10px 10px 0 0;
-    text-align: center;
-}
+
 
 .form-group{
     text-align: center;
@@ -1060,6 +1435,11 @@ a.howtoadhdh-länk:hover{
 }
 }
 
+
+
+
+
+
 @media(max-width:630px){
 
     .fa-question{
@@ -1175,448 +1555,5 @@ footer.footer-credits>span{
     justify-content: flex-end;
     z-index: 3;
 }
-}
-
-
-@media(max-width:500px){
-    body{
-        width: 100vw;
-    }
-    .view{
-        transition: 250ms ease-in-out;
-        display: none;
-    }
-    .fa-bars{
-        display: inline-block;
-        position: relative;
-        bottom: 10px;
-        vertical-align: middle;
-        padding: 10%
-    }
-    
-    #nvbar-toggle{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        position: relative;
-        background-color: red;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    } 
-
-    .navbar-view{
-        display: none; 
-    }
-
-    .nvbar-list-toggle{
-        list-style: flex;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-
-     .nav-länkar{
-        padding: 25px;
-        border-bottom: 1px solid white;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    } 
-
-
-    body{
-    box-sizing: border-box;
-    overflow-x: hidden;
-    width: 100vw;
-}
-
-    #animera-logga{
-        width: 90%;
-    }
-    #animera-logga-new{
-        width: 90%;
-    }
-    .nvbar-mindre{
-        display: none;
-    }
-    
-
-    #animera-logga{
-        margin: 0px auto;
-        height: 200px;
-        text-align: center;
-        position: relative;
-        top: -1000px;
-    }
-    #animera-logga-new{
-        height: 200px;
-        text-align: center;
-        position: relative;
-        top: -400px;
-        left:-100vw;
-        width: 100vw;
-        margin: 100px 0px 0px 0px;
-    }
-
-    .container{
-        margin-top: 20px;
-    }
-
-    #animera-h1-todolist{
-        position: relative;
-        top: -1000px;
-    }
-    #animera-h1-mytomatoes{
-        position: relative;
-        text-align: center;
-        top:-400px;
-    }
-    
-    .anime-test-my-tomatos{
-        display: none;
-    }
-    #animera-h1-new{
-        position: relative;
-        top: -1000px;
-    }
-    
-    #animera-h1-quickstart{
-        position: relative;
-        top: -1000px;
-    }
-    
-    #animera-h1>h1, #animera-h1-todolist>h1, #animera-h1-mytomatoes>h1, #animera-h1-new>h1, #animera-h1-quickstart>h1{
-        background-color: rgba(255, 255, 255, 0);
-        color:red;
-        font-size: 75px;
-        line-height: 100px;
-        text-align: center;
-        font-weight: 200;
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    }
-    .tomaToDoLogga{
-        position:relative;
-        margin: 4px;
-        display: inline-block;
-        height: 200px;
-        width: auto;
-    }
-    .tomatToDoLogga.tid-slut {
-        background: radial-gradient(ellipse at center, rgba(255,222,10,1) 0%, rgba(255,211,13,1) 3%, rgba(255,10,59,0.13) 57%, rgba(255,10,59,0) 65%);
-        padding:10px;
-    }
-    
-    .anime-test{
-        margin: 50px auto;
-        width:80%;
-        text-align: center;
-    }
-    .anime-test-my-tomatos{
-        position: relative;
-        top: -600px;
-        width:100%;
-        text-align: center;
-    }
-    
-    .box{
-        position:relative;
-        width: 100px;
-        height: 100px;
-        margin: 4px;
-        display: inline-block;
-    }
-
-    .body-knappar{
-        width: 90vw;
-    }
-    #tomat-start-tidtagning, h2#timer-text{
-        width: 90vw;
-    }
-    
-    .nav-länkar:hover{
-        color: lightgray;
-        background-color: red;
-        transition-duration: 250ms;
-        text-decoration: none;
-    }
-  
-    .header{
-        padding: 50px 30px;
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-    }
-
-    #animeringar{
-        position: relative;
-        top: 50px;
-        margin-bottom: 200px;
-    }
-
-
-    .timer-contain{
-        position: relative;
-        margin-top:100px;
-    }
-
-.tomat-timer{
-    position: relative;
-    bottom: 20px;
-    margin-top: 200px;
-    position: relative;
-    bottom: 50px;
-  }
-
-.tomat-about{
-    position: relative;
-    bottom: 0px;
-    margin:50px 0px;
-    position: relative;
-    width: 100vw;
-  }
-.tomat-about>p{
-    box-shadow: 3px 10px 14px 0px rgba(0,0,0,0.75);
-    
-}
-
-  .about{
-    margin-top: 50px;
-    position: relative;
-    font-size: 20px;
-    width: 100vw;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    row-gap: 15px;
-    line-height: 35px;
-}
-
-.about-intro{
-    font-size: 22px;
-}
-.about-intro>ul>i{
-    padding-bottom: 10px;
-}
-
-
-  main{
-      width:100vw;
-  }
-  #tomato-form>#name{
-    width: 90%;
-}
-#tomato-form>.add-TomaTo-Do{
-    width:90%;
-}
-
-  input.btn.addTomaTo-Do{
-      width:100%;
-  }
-  
-  .add-TomaTo-Do{
-      width: 80%;
-  }
-  
-  .my-tomatoes-table{
-      display: flex;
-      flex-direction: column;
-  }
-
-  th:nth-child(n+2){
-      display:none;
-  }
-
-  tr{
-      display: flex;
-      flex-direction: column;
-  }
-
-  td{
-      text-align: center;
-  }
-
-  #tomato-list, #todo-lista{
-      display: flex;
-      flex-direction: column;
-  } 
-
-  footer{
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-  }
-footer>section{
-    display: flex;
-    flex-direction: column;
-    margin:0 auto;
-}
-
-  .sociala-länkar-container{
-    margin: 0 auto;
-      width: 100%;
-  }
-
-  .footer-nav-länkar-container{
-      text-align: center;
-      margin:5px auto;
-  }
-
-  .mt-4{
-      width:100vw;
-  }
-  .mt-4>img{
-      display: none;
-  }
-  .text-center-text{
-      display: block;
-  }
-  
-  .timer-buttons {
-    display: none;
-}
-#tomat-start.synlig .timer-buttons{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-  }
-  #tomat-start.synlig .timer-buttons>button{
-      margin:5px;
-  }
-  #tomat-start{
-      flex-direction: column;
-  }
- .input-timer-minne>label{
-    display:none;
-} 
-#länk-öppna-form-sök{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin:25px;
-    padding:20px;
-}
-#länk-öppna-form-sök>a{
- margin-bottom: 10px;
-}
-}
-
-
-
-
-
-
-/************** ANIME.JS ****************************/
-
-
-
-#animera-logga{
-    margin: 0px auto;
-    height: 200px;
-    text-align: center;
-    position: relative;
-    top: -700px;
-}
-#animera-logga-new{
-    height: 200px;
-    text-align: center;
-    position: relative;
-    top: -600px;
-    left:-100vw;
-    width: 100%;
-}
-#animera-logga-new-new{
-    height: 200px;
-    text-align: center;
-    position: relative;
-    top: -700px;
-    left:-100vw;
-    width: 100%;
-}
-#animera-logga-new-vit{
-    height: 1px;
-    text-align: center;
-    position: relative;
-    top: 100px;
-    width: 100%;
-} 
-#animera-h1-todolist{
-    position: relative;
-    top: -550px;
-}
-#animera-h1-mytomatoes{
-    position: relative;
-    text-align: center;
-    top:-52px;
-}
-#animera-h1-new{
-    position: relative;
-    top: -500px;
-}
-
-#animera-h1-quickstart{
-    position: relative;
-    top: -500px;
-}
-
-#animera-h1>h1, #animera-h1-todolist>h1, #animera-h1-mytomatoes>h1, #animera-h1-new>h1, #animera-h1-quickstart>h1{
-    background-color: rgba(255, 255, 255, 0);
-    color:red;
-    font-size: 75px;
-    line-height: 100px;
-    text-align: center;
-    font-weight: 200;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-}
-.tomaToDoLogga{
-    position:relative;
-    margin: 4px;
-    display: inline-block;
-    height: 200px;
-    width: auto;
-}
-#logga-när-tid-slut.tid-slut .tomatToDoLogga {
-    background: radial-gradient(ellipse at center, rgba(255,222,10,1) 0%, rgba(255,211,13,1) 3%, rgba(255,10,59,0.13) 57%, rgba(255,10,59,0) 65%);
-    padding:10px;
-}
-#logga-när-tid-slut.tid-slut .tomatoEs{
-    color: red;
-}
-.anime-test{
-    margin: 50px auto;
-    width:80%;
-    text-align: center;
-}
-.anime-test-my-tomatos{
-    position: relative;
-    top: -600px;
-    width:100%;
-    text-align: center;
-}
-
-.box{
-    position:relative;
-    width: 100px;
-    height: 100px;
-    margin: 4px;
-    display: inline-block;
-}
-
-#btns{
-    padding: 20px;
-    background: #f4f4f4;
-    margin-bottom: 20px;
-}
-
-#btns button{
-    background:#fff;
-    padding: 5px 10px;
-    border: 0;
-}
-
-#btns .fa{
-    font-size: 30px;
 }
 

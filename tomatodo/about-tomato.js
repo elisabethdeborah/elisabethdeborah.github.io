@@ -30,12 +30,27 @@ anime({
     ],
 })
 
-const toggleMeny=document.querySelector('.fa-bars')
+/* const toggleMeny=document.querySelector('.fa-bars')
 const navbarToggle=document.querySelector('#nvbar-toggle')
 const navbarListToggle=document.querySelector('#nvbar-list-toggle')
-
-toggleMeny.addEventListener('click', (e)=>{
+ */
+/* toggleMeny.addEventListener('click', (e)=>{
     navbarToggle.classList.toggle('navbar-view');
     navbarListToggle.classList.toggle('navbar-view')
 })
+ */
+const body = document.querySelector('body');
+const header = document.querySelector('header');
+const navicon = document.querySelector('.navicon');
+const colorScheme = document.querySelectorAll('.navbar-container__color-schemes--color-scheme');
 
+navicon.addEventListener('click', (event) => {
+    console.log('funkar');
+    header.classList.toggle('open');
+})
+
+colorScheme.forEach((knapp) => {
+    this.addEventListener('click', (e)=> {
+        body.classList.toggle(e.target.classList[1]);
+    })
+})

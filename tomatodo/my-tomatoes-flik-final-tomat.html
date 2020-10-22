@@ -2,6 +2,86 @@
 <html>
     <head>
         <title>My TomaToes</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <script src="https://kit.fontawesome.com/e593b97041.js" crossorigin="anonymous"></script>
+       <!--  <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+          --><!-- <link href="tomat-timer-to-do.css" rel="stylesheet"> -->
+         <link href="css/test.css" rel="stylesheet">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Give+You+Glory&display=swap" rel="stylesheet">
+     </head>
+     <body class="body--light-theme">
+         <header class="header--light-theme">
+             <section class="ytter-container">
+                 <section class="header__top">
+                     <article class="logo-navicon">
+                         <a href="index.html" class="logo-link">
+                             <svg class="logo" width="1804" height="1808" viewBox="0 0 1804 1808" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path class="tomato-kropp" d="M811.602 1660.5C1029.23 1696.18 1236.89 1667.68 1396.83 1592C1556.7 1516.35 1670.24 1392.72 1695.61 1237.96C1720.99 1083.2 1652.87 929.791 1525.52 807.048C1398.13 684.253 1210.44 590.936 992.812 555.255C775.184 519.574 567.527 548.072 407.586 623.756C247.713 699.408 134.174 823.033 108.8 977.794C83.4267 1132.55 151.544 1285.96 278.89 1408.71C406.289 1531.5 593.974 1624.82 811.602 1660.5Z" fill="#928f8f00" stroke="red" stroke-width="80"/>
+                                 <path class="tomato-blast" d="M534.22 318.32L875.719 461.819L875.719 120.317L1051.72 384.819L1292.92 230.32L1217.22 461.819L1503.22 461.819L1292.92 615.818L1580.22 725.819L919.72 670.82L534.22 318.32Z" fill="red" stroke="red" stroke-width="50"/>
+                             </svg>  
+                             <h1 class="logo-navicon__header">TomaTo-Do!</h1>
+                         
+                             
+                             </a> 
+                             <svg class="navicon" width="57" height="43" viewBox="0 0 57 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <rect class="linje-1" class="navicon__linje-1" width="56.087" height="6.85507" rx="3" fill="#ffffff"/>
+                                 <rect class="linje-2" class="navicon__linje-2" y="18.0723" width="56.087" height="6.85507" rx="3" fill="#ffffff"/>
+                                 <rect class="linje-3" class="navicon__linje-3" y="36.1445" width="56.087" height="6.85507" rx="3" fill="#ffffff"/>
+                             </svg> 
+                     </article>     
+                     
+                 
+                     <nav class="navbar-container">
+                         <!-- navlänksdelen -->
+                         <ul class="navbar-container__link-list-container">
+                             <li class="navbar-container__link-list-container__nav-list-item"><a href="index.html" class="nav-link">About</a></li>
+                             <li class="navbar-container__link-list-container__nav-list-item"><a href="quick-start-flik-final-tomat.html" class="nav-link">Quick Start</a></li>
+                             <li class="navbar-container__link-list-container__nav-list-item"><a href="time-new-tomato-flik-final-tomat.html" class="nav-link">Time New Tomato</a></li>
+                             <li class="navbar-container__link-list-container__nav-list-item"><a href="my-tomatoes-flik-final-tomat.html" class="nav-link">My Tomatoes</a></li>
+                             <li class="navbar-container__link-list-container__nav-list-item"><a href="to-do-flik-final-tomat.html" class="nav-link">My TomaTo-Do-List</a></li>
+                         </ul>
+                         <!--Knapparna för att byta färgtema på sidan-->
+                         <aside class="navbar-container__color-schemes">
+                             <article class="navbar-container__color-schemes--color-scheme body--dark-theme" title="lights off"></article>
+                             <article class="navbar-container__color-schemes--color-scheme body--light-theme" title="lights on"></article>
+                         </aside>
+                     </nav>
+                 </section>
+             </section>
+             <section class="hero">
+                 <svg class="hero__svg shape" width="1804" height="1808" viewBox="0 0 1804 1808" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <defs>
+                         <linearGradient id="header-shape-gradient" x2="0.35" y2="1">
+                             <stop offset="0%" stop-color="var(--color-stop)" />
+                             <stop offset="30%" stop-color="var(--color-stop)" />
+                             <stop offset="100%" stop-color="var(--color-bot)" />
+                           </linearGradient>
+                       </defs>
+                     <path class="gradient-bg" id="tomat-kropp" d="M811.602 1660.5C1029.23 1696.18 1236.89 1667.68 1396.83 1592C1556.7 1516.35 1670.24 1392.72 1695.61 1237.96C1720.99 1083.2 1652.87 929.791 1525.52 807.048C1398.13 684.253 1210.44 590.936 992.812 555.255C775.184 519.574 567.527 548.072 407.586 623.756C247.713 699.408 134.174 823.033 108.8 977.794C83.4267 1132.55 151.544 1285.96 278.89 1408.71C406.289 1531.5 593.974 1624.82 811.602 1660.5Z" fill="#F41212" stroke="#928f8f" stroke-width="20"/>
+                     <path d="M534.22 318.32L875.719 461.819L875.719 120.317L1051.72 384.819L1292.92 230.32L1217.22 461.819L1503.22 461.819L1292.92 615.818L1580.22 725.819L919.72 670.82L534.22 318.32Z" fill="#67CA04" stroke="#928f8f" stroke-width="20"/>
+                 </svg>                    
+             </section>
+         </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/e593b97041.js" crossorigin="anonymous"></script>
@@ -41,10 +121,10 @@
             <img id="navbar-logga" style="height:145px; width: auto;" src="tomat-vit-vector.png">
             <h1 class="display-4 text-center text">TomaTo-Do!</h1>
         </header>
-
+ -->
 
         <main>
-                    <div id="länk-öppna-form-sök">
+            <div id="länk-öppna-form-sök">
                 <a href="#" id="visa-add-tomato"><i class="fas fa-plus"></i> Add new TomaTo</a>
                 <span><a href="#" id="visa-sökfält" style="text-decoration: none;"><i class="fas fa-search"></i><input type="text" class="form-control" id="filterInput"placeholder="Search TomaTo"></a></span>
             </div>
@@ -77,6 +157,9 @@
                                 <button type="button" class="btn-secondary btn ljud-på" id="volym">Volume on</button>
                             </div>         
             </div>
+            <section class="time-bar-container">
+                <article class="time-bar-article"></article>
+            </section>
                 <!--DOLD-->
                     <div class="angiven-starttid-spara" style="display: none;">
                         <h2 id="timer-text"></h2>
@@ -85,7 +168,7 @@
                     </div>
                     <button type="submit" value="Submit" class="btn btn-primary btn-lg" id="save-btn" style="display: none;">Save TomaTo</button>
             
-            <section class="anime-test-my-tomatos">
+         <!--    <section class="anime-test-my-tomatos">
                 <div class="box red">
                     <img class="mini-tomat" style="height: 100px; width: 100px;" src="tomat-outline-röd.png">
                 </div>
@@ -98,16 +181,16 @@
                 <div class="box yellow">
                 <img class="mini-tomat" style="height: 100px; width: 100px;" src="tomat-genomskinlig-vector.png">
                 </div>
-            </section>
+            </section> -->
             
-            <section id="logga-när-tid-slut">
+          <!--   <section id="logga-när-tid-slut">
                 <section id="animera-logga-new">
                     <img class="tomaToDoLogga" src="tomat-genomskinlig-vector.png" alt="TomaToDo-logo">
                 </section>
                 <section id="animera-h1-mytomatoes">
                     <h1>My TomaTo<span class="tomatoEs">e</span>s</h1>
                 </section>
-            </section>
+            </section> -->
 
 
             <section class="tomater container">
@@ -145,9 +228,9 @@
                         <li class="footer-nav"><a href="to-do-flik-final-tomat.html">My TomaToDo-list</a></li>
                     </ul>
                 </div>
-                <div>
+                <!-- <div>
                     <img id="footer-logga" src="tomat-logga-svart.png"/>
-                </div>
+                </div> -->
                 <div class="footer-credits-container">
                     <div class="footer-credits">
                         <span>Sound from <a href="https://www.zapsplat.com/" target="_blank">Zapsplat.com</a></span>

@@ -28,19 +28,28 @@ anime({
     ]
 });
 
-
+/* 
 const toggleMeny=document.querySelector('.fa-bars')
 const navbarToggle=document.querySelector('#nvbar-toggle')
 //const navbarList=document.querySelector('.nvbar-list')
 const navbarListToggle=document.querySelector('#nvbar-list-toggle')
-
+ */
 //const restartKnapp=document.querySelector('#ned-restart')
  
-
+/* 
 toggleMeny.addEventListener('click', (e)=>{
     navbarToggle.classList.toggle('navbar-view');
     navbarListToggle.classList.toggle('navbar-view')
 })
+ */
+
+const navicon = document.querySelector('.navicon');
+navicon.addEventListener('click', (event) => {
+    console.log('funkar');
+    header.classList.toggle('open');
+})
+
+
 
 restartKnapp.addEventListener('click', (e)=>{
     setTimeout(()=>location.reload(),500);

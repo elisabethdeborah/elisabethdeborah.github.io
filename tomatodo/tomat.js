@@ -1,6 +1,7 @@
 
 
 //Event: Display Tomato-form
+const body = document.querySelector('body');
 const öppnaTomatFormulär=document.querySelector('#tomato-form');
 const döljFormulär=document.querySelector('.fa-chevron-circle-up');
 const visaAddTomat=document.querySelector('#visa-add-tomato')
@@ -13,6 +14,20 @@ const tomatoForm=document.querySelector('#tomato-form');
 const tomatodoForm =document.querySelector('.tomatodo-form');
 const tomatLista = document.querySelector('#tomato-list');
 const todoLista = document.querySelector('#todo-list');
+//const header = document.querySelector('header');
+const navicon = document.querySelector('.navicon');
+const colorScheme = document.querySelectorAll('.navbar-container__color-schemes--color-scheme');
+
+navicon.addEventListener('click', (event) => {
+    console.log('funkar');
+    header.classList.toggle('open');
+})
+
+colorScheme.forEach((knapp) => {
+    this.addEventListener('click', (e)=> {
+        body.classList.toggle(e.target.classList[1]);
+    })
+})
 
 if (visaAddTomat){
    visaAddTomat.addEventListener('click', (ev)=>{
@@ -23,15 +38,16 @@ document.querySelector('.fa-chevron-circle-up').addEventListener('click', (ev)=>
  })
   }
 
-
+/* 
   toggleMeny.addEventListener('click', (e)=>{
     navbarToggle.classList.toggle('navbar-view');
     navbarListToggle.classList.toggle('navbar-view');
-})
+}) */
 
 //TOMATO CLASS: EN  TOMAT
 
 class Tomato{
+    //constructor(name, time1='00', time2='00'){
     constructor(name, time1, time2){
         this.name=name;                 
         this.time=[time1,time2];
@@ -113,7 +129,7 @@ class UI{
 
     static showAlert(message, className){
         const div=document.createElement('div');
-        div.className=`alert alert-${className}`;
+        div.className=`alert ${className}`;
         div.appendChild(document.createTextNode(message));
         const container=document.querySelector('.container');
         const form=document.querySelector('.tomater-innehåll');
@@ -393,7 +409,8 @@ if (todoLista) {
         }
 
 
-
+ //CHECKA AV TASKS =======>> GÅR DET ATT SPARA AVCHECKNING? ANNARS FÖRSVINNER DEN NÄR MAN GÖR NÄSTA TASK, EFTERSOM SIDAN LADDAS OM NÄR MAN STÄNGER AV LARMET
+   //spara i TOMAT/TODO i local storage?
         if(e.target.classList.contains('column1')){
             e.target.classList.toggle('checked');
             if(e.target.classList.contains('checked')){
@@ -462,12 +479,13 @@ if (tomatLista) {
 
         //SÄTTA IGÅNG NEDRÄKNINGEN NÄR MAN KLICKAR PÅ TIMER-IKON ELLER GRÖN BAKGRUND PÅ TIMER-IKONEN
         if (e.target.classList.contains('startTimer')) {
-            timmar=e.target.parentElement.parentElement.previousElementSibling.innerText[0]+e.target.parentElement.parentElement.previousElementSibling.innerText[1]
-            minuter=e.target.parentElement.parentElement.previousElementSibling.innerText[3]+e.target.parentElement.parentElement.previousElementSibling.innerText[4]
+            timmar=Number(e.target.parentElement.parentElement.previousElementSibling.innerText[0]+e.target.parentElement.parentElement.previousElementSibling.innerText[1])
+            minuter=Number(e.target.parentElement.parentElement.previousElementSibling.innerText[3]+e.target.parentElement.parentElement.previousElementSibling.innerText[4])
             if (!isNaN(timmar), !isNaN(minuter)) {
                 countDown(timmar, minuter);
             } else {
                 console.log(!isNaN(timmar), !isNaN(minuter))
+                console.log(timmar +'=' + typeof(timmar) +' och '+ minuter +'='+ typeof(minuter))
                 e.target.style.cursor='default'
             }  
         } else if (e.target.classList.contains('btn-success')) {

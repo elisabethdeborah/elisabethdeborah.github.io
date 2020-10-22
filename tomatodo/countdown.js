@@ -13,9 +13,11 @@ const playPause= anime({
 });
         
 anime({
-    targets: 'section#animera-logga',
+    targets: 'svg.hero__svg',
     translateY: [
-        {value:600, duration:700, delay:800}
+      /*   {value:0, duration:500, delay:100}, */
+        {value:-600, duration:500, delay:0},
+        {value:0, duration:700, delay:800}
     ],
     skewX:[
         {value:30, duration:100, delay:1000,easing:'easeInOutSine'},
@@ -27,8 +29,11 @@ anime({
 
 
 let background = document.querySelector('body');
-let header=document.querySelector('header');
+ let header=document.querySelector('header'); 
 let navBar=document.querySelector('.navbar');
+const hero = document.querySelector('.hero');
+const timeBarContainer = document.querySelector('.time-bar-container');
+const timeBar = document.querySelector('.time-bar-article');
 //const tomatLista = document.querySelector('#tomato-list');
 let timerText =document.querySelector('#timer-text');
 let minutesText =document.querySelector('#minutes-text');
@@ -55,7 +60,7 @@ const vitLogga=document.querySelector('#animera-logga-new-vit')
 const rödLogga=document.querySelector('#animera-logga-new')
 const restartKnapp=document.querySelector('#ned-restart')
 const h1=document.querySelector('h1')
-const tidSlutAnimation = document.querySelector('#logga-när-tid-slut');
+const tidSlutAnimation = document.querySelector('.hero__svg');
 const spanTomatoEs=document.querySelector('span.tomatoEs');
 const loggan=document.querySelector('.tomaToDoLogga');
 let volume=document.querySelector('#volym');
@@ -64,20 +69,57 @@ const nedräkningsStopp=document.querySelector('#ned-stopp');
 const nedräkningsResume=document.querySelector('#ned-resume');
 const tomater = document.querySelector('.tomater');
 
+const inputTidTimmar = document.querySelector('#fyll-i-tid1')
+const inputTidMinuter = document.querySelector('#fyll-i-tid2')
 
 //RING-FUNKTIONEN NÄR NEDRÄKNINGEN ÄR FÄRDIG
 volume.addEventListener('click', (e)=>{
     volume.classList.toggle('ljud-på')
     if(volume.classList.contains('ljud-på')){
-        volume.innerText='Volume on'
+        volume.innerHTML='<img class="volume" src="/tomatodo/IMG/volume-on.svg">'
     } else{
-        volume.innerText='Volume off'
+        volume.innerHTML='<img class="volume" src="/tomatodo/IMG/volume-off.svg">'
     }
 })
+
+if (testStart) {
+    testStart.addEventListener('click', (event) => {
+    console.log(Number(inputTidMinuter.value))
+    countDown(Number(inputTidTimmar.value),Number(inputTidMinuter.value))
+})
+}
+
+
+
+
+
+
+
+
+
+
+
+function updateSpeed(totalStartTid) {
+   /*  var orbitDiv = document.getElementById("Mercury-orbit"); */
+    hero.style["-webkit-animation-duration"] = totalStartTid + "s";
+}
+
+
+
+
+
+
+
+
+
+
+
+
 //SJÄLVA NEDRÄKNINGSFUNKTIONEN, SÄTTS IGÅNG AV ATT GRÖNA KNAPPEN I TABELLEN KLICKAS OCH ATT DET FINNS SIFFROR FÖR TIMMAR (param1) OCH MINUTER (param2) I SAMMA TOMAT-RAD. 
 function countDown(timmar,minuter){ 
     tomatStart.classList.toggle('synlig');
- 
+    timeBarContainer.classList.toggle('synlig');
+   
     //KONVERTERAR PARAMETRAR TILL SEKUNDER FÖR ATT HA SAMMA ENHETER I NEDRÄKNINGEN
     //TIMMAR
     let hoursLeft=parseInt(timmar,10);
@@ -85,6 +127,9 @@ function countDown(timmar,minuter){
     let minutesLeft=parseInt(minuter,10);
     //TIMMAR OCH MINUTER OMVANDLADE TILL SEKUNDER
     let totalStartTid=hoursLeft*60*60+minutesLeft*60
+    updateSpeed(totalStartTid);
+
+    //hero.style.setProperty('--color-stop', "#f5f7f9");
 
     let interval1= setInterval(function(){    
         countDown.runnning=true;    
@@ -146,7 +191,7 @@ function tidenUte(currentTime, interval1) {
         }
         //ANIMATIONEN FÖR ALARM-RINGNING
         let timerRing=anime({
-            targets: '.tomaToDoLogga',
+            targets: 'svg.hero__svg',
             skewX:[
                 {value:40, duration:100, delay:1000,easing:'easeInOutSine'},
                 {value:-35, delay:10, easing:'easeInOutSine'},
@@ -199,51 +244,61 @@ function stoppaAlarm(buttonStop, timerRing) {
 }
 
 function bakgrundsFärgNedräkning(currentTime, hoursLeft, minutesLeft) {
+
     if(currentTime>(hoursLeft*60*60+minutesLeft*60)*0.875){
         background.classList.add('steg-1');
         allaNedräkningsRutor.forEach(ruta => {
             ruta.classList.add('steg-1');
         });
+        timeBar.classList.add('bar-steg-1');
     } else if (currentTime<=(hoursLeft*60*60+minutesLeft*60)*0.875&&currentTime>(hoursLeft*60*60+minutesLeft*60)*0.75){
         background.classList.add('steg-2');
         allaNedräkningsRutor.forEach(ruta => {
             ruta.classList.add('steg-2');
         });
+        timeBar.classList.add('bar-steg-2');
     } else if (currentTime<=(hoursLeft*60*60+minutesLeft*60)*0.75&&currentTime>(hoursLeft*60*60+minutesLeft*60)*0.625){
         background.classList.add('steg-3');
         allaNedräkningsRutor.forEach(ruta => {
             ruta.classList.add('steg-3');
         });
+        timeBar.classList.add('bar-steg-3');
     }else if (currentTime<=(hoursLeft*60*60+minutesLeft*60)*0.625&&currentTime>(hoursLeft*60*60+minutesLeft*60)*0.5){
         background.classList.add('steg-4');
         allaNedräkningsRutor.forEach(ruta => {
             ruta.classList.add('steg-4');
         });
+        timeBar.classList.add('bar-steg-4');
     }else if (currentTime<=(hoursLeft*60*60+minutesLeft*60)*0.5&&currentTime>(hoursLeft*60*60+minutesLeft*60)*0.375){
         background.classList.add('steg-5');
         allaNedräkningsRutor.forEach(ruta => {
             ruta.classList.add('steg-5');
         });
+        timeBar.classList.add('bar-steg-5');
     } else if (currentTime<=(hoursLeft*60*60+minutesLeft*60)*0.375&&currentTime>(hoursLeft*60*60+minutesLeft*60)*0.25){
         background.classList.add('steg-6');
         allaNedräkningsRutor.forEach(ruta => {
             ruta.classList.add('steg-6');
         });
+        timeBar.classList.add('bar-steg-6');
     } else if (currentTime<=(hoursLeft*60*60+minutesLeft*60)*0.25&&currentTime>(hoursLeft*60*60+minutesLeft*60)*0.125){
         background.classList.add('steg-7');
         allaNedräkningsRutor.forEach(ruta => {
             ruta.classList.add('steg-7');
         });
+        timeBar.classList.add('bar-steg-7');
     } else if (currentTime<=(hoursLeft*60*60+minutesLeft*60)*0.125&&currentTime>(hoursLeft*60*60+minutesLeft*60)*0.05){
         background.classList.add('steg-8');
         allaNedräkningsRutor.forEach(ruta => {
             ruta.classList.add('steg-8');
         });
+        timeBar.classList.add('bar-steg-8');
     } else{
         background.classList.add('steg-9');
         allaNedräkningsRutor.forEach(ruta => {
             ruta.classList.add('steg-9');
         });
+        timeBar.classList.add('bar-steg-9');
     }
 }
 
