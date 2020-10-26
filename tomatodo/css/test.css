@@ -8,7 +8,11 @@
     --knapp2-färg: rgb(223, 8, 8);
     --knapp3-färg: rgb(11, 175, 240);
     --knapp4-färg: #2a15e7;
+
+    --check-mark: url(tomatodo/IMG/check-mark.svg);
 }
+
+
 
 .knapp-1 {
     background-color: var(--knapp1-färg);
@@ -30,6 +34,14 @@
     background-color: var(--knapp1-färg);
 }
 
+.added-tomato .fa-stopwatch-20, .added-tomato .fa-tasks, .added-tomato .fa-times {
+    color: whitesmoke;
+    opacity: .9s;
+}
+section.tomater-lista-button-group i {
+    color: whitesmoke;
+    opacity: .9s;
+}
 .pause-ikon, .resume-play-knapp-ikon, .reoad-knapp-ikon, .volume {
     height: 30px;
     width: 30px;
@@ -40,47 +52,98 @@
 
 .knapp {
     line-height: 2rem;
-    font-size: 1rem;
-    border-radius: 5px;
     border: none;
-    color: white;
     margin: 0.2rem auto;
     transition: all .2s ease;
     display: block;
     cursor: pointer;
+    
+}
+
+.knapp:active {
+    border: 3px inset gray;
 }
 
 .knapp-stor {
     width: 80vw;
     max-width: 400px;
     padding: .3rem 2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    color: white;
+    border: 3px outset lightslategray;
 }
 
 .knapp-liten {
     height: 50px;
     width: 50px;
     padding: 3px;
-    background-color: rgba(255, 0, 0, 0);
     margin: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
+    font-size: 2rem;
+    border: 3px outset darkslategrey;
 }
 
+.timer-buttons{
+    background-color: rgba(255, 255, 255, 0);
+}
+section.tomater-lista-button-group {
+    display: flex;
+    flex-direction: row;
+}
+
+
+section.tomater-lista-button-group > a {
+    border: 3px outset darkslategrey;
+}
+
+section.tomater-lista-button-group > a:active {
+    border: 3px inset gray;
+}
+
+section.tomater-lista-button-group > a:hover {
+    filter: brightness(1.3);
+}
 
 .knapp:hover {
     transform: scale(1.02);
     filter: brightness(1.3);
 }
 
+.timer-buttons .knapp-liten:hover {
+    filter: brightness(1.5);
+}
+
 .knapp:focus {
     outline: var(--light-gray);
 }
 
-.knapp:active {
+.disable {
+    height: 50px;
+    width: 50px;
+    padding: 3px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 2rem;
+    border: 3px outset darkslategrey;
+    background-color: rgba(128, 128, 128, 0.411);
+}
+
+.disable:hover {
+    cursor: unset;
+}
+
+
+/* .knapp:active {
     transform: scale(1);
     border: 0.2rem inset var(--gray);
-}
+} */
 
 .skapa-new-tomato-h1 {
     margin: 2rem auto;
@@ -91,7 +154,7 @@
     color: var(--primary);
 }
 
-.name-new-tomato-input {
+.name-new-tomato-input, .add-new-to-do-input, .add-new-tomato-input {
     width: 80vw;
     max-width: 400px;
     margin: 0.2rem auto;
@@ -99,8 +162,9 @@
     border-radius: 5px;
     text-align: center;
     line-height: 2rem;
-    font-size: 1rem;
+    font-size: 1.3rem;
 }
+
 
 .upp-pil {
     height: 2rem;
@@ -324,13 +388,25 @@ aside.navbar-container__color-schemes > article.body--light-theme:hover {
 } 
 
 section.hero {
-    height: 80vh;
+    height: 75vh;
     justify-content: flex-end;
     align-items: center;
+    transition: background-color 1s ease-in;
 }
 section.hero > svg.hero__svg {
     max-width: 80vw;
+    transform: translateY(130px) skewX(0deg);
   /*   transform: translateY(-600px); */
+}
+
+section.hero > svg.ny-tomat-svg {
+    max-width: 80vw;
+    transform: translateY(60px) skewX(0deg);
+  /*   transform: translateY(-600px); */
+}
+
+.hero-quickstart > svg.hero__svg {
+    transform: translateY(250px);
 }
 
 /* SVG- LINEAR-GRADIENT */
@@ -350,11 +426,11 @@ section.hero > svg.hero__svg {
  main {
 /*     width: 0vw; */
     z-index: 1;
-   /*  margin-bottom: 3rem; */
+     margin-top: 0rem; 
 } 
 
 /* FÄRG-ANIMATIONER */ 
-section.hero {
+/* section.hero {
     animation-name: bakgrund;
     animation-timing-function: ease-in;
 }
@@ -363,12 +439,21 @@ section.hero {
     0% {
         background-color: green;
     } 
+
+    50% {
+        background-color: yellow;
+    }
+
+    99% {
+        background-color: rgba(255,100,0,1);
+    }
+
     100% {
         background-color: red;
     }
-}
+} */
 
-.steg-1, .steg-2, .steg-3, .steg-4, .steg-5, .steg-6, .steg-7, .steg-8, .steg-9 {
+/* .steg-1, .steg-2, .steg-3, .steg-4, .steg-5, .steg-6, .steg-7, .steg-8, .steg-9 {
     background-repeat: no-repeat;
 }
 .steg-1 {
@@ -400,28 +485,66 @@ section.hero {
     background: linear-gradient(to bottom, rgba(255,35,10,1) 0%, rgba(255,35,10,1) 6%, rgba(254,32,16,1) 25%, rgba(255,30,5,1) 35%, rgba(255,69,41,1) 51%, rgba(255,97,77,1) 74%, rgba(255,97,77,1) 91%, rgba(255,97,77,1) 100%);
 }
 
-.bar-steg-1, .bar-steg-2, .bar-steg-3, .bar-steg-4, .bar-steg-5, .bar-steg-6, .bar-steg-7, .bar-steg-8, .bar-steg-9 {
+.steg-10 {
+    background-color: silver;
+} */
+ 
+.steg-1 {
+    background-color:rgb(0, 128, 0) ;
+}
+.steg-2 {
+    background-color: rgb(4, 243, 4);
+}
+.steg-3 {
+    background-color: rgb(89, 255, 47);
+}
+.steg-4 {
+    background-color: rgb(145, 216, 3);
+}
+.steg-5 {
+    background-color: rgb(204, 255, 0);
+}
+.steg-6 {
+    background-color: rgb(200, 255, 0);
+}
+.steg-7 {
+    background-color: rgb(255, 230, 0);
+}
+.steg-8 {
+    background-color: rgb(255, 187, 0);
+}
+.steg-9 {
+    background-color: rgb(255, 140, 0);
+}
+
+.steg-10 {
+    background-color: rgb(255, 0, 0);
+} 
+
+
+
+.bar-steg-1, .bar-steg-2, .bar-steg-3, .bar-steg-4, .bar-steg-5, .bar-steg-6, .bar-steg-7, .bar-steg-8, .bar-steg-9, .bar-steg-10 {
     height: 1.3rem;
-    background-color: blue;
-    transition: all .5s linear;
+    background-color: blue; 
+    transition: all 1s linear;
 }
 
 .bar-steg-1 {
-    width: 0vw;
+    width: 8vw;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
 
 .bar-steg-2 {
-    width: 10vw;
+    width: 16vw;
 }
 
 .bar-steg-3 {
-    width: 20vw;
+    width: 24vw;
 }
 
 .bar-steg-4 {
-    width: 30vw;
+    width: 32vw;
 }
 
 .bar-steg-5 {
@@ -429,18 +552,20 @@ section.hero {
 }
 
 .bar-steg-6 {
-    width: 50vw;
+    width: 48vw;
 }
 
 .bar-steg-7 {
-    width: 60vw;
+    width: 56vw;
 }
 
 .bar-steg-8 {
-    width: 70vw;
+    width: 64vw;
 }
-
 .bar-steg-9 {
+    width: 72vw;
+}
+.bar-steg-10 {
     width: 80vw;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -450,11 +575,13 @@ section.hero {
 section.time-bar-container.synlig {
     width: 85vw; 
     padding: 0 2.5vw;
+    justify-content: center;
    /*  width: 450px; */
     height: 2rem;
     border: 2px solid var(--gray);
     border-radius: 20px;
-    margin: 50px auto;
+  /*   margin: 50px auto; */
+    margin: 40px auto;
     display: flex;
     align-items: center;
 }
@@ -509,7 +636,7 @@ img#footer-logga {
     width: 100vw;/* 
     max-width: 100vw; */
   /*   padding: 3rem; */
-    margin: 0 auto;
+    margin: 50px auto;
     line-height: 2.2rem;
     font-size: 1.4rem;
 }
@@ -609,11 +736,6 @@ a.howtoadhdh-länk:hover {
 /**/
 
 
-.view{
-    transition: 250ms ease-in-out;
-    display: none;
-}
-
 .timer-buttons {
     display: none;
 }
@@ -626,10 +748,21 @@ background-color: rgba(255, 255, 255, 0.219);
 margin-right: 0;
 border-radius: 10px;
 }
+
 #länk-öppna-form-sök{
-display:flex; flex-direction: row; justify-content: space-evenly;
+display: flex;
+flex-direction: column;
+justify-content: center;
+font-size: 1.3rem;
+margin: 1rem auto;
+align-items: center;
+z-index: 9;
 }
 
+ 
+.main-my-tomatoes {
+    padding-top: 20px;
+} 
 
 #tomatodo-form>#name{
 width:49%;
@@ -642,7 +775,7 @@ vertical-align:0px;
 }
 .timer-contain{
 position: relative;
-/* margin-top:100px; */
+margin-top:0px;
 }
 
 
@@ -713,10 +846,10 @@ section.tomat-timer-tidtagning{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0px auto;
+    margin: 30px auto;
     width: 100vw;
     padding-bottom: 50px;
-    background-color: var(--gray);
+ 
 }
 
 .green {
@@ -732,7 +865,7 @@ section.tomat-timer-tidtagning{
     margin-bottom: 100px;
     margin-top: 200px;
     max-width: 1140px;
-    margin: 200px auto;
+    margin: 100px auto;
 }
 .tomatoEs{
     color: rgb(168, 167, 167);
@@ -754,18 +887,21 @@ section.tomat-timer-tidtagning{
 
 #btn{
     width: 80vw;
-    max-width: 300px;
+    max-width: 305px;
     flex-wrap: wrap;
 }
 
 #bortKnapp{
-    margin-top: 0px;
-    width: 100px;
-    border:none;
+    margin-top: 100px;
+   
 }
 
 .form-group{
     text-align: center;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0px;
 }
 
 .tomater{
@@ -777,6 +913,10 @@ section.tomat-timer-tidtagning{
 .tomater-innehåll{
     padding: 0 10px;
     border-radius: 10px;
+}
+
+#tomater-lista {
+    margin-top: 60px;
 }
 
 .länk-öppna-form-sök{
@@ -791,6 +931,19 @@ section.tomat-timer-tidtagning{
     display: inline-block;
     width: fit-content;
     text-align: center;
+    display: inline-block;
+    width: fit-content;
+    text-align: center;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    border: none;
+    line-height: 2rem;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid var(--gray);
+}
+
+#filterInput:focus {
+    background-color: #f1f1f1;
 }
 
 .fa-search{
@@ -798,8 +951,7 @@ section.tomat-timer-tidtagning{
 }
 
 #visa-add-tomato{
-    padding-top:7px;
-    vertical-align: text-bottom;
+    margin: 1rem auto;
 }
 
 .tomaTo{
@@ -830,19 +982,11 @@ section.tomat-timer-tidtagning{
 }
 
   .checked {
-    background: rgba(158,158,158,1);
-background: -moz-linear-gradient(left, rgba(158,158,158,1) 0%, rgba(246,246,246,0.65) 70%, rgba(246, 246, 246, 0.4) 85%, rgba(255,255,255,0) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(158,158,158,1)), color-stop(70%, rgba(246,246,246,0.4) 85%, rgba(246,246,246,0.65)), color-stop(100%, rgba(255,255,255,0)));
-background: -webkit-linear-gradient(left, rgba(158,158,158,1) 0%, rgba(246,246,246,0.65) 70%, rgba(246,246,246,0.4) 85%, rgba(255,255,255,0) 100%);
-background: -o-linear-gradient(left, rgba(158,158,158,1) 0%, rgba(246,246,246,0.65) 70%, rgba(246,246,246,0.4) 85%, rgba(255,255,255,0) 100%);
-background: -ms-linear-gradient(left, rgba(158,158,158,1) 0%, rgba(246,246,246,0.65) 70%, rgba(246,246,246,0.4) 85%, rgba(255, 255, 255, 0) 100%);
-background: linear-gradient(to right, rgba(158,158,158,1) 0%, rgba(246,246,246,0.65) 70%, rgba(246,246,246,0.4) 85%, rgba(255, 255, 255, 0) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9e9e9e', endColorstr='#ffffff', GradientType=1 );
-    text-decoration: line-through;
-
-    transition-duration: 250ms;
+   /*  background: rgba(158,158,158,1); */
+   /*  transform: rotate(-180deg); */
+    transition-duration: 300ms;
   }
-
+/* 
   .checked::before {
     font-family: "Font Awesome 5 Free";
     content: "\f00c";
@@ -853,7 +997,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9e9e9e', end
     color: red;
     vertical-align: middle;
     font-weight: 900;
-  }
+    transform: rotate(180deg);
+    transition: 1s ease;
+  } */
 
 .bild{
  margin: 10px 25px;
@@ -892,10 +1038,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9e9e9e', end
     align-items: center;
     justify-content: space-evenly;
     height: auto;
-    position: sticky;
-    top:100px;
-    left: 10vw;
-    right: 10vw;
+    position: fixed;
+    top:60px;
+    left: 0vw;
+    right: 0vw;
     width: 100vw;
     max-width: 1000px;
     margin: 0 auto;
@@ -906,7 +1052,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9e9e9e', end
     display: none;
 }
 
-#tomat-start.synlig .angiven-starttid-spara, #tomat-start.synlig #start-button, #tomat-start.synlig .input-timer, #tomat-start.synlig #tomato-form {
+#tomat-start.synlig .angiven-starttid-spara, #tomat-start.synlig #start-button, #tomat-start.synlig .input-timer, #tomat-start.synlig #tomato-form, #tomat-start.synlig #skapa-tomato-form  {
     display: none;
     transition-duration: .25s;
 }
@@ -926,26 +1072,69 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9e9e9e', end
     z-index: 3;
 }
 
+
+
+#skapa-tomato-form, #tomato-form, #stopwatch-save-tomato-form{
+    font-size: 30px;
+    margin: 0 auto;
+    max-width: 900px;
+}
+  
+
+main.main-my-tomatoes #tomato-form {
+    padding: 50px 0; 
+    background-color: #444343ad;
+    color: white;
+    margin-top: 20px;
+    width: 95vw;
+    max-width: 700px;
+    border-radius: 5px;
+    transition: transform .3s ease .1s, opacity .2s ease 0s, height .3s ease .1s, padding .3s ease .1s, margin .3s ease .1s;
+}
+
+.fa-chevron-circle-up {
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 30px;
+    width: 30px;
+    padding: 0 7px 10px;
+    border-radius: 100%;
+    transform: rotate(180deg) translateY(-7px);
+}
+
+
 .input-timer, .input-timer-minne{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: auto;
-    margin: 50px auto 20px;
+    margin: 20px auto 60px;
 }
 
 
-#tomato-form, #stopwatch-save-tomato-form{
-    font-size: 30px;
-    margin: 0 auto;
-    max-width: 900px;
+
+
+main.main-my-tomatoes #tomato-form.synlig {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
+
+
+.input-timer-minne {
+    display: flex;
+    flex-direction: column;
+} 
 
 .times-up{
     font-family: roboto, sans-serif;
     font-size: 75px;
     color: white;
+}
+
+.input-timer-tid {
+    display: flex;
+    flex-direction: row;
 }
 thead{
     background-color: #007bff;
@@ -969,13 +1158,117 @@ h4{
     color:#007bff;
 }
 
+
+
+section.todo-lista > article, section.tomater-lista > article {
+    margin: 2rem auto;
+    max-width: 95vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0;
+    border: 5px outset #ffffff80;
+    background: #ffffff80;
+    border-radius: 5px;
+}
+
+.check-box-check::before {
+        font-family: "Font Awesome 5 Free";
+        content: "\f00c";
+        position: relative;
+        display: flex;
+        align-self: center;
+        margin: auto;
+        padding-left: 3px;
+        font-size: 65px;
+        color: blue;
+        font-weight: 900;
+        transition: 1s ease;
+}
+
+.check-box {
+    display: flex;
+    height: 100px;
+    width: 100px;
+    border: 2px inset black;
+   /*  align-self: flex-start; */
+    z-index: 999;
+    margin: auto 0;
+    border-radius: 10px;
+    transition: 1s ease;
+    justify-content: center;
+    align-items: center;
+}
+
+section.tomater-lista-namn-tomat-tid {/* 
+    background-image: url(/tomatodo/tomat-vit-vector.svg);
+    background-image: url(/tomatodo/IMG/tomat-lista-tomat.svg); */
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 85vw;
+    max-width: 400px;
+   /*  height: 300px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+section.tomater-lista-namn-tomat-tid > svg {
+    position: relative;
+    margin-left: .5rem;
+}
+
+
+/* section.tomater-lista-button-group {
+    display: flex;
+    flex-direction: row;
+}
+
+
+section.tomater-lista-button-group > a {
+    border: 3px outset darkslategrey;
+}
+
+section.tomater-lista-button-group > a:active {
+    border: 3px inset gray;
+}
+
+section.tomater-lista-button-group > a:hover {
+    filter: brightness(1.3);
+}
+ */
 .added-tomato{
     position: relative;
     left: -10px;
     z-index: 1;
+    width: 70vw;
+    max-width: 400px;
+    height: auto;
 }
 
-.column1>h4{
+.tomat-namn {
+    font-size: 3rem;
+    padding-top: 2.5rem;
+    padding-right: 0rem;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    position: absolute;
+    top: 7rem;
+    transform: rotate(4deg);
+}
+
+.tomat-tid {
+    font-size: 2rem;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    position: absolute;
+    top: 13rem;
+    transform: rotate(4deg);
+}
+/* .column1>h4{
     position: relative;
     display: inline-block;
     text-align: center;
@@ -1001,12 +1294,12 @@ h4{
 
 .table td{
     vertical-align: middle;
-}
+} */
 
-.view{
+/* .view{
     transition: 250ms ease-in-out;
     display: none;
-}
+} */
 
 #label-for-name{
     padding: 30px 10px 20px 10px;
@@ -1047,7 +1340,7 @@ h4{
     background-color: rgba(243, 241, 241, 0.342);
     border-radius: 10px;
     text-align: center;
-    color: rgb(255, 0, 0);
+    /* color: rgb(255, 0, 0); */
     font-weight: 500;
     margin:3px;
     border: 1px outset white;
@@ -1073,11 +1366,13 @@ h4{
     align-items: center;
     flex-wrap: nowrap;
     font-size: 40px;
+    line-height: 60px;
     margin: 10px;
     background-color: rgba(243, 241, 241, 0.171);
     border-radius: 10px;
     text-align: center;
     width: 120px;
+    width: 113px;
 }
 
 #timer-text{
@@ -1108,18 +1403,42 @@ h4{
     font-weight: 500;
 }
 
-.osynlig {
-    display: none;
+main.main-my-tomatoes #tomato-form.osynlig, .osynlig {
+ /*    display: none; */
+ transform: translateY(0vh) scaleY(0);
+ transform-origin: center top;
+ height: 0;
+ padding:0;
+ margin: 0;
+ opacity: 0;
+ transition: transform .3s ease .1s, opacity .2s ease 0s, height .3s ease .1s, padding .3s ease .1s, margin .3s ease .1s;
+
 }
 
 
+.checked {
+    /*  background: rgba(158,158,158,1); */
+    /*  transform: rotate(180deg); */
+     transition: all 1s ease-in-out;
+      background-color: red;
+      border-radius: 100%;
+      transform: rotate(180deg); 
+   }
 
+   
+   .checked::before {
+       content: url(/tomatodo/IMG/check-mark-vit.svg);
+   }
 
+   .disable {
+    opacity: .5;
 
+}
 
-
-
-
+.disable:hover {
+    filter: none;
+    transform: none; 
+}
 
 
 
@@ -1138,33 +1457,32 @@ h4{
     }
 
     section.hero {
-        height: 600px;
-        animation-name: bakgrund;
-        animation-timing-function: ease-in;
+        height: 65vh;
     }
-
-    @keyframes bakgrund {
-        0% {
-            background-color: green;
-        } 
-        100% {
-            background-color: red;
-        }
-    }
-
 
     section.hero > svg.hero__svg {
         max-height: 400px;
         transform: translateY(100px);
     }
 
+    .tomat-timer {
+        margin-top: 50px;
+    }
 
 
+    #bortKnapp{
+        margin-top: 150px;
+        border:none;
+    }
 
+
+    .add-new-tomato-input {
+        margin: 1rem auto;
+    }
 
     /* PROGRESS BAR */
 
-    .bar-steg-1, .bar-steg-2, .bar-steg-3, .bar-steg-4, .bar-steg-5, .bar-steg-6, .bar-steg-7, .bar-steg-8, .bar-steg-9 {
+    .bar-steg-1, .bar-steg-2, .bar-steg-3, .bar-steg-4, .bar-steg-5, .bar-steg-6, .bar-steg-7, .bar-steg-8, .bar-steg-9, .bar-steg-10 {
         height: 80px;
         background-color: blue;
         transition: all .5s linear;
@@ -1206,10 +1524,13 @@ h4{
     width: 400px;
 }
 
+.bar-steg-10 {
+    width: 450px;
+}
 
 section.time-bar-container.synlig {
   /*   width: 80vw; */
-    width: 410px;
+    width: 450px;
     padding: 0 10px;
     height: 100px;
     border: 2px solid var(--gray);
@@ -1219,13 +1540,19 @@ section.time-bar-container.synlig {
 
 
 
-
 #tomat-start {
     flex-direction: row;
+    top: 0px;
+}
+#tomat-start.synlig .timer-buttons {
+    margin-top: 100px;
 }
 
-
-
+main {
+    z-index: 1;
+    margin-top: 50px;
+/*     margin-top: 2rem; */
+}
 
     /* ABOUT-SIDA */
     .howtoadhd-bild {
@@ -1283,9 +1610,21 @@ section.time-bar-container.synlig {
 
     /*SLUT PÅ ABOUT-SIDA*/
 
+    /* TIME NEW TOMATO */
 
+     section.tomat-timer-tidtagning {
+        margin: 100px auto 0;
+    } 
 
     /**/
+    .form-group{
+        padding-bottom: 100px;
+    }
+
+    .main-my-tomatoes {
+        padding-top: 75px;
+        padding-top: 0;
+    }
 
     .tomater-innehåll{
         width: 80%;
@@ -1297,24 +1636,56 @@ section.time-bar-container.synlig {
         margin: 0px auto;
     }
 
-    #tomato-form>#name{
+    #skapa-tomato-form>#nam, #tomato-form>#name{
         width: 68%;
     }
-    #tomato-form>.add-TomaTo-Do{
+    #skapa-tomato-form>.add-TomaTo-Do, #tomato-form>.add-TomaTo-Do{
         width:30%;
     }
-#tomato-form>#name{
+    #skapa-tomato-form>#name, #tomato-form>#name{
     width: 90%;
 }
-#tomato-form>.add-TomaTo-Do{
+    #skapa-tomato-form>.add-TomaTo-Do, #tomato-form>.add-TomaTo-Do{
     width:90%;
 }
-  #tomato-form{
+#skapa-tomato-form, #tomato-form{
       flex-direction: column;
       align-items: center;
 }
 
+section.todo-lista > article, section.tomater-lista > article {
+    width: 80vw;
+    max-width: 700px;
+    margin: 3rem auto;
+    flex-direction: column;
+    border: 5px outset #ffffff80;
+    background: #ffffff80;
+    border-radius: 5px;
+}
+section.todo-lista > article {
+    flex-direction: row;
+}
 
+/*
+section.tomater-lista > article {
+    flex-direction: column;
+    border: 5px outset #ffffff80;
+    background: #ffffff80;
+    border-radius: 5px;
+     
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0; 
+}*/
+
+
+
+.check-box {
+    align-self: flex-start;
+}
 
 
 #btns{
@@ -1344,6 +1715,7 @@ section.time-bar-container.synlig {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 
@@ -1351,13 +1723,65 @@ section.time-bar-container.synlig {
     .tomater-innehåll{
         margin: 0px auto;
     }
-    #tomato-form>#name{
+    #skapa-tomato-form>#name, #tomato-form>#name{
         width: 90%;
     }
-    #tomato-form>.add-TomaTo-Do{
+    #skapa-tomato-form>.add-TomaTo-Do, #tomato-form>.add-TomaTo-Do{
         width:90%;
     }
     /**/
+
+    #länk-öppna-form-sök {
+        flex-direction: row;
+        align-self: flex-end;
+       /*  margin: 0 3rem; */
+       padding-top: 50px;
+    }
+
+    #länk-öppna-form-sök > a {
+        padding: 0 2rem;
+    }
+
+/*     .tomat-namn {
+        padding-right: 5rem;
+    }
+ */
+/* 
+    #filterInput{
+        display: inline-block;
+        width: fit-content;
+        text-align: left;
+        display: inline-block;
+        width: fit-content;
+        text-align: center;
+        font-size: 1.3rem;
+        border-radius: 5px;
+        border: none;
+        line-height: 2rem;
+        background-color: rgba(255, 255, 255, 0);
+        border: 1px solid var(--gray);
+    } */
+
+
+    #fyll-i-tid1, #fyll-i-tid2, #time1, #time2{
+        width: 120px;
+    }
+
+
+
+    .osynlig {
+        display: none;
+    }
+
+    .disable {
+        opacity: .5;
+    
+    }
+    
+    .disable:hover {
+        filter: none;
+        transform: none; 
+    }
 }
 
 @media screen and (min-width: 1000px) {
@@ -1365,12 +1789,14 @@ section.time-bar-container.synlig {
     /*ABOUT-SIDA*/
 
     .tomat-about-grid {
-        display: grid;
+        display: flex;
         grid-template-areas: 
-        "frågetecken frågetecken"
-        "ruta2 ruta3"
-        "ruta4 ruta5"
-        "avslut avslut";
+        "frågetecken"
+        "ruta2" 
+        "ruta3"
+        "ruta4" 
+        "ruta5"
+        "avslut";
         row-gap: 2rem;
         line-height: 2.2rem;
         font-size: 1.4rem;
@@ -1384,7 +1810,6 @@ section.time-bar-container.synlig {
         max-width: 50vw;
         margin: 20px auto;
         padding: 0 1rem;
-        background-color: white;
     }
 
     .tomat-about-grid > article:first-child {
@@ -1410,10 +1835,10 @@ section.time-bar-container.synlig {
     section.about-intro > article {
         padding: 30px 0;
         background-color: var(--light-gray);
-        width: 40vw;
+         width: 50vw; 
         height: 40vw;
         margin: 50px auto;
-        border-radius: 100%;
+        border-radius: 5px;
         justify-content: center;
     }
 
@@ -1426,6 +1851,19 @@ section.time-bar-container.synlig {
     }
     /* SLUT PÅ ABOUT-SIDA*/
 
+.osynlig {
+    display: none;
+}
 
+.disable {
+    opacity: .5;
+    z-index: 999;
+
+}
+
+.disable:hover {
+    filter: none;
+    transform: none; 
+}
 
 }

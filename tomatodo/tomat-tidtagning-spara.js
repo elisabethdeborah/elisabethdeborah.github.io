@@ -129,6 +129,7 @@ const nedräkningsSiffror = document.querySelector('#timer-text');
 const newTomatoSection = document.querySelector('#new-tomato-section');
 const header = document.querySelector('header');
 const uppPil = document.querySelector('.upp-pil');
+//const tomatoForm=document.querySelector('#tomato-form');
 
 startaTidtagning.addEventListener('click', (event) => {
     stopwatch.start();
@@ -165,7 +166,8 @@ class Stopwatch {
             console.log(this.times);
             this.running = true;
             requestAnimationFrame(this.step.bind(this));
-            nedräkningsSiffror.classList.toggle('synlig');
+            nedräkningsSiffror.classList.remove('osynlig');
+            nedräkningsSiffror.classList.add('synlig');
         }
     }
         stop() {
@@ -261,20 +263,22 @@ let stopwatch = new Stopwatch(
 const tomatTimerTidtagning=document.querySelector('.tomat-timer-tidtagning'); 
 const skapaTomat=document.querySelector('#skapa-tomat');
 const sparaTomatFormulär = document.querySelector('#stopwatch-save-tomato-form');
+const saveTomatobutton = document.querySelector('.save-tomato');
+
     
 function sparaTomat(name, time1, time2){
     if(name === '') {
         UI.showAlert('Please fill in all fields', 'red');
     } else {
-        tomatoForm.classList.toggle('valid');
+        newTomatoSection.classList.toggle('valid');
     // Instatiate tomato
     const tomato = new Tomato(name, time1, time2);
     // Add Tomato to UI
-        UI.addTomatoToList(tomato);
+    //    UI.addTomatoToList(tomato);
     // Add tomato to store
         Store.addTomato(tomato);
     // Show success message
-        UI.showAlert('Tomato Added', 'green');
+        UI.showAlert(sparaTomatFormulär, saveTomatobutton, 'Tomato Added', 'green');
     // Clear fields
          UI.clearFields();
     }}
@@ -319,13 +323,14 @@ skapaTomat.addEventListener('click', (ev)=>{
     //addFormulär.style.display='block';
     //skapaTomat.style.opacity='0';
   //  tomatTimerTidtagning.style.margin='200px auto 20px';
-    newTomatoSection.classList.toggle('synlig');
+    newTomatoSection.classList.add('synlig');
+    newTomatoSection.classList.remove('osynlig');
     skapaTomat.classList.toggle('osynlig');
 })
 
 
 uppPil.addEventListener('click', (e)=> {
-    newTomatoSection.classList.toggle('synlig');
+    newTomatoSection.classList.add('osynlig');
     skapaTomat.classList.toggle('osynlig');
 })
 
@@ -334,9 +339,10 @@ sparaTomatFormulär.addEventListener('submit', (e) => {
     // Get form values
      const name = document.querySelector('#name').value;
      avrundning(name);
-    if(tomatoForm.classList.contains('valid')) {
+    //                   console.log(e.target.parentNode, e.target, name)
+    if(newTomatoSection.classList.contains('valid')) {
         setTimeout(() => {
-        newTomatoSection.classList.toggle('synlig');
+        newTomatoSection.classList.add('synlig');
         skapaTomat.classList.toggle('osynlig');
     }, 1000);
     }

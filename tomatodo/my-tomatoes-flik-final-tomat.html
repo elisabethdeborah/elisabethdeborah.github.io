@@ -9,8 +9,8 @@
        <!--  <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
           --><!-- <link href="tomat-timer-to-do.css" rel="stylesheet"> -->
          <link href="css/test.css" rel="stylesheet">
-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+      <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+         --> <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Give+You+Glory&display=swap" rel="stylesheet">
      </head>
      <body class="body--light-theme">
@@ -123,43 +123,47 @@
         </header>
  -->
 
-        <main>
+        <main class="main-my-tomatoes">
+            <section class="time-bar-container">
+                <article class="time-bar-article"></article>
+            </section>
             <div id="länk-öppna-form-sök">
-                <a href="#" id="visa-add-tomato"><i class="fas fa-plus"></i> Add new TomaTo</a>
-                <span><a href="#" id="visa-sökfält" style="text-decoration: none;"><i class="fas fa-search"></i><input type="text" class="form-control" id="filterInput"placeholder="Search TomaTo"></a></span>
+                <a href="#endregion" id="visa-add-tomato"><i class="fas fa-plus"></i> Add new TomaTo</a>
+                <span><a href="#endregion" id="visa-sökfält" style="text-decoration: none;"><i class="fas fa-search"></i><input type="text" class="form-control" id="filterInput"placeholder="Search TomaTo"></a></span>
             </div>
-            <form id="tomato-form" class="view">
+            <form id="tomato-form" class="osynlig">
                 <div class="form-group">
-                <label for="name" id="label-for-name">Name TomaTo </label><a href="#"><i class="fas fa-chevron-circle-up" style="padding: 0 10px; color:#007bff;"></i></a>
-                <input type="text" id="name" class="form-control" placeholder="Name">
+                    <label for="name" id="label-for-name">Name TomaTo </label><a href="#endregion"><img src="/tomatodo/IMG/down-pil.svg" class="fa-chevron-circle-up"></a>
+                    <input type="text" id="name" class="add-new-tomato-input" placeholder="Name">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                 <label for="author"><img src="tomat-outline-röd.png" style="height: 100px; width: 100px;"></label>
+                </div> -->
+                <div class="input-timer-minne">
+                    <label for="time">Duration</label>
+                    <section class="input-timer-tid">
+                        <input type="text" id="time1" maxlength="2" placeholder="HH">  
+                        <input type="text" id="time2" maxlength="2" placeholder="MM">
+                    </section>
                 </div>
-                <div class="form-group input-timer-minne">
-                    <label for="time">Work Time</label>
-                    <input type="text" id="time1" maxlength="2" placeholder="HH"> : 
-                    <input type="text" id="time2" maxlength="2" placeholder="MM">
-                </div>
-                <input type="submit" value="Add TomaTo" class="btn btn-primary btn-block">
+                <input type="submit" value="Add TomaTo" class="knapp knapp-stor knapp-4">
             </form>
             <div id="tomat-start">
+
                 <!--DOLD NEDRÄKNINGS-TIMER SOM SYNS NÄR MAN KLICKAR PÅ TIMERN-->
                             <div class="nedräkningstimer">
                                 <h2 id="time-left"></h2>
                                 <h2 id="minutes-left"></h2>
                                 <h2 id="seconds-left"></h2>
                             </div>
-                            <div class="timer-buttons"> 
-                                <button type="button" class="btn-danger btn" id="ned-stopp">Pause</button>
-                                <button type="button" class="btn-primary btn" id="ned-resume">Resume</button>
-                                <button type="button" class="btn-info btn" id="ned-restart"><i class="fas fa-redo-alt" style="color:white"></i></button>
-                                <button type="button" class="btn-secondary btn ljud-på" id="volym">Volume on</button>
-                            </div>         
+                            <div class="timer-buttons">
+                                <button type="button" class="knapp knapp-liten knapp-2" id="ned-stopp"><img class="pause-ikon" src="/tomatodo/IMG/pause-vit.svg"></button>
+                                <button type="button" class="knapp knapp-liten knapp-1" id="ned-resume"><img class="resume-play-knapp-ikon" src="/tomatodo/IMG/play-continue.svg"></button>
+                                <button type="button" class="knapp knapp-liten knapp-4" id="ned-restart"><img class="reoad-knapp-ikon" src="/tomatodo/IMG/restart-vit.svg"></button>
+                                <button type="button" class="knapp knapp-liten knapp-3 ljud-på" id="volym"><img class="volume" src="/tomatodo/IMG/volume-on-vit.svg"></button>
+                            </div>       
             </div>
-            <section class="time-bar-container">
-                <article class="time-bar-article"></article>
-            </section>
+            
                 <!--DOLD-->
                     <div class="angiven-starttid-spara" style="display: none;">
                         <h2 id="timer-text"></h2>
@@ -193,7 +197,7 @@
             </section> -->
 
 
-            <section class="tomater container">
+            <!-- <section class="tomater container">
                 <div class="tomater-innehåll">
                     <table class="my-tomatoes-table table table-striped mt-5">
                         <thead>
@@ -208,7 +212,8 @@
                         <tbody id="tomato-list"></tbody>
                     </table>
                 </div>
-            </section>
+            </section> -->
+            <section id="tomater-lista" class="list-section tomater-lista"></section>
         </main>
 
         <footer>

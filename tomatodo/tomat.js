@@ -14,6 +14,8 @@ const tomatoForm=document.querySelector('#tomato-form');
 const tomatodoForm =document.querySelector('.tomatodo-form');
 const tomatLista = document.querySelector('#tomato-list');
 const todoLista = document.querySelector('#todo-list');
+const tomaterLista = document.querySelector('.tomater-lista');
+const todosLisa = document.querySelector('.todo-lista');
 //const header = document.querySelector('header');
 const navicon = document.querySelector('.navicon');
 const colorScheme = document.querySelectorAll('.navbar-container__color-schemes--color-scheme');
@@ -31,10 +33,10 @@ colorScheme.forEach((knapp) => {
 
 if (visaAddTomat){
    visaAddTomat.addEventListener('click', (ev)=>{
-   öppnaTomatFormulär.classList.toggle('view');
+   öppnaTomatFormulär.classList.toggle('osynlig');
 }) 
 document.querySelector('.fa-chevron-circle-up').addEventListener('click', (ev)=>{
-    öppnaTomatFormulär.classList.toggle('view');
+    öppnaTomatFormulär.classList.toggle('osynlig');
  })
   }
 
@@ -56,9 +58,10 @@ class Tomato{
 
 //TODO CLASS: EN  TODO
 class Todo{
-  constructor(name,time1='00', time2='00'){
+  constructor(name,time1='00', time2='00', checked='no'){
       this.name=name; 
       this.time=[time1,time2];  
+      this.checked=checked;
       }
     }
 
@@ -71,11 +74,11 @@ class Todo{
 class UI{
     static displayTomatos(){
         const tomatos = Store.getTomatos();
-
+        console.log(tomatos)
         tomatos.forEach((tomato)=>UI.addTomatoToList(tomato))
     }
 
-    static addTomatoToList(tomato){
+    /* static addTomatoToList(tomato){
        // const list=document.querySelector('#tomato-list');
        // const list=tomatLista;
         const row=document.createElement('tr');
@@ -91,8 +94,52 @@ class UI{
         `;
 
         tomatLista.appendChild(row);
-    }
+    } */
 
+
+    static addTomatoToList(tomato){
+        // const list=document.querySelector('#tomato-list');
+        // const list=tomatLista;
+         const tomaterObject=document.createElement('article');
+
+         if ((tomato.time[0]=="00")&&(tomato.time[1]=="00")){
+             tomato.time='';
+        } 
+
+         tomaterObject.innerHTML=`
+         
+        <section class="tomater-lista-namn-tomat-tid added-tomato">
+
+            <svg class="hero__svg shape" width="300" height="300" viewBox="0 0 1804 1808" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="header-shape-gradient" x2="0.35" y2="1">
+                        <stop offset="0%" stop-color="var(--color-stop)" />
+                        <stop offset="30%" stop-color="var(--color-stop)" />
+                        <stop offset="100%" stop-color="var(--color-bot)" />
+                    </linearGradient>
+                </defs>
+                <path class="gradient-bg" id="tomat-kropp" d="M811.602 1660.5C1029.23 1696.18 1236.89 1667.68 1396.83 1592C1556.7 1516.35 1670.24 1392.72 1695.61 1237.96C1720.99 1083.2 1652.87 929.791 1525.52 807.048C1398.13 684.253 1210.44 590.936 992.812 555.255C775.184 519.574 567.527 548.072 407.586 623.756C247.713 699.408 134.174 823.033 108.8 977.794C83.4267 1132.55 151.544 1285.96 278.89 1408.71C406.289 1531.5 593.974 1624.82 811.602 1660.5Z" fill="#F41212" stroke="#928f8f" stroke-width="20"/>
+                <path d="M534.22 318.32L875.719 461.819L875.719 120.317L1051.72 384.819L1292.92 230.32L1217.22 461.819L1503.22 461.819L1292.92 615.818L1580.22 725.819L919.72 670.82L534.22 318.32Z" fill="#67CA04" stroke="#928f8f" stroke-width="20"/>
+            </svg>
+
+            <h4 class="tomat-namn">${tomato.name}</h4>
+            <h4 class="timer tomat-tid">${tomato.time}</h4>
+        </section>
+        <section class="tomater-lista-button-group">
+            <a href="#endregion" class="knapp-1 btn-success knapp-liten" alt="Start countdown-timer"><i class="fas fa-stopwatch-20 startTimer"></i></a>
+            <a href="#endregion" class="knapp-3 btn-info knapp-liten addFromMyTomatoesToTodo" alt="Add to TomaTo-do"><i class="fas fa-tasks addFromMyTomatoesToTodo"></i></a>
+            <a href="#endregion" class="knapp-2 btn-danger knapp-liten"><i class="fas fa-times delete"></i></a>
+        </section>
+         `;
+ 
+         tomaterLista.appendChild(tomaterObject);
+
+         if(tomato.time=='') {
+          //  console.log('DISABLE!', tomaterObject.children[1].children[0].classList) //tomaterObject.children[1].children[2].textContent, tomaterObject.children[1].children[3].children[0].classList)
+            tomaterObject.children[1].children[0].classList.add('disable')
+            tomaterObject.children[1].children[0].classList.remove('knapp-1')
+        }
+     }
     
     static deleteTomato(el){
         if(el.classList.contains('delete')){
@@ -108,6 +155,67 @@ class UI{
       todos.forEach((todo)=>UI.addTodoToList(todo))
     }
 
+
+    /////////////
+
+    static disableTomatoTimer(){
+        const tomatos = Store.getTomatos();
+      tomatos.forEach((tomato)=> {
+        if(tomato.tid=='') {
+            tomaterLista.forEach((tomat)=> {
+                if(tomato.namn==tomat) {
+                    console.log('samma')
+                } else {
+                    console.log('inte samma')
+                }
+            })
+        }
+      })
+    }
+
+    static disableTodoTimer(){
+        const todos = Store.getTodos();
+      todos.forEach((todo)=> {
+          if(todo.tid=='') {
+              console.log('DISABLE!')
+            todoLista.forEach((tomat)=> {
+                if(tomato.namn==tomat) {
+                    console.log('samma')
+                } else {
+                    console.log('inte samma')
+                }
+            })
+          }
+
+      })
+    }
+    ////////////////
+
+    
+
+    static displayCheckedTodos(){
+        const todos = Store.getTodos();
+        todos.forEach((todo)=>{
+            if(todo.checked=='yes') {
+                console.log(`${todo.name} checked-status är: ${todo.checked}`)
+               
+                    //console.log(document.querySelectorAll('.todo-lista>article'));
+                    document.querySelectorAll('.todo-lista>article').forEach((article)=>{
+                       
+                        console.log(article.children[1].children[1].textContent)
+                        
+                        if (todo.name == article.children[1].children[1].textContent) {
+                            article.children[0].classList.toggle('checked')
+                            console.log(article.children[0])
+                        }
+                    })
+                
+            } else {
+                console.log(`${todo.name} checked-status är: ${todo.checked}`)
+            }
+        });
+    }
+/* 
     static addTodoToList(todo){
        // const list=tomatLista;
         const row=document.createElement('tr');
@@ -120,23 +228,108 @@ class UI{
 
         todoLista.appendChild(row);
     }
+ */
+
+    static addTodoToList(todo){
+         const todoObject=document.createElement('article');
+         if ((todo.time[0]=="00")&&(todo.time[1]=="00")){
+            todo.time='';
+         }
+         
+         
+            todoObject.innerHTML=`
+
+         <aside class="check-box">
+         </aside>
+         <section class="tomater-lista-namn-tomat-tid added-tomato">
+        
+         <svg class="hero__svg shape" width="300" height="300" viewBox="0 0 1804 1808" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <defs>
+                 <linearGradient id="header-shape-gradient" x2="0.35" y2="1">
+                     <stop offset="0%" stop-color="var(--color-stop)" />
+                     <stop offset="30%" stop-color="var(--color-stop)" />
+                     <stop offset="100%" stop-color="var(--color-bot)" />
+                 </linearGradient>
+             </defs>
+             <path class="gradient-bg" id="tomat-kropp" d="M811.602 1660.5C1029.23 1696.18 1236.89 1667.68 1396.83 1592C1556.7 1516.35 1670.24 1392.72 1695.61 1237.96C1720.99 1083.2 1652.87 929.791 1525.52 807.048C1398.13 684.253 1210.44 590.936 992.812 555.255C775.184 519.574 567.527 548.072 407.586 623.756C247.713 699.408 134.174 823.033 108.8 977.794C83.4267 1132.55 151.544 1285.96 278.89 1408.71C406.289 1531.5 593.974 1624.82 811.602 1660.5Z" fill="#F41212" stroke="#928f8f" stroke-width="20"/>
+             <path d="M534.22 318.32L875.719 461.819L875.719 120.317L1051.72 384.819L1292.92 230.32L1217.22 461.819L1503.22 461.819L1292.92 615.818L1580.22 725.819L919.72 670.82L534.22 318.32Z" fill="#67CA04" stroke="#928f8f" stroke-width="20"/>
+         </svg>
+
+        <h4 class="tomat-namn">${todo.name}</h4>
+        <h4 class="tomat-tid">${todo.time}</h4>
+        <section class="tomater-lista-button-group">
+            <a href="#endregion" class="knapp-1 knapp-liten" alt="Start countdown-timer"><i class="fas fa-stopwatch-20 startTimer"></i></a>
+            <a href="#endregion" class="knapp-2 knapp-liten"><i class="fas fa-times delete"></i></a>
+        </section>
+         `;
+ 
+         todosLisa.appendChild(todoObject);
+
+         if(todo.time=='') {
+            console.log('DISABLE!', todoObject.children[1].children[1].textContent, todoObject.children[1].children[2].textContent, todoObject.children[1].children[3].children[0].classList)
+            todoObject.children[1].children[3].children[0].classList.add('disable')
+            todoObject.children[1].children[3].children[0].classList.remove('knapp-1')
+        }
+     }
+
+    static todoCheckToggle(todo, todoObj) {
+        const todos=Store.getTodos()
+        console.log('aktuell todo: ', todo)
+        console.log(todoObj)
+        const aktuellTodo = todo;
+        console.log(aktuellTodo)
+
+        todos.forEach((todo) => {
+       /*      console.log(todo, index)
+            document.querySelectorAll('.check-box').forEach((checkRuta, index) => {
+                let dennaCheckRuta = checkRuta.parentNode.children[0] */
+                
+                if(todo.name ==aktuellTodo){
+                    console.log(todo.checked, aktuellTodo,todoObj)
+                  //  checkRuta.setAttribute(todoCheckedClass);
+        //    console.log(todo.name, todo.checked)
+    //       console.log(dennaCheckRuta.classList.value)
+                //    console.log(dennaCheckRuta)
+                    todoObj.classList.toggle('checked')
+
+
+            /*       if (dennaCheckRuta.classList.contains('checked')) {
+                    dennaCheckRuta.removeAttribute('class', 'checked');
+                  } else {
+                  dennaCheckRuta.setAttribute('class', 'checked');
+                    }  */
+                // 
+
+            } 
+            
+                
+            })
+          //  console.log(checkRuta.parentNode.children[1].children[1].textContent)
+            //  checkRuta.setAttribute(todoCheckedClass);
+        
+          //  const todoCheckedClass=document.createAttribute('class');
+           // todoCheckedClass.value=`checked`;
+          
+               /* e.target.parentNode.childNodes[1].classList.toggle('checked');
+               e.target.parentNode.childNodes[3].classList.toggle('checked');
+               e.target.parentNode.childNodes[5].classList.toggle('osynlig'); */
+
+}
+
 
     static deleteTodo(el){
         if(el.classList.contains('delete')){
-            el.parentElement.parentElement.remove();
+            el.parentElement.parentElement.parentElement.parentElement.remove();
+            
         }
     };
 
-    static showAlert(message, className){
+    static showAlert(förälder, aktuelltobjekt, message, className){
         const div=document.createElement('div');
         div.className=`alert ${className}`;
         div.appendChild(document.createTextNode(message));
-        const container=document.querySelector('.container');
-        const form=document.querySelector('.tomater-innehåll');
-        const rad = document.querySelector('tr');
-        container.insertBefore(div,form);
-        //div.tomater-innehåll
-        //form.tomattodo
+        förälder.insertBefore(div, aktuelltobjekt);
+
         //Vanish in 3 seconds
         setTimeout(()=>document.querySelector('.alert').remove(), 3000);
     }
@@ -187,6 +380,22 @@ class Store {
         localStorage.setItem('todos', JSON.stringify(todos));
       }
 
+    static checkTodo(checkedTodo) {
+        const todos = Store.getTodos();
+        todos.forEach((todo) => {
+        if (todo.name == checkedTodo) {
+         //   console.log(todo)
+            if (todo.checked=='no') {
+            todo.checked = 'yes';
+            } else {
+                todo.checked = 'no';
+            }
+        }
+        //console.log(todo)
+        });
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }
+
     static removeTomato(name) {
         const tomatos = Store.getTomatos();
         tomatos.forEach((tomato, index) => {
@@ -229,27 +438,31 @@ document.addEventListener('DOMContentLoaded', UI.displayTomatos);
 // Event: Display Todos
 if (tomatodoForm) {
 document.addEventListener('DOMContentLoaded', UI.displayTodos);
+document.addEventListener('DOMContentLoaded', UI.displayCheckedTodos);
 }
 
  // Event: Add a Tomato
 if (tomatoForm) {
     tomatoForm.addEventListener('submit', (e) => {  
-// Prevent actual submit
+    // Prevent actual submit
     e.preventDefault();
-  // Get form values
+    
+   
+    
+    // Get form values
     const name = document.querySelector('#name').value;   
     const time1 = document.querySelector('#time1').value;
     const time2 = document.querySelector('#time2').value;
   
-  // Validate
+    // Validate
     if(name === '' || time1 === '' ||time2 === '') {
-        UI.showAlert('Please fill in all fields', 'danger');
+        UI.showAlert(e.target.parentNode, e.target, 'Please fill in all fields', 'red');
     } else if(isNaN(time1) ||isNaN(time2)) {
-        UI.showAlert('Please put in a number', 'danger');
+        UI.showAlert(e.target.parentNode, e.target, 'Please put in a number', 'red');
     } else if (time1[1]==undefined){
-        UI.showAlert('Put in 2 numbers please', 'danger')
+        UI.showAlert(e.target.parentNode, e.target, 'Put in 2 numbers please', 'red')
     } else if(time2[1]==undefined){
-        UI.showAlert('Put in 2 numbers please', 'danger') 
+        UI.showAlert(e.target.parentNode, e.target, 'Put in 2 numbers please', 'red') 
     } else {
     // Instatiate tomato
         const tomato = new Tomato(name, time1, time2);
@@ -258,11 +471,16 @@ if (tomatoForm) {
     // Add tomato to store
         Store.addTomato(tomato);
     // Show success message
-        UI.showAlert('Tomato Added', 'success');
+        UI.showAlert(e.target.parentNode, e.target, 'Tomato Added', 'green');
     // Clear fields
         UI.clearFields();
+    //dölj formulär
+        setTimeout(()=> {
+            tomatoForm.classList.toggle('osynlig')
+        },1000)
     }
-}); }
+    }); 
+}
 
 //
 
@@ -292,7 +510,7 @@ if (tomatoForm) {
 let filterInput = document.getElementById('filterInput');
 // Add event listener
 
-if(filterInput){
+/* if(filterInput){
 filterInput.addEventListener('keyup', filterNames);
 
 function filterNames(){
@@ -317,8 +535,35 @@ function filterNames(){
     }
   }
 }
- 
+  */
 
+if(filterInput){
+    filterInput.addEventListener('keyup', filterNames);
+    
+    function filterNames(){
+      // Get filtervalue
+        let filterValue = document.getElementById('filterInput').value.toUpperCase();
+      // Get hela tbody innehåll
+        let lista = document.getElementById('tomater-lista');
+        console.log(lista)
+      // Get varje 1:a-cell per rad i tabellen
+        let tomaterNamn = lista.querySelectorAll('.tomat-namn');
+        console.log(tomaterNamn.innerHTML)
+      //Get varje rad i tabellen
+        let rader=document.querySelectorAll('#tomato-list article');
+        console.log(rader)
+      // Loop through namn-kolumnen
+        for(let i = 0;i < tomaterNamn.length;i++){  
+            let tomat = tomaterNamn[i].getElementsByTagName('h4')[0];
+        // If matched
+            if(tomat.innerHTML.toUpperCase().indexOf(filterValue) > -1){
+                rader[i].style.display = '';
+            } else {//DÖLJ RADER SOM INTE MATCHAR
+                rader[i].style.display = 'none';
+            }
+        }
+      }
+    }
 
 
 
@@ -343,10 +588,7 @@ function addAnime(todo){(anime({
 const todoTabell=document.querySelector('.to-do-tabell');
 //TODO-FUNKTIONER
 // Event: Add a Todo
-if (todoLista) {
-
-    console.log(todoLista)
-
+if (todosLisa) {
      //HÄMTA TOMAT-ARRAY FRÅN LOCAL STORAGE OCH SPARA I EN LISTA
      let todoData=[Store.getTodos()];
                 
@@ -356,7 +598,6 @@ if (todoLista) {
 
 
      tomatodoForm.addEventListener('submit', (e) => {
-        //    console.log(e, e.parentElement, e.parentElement.parentElement)
         // Prevent actual submit
         e.preventDefault();
 
@@ -369,7 +610,7 @@ if (todoLista) {
 
         // Validate
         if(name === '') {
-            UI.showAlert('Please fill in all fields', 'danger');
+            UI.showAlert(e.target.parentNode, e.target, 'Please fill in all fields', 'red');
         } else {
         // Instatiate todo
             const todo = new Todo(name);
@@ -378,14 +619,14 @@ if (todoLista) {
         // Add todo to store
             Store.addTodo(todo);
         // Show success message
-            UI.showAlert('To-Do Added', 'success');
+            UI.showAlert(e.target.parentNode, e.target, 'To-Do Added', 'green');
         // Clear fields
             UI.clearFields();
         }
     });
 
-    //CHECKA AV TASKS =======>> GÅR DET ATT SPARA AVCHECKNING? ANNARS FÖRSVINNER DEN NÄR MAN GÖR NÄSTA TASK, EFTERSOM SIDAN LADDAS OM NÄR MAN STÄNGER AV LARMET
-    todoLista.addEventListener('click', (e)=>{
+  
+    todosLisa.addEventListener('click', (e)=>{
 
         if (e.target.classList.contains('startTimer')) {
             timmar=e.target.parentElement.parentElement.previousElementSibling.innerText[0]+e.target.parentElement.parentElement.previousElementSibling.innerText[1]
@@ -411,29 +652,46 @@ if (todoLista) {
 
  //CHECKA AV TASKS =======>> GÅR DET ATT SPARA AVCHECKNING? ANNARS FÖRSVINNER DEN NÄR MAN GÖR NÄSTA TASK, EFTERSOM SIDAN LADDAS OM NÄR MAN STÄNGER AV LARMET
    //spara i TOMAT/TODO i local storage?
-        if(e.target.classList.contains('column1')){
-            e.target.classList.toggle('checked');
-            if(e.target.classList.contains('checked')){
-                addAnime(e.target);
-            }
-        }
-        if(e.target.parentElement.classList.contains('column1')){
-            e.target.parentElement.classList.toggle('checked');
-            if(e.target.parentElement.classList.contains('checked')){
-                addAnime(e.target);
-            }
+        
+        if(e.target.classList.contains('tomat-namn')){
+             //TOMAT-NAMN  = e.target.textContent
+                Store.checkTodo(e.target.textContent);
+                //ASIDE-ELEMENT = e.target.textContent, e.target.parentElement.parentElement.children[0]
+                UI.todoCheckToggle(e.target.textContent, e.target.parentElement.parentElement.children[0]);
+            
+        } else if(e.target.classList.contains('tomat-tid')){
+            //TOMAT-NAMN  = e.target.previousElementSibling.textContent
+            //ASIDE-ELEMENT = e.target.parentElement.parentElement.children[0]
+               Store.checkTodo(e.target.previousElementSibling.textContent);
+               UI.todoCheckToggle(e.target.previousElementSibling.textContent, e.target.parentElement.parentElement.children[0]);
+           
+       }  else if (e.target.classList.contains('check-box')) {
+         //   TOMAT-NAMN = e.target
+         // ASIDE-ELEMENT =  e.target.parentElement.children[1].children[1].textContent
+            Store.checkTodo(e.target.parentElement.children[1].children[1].textContent);
+               UI.todoCheckToggle(e.target.parentElement.children[1].children[1].textContent, e.target)
+
+        } else if (e.target.classList.contains('gradient-bg')) {
+            //ASIDE-ELEMENT = e.target.parentElement.parentElement.parentElement.children[0]
+            //TOMAT-NAMN = e.target.parentElement.parentElement.children[1].textContent
+            Store.checkTodo(e.target.parentElement.parentElement.children[1].textContent);
+            UI.todoCheckToggle(e.target.parentElement.parentElement.children[1].textContent, e.target.parentElement.parentElement.parentElement.children[0])
+
         }
 
+
+
+
         if(e.target.classList.contains('delete')){
-            console.log(e.target.parentElement);
-            console.log((e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent))
+            console.log(e.target.parentElement.parentElement.parentElement.parentElement.parentElement);
+            console.log((e.target.parentElement.parentElement.parentElement.parentElement.children[1].textContent))
         // Remove Todo from UIT
             UI.deleteTodo(e.target);
         // Remove todo from store NÅ TODO:S NAMN, INTE INNEHÅLL
-            Store.removeTodo(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent)
+            Store.removeTodo(e.target.parentElement.parentElement.parentElement.children[1].textContent)
             
         // Show success message
-            UI.showAlert('To-Do Removed', 'success');
+            UI.showAlert(document.querySelector('.header__top'), document.querySelector('.logo-navicon'), 'To-Do Removed', 'red');
         }
     })
 
@@ -473,24 +731,24 @@ if (todoLista) {
 
 
 //FUNKTIONER FÖR VARJE TOMAT I LISTAN
-if (tomatLista) {
-    console.log(tomatLista)
-    tomatLista.addEventListener('click', (e) => {
-
+if (tomaterLista) {
+    tomaterLista.addEventListener('click', (e) => {
+        console.log(e.target.classList)
         //SÄTTA IGÅNG NEDRÄKNINGEN NÄR MAN KLICKAR PÅ TIMER-IKON ELLER GRÖN BAKGRUND PÅ TIMER-IKONEN
         if (e.target.classList.contains('startTimer')) {
-            timmar=Number(e.target.parentElement.parentElement.previousElementSibling.innerText[0]+e.target.parentElement.parentElement.previousElementSibling.innerText[1])
-            minuter=Number(e.target.parentElement.parentElement.previousElementSibling.innerText[3]+e.target.parentElement.parentElement.previousElementSibling.innerText[4])
+            timmar=Number(e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[5].textContent[0]+e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[5].textContent[1]);
+            minuter=Number(e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[5].textContent[3]+e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[5].textContent[4]);
             if (!isNaN(timmar), !isNaN(minuter)) {
                 countDown(timmar, minuter);
+                console.log(e.target.classList)
             } else {
                 console.log(!isNaN(timmar), !isNaN(minuter))
                 console.log(timmar +'=' + typeof(timmar) +' och '+ minuter +'='+ typeof(minuter))
                 e.target.style.cursor='default'
             }  
         } else if (e.target.classList.contains('btn-success')) {
-            timmar=e.target.parentElement.previousElementSibling.innerText[0]+e.target.parentElement.previousElementSibling.innerText[1]
-            minuter=e.target.parentElement.previousElementSibling.innerText[3]+e.target.parentElement.previousElementSibling.innerText[4]
+            timmar = e.target.parentNode.parentNode.childNodes[1].childNodes[5].childNodes[0].textContent[0]+e.target.parentNode.parentNode.childNodes[1].childNodes[5].childNodes[0].textContent[1]
+            minuter = e.target.parentNode.parentNode.childNodes[1].childNodes[5].childNodes[0].textContent[3]+e.target.parentNode.parentNode.childNodes[1].childNodes[5].childNodes[0].textContent[4]
             if (!isNaN(timmar), !isNaN(minuter)) {
                 countDown(timmar, minuter);
             } else {
@@ -498,58 +756,66 @@ if (tomatLista) {
                 e.target.innerHTML='<i class="fas fa-ban"></i>'
                 e.target.style.cursor='default'
             }  
-        }
+        } 
+
         // TA BORT TOMAT FRÅN LISTA NÄR MAN KLICKAR PÅ DELETE-KLASS-KNAPP/ RÖD KNAPP/ RÖD BAKGRUND
         if (e.target.classList.contains('delete')) {
+            console.log(e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[3].textContent)
             // Remove Tomato from UIT
             UI.deleteTomato(e.target);
             // Show success message
-            UI.showAlert('Tomato Removed', 'danger');
+                            //    UI.showAlert( e.target.parentNode.parentNode.parentNode, e.target.parentNode.parentNode, 'Tomato Removed', 'red');
+            UI.showAlert(document.querySelector('.header__top'), document.querySelector('.logo-navicon'), 'Tomato Removed', 'red');
             // Remove tomato from store FÖRSÖKER NÅ TOMATENS NAMN, INTE INNEHÅLL
-            Store.removeTomato(e.target.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent) 
+           Store.removeTomato(e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[3].textContent) 
+          
         } else if (e.target.classList.contains('btn-danger')) {
+            console.log(e.target.parentNode.parentNode.childNodes[1].childNodes[3].textContent)
             // Remove Tomato from UI
             UI.deleteTomato(e.target);
             // Show success message
-            UI.showAlert('Tomato Removed', 'danger');
+            UI.showAlert(document.querySelector('.header__top'), document.querySelector('.logo-navicon'), 'Tomato Removed', 'red');
             // Remove tomato from store FÖRSÖKER NÅ TOMATENS NAMN, INTE INNEHÅLL
-            Store.removeTomato(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent)
+            Store.removeTomato(e.target.parentNode.parentNode.childNodes[1].childNodes[3].textContent.toLowerCase)
         }
 
-
-        if (tomater){
+        
+        
                 //HÄMTA TOMAT-ARRAY FRÅN LOCAL STORAGE OCH SPARA I EN LISTA
                 let tomatData=[Store.getTomatos()];
+                console.log(tomatData)
                 
                 //HÄMTAR TOMATER-ARRAY FRÅN LOCAL STORAGE       //LOCAL STORAGE FUNKTIONER DEKLARERAS I TOMAT.JS-FILEN. HÄMTAR JSON-DATA FRÅN LOCAL STORAGE OCH PARSE-AR/STRINGIFY-AR FÖR ANVÄNDNING I JS. // I TOMAT.JS DEKLARERAS CLASSERNA STORE, UI, TOMATO, TODO. EFTERSOM FUNKTIONERNA ÄR STATIC SÅ KAN DE ANVÄNDAS ÄVEN HÄR UTAN ATT FÖRST DEKLARERAS
                 let tomatos=Store.getTomatos();
+                console.log(tomatos)
                 
             //KLICKA PÅ ATT-GÖRA-LISTA-KNAPPEN FÖR ATT SPARA I TODO-LISTA I LOCAL STORAGE // KLICKAR PÅ ATT-GÖRA-LISTA-FA-IKONEN   //KLICKAR PÅ RUTAN RUNT ATT-GÖRA-LISTA-FA-IKONEN
             if (e.target.classList.contains('fa-tasks')) {
+                console.log(e.target.parentNode.parentNode.previousElementSibling.childNodes[3].textContent)
+                let targetName1 = e.target.parentNode.parentNode.previousElementSibling.childNodes[3].textContent.toLowerCase();
                 tomatos.forEach((tomato, index) => {
-                    let targetName = e.target.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.innerText.toLowerCase();
-                    console.log(targetName);
+                    //let targetName = e.target.parentNode.parentNode.previousElementSibling.childNodes[3].textContent.toLowerCase();
                     let tomatoName = tomatData.flat()[index].name.toLowerCase();
-                    if (tomatoName==targetName) {
+                    if (tomatoName==targetName1) {
                         Store.addTodo(tomato)
-                        UI.showAlert('To-do Added', 'success')
+                        UI.showAlert(e.target.parentNode.parentNode.parentNode, e.target.parentNode.parentNode, 'To-do Added', 'green')
+                        
                     }
                 })
             } else if (e.target.classList.contains('btn-info')) {
+                console.log(e.target.parentNode.parentNode.childNodes[1].childNodes[3].textContent)
                 tomatos.forEach((tomato, index)=>{
-                    let targetName = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.innerText.toLowerCase();
+                    let targetName = e.target.parentNode.parentNode.childNodes[1].childNodes[3].textContent.toLowerCase();
                     let tomatoName = tomatData.flat()[index].name.toLowerCase();        
                     if (tomatoName==targetName) {
                         Store.addTodo(tomato)
-                        UI.showAlert('To-do Added', 'success')
+                        UI.showAlert(e.target.parentNode.parentNode, e.target.parentNode, 'To-do Added', 'green')
                     }
                 })
-            } 
-        }
-    });
+    }
+    })
+
 }
-
-
 
 /*
 

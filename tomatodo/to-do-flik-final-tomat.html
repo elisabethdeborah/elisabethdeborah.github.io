@@ -10,8 +10,8 @@
        <!--  <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
           --><!-- <link href="tomat-timer-to-do.css" rel="stylesheet"> -->
          <link href="css/test.css" rel="stylesheet">
-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <!--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+          --><link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Give+You+Glory&display=swap" rel="stylesheet">
      </head>
      <body class="body--light-theme">
@@ -123,11 +123,11 @@
                     <h2 id="minutes-left"></h2>
                     <h2 id="seconds-left"></h2>     
                 </div>
-                <div class="timer-buttons"><!--  style="display: none;"-->
-                    <button type="button" class="btn-danger btn" id="ned-stopp">Pause</button>
-                    <button type="button" class="btn-primary btn" id="ned-resume">Resume</button>
-                    <button type="button" class="btn-info btn" id="ned-restart"><i class="fas fa-redo-alt" style="color:white"></i></button>
-                    <button type="button" class="btn-secondary btn ljud-på" id="volym">Volume on</button>
+                <div class="timer-buttons">
+                    <button type="button" class="knapp knapp-liten knapp-2" id="ned-stopp"><img class="pause-ikon" src="/tomatodo/IMG/pause-vit.svg"></button>
+                    <button type="button" class="knapp knapp-liten knapp-1" id="ned-resume"><img class="resume-play-knapp-ikon" src="/tomatodo/IMG/play-continue.svg"></button>
+                    <button type="button" class="knapp knapp-liten knapp-4" id="ned-restart"><img class="reoad-knapp-ikon" src="/tomatodo/IMG/restart-vit.svg"></button>
+                    <button type="button" class="knapp knapp-liten knapp-3 ljud-på" id="volym"><img class="volume" src="/tomatodo/IMG/volume-on-vit.svg"></button>
                 </div>
                 <!--DOLD INPUT-TIMER     style="display: none;"-->
                         <!--   <div class="input-timer">
@@ -165,10 +165,10 @@
             <section class="tomater tomat-container container">
                 <div class="tomater-innehåll">
                     <form class="tomatodo-form">
-                        <input type="text" id="name" class="form-control" placeholder="Name TomaTo-Do">
-                        <input type="submit" value="Add TomaTo-Do" class="btn btn-info addTomaTo-Do">
+                        <input type="text" id="name" class="add-new-to-do-input" placeholder="Name TomaTo-Do">
+                        <input type="submit" value="Add TomaTo-Do" class="knapp knapp-stor knapp-4 btn-info addTomaTo-Do">
                     </form>
-                    <table class="my-tomatoes-table table table-striped mt-5 to-do-tabell">
+                    <!-- <table class="my-tomatoes-table table table-striped mt-5 to-do-tabell">
                         <thead>
                             <tr>
                                 <th><h4>TomaTo-Do</h4></th>
@@ -178,12 +178,13 @@
                             </tr>
                         </thead>
                         <tbody id="todo-list"></tbody>
-                      <!--   <tbody id="tomato-list"></tbody> -->
-                    </table>
+                      <!--   <tbody id="tomato-list"></tbody>
+                    </table> -->
                 </div>
             </section>
             </div>
           </div>
+          <section class="list-section todo-lista"></section>
         </main>        
         <footer>
             <section>

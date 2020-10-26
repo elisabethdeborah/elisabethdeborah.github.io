@@ -51,7 +51,7 @@
                     </nav>
                 </section>
             </section>
-            <section class="hero">
+            <section class="hero hero-quickstart">
                 <div id="tomat-start">
                     <div class="nedräkningstimer">
                         <h2 id="time-left"></h2>
@@ -59,11 +59,11 @@
                         <h2 id="seconds-left"></h2>   
                     </div>
                     <div class="timer-buttons">
-                        <button type="button" class="knapp knapp-liten knapp-1" id="ned-stopp"><img class="pause-ikon" src="/tomatodo/IMG/pause.svg"></button>
-                        <button type="button" class="knapp knapp-liten knapp-2" id="ned-resume"><img class="resume-play-knapp-ikon" src="/tomatodo/IMG/pause-play.svg"></button>
-                        <button type="button" class="knapp knapp-liten knapp-3" id="ned-restart"><img class="reoad-knapp-ikon" src="/tomatodo/IMG/restart.svg"></button>
-                        <button type="button" class="knapp knapp-liten knapp-4 ljud-på" id="volym"></button>
-                    </div>
+                        <button type="button" class="knapp knapp-liten knapp-2" id="ned-stopp"><img class="pause-ikon" src="/tomatodo/IMG/pause-vit.svg"></button>
+                        <button type="button" class="knapp knapp-liten knapp-1" id="ned-resume"><img class="resume-play-knapp-ikon" src="/tomatodo/IMG/play-continue.svg"></button>
+                        <button type="button" class="knapp knapp-liten knapp-4" id="ned-restart"><img class="reoad-knapp-ikon" src="/tomatodo/IMG/restart-vit.svg"></button>
+                        <button type="button" class="knapp knapp-liten knapp-3 ljud-på" id="volym"><img class="volume" src="/tomatodo/IMG/volume-on-vit.svg"></button>
+                    </div>    
                 </div>
                 <svg class="hero__svg shape" width="1804" height="1808" viewBox="0 0 1804 1808" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -74,7 +74,7 @@
                           </linearGradient>
                       </defs>
                     <path class="gradient-bg" id="tomat-kropp" d="M811.602 1660.5C1029.23 1696.18 1236.89 1667.68 1396.83 1592C1556.7 1516.35 1670.24 1392.72 1695.61 1237.96C1720.99 1083.2 1652.87 929.791 1525.52 807.048C1398.13 684.253 1210.44 590.936 992.812 555.255C775.184 519.574 567.527 548.072 407.586 623.756C247.713 699.408 134.174 823.033 108.8 977.794C83.4267 1132.55 151.544 1285.96 278.89 1408.71C406.289 1531.5 593.974 1624.82 811.602 1660.5Z" fill="#F41212" stroke="#928f8f" stroke-width="20"/>
-                    <path d="M534.22 318.32L875.719 461.819L875.719 120.317L1051.72 384.819L1292.92 230.32L1217.22 461.819L1503.22 461.819L1292.92 615.818L1580.22 725.819L919.72 670.82L534.22 318.32Z" fill="#67CA04" stroke="#928f8f" stroke-width="20"/>
+                    <path class="hero-tomat-blast" d="M534.22 318.32L875.719 461.819L875.719 120.317L1051.72 384.819L1292.92 230.32L1217.22 461.819L1503.22 461.819L1292.92 615.818L1580.22 725.819L919.72 670.82L534.22 318.32Z" fill="#67CA04" stroke="#928f8f" stroke-width="20"/>
                 </svg>                    
             </section>
         </header>
@@ -162,7 +162,7 @@
                     <div class="input-timer" id="btn">
                         <input type="text" id="fyll-i-tid1" maxlength="2" placeholder="HH"> : 
                         <input type="text" id="fyll-i-tid2" maxlength="2" placeholder="MM">
-                        <button type="button" id="test-start" class="quick-start-add-time knapp knapp-stor">Add time</button> 
+                        <button type="button" id="test-start" class="quick-start-add-time knapp knapp-stor">Start</button> 
                     </div>
                 </div>
                 <div class="angiven-starttid-spara" style="display: none;">
@@ -170,7 +170,7 @@
                     <h2 id="minutes-text"></h2>
                     <h2 id="seconds-text"></h2>
                 </div>
-            <button type="submit" value="Submit" class="knapp btn btn-primary btn-lg" id="save-btn" style="display: none;">Save TomaTo</button>
+            <button type="submit" value="Submit" class="knapp" id="save-btn" style="display: none;">Save TomaTo</button>
             </section>
             <!-- <section id="logga-när-tid-slut">
                 <section id="animera-logga-new">
@@ -207,7 +207,8 @@
         </footer>
         
         <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>  
-        <script src="countdown.js" charset="utf-8"></script>  
+        
         <script src="tomat-timer-to-do.js" charset="utf-8"></script>
+        <script src="countdown.js" charset="utf-8"></script>  
     </body>
 </html>

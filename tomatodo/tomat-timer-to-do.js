@@ -1,4 +1,4 @@
-
+/* 
 
 
 anime({
@@ -26,7 +26,7 @@ anime({
         {value:-25, delay:10, easing:'easeInOutSine'},
         {value:0, easing:'easeInOutSine'},
     ]
-});
+}); */
 
 /* 
 const toggleMeny=document.querySelector('.fa-bars')
@@ -50,8 +50,9 @@ navicon.addEventListener('click', (event) => {
 })
 
 
-
+/* 
 restartKnapp.addEventListener('click', (e)=>{
     setTimeout(()=>location.reload(),500);
     console.log('restart')
-})
+}) */
+const tomatoForm=document.querySelector('#tomato-form');
