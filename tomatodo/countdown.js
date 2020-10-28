@@ -71,9 +71,9 @@ const nedräkningsStopp=document.querySelector('#ned-stopp');
 const nedräkningsResume=document.querySelector('#ned-resume');
 const tomater = document.querySelector('.tomater');
 
-const inputTidTimmar = document.querySelector('#fyll-i-tid1')
-const inputTidMinuter = document.querySelector('#fyll-i-tid2')
-
+const inputTidTimmar = document.querySelector('#fyll-i-tid1');
+const inputTidMinuter = document.querySelector('#fyll-i-tid2');
+const main = document.querySelector('main');
 
 
 //RING-FUNKTIONEN NÄR NEDRÄKNINGEN ÄR FÄRDIG
@@ -95,26 +95,10 @@ if (testStart) {
 
 
 
-
-/* const updateSpeed= (totalStartTid) => {
-   //  var orbitDiv = document.getElementById("Mercury-orbit"); 
-    hero.style["-webkit-animation-duration"] = totalStartTid * 1.1+ "s";
-    console.log(totalStartTid)
-    console.log(hero.style["-webkit-animation-duration"])
-    console.log(hero.style)
-} */
-
-
-
-
-
-
-
-
 //SJÄLVA NEDRÄKNINGSFUNKTIONEN, SÄTTS IGÅNG AV ATT GRÖNA KNAPPEN I TABELLEN KLICKAS OCH ATT DET FINNS SIFFROR FÖR TIMMAR (param1) OCH MINUTER (param2) I SAMMA TOMAT-RAD. 
 function countDown(timmar,minuter){ 
     tomatStart.classList.toggle('synlig');
-    timeBarContainer.classList.toggle('synlig');
+    timeBarContainer.classList.add('synlig');
     headerTop.style.backgroundColor="rgba(0,0,0,0)"
     if(window.innerWidth<650) {
         console.log(window.innerWidth)
@@ -183,14 +167,11 @@ function countDown(timmar,minuter){
     nedräkningsResume.addEventListener('click', (ev)=>{
         tomatStart.classList.toggle('synlig');
         clearInterval(interval1);
-//PÅ NÅT SÄTT FÅ COUNTDOWN ATT STARTA PÅ SAMMA SEKUND SOM STOPPAT - MÅSTE JAG LÄGGA TILL EN TREJDE PARAMETER PÅ ALLT?     
-        //GÖRA SEK TILL MINUT-DECIMALER?
-        
+        // STARTA COUNTDOWN PÅ SAMMA SEKUND SOM STOPPAT      
         let sekunder=secondsDisplay.innerHTML/60
         console.log(Number(minutesDisplay.innerHTML)+Number(sekunder))
         let minuter = Number(minutesDisplay.innerHTML)+Number(sekunder);
         countDown(hoursDisplay.innerHTML,minuter)
-       // countDown(hoursDisplay.innerHTML,minutesDisplay.innerHTML)
     })
    
 
@@ -201,7 +182,6 @@ function countDown(timmar,minuter){
 if(tomatoForm) {
     visaAddTomat.addEventListener('klick', (e) => {
         tomatoForm.classList.toggle('osynlig');
-        console.log(tomatoForm.classList);
     })
 }
 
@@ -213,11 +193,13 @@ function tidenUte(currentTime, interval1) {
         tomatStart.classList.remove('synlig');
         tomatStart.classList.add('osynlig');
         headerTop.style.backgroundColor="initial"
+        timeBarContainer.classList.remove('.synlig')
+        timeBarContainer.classList.add('.osynlig')
         if(volume.classList.contains('ljud-på')){
             startGame()
         }
         //ANIMATIONEN FÖR ALARM-RINGNING
-        let timerRing=anime(
+        /* let timerRing=anime(
             {
             targets: 'path.gradient-bg',
             skewX:[
@@ -237,58 +219,82 @@ function tidenUte(currentTime, interval1) {
             ],
             loop:true
             }
-        );
+        ); */
+        let timerRing=anime({
+            targets: '.hero__svg path',
+            fill: 'rgb(19,28,140)', // -> from '28px' to '100%',
+            easing: 'easeInOutQuad',
+            direction: 'alternate',
+            duration: 500,
+            loop: true
+          });
+        
+          let timerRingKropp=anime({
+            targets: '.hero__svg stop',
+            stopColor: 'rgb(255, 230, 0)', 
+            offset: "40%",
+            easing: 'easeInOutQuad',
+            direction: 'alternate',
+            duration: 500,
+            loop: true,
+            delay: 100
+          });
 
-        let timerRingTop=anime(
-            {
-                targets: 'path.hero-tomat-blast',
-                translateY: [
-                    {value: -250, duration:100, delay:500, easing: 'easeInOutSine'},
-                    {value: 0, duration:200, delay:1000, easing: 'easeInOutSine'},
-                    {value: 150, duration:100, delay:1500, easing: 'easeInOutSine'},
-                ],
-                loop:true    
-            }
-        );
+          let timerRingBakgrund=anime({
+            targets: 'body',
+            fill: 'rgb(#ffffff)', // -> from '28px' to '100%',
+            easing: 'easeInOutQuad',
+            direction: 'alternate',
+            duration: 500,
+            loop: true
+          });
+        
 
 
-        background.classList.add('steg-5')
+        body.classList.add('times-up-bakgrund')
+        hero.classList.add('times-up-bakgrund')
         nedräkningstimer.innerHTML="<h1 class='times-up'>Time's up!</h1>";
         setTimeout(()=>nedräkningstimer.remove(), 3000);
                 
         const buttonStop=document.createElement('article');
         buttonStop.innerHTML='<button id="bortKnapp" class="knapp knapp-stor knapp-3">Stop</button>';
         //LÄGGER TILL STOP-KNAPP VID ALARM
-        tomatStart.appendChild(buttonStop);        
+        main.insertBefore(buttonStop, timeBarContainer);        
         //STÄNGA AV ALARMET
-        stoppaAlarm(buttonStop, timerRing, timerRingTop);
+        stoppaAlarm(buttonStop, timerRing, timerRingKropp, timerRingBakgrund);
     } 
 }
  
-function stoppaAlarm(buttonStop, timerRing, timerRingTop) {
+function stoppaAlarm(buttonStop, timerRing, timerRingKropp, timerRingBakgrund) {
     buttonStop.addEventListener('click',(ev)=>{ 
         timerRing.pause();
-        timerRingTop.pause();
+        timerRingKropp.pause();
+        timerRingBakgrund.pause();
         //ANIMATION
         timerRing=anime({
-            targets: 'section#animera-logga-new',
+            targets: '.hero__svg path',
             scale: [
                 {value:2, duration:100, delay:100,easing:'easeInOutSine'},
                 {value:0, delay:10, easing:'easeInOutSine'},
             ],
             loop:false
         });
-        timerRingTop=anime({
-            targets: 'section#animera-logga-new',
+
+        timerRingKropp=anime({
+            targets: '.hero__svg stop',
             scale: [
                 {value:2, duration:100, delay:100,easing:'easeInOutSine'},
                 {value:0, delay:10, easing:'easeInOutSine'},
             ],
             loop:false
         });
+        
         if(startGame.isRunning){
             myMusic.stop()
         }
+        setTimeout(() => {
+            timeBarContainer.classList.add('fade-out')
+        }, 100);
         setTimeout(()=>buttonStop.remove(), 1000);
         setTimeout(()=>location.reload(),2000);
     }) 
@@ -349,14 +355,15 @@ function bakgrundsFärgNedräkning(currentTime, hoursLeft, minutesLeft) {
         hero.classList.add('steg-9');
         allaNedräkningsRutor.forEach(ruta => {
             ruta.classList.add('steg-9');
-        })
-    }else{
+        });
+        timeBar.classList.add('bar-steg-9');
+    }   else if  (currentTime>(hoursLeft*60*60+minutesLeft*60)*0.09) {
+        timeBar.classList.add('bar-steg-10');
+    } else{
         hero.classList.add('steg-10');
         allaNedräkningsRutor.forEach(ruta => {
             ruta.classList.add('steg-10');
         });
-
-        timeBar.classList.add('bar-steg-10');
     }
 }
 

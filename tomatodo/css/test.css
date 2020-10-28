@@ -137,6 +137,7 @@ section.tomater-lista-button-group > a:hover {
 
 .disable:hover {
     cursor: unset;
+    filter: brightness(1);
 }
 
 
@@ -430,64 +431,6 @@ section.hero > svg.ny-tomat-svg {
 } 
 
 /* FÄRG-ANIMATIONER */ 
-/* section.hero {
-    animation-name: bakgrund;
-    animation-timing-function: ease-in;
-}
-
-@keyframes bakgrund {
-    0% {
-        background-color: green;
-    } 
-
-    50% {
-        background-color: yellow;
-    }
-
-    99% {
-        background-color: rgba(255,100,0,1);
-    }
-
-    100% {
-        background-color: red;
-    }
-} */
-
-/* .steg-1, .steg-2, .steg-3, .steg-4, .steg-5, .steg-6, .steg-7, .steg-8, .steg-9 {
-    background-repeat: no-repeat;
-}
-.steg-1 {
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(50,205,50,0.86) 14%, rgba(246,246,246,0) 100%);
-    color: #686868;
-}
-.steg-2 {
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(173,255,47,0.86) 14%, rgba(173,255,47,0) 100%);
-}
-.steg-3 {
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(210,255,50,0.86) 14%, rgba(50,205,50,0) 100%);
-}
-.steg-4 {
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,0,0.86) 14%, rgba(255,255,0,0) 100%);
-}
-.steg-5 {
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,217,0,0.86) 14%, rgba(255,217,0,0) 100%);
-}
-.steg-6 {
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,165,0,0.86) 14%, rgba(255,165,0,0) 100%);
-}
-.steg-7 {
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,140,0,0.86) 14%, rgba(255,140,0,0) 100%);
-}
-.steg-8 {
-    background: linear-gradient(to bottom, rgba(255,100,0,1) 0%, rgba(255,100,0,1) 45%, rgba(246,246,246,1) 94%, rgba(255,255,255,1) 100%);
-}
-.steg-9 {
-    background: linear-gradient(to bottom, rgba(255,35,10,1) 0%, rgba(255,35,10,1) 6%, rgba(254,32,16,1) 25%, rgba(255,30,5,1) 35%, rgba(255,69,41,1) 51%, rgba(255,97,77,1) 74%, rgba(255,97,77,1) 91%, rgba(255,97,77,1) 100%);
-}
-
-.steg-10 {
-    background-color: silver;
-} */
  
 .steg-1 {
     background-color:rgb(0, 128, 0) ;
@@ -518,10 +461,24 @@ section.hero > svg.ny-tomat-svg {
 }
 
 .steg-10 {
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(253, 6, 6);
 } 
 
+.times-up-bakgrund {
+    animation-name: times-up-bakgrund-anim;
+    animation-timing-function: ease-in-out;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+}
 
+@keyframes times-up-bakgrund-anim {
+    0% {
+        background-color: white;
+    }
+    100% {
+        background-color: yellow;
+    }
+}
 
 .bar-steg-1, .bar-steg-2, .bar-steg-3, .bar-steg-4, .bar-steg-5, .bar-steg-6, .bar-steg-7, .bar-steg-8, .bar-steg-9, .bar-steg-10 {
     height: 1.3rem;
@@ -530,40 +487,40 @@ section.hero > svg.ny-tomat-svg {
 }
 
 .bar-steg-1 {
-    width: 8vw;
+    width: 0vw;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
 
 .bar-steg-2 {
-    width: 16vw;
+    width: 8vw;
 }
 
 .bar-steg-3 {
-    width: 24vw;
+    width: 17vw;
 }
 
 .bar-steg-4 {
-    width: 32vw;
+    width: 26vw;
 }
 
 .bar-steg-5 {
-    width: 40vw;
+    width: 35vw;
 }
 
 .bar-steg-6 {
-    width: 48vw;
+    width: 44vw;
 }
 
 .bar-steg-7 {
-    width: 56vw;
+    width: 53vw;
 }
 
 .bar-steg-8 {
-    width: 64vw;
+    width: 62vw;
 }
 .bar-steg-9 {
-    width: 72vw;
+    width: 71vw;
 }
 .bar-steg-10 {
     width: 80vw;
@@ -571,11 +528,17 @@ section.hero > svg.ny-tomat-svg {
     border-bottom-right-radius: 20px;
 }
 
+section.time-bar-container.fade-out {
+    transform: scale(0);
+    opacity: 0;
+    transform: all .2s ease-in;
+}
+
 
 section.time-bar-container.synlig {
     width: 85vw; 
     padding: 0 2.5vw;
-    justify-content: center;
+    justify-content: flex-start;
    /*  width: 450px; */
     height: 2rem;
     border: 2px solid var(--gray);
@@ -590,8 +553,6 @@ section.time-bar-container.synlig {
 .startTimer, .fa-tasks, .delete{
     padding:5px;
 }
-
-
 
 #animeringar {
     height: auto;
@@ -622,43 +583,29 @@ img#footer-logga {
 
 /* ABOUT-SIDA*/
 
+.tomat-about-grid i {
+    color: var(--secondary);
+}
+
+#yes .fa-question:before {
+    content: "\f128";
+    font-size: 4rem;
+}
+
+ .fa-exclamation:before {
+    content: "\f12a";
+    font-size: 4rem;
+}
+
 .tomat-about-grid {
-    display: grid;
-    grid-template-areas: 
-    "frågetecken"
-    "ruta2"
-    "ruta3"
-    "ruta4"
-    "ruta5"
-    "avslut"
-    ;
-    row-gap: 1rem;
-    width: 100vw;/* 
-    max-width: 100vw; */
-  /*   padding: 3rem; */
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
     margin: 50px auto;
     line-height: 2.2rem;
     font-size: 1.4rem;
 }
 
-.about-grid-item1 {
-    grid-area: frågetecken;
-}
-.about-grid-item2 {
-   grid-area: ruta2;
-}
-.about-grid-item3 {
-   grid-area: ruta3;
-}
-.about-grid-item4 {
-   grid-area: ruta4;
-}
-.about-grid-item5 {
-   grid-area: ruta5;
-}
-.about-grid-item6 {
-   grid-area: avslut;
-}
 
 .tomat-about-grid > article {
     justify-content: space-evenly;
@@ -891,10 +838,6 @@ section.tomat-timer-tidtagning{
     flex-wrap: wrap;
 }
 
-#bortKnapp{
-    margin-top: 100px;
-   
-}
 
 .form-group{
     text-align: center;
@@ -986,20 +929,6 @@ section.tomat-timer-tidtagning{
    /*  transform: rotate(-180deg); */
     transition-duration: 300ms;
   }
-/* 
-  .checked::before {
-    font-family: "Font Awesome 5 Free";
-    content: "\f00c";
-    position: relative;
-    display: inline-block;
-    padding-left: 3px;
-    font-size: 45px;
-    color: red;
-    vertical-align: middle;
-    font-weight: 900;
-    transform: rotate(180deg);
-    transition: 1s ease;
-  } */
 
 .bild{
  margin: 10px 25px;
@@ -1016,15 +945,6 @@ section.tomat-timer-tidtagning{
     align-items: center;
     width: 100vw;
 }
-/* .tomat-timer-tidtagning{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: -50px auto;
-    width: 100vw;
-    padding-bottom: 50px;
-    background-color: var(--gray);
-} */
 
 #tomat-start-tidtagning > h2 {
     color: white;
@@ -1083,12 +1003,17 @@ section.tomat-timer-tidtagning{
 
 main.main-my-tomatoes #tomato-form {
     padding: 50px 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80vh;
     background-color: #444343ad;
     color: white;
     margin-top: 20px;
     width: 95vw;
     max-width: 700px;
     border-radius: 5px;
+    transform-origin: top;
     transition: transform .3s ease .1s, opacity .2s ease 0s, height .3s ease .1s, padding .3s ease .1s, margin .3s ease .1s;
 }
 
@@ -1471,8 +1396,7 @@ main.main-my-tomatoes #tomato-form.osynlig, .osynlig {
 
 
     #bortKnapp{
-        margin-top: 150px;
-        border:none;
+        margin-top: 50px;
     }
 
 
@@ -1536,9 +1460,6 @@ section.time-bar-container.synlig {
     border: 2px solid var(--gray);
     margin: 50px auto;
 }
-
-
-
 
 #tomat-start {
     flex-direction: row;
@@ -1779,7 +1700,7 @@ section.tomater-lista > article {
     }
     
     .disable:hover {
-        filter: none;
+        filter: brightness(1);
         transform: none; 
     }
 }
@@ -1790,14 +1711,7 @@ section.tomater-lista > article {
 
     .tomat-about-grid {
         display: flex;
-        grid-template-areas: 
-        "frågetecken"
-        "ruta2" 
-        "ruta3"
-        "ruta4" 
-        "ruta5"
-        "avslut";
-        row-gap: 2rem;
+        flex-direction: column;
         line-height: 2.2rem;
         font-size: 1.4rem;
     }
@@ -1806,7 +1720,7 @@ section.tomater-lista > article {
         justify-content: space-evenly;
         align-items: center;
         text-align: center;
-        min-height: 70vh;
+        min-height: 80vh;
         max-width: 50vw;
         margin: 20px auto;
         padding: 0 1rem;
@@ -1833,7 +1747,7 @@ section.tomater-lista > article {
     }
 
     section.about-intro > article {
-        padding: 30px 0;
+        padding: 30px 10px;
         background-color: var(--light-gray);
          width: 50vw; 
         height: 40vw;

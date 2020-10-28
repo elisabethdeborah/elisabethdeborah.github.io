@@ -29,16 +29,6 @@ anime({
         {value:650, duration:850},
     ],
 })
-
-/* const toggleMeny=document.querySelector('.fa-bars')
-const navbarToggle=document.querySelector('#nvbar-toggle')
-const navbarListToggle=document.querySelector('#nvbar-list-toggle')
- */
-/* toggleMeny.addEventListener('click', (e)=>{
-    navbarToggle.classList.toggle('navbar-view');
-    navbarListToggle.classList.toggle('navbar-view')
-})
- */
 const body = document.querySelector('body');
 const header = document.querySelector('header');
 const navicon = document.querySelector('.navicon');
