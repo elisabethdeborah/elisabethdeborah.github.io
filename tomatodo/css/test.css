@@ -100,11 +100,11 @@ section.tomater-lista-button-group > a {
     border: 3px outset darkslategrey;
 }
 
-section.tomater-lista-button-group > a:active {
+section.tomater-lista-button-group > .knapp-1:active, section.tomater-lista-button-group > .knapp-2:active,section.tomater-lista-button-group > .knapp-3:active {
     border: 3px inset gray;
 }
 
-section.tomater-lista-button-group > a:hover {
+section.tomater-lista-button-group > .knapp-1:hover, section.tomater-lista-button-group > .knapp-2:hover, section.tomater-lista-button-group > .knapp-3:hover {
     filter: brightness(1.3);
 }
 
@@ -1538,7 +1538,7 @@ main {
     } 
 
     /**/
-    .form-group{
+    #tomato-form> .form-group{
         padding-bottom: 100px;
     }
 

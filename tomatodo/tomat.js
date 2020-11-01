@@ -21,8 +21,10 @@ const navicon = document.querySelector('.navicon');
 const colorScheme = document.querySelectorAll('.navbar-container__color-schemes--color-scheme');
 const totalTodoTid = document.querySelector('#total-todo-tid');
 
+const allaStartTimer = document.querySelectorAll('.tomater-lista-button-group>a')
+const allaBtnSuccess = document.querySelectorAll('a.btn-success')
 
-
+console.log(allaStartTimer, allaBtnSuccess)
 
 //NAVBAR-IKON-LINJE-ANIMATION
 anime({
@@ -195,9 +197,9 @@ class UI{
             <h4 class="timer tomat-tid">${tomato.time}</h4>
         </section>
         <section class="tomater-lista-button-group">
-            <a href="#endregion" class="knapp-1 btn-success knapp-liten" alt="Start countdown-timer"><i class="fas fa-stopwatch-20 startTimer"></i></a>
-            <a href="#endregion" class="knapp-3 btn-info knapp-liten addFromMyTomatoesToTodo" alt="Add to TomaTo-do"><i class="fas fa-tasks addFromMyTomatoesToTodo"></i></a>
-            <a href="#endregion" class="knapp-2 btn-danger knapp-liten"><i class="fas fa-times delete"></i></a>
+            <a href="#endregion" class="knapp-1 btn-success knapp-liten" title="Start countdowntimer" alt="Start countdowntimer"><i class="fas fa-stopwatch-20 startTimer"></i></a>
+            <a href="#endregion" class="knapp-3 btn-info knapp-liten addFromMyTomatoesToTodo"  title="Add to to-do list" alt="Add to to-do list"><i class="fas fa-tasks addFromMyTomatoesToTodo"></i></a>
+            <a href="#endregion" class="knapp-2 btn-danger knapp-liten" title="Delete" alt="Delete"><i class="fas fa-times delete"></i></a>
         </section>
          `;
  
@@ -310,8 +312,8 @@ class UI{
         <h4 class="tomat-namn">${todo.name}</h4>
         <h4 class="tomat-tid">${todo.time}</h4>
         <section class="tomater-lista-button-group">
-            <a href="#endregion" class="knapp-1 knapp-liten" alt="Start countdown-timer"><i class="fas fa-stopwatch-20 startTimer"></i></a>
-            <a href="#endregion" class="knapp-2 knapp-liten"><i class="fas fa-times delete"></i></a>
+            <a href="#endregion" class="knapp-1 knapp-liten" title="Start countdowntimer" alt="Start countdowntimer"><i class="fas fa-stopwatch-20 startTimer"></i></a>
+            <a href="#endregion" class="knapp-2 knapp-liten" title="Delete" alt="Delete"><i class="fas fa-times delete"></i></a>
         </section>
          `;
  
@@ -339,10 +341,7 @@ class UI{
                 if(todo.name ==aktuellTodo){
                     console.log(todo.checked, aktuellTodo,todoObj)
                     todoObj.classList.toggle('checked')
-
-            } 
-            
-                
+            }           
             })
 
 }
@@ -485,8 +484,10 @@ if (tomatoForm) {
   
     // Validate
     if(name === '' || time1 === '' ||time2 === '') {
-        UI.showAlert(e.target.parent, e.target.previousElementSibling, 'Please fill in all fields', 'red');
+       // console.log(e.target.children[2], e.target.parentElement.children)
+        UI.showAlert(e.target, e.target.children[2], 'Please fill in all fields', 'red');
        // console.log(e.target, e.target.children[2])
+       
     } else if(isNaN(time1) ||isNaN(time2)) {
         UI.showAlert(e.target, e.target.children[2], 'Please put in a number', 'red');
     } else if (time1[1]==undefined){
@@ -722,8 +723,16 @@ if (tomaterLista) {
         if (e.target.classList.contains('startTimer')) {
             timmar=Number(e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[5].textContent[0]+e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[5].textContent[1]);
             minuter=Number(e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[5].textContent[3]+e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[5].textContent[4]);
-            if (!isNaN(timmar), !isNaN(minuter)) {
+            if (!isNaN(timmar), !isNaN(minuter), !(body.classList.contains('running'))) {
+                body.classList.add('running')
+                console.log(body.classList)
+                allaStartTimer.forEach((timerknapp) => {
+                    console.log('yes')
+                    timerknapp.classList.add('disable')
+                    timerknapp.classList.remove('knapp-1')
+                })
                 countDown(timmar, minuter);
+                
             } else {
                 console.log(!isNaN(timmar), !isNaN(minuter))
                 console.log(timmar +'=' + typeof(timmar) +' och '+ minuter +'='+ typeof(minuter))
@@ -732,8 +741,16 @@ if (tomaterLista) {
         } else if (e.target.classList.contains('btn-success')) {
             timmar = e.target.parentNode.parentNode.childNodes[1].childNodes[5].childNodes[0].textContent[0]+e.target.parentNode.parentNode.childNodes[1].childNodes[5].childNodes[0].textContent[1]
             minuter = e.target.parentNode.parentNode.childNodes[1].childNodes[5].childNodes[0].textContent[3]+e.target.parentNode.parentNode.childNodes[1].childNodes[5].childNodes[0].textContent[4]
-            if (!isNaN(timmar), !isNaN(minuter)) {
+            if (!isNaN(timmar), !isNaN(minuter), !(body.classList.contains('running'))) {
+                body.classList.add('running')
+                console.log(body.classList)
+                allaBtnSuccess.forEach((timerknapp) => {
+                    console.log('yesssss')
+                    timerknapp.classList.add('disable')
+                    timerknapp.classList.remove('knapp-1')
+                })
                 countDown(timmar, minuter);
+                
             } else {
                 console.log(!isNaN(timmar), !isNaN(minuter))
                 e.target.innerHTML='<i class="fas fa-ban"></i>'
@@ -746,43 +763,42 @@ if (tomaterLista) {
             // Remove Tomato from UIT
             UI.deleteTomato(e.target);
             // Show success message
-// UI.showAlert(document.querySelector('.header__top'), document.querySelector('.logo-navicon'), 'Tomato Removed', 'red');
+            UI.showAlert(document.querySelector('.header__top'), document.querySelector('.logo-navicon'), 'Tomato Removed', 'red');
            
             // Remove tomato from store FÖRSÖKER NÅ TOMATENS NAMN, INTE INNEHÅLL
-//  Store.removeTomato(e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[3].textContent) 
-         tomatos.forEach((tomat,index)=> {
+            Store.removeTomato(e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[3].textContent) 
+                tomatos.forEach((tomat,index)=> {
 
-            let targetTomatNamn = e.target.parentElement.parentElement.parentElement.children[0].children[1].textContent;
+                    let targetTomatNamn = e.target.parentElement.parentElement.parentElement.children[0].children[1].textContent;
 
-                if(tomat.name == targetTomatNamn){
-                    if(index==0){
-                    console.log(tomat.name, index, 'yes', tomatos[index+1], 'först')
-                    console.log(e.target)
-                } else {
-                    console.log(tomat.name, index, 'yes', tomatos[index-1])
-                    console.log(e.target)
-                }
-            } else {
-                console.log('no')
-            }
-            
-})
+                        if(tomat.name == targetTomatNamn){
+                            if(index==0){
+                            console.log(tomat.name, index, 'yes', tomatos[index+1], 'först')
+                            console.log(e.target)
+                        } else {
+                            console.log(tomat.name, index, 'yes', tomatos[index-1])
+                            console.log(e.target)
+                        }
+                    } else {
+                        console.log('no')
+                    }            
+            })
         } else if (e.target.classList.contains('btn-danger')) {
             // Remove Tomato from UI
             UI.deleteTomato(e.target);
             // Show success message
-//UI.showAlert(document.querySelector('.header__top'), document.querySelector('.logo-navicon'), 'Tomato Removed', 'red');
+            UI.showAlert(document.querySelector('.header__top'), document.querySelector('.logo-navicon'), 'Tomato Removed', 'red');
             
-console.log(e.target.parentElement.parentElement.parentElement.parentElement)
+/* console.log(e.target)
 console.log(tomatos.forEach((tomat)=> {
             if(tomat.name == e.target.name){
                 console.log(tomat, index)
             } else {
                 console.log('no')
             }
-}))
+})) */
             // Remove tomato from store FÖRSÖKER NÅ TOMATENS NAMN, INTE INNEHÅLL
-//   Store.removeTomato(e.target.parentNode.parentNode.childNodes[1].childNodes[3].textContent.toLowerCase)
+            Store.removeTomato(e.target.parentNode.parentNode.childNodes[1].childNodes[3].textContent)
         }
 
         

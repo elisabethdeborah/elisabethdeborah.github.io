@@ -88,8 +88,13 @@ volume.addEventListener('click', (e)=>{
 
 if (testStart) {
     testStart.addEventListener('click', (event) => {
-    console.log(Number(inputTidMinuter.value))
+    if (Number(inputTidTimmar.value)+Number(inputTidMinuter.value)!=0){
+        console.log(Number(inputTidTimmar.value),Number(inputTidMinuter.value))
     countDown(Number(inputTidTimmar.value),Number(inputTidMinuter.value))
+    } else {
+        console.log(Number(inputTidTimmar.value),Number(inputTidMinuter.value))
+        UI.showAlert(event.target.parentNode, event.target, 'No time added', 'red');
+    }
 })
 }
 
