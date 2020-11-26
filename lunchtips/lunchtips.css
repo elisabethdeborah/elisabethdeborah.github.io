@@ -91,6 +91,7 @@ body{
 .aktuell-sida{
     color: var(--accentblå);
     font-weight: 400;
+    border-bottom: 1px solid var(--accentblå);
 }
 
 #navbar-mindre{
@@ -257,14 +258,15 @@ svg>ellipse:hover {
     justify-content: center;
     align-items: center;
     background-color: var(--accentblå);
+    transition: border 100ms, background-color 1s ease, color 1s ease;
 }
 
 #yes-restauranger>li a:hover, .restaurang-länk:hover{
     background-color: white;
     color: var(--accentblå);
     border: 2px solid var(--accentblå);
-    transition-duration: 250ms;
 }
+
 #yes-restauranger>li a:active, .restaurang-länk:active{
     transform: translate(2px, 3px);
     transition-duration: 1ms;
