@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <title>About TomaToDo</title>
+       <title>Quick Start TomaToDo</title>
        <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/e593b97041.js" crossorigin="anonymous"></script>
-      <!--  <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-         --><!-- <link href="tomat-timer-to-do.css" rel="stylesheet"> -->
-        <link href="css/test.css" rel="stylesheet">
-       <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        --> <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link href="/css/test.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
        <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Give+You+Glory&display=swap" rel="stylesheet">
     </head>
     <body class="body--light-theme">
@@ -23,8 +20,6 @@
                                 <path class="tomato-blast" d="M534.22 318.32L875.719 461.819L875.719 120.317L1051.72 384.819L1292.92 230.32L1217.22 461.819L1503.22 461.819L1292.92 615.818L1580.22 725.819L919.72 670.82L534.22 318.32Z" fill="red" stroke="red" stroke-width="50"/>
                             </svg>  
                             <h1 class="logo-navicon__header">TomaTo-Do!</h1>
-                        
-                            
                             </a> 
                             <svg class="navicon" width="57" height="43" viewBox="0 0 57 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect class="linje-1" class="navicon__linje-1" width="56.087" height="6.85507" rx="3" fill="#ffffff"/>
@@ -37,8 +32,8 @@
                     <nav class="navbar-container">
                         <!-- navlänksdelen -->
                         <ul class="navbar-container__link-list-container">
-                            <li class="navbar-container__link-list-container__nav-list-item"><a href="index.html" class="nav-link">About</a></li>
-                            <li class="navbar-container__link-list-container__nav-list-item"><a href="quick-start-flik-final-tomat.html" class="nav-link">Quick Start</a></li>
+                            <li class="navbar-container__link-list-container__nav-list-item"><a href="about-tomatoes.html" class="nav-link">About</a></li>
+                            <li class="navbar-container__link-list-container__nav-list-item"><a href="index.html" class="nav-link">Quick Start</a></li>
                             <li class="navbar-container__link-list-container__nav-list-item"><a href="time-new-tomato-flik-final-tomat.html" class="nav-link">Time New Tomato</a></li>
                             <li class="navbar-container__link-list-container__nav-list-item"><a href="my-tomatoes-flik-final-tomat.html" class="nav-link">My Tomatoes</a></li>
                             <li class="navbar-container__link-list-container__nav-list-item"><a href="to-do-flik-final-tomat.html" class="nav-link">My TomaTo-Do List</a></li>
@@ -51,7 +46,20 @@
                     </nav>
                 </section>
             </section>
-            <section class="hero">
+            <section class="hero hero-quickstart">
+                <div id="tomat-start">
+                    <div class="nedräkningstimer">
+                        <h2 id="time-left"></h2>
+                        <h2 id="minutes-left"></h2>
+                        <h2 id="seconds-left"></h2>   
+                    </div>
+                    <div class="timer-buttons">
+                        <button type="button" class="knapp knapp-liten knapp-2" id="ned-stopp"><img class="pause-ikon" src="/tomatodo/IMG/pause-vit.svg"></button>
+                        <button type="button" class="knapp knapp-liten knapp-1" id="ned-resume"><img class="resume-play-knapp-ikon" src="/tomatodo/IMG/play-continue.svg"></button>
+                        <button type="button" class="knapp knapp-liten knapp-4" id="ned-restart"><img class="reoad-knapp-ikon" src="/tomatodo/IMG/restart-vit.svg"></button>
+                        <button type="button" class="knapp knapp-liten knapp-3 ljud-på" id="volym"><img class="volume" src="/tomatodo/IMG/volume-on-vit.svg"></button>
+                    </div>    
+                </div>
                 <svg class="hero__svg shape" width="1804" height="1808" viewBox="0 0 1804 1808" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="header-shape-gradient" x2="0.35" y2="1">
@@ -59,116 +67,324 @@
                             <stop offset="30%" stop-color="var(--color-stop)" />
                             <stop offset="100%" stop-color="var(--color-bot)" />
                           </linearGradient>
-                    </defs>
+                      </defs>
                     <path class="gradient-bg" id="tomat-kropp" d="M811.602 1660.5C1029.23 1696.18 1236.89 1667.68 1396.83 1592C1556.7 1516.35 1670.24 1392.72 1695.61 1237.96C1720.99 1083.2 1652.87 929.791 1525.52 807.048C1398.13 684.253 1210.44 590.936 992.812 555.255C775.184 519.574 567.527 548.072 407.586 623.756C247.713 699.408 134.174 823.033 108.8 977.794C83.4267 1132.55 151.544 1285.96 278.89 1408.71C406.289 1531.5 593.974 1624.82 811.602 1660.5Z" fill="#F41212" stroke="#928f8f" stroke-width="20"/>
-                    <path d="M534.22 318.32L875.719 461.819L875.719 120.317L1051.72 384.819L1292.92 230.32L1217.22 461.819L1503.22 461.819L1292.92 615.818L1580.22 725.819L919.72 670.82L534.22 318.32Z" fill="#67CA04" stroke="#928f8f" stroke-width="20"/>
+                    <path class="hero-tomat-blast" d="M534.22 318.32L875.719 461.819L875.719 120.317L1051.72 384.819L1292.92 230.32L1217.22 461.819L1503.22 461.819L1292.92 615.818L1580.22 725.819L919.72 670.82L534.22 318.32Z" fill="#67CA04" stroke="#928f8f" stroke-width="20"/>
                 </svg>                    
             </section>
         </header>
-            <section class="main-container"> 
-            <section class="tomat-about-grid">
-                <article class="about-grid-item1">
-                    <section class="about-intro">
-                        <article class="about-intro-grid-item1">
-                            <i class="fas fa-question fa-3x"></i>
-                            <p>Do you have trouble estimating the time a certain task take?</p>
-                        </article>
-                        <article class="about-intro-grid-item2">
-                            <i class="fas fa-question fa-3x"></i>
-                            <p>Do you put a hundred things on your to-do list and expect that you will be able to fit everything in without realising every task actually takes time?</p>
-                        </article>
-                        <article class="about-intro-grid-item3">
-                            <i class="fas fa-question fa-3x"></i>
-                            <p>Do you forget how long you have spent on a specific task or get surprised when you run out of time?</p>
-                        </article>
-                        <article class="about-intro-grid-item4">
-                            <h2 id="yes">Yes<i class="fas fa-question fa-3x"></i></h2>
-                            <h2>Then <span id="TomaTo-Do-span">TomaTo-Do!</span> is for you<i class="fas fa-exclamation"></i></h2>
-                        </article>
+         <main>
+
+
+
+
+            <section class="on-boarding">
+                <article class="close-on-boarding">X</article>
+                
+
+                <!--FIRST SLIDE -->
+
+                <section class="onboarding-cube slide-one visible" id="1">
+                    <article class="onboard-img-container front-img-container">
+                        <h2 class="front-welcome-header">Welcome to Tomato-Do!</h2>
+                        <img src="IMG/countdown.png" alt="" class="front-img">
+                    </article>
+                    
+                    <article class="front-text slide-text">
+                        <h2 class="front-working-header">This is how it works</h2>
+                        <p>No matter which function of this application you are using, the countdown function will work in the same way.</p>  
+                        <p>When the countdown is started, the countdown clock will start to count down. At the same time the color of the background will change from green to red, according to how much time is left.</p>  
+                        <p>The blue bar below the tomato will show the time passing in a linear visual.</p> 
+                        <p>When the time is up, the tomato will animate and there will be an alarm signal that is hard to ignore.</p> 
+                        <p>You will be able to pause, continue from paused and restart the countdown, as well as mute the alarm, by klicking the buttons to the right of the countdown clock.</p>    
+                    </article>
+                    <article class="continue-button">
+                        <img class="continue-arrow onboarding-button-next" src="/IMG/continue-arrow.svg" alt="">
+                    </article>
+                </section>
+
+                <!--SECOND SLIDE -->
+<!--  <section class="on-boarding-2"> -->
+                <section class="onboarding-cube slide-two to-the-right" id="2">
+                    <article class="continue-button  previous-button-top">
+                        <img class="previous-arrow onboarding-button-previous-top" src="/IMG/continue-arrow.svg" alt="">
+                    </article>
+                    <article class="onboard-img-container front-img-container">
+                        <img src="IMG/quickstart-tomato.png" alt="" class="-slide-two-img">
+                    </article>
+                    
+                    <article class="front-text slide-text">
+                        <h2 class="front-working-header">Quick Start timer</h2>
+                        <p>This is our Quick Start countdown timer.</p> 
+                        <p>To begin, just fill in a countdown time in the HH : MM-format and press start!</p>   
+                    </article>
+                    <!-- <article class="continue-button continue-button-bottom">
+                        <img class="previous-arrow onboarding-button-previous" src="/IMG/continue-arrow.svg" alt="">
+                    </article> -->
+                    <article class="continue-button">
+                        <img class="previous-arrow onboarding-button-previous previous-button-bottom" src="/IMG/continue-arrow.svg" alt="">
+                        <img class="continue-arrow onboarding-button-next" src="/IMG/continue-arrow.svg" alt="">
+                    </article>
+                </section>
+<!-- </section> -->
+<!--THIRD SLIDE -->
+<!-- <section class="on-boarding-3"> -->
+                <section class="onboarding-cube slide-three to-the-right" id="3">
+                    <article class="continue-button  previous-button-top">
+                        <img class="previous-arrow onboarding-button-previous  onboarding-button-previous-top" src="/IMG/continue-arrow.svg" alt="">
+                    </article>
+                    <article class="onboard-img-container front-img-container">
+                        <img src="IMG/countdown.png" alt="" class="front-img">
+                    </article>
+                    
+                    <article class="front-text slide-text">
+                        <h2 class="front-working-header">My Tomatoes</h2>
+                        <p>You can also save a task that you will do more than once to your library, My Tomatoes.</p>  
+                        <p>This way, you know how much time you need the timer to count down, and can simply press the timer button next to the tomato in you library.</p>
+                        <p>The way you add a Tomato to your library is by timing doing the task or simply putting in an estimated time directly.</p>  
+                        <p>The format of timing your own Tomato will be saved in hours and minutes.</p>
+                    </article>
+                    <!-- <article class="continue-button continue-button-bottom">
+                        <img class="previous-arrow onboarding-button-previous" src="/IMG/continue-arrow.svg" alt="">
+                    </article> -->
+                    <article class="continue-button">
+                        <img class="previous-arrow onboarding-button-previous previous-button-bottom" src="/IMG/continue-arrow.svg" alt="">
+                        <img class="continue-arrow onboarding-button-next" src="/IMG/continue-arrow.svg" alt="">
+                    </article>
+                </section>
+<!-- </section>  -->
+
+                <section class="onboarding-cube slide-four to-the-right" id="4">
+                    <article class="continue-button  previous-button-top">
+                        <img class="previous-arrow onboarding-button-previous  onboarding-button-previous-top" src="/IMG/continue-arrow.svg" alt="">
+                    </article>
+                    <article class="onboard-img-container front-img-container">
+                        <img src="IMG/countdown.png" alt="" class="front-img">
+                    </article>
+                    
+                    <article class="front-text slide-text">
+                        <h2 class="front-working-header">My TomaToDo</h2>
+                        <p>You can add your Tomato to your to do-list, My TomaToDo.
+                            In your TomaToDo-list you can click the timer button to start the countdown, and you can check off the task when your done.</p>
+                        <p>You can also add a task without any time attached to it.</p>
+                        <p>To add your Tomato to your TomaToDo-list, you click the to do-list button on your Tomato, or add one directly, without the countdown function.</p>
+                        <p>You can check off your to do by clicking the circle to the left of the Tomato.</p>
+                        <p>If you want to un-click, simply click the circle again.</p>
+                    </article>
+                    <!-- <article class="continue-button continue-button-bottom">
+                        <img class="previous-arrow onboarding-button-previous" src="/IMG/continue-arrow.svg" alt="">
+                    </article> -->
+                    <article class="continue-button">
+                        <img class="previous-arrow onboarding-button-previous previous-button-bottom" src="/IMG/continue-arrow.svg" alt="">
+                        <img class="continue-arrow onboarding-button-next" src="/IMG/continue-arrow.svg" alt="">
+                    </article>
+                </section>
+
+                <section class="onboarding-cube slide-five to-the-right" id="5">
+                    <article class="continue-button previous-button-top">
+                        <img class="previous-arrow onboarding-button-next  onboarding-button-previous-top" src="/IMG/continue-arrow.svg" alt="">
+                    </article>
+                    <article class="onboard-img-container front-img-container">
+                        <img src="IMG/countdown.png" alt="" class="front-img">
+                    </article>
+                    
+                    <article class="front-text slide-text">
+                        <h2 class="front-working-header">My TomaToDo</h2>
+                        <p>The end</p>
+                    </article>
+                    <article class="continue-button continue-button-bottom">
+                        <img class="previous-arrow onboarding-button-previous previous-button-bottom" src="/IMG/continue-arrow.svg" alt="">
+                    </article>
+                </section>
+
+                <!--SECOND SLIDE -->
+<!-- 
+                <section class="onboarding-cube slide-two">
+                    </section> 
+                    <img src="IMG/quickstart-tomato.png" alt="" class="-slide-two-img">
+                    <figcaption class="front-text slide-text-two">
+                        <p>This is our Quick Start countdown timer.</p> 
+                        <p>To begin, just fill in a countdown time in the HH : MM-format and press start!</p>
+                    </figcaption>
+                </section>
+
+                <!--THIRD SLIDE --
+
+                <section class="onboarding-cube left">
+                    <section class="onboard-img-container left-img-container">
+                        <img src="" alt="" class="left-img">
                     </section>
-                </article>
-                <article class="about-grid-item2">
-                    <p class="about-quick-start">
-                    <span id="TomaTo-Do-span">TomaTo-Do!</span> is a time management resource, combining the Pomodoro technique with a simple to-do list. The Pomodoro technique is the method of using a countdown timer (which sometimes have the design of a tomato, hence the name "pomodoro") to break down work into intervals. 
-                    </p>
-                    <p class="about-quick-start">
-                    You can use <span id="TomaTo-Do-span">TomaTo-Do!</span> as a regular countdown timer, using the Quick Start timer, or you can time a specific task and save it as a <span id="TomaTo-span">Tomato</span> to your own library, <span id="TomaTo-span">My Tomatoes</span>.  
-                    </p>
-                    <i class="fas fa-stopwatch-20 fa-3x"></i>
-                </article>
-                <article class="about-grid-item3">
-                    <p class="about-my-tomatoes">
-                        In your library you can collect different <span id="TomaTo-span">Tomatoes</span> that you add by timing doing the task or simply putting in an estimated time directly. The format of timing your own <span id="TomaTo-span">Tomatoes</span> will be saved in hours and minutes.
-                    </p>    
-                    <p class="about-my-tomatoes">
-                        The good thing about timing yourself is that you vill know for sure how long the task takes for you, and if you are the type of person (like myself) that tends to overestimate how efficient you are, this will help you plan realisticly.
-                        After adding your <span id="TomaTo-Do-span">Tomato</span> to your library, you can click on the timer button in the list and the countdown will begin.   
-                    </p>
-                    <i class="fas fa-list fa-3x"></i> 
-                </article>
-                <article class="about-grid-item4">
-                    <p class="about-my-tomato-do">
-                        You also have the option of adding the <span id="TomaTo-span">Tomato</span> to the <span id="TomaTo-Do-span">TomaTo-Do</span> list by clicking the button with the list icon. 
-                        The <span id="TomaTo-span">Tomato</span> will be saved to the <span id="TomaTo-Do-span">TomaTo-Do</span> list.
-                    </p>
-                    <p class="about-my-tomato-do">    
-                        The <span id="TomaTo-Do-span">TomaTo-Do!</span> list functions as a regular to-do list, but you can also click the timer button to start the countdown.
-                        You can add either a <span id="TomaTo-span">Tomato</span> with a saved time or add a <span id="TomaTo-Do-span">TomaTo-Do</span> without any time connected to it. 
-                    </p>
-                    <i class="fas fa-tasks fa-3x"></i>
-                </article>
-                <article class="about-grid-item5">
-                    <p class="about-general-info">
-                        When the timer is counting down, the background of the page will change from green to red, according to how much time has passed/is left for the specific task. 
-                    </p>
-                    <p class="about-general-info">
-                        This makes it easier to get a grasp of the time status just by catching a glimps of the screen, without having to look at the actual numbers. 
-                        There is both an audible and a visual signal for when time is up.
-                    </p>
-                    <i class="fas fa-eye fa-3x"></i>
-                </article>
-                <article class="about-grid-item6">
-                    <p class="about-avslut">
-                        The inspiration for <span id="TomaTo-Do-span">TomaTo-Do!</span> came from two videos about time management on the <a id="howtoadhdchannel" href="https://www.youtube.com/channel/UC-nPM1_kSZf91ZGkcgy_95Q" target="_blank">How to ADHD Youtube channel</a>. 
-                        These videos has helped me a lot and I really recommend checking them out.  
-                        <figure id="howtoadhdh-part1">
-                            <a class="howtoadhdh-länk howtoadhdh-länk1" href="https://www.youtube.com/watch?v=siHBuHdOhCY&t=206s" target="_blank" alt="How to ADHD video 1">
-                                <img class="howtoadhd-bild" src="/tomatodo/IMG/howtoadhd-del1.jpg">
-                                <figcaption>Watch part 1 here!</figcaption>
-                            </a>
-                        </figure>
-                        <figure id="howtoadhdh-part2">
-                            <a class="howtoadhdh-länk howtoadhdh-länk2" href="https://www.youtube.com/watch?v=KecZYC7kP78" target="_blank" alt="How to ADHD video 2">
-                                <img class="howtoadhd-bild" src="/tomatodo/IMG/howtoadhd-del2.jpg">
-                                <figcaption>Watch part 2 here!</figcaption>
-                            </a>
-                        </figure> 
-                    <p>I hope that<span id="TomaTo-Do-span">TomaTo-Do!</span> will be a help with your planning and time management.
-                    </p> 
-                    <i class="fas fa-brain fa-3x"></i> 
-                </article>
-                </div>
+                    <figcaption class="left-text">
+                        <p>You can also save a task that you will do more than once to your library, My Tomatoes.</p>  
+                        <p>This way, you know how much time you need the timer to count down, and can simply press the timer button next to the tomato in you library.</p>
+                    </figcaption>
+                    <figcaption class="left-text">
+                        <p>The way you add a Tomato to your library is by timing doing the task or simply putting in an estimated time directly.</p>  
+                        <p>The format of timing your own Tomato will be saved in hours and minutes.</p>
+                    </figcaption>
+                </figure>
+
+                <!--FOURTH SLIDE --
+
+                <figure class="onboarding-cube right">
+                    <section class="onboard-img-container right-img-container">
+                        <img src="" alt="" class="right-img">
+                        <img src="" alt="" class="right-img">
+                        <img src="" alt="" class="right-img">
+                    </section>
+                    
+                    <figcaption class="right-text">
+                        <p>You can add your Tomato to your to do-list, My TomaToDo.
+                            In your TomaToDo-list you can click the timer button to start the countdown, and you can check off the task when your done.</p>
+                        <p>You can also add a task without any time attached to it.</p>
+                    </figcaption>
+                    <figcaption class="right-text">
+                        <p>To add your Tomato to your TomaToDo-list, you click the to do-list button on your Tomato, or add one directly, without the countdown function.</p>
+                    </figcaption>
+                    <figcaption class="right-text">
+                        <p>You can check off your to do by clicking the circle to the left of the Tomato.</p>
+                        <p>If you want to un-click, simply click the circle again.</p>
+                    </figcaption>
+                </figure>
+
+
+
+                <figure class="onboarding-cube back">
+                    <img src="" alt="" class="back-img">
+                    <figcaption class="back-text"></figcaption>
+                </figure> -->
+
             </section>
+
+
+<!-- 
+
+            <section class="on-boarding">
+                <article class="close-on-boarding">X</article>
+                
+
+                <!--FIRST SLIDE --
+
+                <figure class="onboarding-cube slide-one visible">
+                    <section class="onboard-img-container front-img-container">
+                        <h2 class="front-welcome-header">Welcome to Tomato-Do!</h2>
+                        <img src="IMG/countdown.png" alt="" class="front-img">
+                    </section>
+                    
+                    
+                    <!-- <img src="IMG/countdown.png" alt="" class="front-img"> --
+                    <figcaption class="front-text slide-text-one">
+                        <h2 class="front-working-header">This is how it works</h2>
+                        <p>No matter which function of this application you are using, the countdown function will work in the same way.</p>  
+                        <p>When the countdown is started, the countdown clock will start to count down. At the same time the color of the background will change from green to red, according to how much time is left.</p>  
+                        <p>The blue bar below the tomato will show the time passing in a linear visual.</p> 
+                        <p>When the time is up, the tomato will animate and there will be an alarm signal that is hard to ignore.</p> 
+                        <p>You will be able to pause, continue from paused and restart the countdown, as well as mute the alarm, by klicking the buttons to the right of the countdown clock.</p> 
+                        <article class="continue-button">
+                            <img class="continue-arrow" src="/IMG/continue-arrow.svg" alt="">
+                        </article>
+                    </figcaption>
+                    
+                </figure>
+
+
+                <!--SECOND SLIDE --
+
+                <figure class="onboarding-cube slide-two">
+                    <!-- <section class="onboard-img-container front-img-container">
+                        <img src="IMG/quickstart-tomato.png" alt="" class="front-img">
+                    </section> 
+                    <img src="IMG/quickstart-tomato.png" alt="" class="-slide-two-img">
+                    <figcaption class="front-text slide-text-two">
+                        <p>This is our Quick Start countdown timer.</p> 
+                        <p>To begin, just fill in a countdown time in the HH : MM-format and press start!</p>
+                    </figcaption>
+                </figure>
+
+                <!--THIRD SLIDE
+
+                <figure class="onboarding-cube left">
+                    <section class="onboard-img-container left-img-container">
+                        <img src="" alt="" class="left-img">
+                    </section>
+                    <figcaption class="left-text">
+                        <p>You can also save a task that you will do more than once to your library, My Tomatoes.</p>  
+                        <p>This way, you know how much time you need the timer to count down, and can simply press the timer button next to the tomato in you library.</p>
+                    </figcaption>
+                    <figcaption class="left-text">
+                        <p>The way you add a Tomato to your library is by timing doing the task or simply putting in an estimated time directly.</p>  
+                        <p>The format of timing your own Tomato will be saved in hours and minutes.</p>
+                    </figcaption>
+                </figure>
+
+                <!--FOURTH SLIDE 
+
+                <figure class="onboarding-cube right">
+                    <section class="onboard-img-container right-img-container">
+                        <img src="" alt="" class="right-img">
+                        <img src="" alt="" class="right-img">
+                        <img src="" alt="" class="right-img">
+                    </section>
+                    
+                    <figcaption class="right-text">
+                        <p>You can add your Tomato to your to do-list, My TomaToDo.
+                            In your TomaToDo-list you can click the timer button to start the countdown, and you can check off the task when your done.</p>
+                        <p>You can also add a task without any time attached to it.</p>
+                    </figcaption>
+                    <figcaption class="right-text">
+                        <p>To add your Tomato to your TomaToDo-list, you click the to do-list button on your Tomato, or add one directly, without the countdown function.</p>
+                    </figcaption>
+                    <figcaption class="right-text">
+                        <p>You can check off your to do by clicking the circle to the left of the Tomato.</p>
+                        <p>If you want to un-click, simply click the circle again.</p>
+                    </figcaption>
+                </figure>
+
+
+
+                <figure class="onboarding-cube back">
+                    <img src="" alt="" class="back-img">
+                    <figcaption class="back-text"></figcaption>
+                </figure>
+
+            </section>
+ -->
+
+
+            <section class="time-bar-container">
+                <article class="time-bar-article"></article>
+            </section>
+            <section class="tomat-timer">
+                <div class="timer-contain">
+                    <div class="input-timer" id="btn">
+                        <input type="text" id="fyll-i-tid1" maxlength="2" placeholder="HH"> : 
+                        <input type="text" id="fyll-i-tid2" maxlength="2" placeholder="MM">
+                        <button type="button" id="test-start" class="quick-start-add-time knapp knapp-stor">Start</button> 
+                    </div>
+                </div>
+                <div class="angiven-starttid-spara" style="display: none;">
+                    <h2 id="timer-text"></h2>
+                    <h2 id="minutes-text"></h2>
+                    <h2 id="seconds-text"></h2>
+                </div>
+            <button type="submit" value="Submit" class="knapp" id="save-btn" style="display: none;">Save Tomato</button>
             </section>
         </main>
-
-
-
         <footer>
             <section>
                 <div class="sociala-länkar-container">
                     <ul id="social-media">
                         <a href='https://github.com/elisabethdeborah' target="_blank"><i class="fab fa-github"></i></a>
-                        <a href='https://linkedin.com/in/elisabethrumar' target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href='https//linkedin.com/in/elisabethrumar' target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     </ul>    
                 </div>
                 <div class="footer-nav-länkar-container">
                     <ul id="footer-nav-länkar">
-                        <li class="footer-nav"><a  href='index.html'>About</a></li>
-                        <li class="footer-nav"><a href='quick-start-flik-final-tomat.html'>Quick Start</a></li>            
+                        <li class="footer-nav"><a  href='about-tomatoes.html'>About</a></li>
+                        <li class="footer-nav"><a href='index.html'>Quick Start</a></li>            
                         <li class="nav-nav"><a href='time-new-tomato-flik-final-tomat.html'>Time new TomaTo</a></li>
-                        <li class="footer-nav"><a href="my-tomatoes-flik-final-tomat.html">My TomaToes</a></li>
-                        <li class="footer-nav"><a href="to-do-flik-final-tomat.html">My TomaToDo-list</a></li>
+                        <li class="footer-nav"><a href="my-tomatoes-flik-final-tomat.html">My Tomatoes</a></li>
+                        <li class="footer-nav"><a href="to-do-flik-final-tomat.html">My TomaToDo List</a></li>
                     </ul>
                 </div>
                 <div class="footer-credits-container">
@@ -178,8 +394,10 @@
                 </div>
             </section>
         </footer>
-       
-        <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>    
-         <script src="about-tomato.js" charset="utf-8"></script> 
+        
+        <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>  
+        <script src="tomat.js" charset="utf-8"></script> 
+        <script src="countdown.js" charset="utf-8"></script>  
+        <script src="/onboarding.js" charset="utf-8"></script>
     </body>
 </html>

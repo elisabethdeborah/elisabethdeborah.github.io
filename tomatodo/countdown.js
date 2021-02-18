@@ -403,3 +403,37 @@ function sound(src) {
 
 
 
+//ANVÄNDA DETTA NÅNSTANS? ÄNDRAR CSS MED JS-LOOP-ITERATIONS INDEX
+
+/**
+ * 
+displayFelBokstäver = () => {
+    //FÖR VARJE FEL BOKSTAV BLIR EN DEL AV SVG:N SYNLIG
+    for (bokstav of felBokstäver) {
+        svgHelaBilden.forEach((del, index) => {
+            if (index == felBokstäver.indexOf(bokstav)){          
+                del.classList.add('synlig')   
+                hangmanBackground.style.backgroundColor='rgba(147, 75, 107, 0.'+antalFel*2+')';
+                hangmanBackground.style.borderRadius=''+antalFel*2.5+'0%';
+                hangmanBackground.style.padding=''+antalFel+'rem, 0,'+antalFel+'rem';
+                antalFel=index;                   
+            } 
+        })                                                      
+    //OM ANTAL FEL ÄR 5 SÅ ÄR HELA SVG:N SYNLIG OCH GUBBEN ÄR HÄNGD => GAME OVER 
+        if(antalFel==5) {
+            //UPPDATERAR RÄKNAREN FÖR ANTAL SPELOMGÅNGAR
+            antalspelOmgångar++;    
+            poängräknare.innerHTML=`Poäng: ${poängräknareCount} / ${antalspelOmgångar}`
+            //ÄNDRAR BAKGRUNDSFÄRG OCH LÄGGER TILL TEXTEN "GAME OVER!" NÄR GUBBEN ÄR HÄNGD
+           setTimeout(() => {
+            felGissadeBokstäverSynas.classList.add('game-over')
+           }, 1000);
+
+            //NOLLSTÄLLER SPELPLANEN FÖR NÄSTA OMGÅNG
+            nollställOmgång();
+            animering();
+        }
+    }
+    
+}
+ */

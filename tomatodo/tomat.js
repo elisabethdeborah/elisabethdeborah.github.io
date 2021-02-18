@@ -24,7 +24,6 @@ const totalTodoTid = document.querySelector('#total-todo-tid');
 const allaStartTimer = document.querySelectorAll('.tomater-lista-button-group>a')
 const allaBtnSuccess = document.querySelectorAll('a.btn-success')
 
-console.log(allaStartTimer, allaBtnSuccess)
 
 //NAVBAR-IKON-LINJE-ANIMATION
 anime({
@@ -556,13 +555,14 @@ if(filterInput){
         console.log(lista)
       // Get varje 1:a-cell per rad i tabellen
         let tomaterNamn = lista.querySelectorAll('.tomat-namn');
-        console.log(tomaterNamn.innerHTML)
-      //Get varje rad i tabellen
-        let rader=document.querySelectorAll('#tomato-list article');
-        console.log(rader)
-      // Loop through namn-kolumnen
+                    //  console.log(tomaterNamn)
+      //Get varje tomat i listan
+        let rader=document.querySelectorAll('#tomater-lista article');
+        //console.log(rader)
+      // Loop through alla tomaters namn
         for(let i = 0;i < tomaterNamn.length;i++){  
-            let tomat = tomaterNamn[i].getElementsByTagName('h4')[0];
+            let tomat = tomaterNamn[i];
+            console.log(tomat)
         // If matched
             if(tomat.innerHTML.toUpperCase().indexOf(filterValue) > -1){
                 rader[i].style.display = '';
