@@ -1,10 +1,13 @@
 const nav = document.querySelector('nav');
-const navicon = document.querySelector('.navicon')
-const dropdown = document.querySelector('.dropdown')
-const projects = document.querySelector('.navbar__listitem__my-projects-rubrik')
-const screenshot = document.querySelectorAll('.project-cards-container__card__image')
-const screenshotContainer = document.querySelector('.project-cards-container')
-const figure = document.querySelectorAll('.project-cards-container__card')
+const navicon = document.querySelector('.navicon');
+const dropdown = document.querySelector('.dropdown');
+const projects = document.querySelector('.navbar__listitem__my-projects-rubrik');
+const screenshot = document.querySelectorAll('.project-cards-container__card__image');
+const screenshotContainer = document.querySelector('.project-cards-container');
+const figure = document.querySelectorAll('.project-cards-container__card');
+
+const findOutMore = document.querySelector('.about-me-read-more');
+const aboutMeHidden = document.querySelector('.about-me-hidden');
 
 navicon.addEventListener('click', (event) => {
     nav.classList.toggle('synlig');
@@ -13,25 +16,28 @@ navicon.addEventListener('click', (event) => {
     } else if (!(nav.classList.contains('synlig'))){
         navicon.textContent = '|||'; 
     }
-})
+});
+/* 
+findOutMore.addEventListener('click', (event) => {
+    if (aboutMeHidden.classList.contains('view')) {
+        aboutMeHidden.classList.remove('view-hide');
+    setTimeout(() => {
+        aboutMeHidden.classList.remove('view'); 
+    }, 1000);
+    } else if (!(nav.classList.contains('view'))){
+        aboutMeHidden.classList.add('view-open');
+    setTimeout(() => {
+        aboutMeHidden.classList.add('view'); 
+    }, 1000); 
+    }
+    
+}); */
 
-projects.addEventListener('mouseover', (event) => {
-    projects.classList.add('open');
-    dropdown.classList.add('visa-dropdown');
-})
-
-projects.addEventListener('mouseout', (event) => {
-    projects.classList.remove('open');
-    dropdown.classList.remove('visa-dropdown');
-})
 
 figure.forEach(figure => {
     figure.addEventListener('click', (event) => {
         if(window.innerWidth>600) {
             figure.classList.toggle('large-figure');
-           /*  figure.forEach(figure => {
-                figure.classList.toggle('large-figure');
-            }) */
             screenshotContainer.classList.toggle('container-large');
             }
     })
