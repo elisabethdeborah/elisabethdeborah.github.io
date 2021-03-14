@@ -5,6 +5,7 @@ const projects = document.querySelector('.navbar__listitem__my-projects-rubrik')
 const screenshot = document.querySelectorAll('.project-cards-container__card__image');
 const screenshotContainer = document.querySelector('.project-cards-container');
 const figure = document.querySelectorAll('.project-cards-container__card');
+const figureList = document.querySelectorAll('.project-cards-container__card3__caption ul')
 
 const findOutMore = document.querySelector('.about-me-read-more');
 const aboutMeHidden = document.querySelector('.about-me-hidden');
@@ -17,27 +18,14 @@ navicon.addEventListener('click', (event) => {
         navicon.textContent = '|||'; 
     }
 });
-/* 
-findOutMore.addEventListener('click', (event) => {
-    if (aboutMeHidden.classList.contains('view')) {
-        aboutMeHidden.classList.remove('view-hide');
-    setTimeout(() => {
-        aboutMeHidden.classList.remove('view'); 
-    }, 1000);
-    } else if (!(nav.classList.contains('view'))){
-        aboutMeHidden.classList.add('view-open');
-    setTimeout(() => {
-        aboutMeHidden.classList.add('view'); 
-    }, 1000); 
-    }
-    
-}); */
+
 
 
 figure.forEach(figure => {
     figure.addEventListener('click', (event) => {
         if(window.innerWidth>600) {
             figure.classList.toggle('large-figure');
+            figure.children[1].children[1].classList.toggle('large-figure-ul');
             screenshotContainer.classList.toggle('container-large');
             }
     })

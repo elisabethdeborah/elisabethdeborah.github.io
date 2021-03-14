@@ -15,7 +15,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;   
     color: var(--dark-grey);
-   /*  font-family: Arial, Helvetica, sans-serif; */
     font-family: 'Raleway', sans-serif;
     margin: 0;
     height: 100%;
@@ -61,7 +60,6 @@ a {
 }
 
 a:hover {
-    /* color:inherit; */
     text-decoration: none;
 }
 
@@ -112,21 +110,20 @@ p {
     align-items: center;
     height: 100vh;
     opacity: 1;
-   /*  background-color: var(--dark-grey); */
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 99;
-    /* font-family: sans-serif; */
     transform: translateX(-100vw);
     transition: all .5s ease-in;
 }
+
 nav.synlig .navbar__ul {
     transform: translateX(0vw);
     z-index: 99;
-   /*  background-color: var(--dark-grey); */
 }
+
 nav.synlig .navicon {
     content: 'X';
     transform: rotate(0deg);
@@ -161,20 +158,6 @@ nav.synlig .navicon {
     align-items: center;
 }
 
-/* .profile-picture {
-    background: var(--dark-grey) url(../img/profilbild.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 300px;
-    height: 300px;
-    background-position: 50% 50%;
-    filter: grayscale(1);
-    opacity: .8;
-    margin: 0 auto;
-    transition: opacity .3s ease-in;
-}
- */
-
 .profile-picture:hover {
     opacity: 1;
     transition: opacity .3s ease-out;
@@ -190,8 +173,6 @@ nav.synlig .navicon {
     padding: 30vh 0;
     
 }
-
-
 
  .header__hero__button-section {
     display: flex;
@@ -311,7 +292,6 @@ section ul {
 
 .dark-background {
     background-color: var(--dark-grey);
-    /* padding-bottom: 0; */
 }
 
 .projects-background h2 {
@@ -338,8 +318,6 @@ section ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    
 }
 
 .courses-art:not(.future-courses) {
@@ -451,129 +429,6 @@ section ul {
     margin: 20px auto;
     color: var(--light-grey);
 } 
-/***/
-
-
-
-
-/* 
-
-.grid-item * {
-    max-width: 100%;
-}
-
-.project-text-link {
-    padding: 14% 23%;
-    padding: 14% 0%;
-    height: 100%;
-    width: 100%;
-}
-
-.project-text-link h3, .project-text-link li {
-    padding-left: 20%;
-}
-.grid-item-text {
-    background-color: grey;
-}
-
-.grid-item-text:not(:last-child) {
-    border-bottom: 5rem solid var(--light-grey);
-}
-
-.grid-item-img {
-    background-color: var(--light-grey);
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 240px;
-}
-
-.api-project-img {
-    grid-area: api-project-img;
-    background-image: url(/Users/elisabethrumar/Sites/elisabethdeborah.github.io/img/api-project.png);
-}
-.api-project-text {
-    grid-area: api-project-text;
-}
-.hangman-project-img {
-    grid-area: hangman-project-img;
-    background-image: url(/Users/elisabethrumar/Sites/elisabethdeborah.github.io/img/hang-man.png);
-}
-.hangman-project-img::before {
-    background-color: rgba(255, 255, 255, 0.644);
-    content: 'Under reconstruction';
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    height: 80000%;
-    width: 100%;
-    font-size: 1.5rem;
-}
-
-
-.hangman-project-text {
-    grid-area: hangman-project-text;
-}
-.pomodoro-project-img {
-    grid-area: pomodoro-project-img;
-    background-image: url(/Users/elisabethrumar/Sites/elisabethdeborah.github.io/img/countdown.png);
-}
-.pomodoro-project-text {
-    grid-area: pomodoro-project-text;
-}
-.lunchtip-project-img {
-    grid-area: lunchtip-project-img;
-    background-image: url(/Users/elisabethrumar/Sites/elisabethdeborah.github.io/img/lunchtips-screenshot.jpg);
-}
-.lunchtip-project-text {
-    grid-area: lunchtip-project-text;
-}
-.kampsport-project-img {
-    grid-area: kampsport-project-img;
-    background-image: url(/Users/elisabethrumar/Sites/elisabethdeborah.github.io/img/kampsport-screenshot.jpg);
-}
-.kampsport-project-text {
-    grid-area: kampsport-project-text;
-}
-
-.project-img-link {
-    width: 100%;
-    height: 100%;
-}
-
-
-.projects-container {
-    display: grid;
-    grid-template-areas: 
-    "api-project-img" 
-    "api-project-text"
-    "hangman-project-img" 
-    "hangman-project-text"
-    "pomodoro-project-img" 
-    "pomodoro-project-text"
-    "lunchtip-project-img" 
-    "lunchtip-project-text"
-    "kampsport-project-img" 
-    "kampsport-project-text"
-    ;
-    margin: 4rem auto 0;
-    width: 100vw;
-    row-gap: 0rem;
-    justify-content: center;
-}
-
-.grid-item {
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
- */
 
 
 
@@ -677,7 +532,6 @@ section ul {
 
     .navbar {
         height: 50px;
-       /*  background-color: rgba(255, 255, 255, 0.842); */
         background-color: var(--dark-grey-op); 
         border-bottom: 1px solid var(--light-grey);
     }
@@ -698,7 +552,6 @@ section ul {
     }
 
     .navbar__listitem__my-projects-rubrik>p {
-      /*   background-color: #fff; */
         height: 55px;
     }
 
@@ -720,7 +573,6 @@ section ul {
 
     .navbar-link {
         font-size: .9rem;
-      /*   color: var(--dark-grey); */
     }
 
     .navicon {
@@ -746,93 +598,6 @@ section ul {
         padding-bottom: 5rem;
     }
 
-
-/*  
-    .grid-item * {
-        max-width: 100%;
-    }
-
-    .project-text-link {
-        padding: 14% 23%;
-        padding: 14% 0%;
-        height: 100%;
-        width: 100%;
-    }
-
-    .project-text-link h3, .project-text-link li {
-        padding-left: 30%;
-    }
-
-    .grid-item-text {
-        background-color: grey;
-        border-bottom: none;
-    }
-
-    .grid-item-img {
-        background-color: var(--dark-grey);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .api-project-img {
-        grid-area: api-project-img;
-        background-image: url(/Users/elisabethrumar/Sites/elisabethdeborah.github.io/img/api-project.png);
-    }
-    .api-project-text {
-        grid-area: api-project-text;
-    }
-    .hangman-project-img {
-        grid-area: hangman-project-img;
-        background-image: url(/Users/elisabethrumar/Sites/elisabethdeborah.github.io/img/hang-man.png);
-    }
-    .hangman-project-img::before {
-        background-color: rgba(255, 255, 255, 0.644);
-        content: 'Under reconstruction';
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        height: 80000%;
-        width: 100%;
-        font-size: 1.5rem;
-    }
-
-    .hangman-project-text {
-        grid-area: hangman-project-text;
-    }
-    .pomodoro-project-img {
-        grid-area: pomodoro-project-img;
-        background-image: url(/Users/elisabethrumar/Sites/elisabethdeborah.github.io/img/countdown.png);
-    }
-    .pomodoro-project-text {
-        grid-area: pomodoro-project-text;
-    }
-    .lunchtip-project-img {
-        grid-area: lunchtip-project-img;
-        background-image: url(/Users/elisabethrumar/Sites/elisabethdeborah.github.io/img/lunchtips-screenshot.jpg);
-    }
-    .lunchtip-project-text {
-        grid-area: lunchtip-project-text;
-    }
-    .kampsport-project-img {
-        grid-area: kampsport-project-img;
-        background-image: url(/Users/elisabethrumar/Sites/elisabethdeborah.github.io/img/kampsport-screenshot.jpg);
-    }
-    .kampsport-project-text {
-        grid-area: kampsport-project-text;
-    }
-
-    .projects-container ul {
-        padding-inline-start: 0px;
-    }
-
-    .project-img-link {
-        width: 100%;
-        height: 100%;
-    }
-
- */
 
     .mobile {
         font-size: 0;
@@ -877,6 +642,7 @@ section ul {
         top: 60px;
         z-index: 9999;
         width: 70vw;
+        left: 15vw;
         margin: 0 auto;
     }
 
@@ -890,6 +656,9 @@ section ul {
         top: 0;
      }
 
+     figure.large-figure .large-figure-ul{
+         display: none;
+     }
 
     /*FÖRSTORAD BILD */
 
@@ -924,32 +693,6 @@ section ul {
         
     }
 
-/*     .projects-container {
-        display: grid;
-        grid-template-areas: 
-        "api-project-img api-project-text"
-        "hangman-project-img hangman-project-text"
-        "pomodoro-project-img pomodoro-project-text"
-        "lunchtip-project-img lunchtip-project-text"
-        "kampsport-project-img kampsport-project-text"
-        ;
-        margin: 4rem auto;
-        width: 75vw;
-        max-width: 1000px; 
-        column-gap: 0px;
-        row-gap: 10rem;
-        justify-content: center;
-    }
-
-    .grid-item {
-        width: 35vw;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    } */
-
 
     .project-cards-container {
         display: grid;
@@ -962,24 +705,9 @@ section ul {
         margin: 2rem auto;
     }
 
-   /*  .courses-art {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 2rem auto;
-        background-color: blue;
-        padding: 2rem;
-    } */
-    
-   /*  .courses ul {
-        display: inline-block;
-    } */
-
     /* FOOTER */
 
     .footer {
-        /* margin-top: 10rem; */
         padding: 6rem 2rem;
     }
 
@@ -1015,7 +743,6 @@ section ul {
         width: 70vw;
         position: fixed;
         top: 0;
-
         display: none;
     } 
     
