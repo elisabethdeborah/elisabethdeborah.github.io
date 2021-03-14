@@ -353,6 +353,11 @@ section ul {
     row-gap: 5rem;
 }
 
+.project-cards-container figure {
+    transition: all .15s ease-in-out;
+    transform-origin: center;
+}
+
 .project-cards-container img {
     height: auto;
     width: 300px;
@@ -392,7 +397,7 @@ section ul {
     justify-self: center;
 }
 
-.project-cards-container>figure ul {
+.project-cards-container figure ul {
     list-style-type: square;
     list-style-position: inside;
     text-align: left;
