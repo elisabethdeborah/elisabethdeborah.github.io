@@ -782,10 +782,10 @@ section ul {
         height: 750px;
     }
 
-/* 
+
     .hero-nav__ul {
         padding-bottom: 10rem;
-    } */
+    }
 
     .hero-nav__ul  {
         flex-direction: row;
