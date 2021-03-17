@@ -18,7 +18,7 @@
                     <a href="my-cv.html" class="navbar-link">My CV</a>
                 </li>
                 <li class="navbar-list-item">
-                    <a href="API-projekt/" class="navbar-link">API project</a>
+                    <a href="flickr/" class="navbar-link">API project</a>
                 </li>
                 <li class="navbar-list-item">
                     <a href="Hang-man/" class="navbar-link">Hang-man project</a>
@@ -29,19 +29,31 @@
                 <li class="navbar-list-item">
                     <a href="lunchtips/" class="navbar-link">Lunchtips project</a> 
                 </li>
-                <li class="navbar-list-item">
-                    <a href="HTML-CSS-slutprojekt/" class="navbar-link">Kampsport project</a>
-                </li>
             </ul>
         </nav>
         <section class="hero">
             <h1 class="main-header">Elisabeth Rumar frontend developer</h1>
                 <article class="profile-picture"></article>
+                <ul class="hero-nav__ul">
+                    <li class="navbar-list-item">
+                        <a href="#about" class="navbar-link">About me</a>
+                    </li>
+                    <li class="navbar-list-item">
+                        <a href="#projects" class="navbar-link">Check out my projects</a>
+                    </li>
+                    <li class="navbar-list-item">
+                        <a href="#syllabus" class="navbar-link">My future degree</a>
+                    </li>
+                </ul>
         </section>
-    
+        
     </header>
+    
     <main>
-        <section class="section-background">
+        <aside>
+            <a class="go-to-top" href="#page-top"></a>
+        </aside>
+        <section id="about" class="section-background">
             <section class="about-me">
                 <h2 class="main-header-underrubrik">About me</h2>
                 <p class="about-me about-me-paragraph1">
@@ -59,9 +71,9 @@
             </section>
         </section>
 
-        <section class="different-background">
+        <section id="syllabus" class="different-background">
             <section class="courses">
-                <h2 class="different-h2"> Courses of my future degree</h2>
+                <h2 class="different-h2"> Syllabus for my future degree</h2>
                 <article class="courses-art completed-courses">
                     <!-- <h3 class="mobile">
                         Completed courses
@@ -110,25 +122,62 @@
 
 
 
-        <section class="dark-background">
+        <section id="projects" class="dark-background">
         <h2 class="header__hero__underrubrik">Have a look at my projects</h2>
         <section class="project-cards-container">
 
 
             <figure class="project-cards-container__card project-cards-container__card3">
                 <img src="/img/api-project.jpg" alt="API-project screenshot" class="project-cards-container__card__image project-cards-container__card3__image">
-                <figcaption class="project-cards-container__card3__caption"><h3>API project</h3><ul><li>Fetch</li><li>Flickr API</li></ul></figcaption>
+                <figcaption class="project-cards-container__card3__caption">
+                    <h3>API project</h3>
+                    <h5>School project, working with Fetch API:s</h5>
+                    <ul>
+                        <li>Fetch</li>
+                        <li>Flickr API</li>
+                    </ul>
+                </figcaption>
                 <button class="header__hero__button-section__project-button button-1">
-                    <a href="API-projekt/" class="button-link3">Go to API project</a>
+                    <a href="flickr/" class="button-link3">Go to API project</a>
                 </button>
             </figure>
-
+            <figure class="project-cards-container__card project-cards-container__card2">
+                <img src="/img/lunchtips.png" alt="Lunchtips screenshot" class="project-cards-container__card__image project-cards-container__card2__image">
+                <figcaption class="project-cards-container__card2__caption">
+                    <h3>Lunchtips project</h3>
+                    <h5>Just for fun project</h5>
+                    <ul>
+                        <li>Fetch</li>
+                        <li>SMHI API</li>
+                        <li>JSON</li>
+                        <li>Async</li>
+                    </ul>
+                </figcaption>
+                <button class="header__hero__button-section__project-button button-1">
+                    <a href="lunchtips/" class="button-link1">Go to Lunchtips project</a>
+                </button>
+            </figure>
+            <figure class="project-cards-container__card project-cards-container__card1">
+                <img src="/img/countdown.png" alt="Pomodoro screenshot" class="project-cards-container__card__image project-cards-container__card1__image">
+                <figcaption class="project-cards-container__card1__caption">
+                    <h3>Pomodoro project</h3>
+                    <h5>Just for fun project</h5>
+                    <ul>
+                        <li>Countdown timer/Stopwatch</li>
+                        <li>To do list</li>
+                        <li>Local storage</li>
+                    </ul>
+                </figcaption>
+                <button class="header__hero__button-section__project-button button-1">
+                    <a href="tomatodo/" class="button-link1">Go to pomodoro project</a>
+                </button>
+            </figure>
             <figure class="project-cards-container__card project-cards-container__card3">
                 <img src="/img/hang-man.png" alt="hang-man screenshot" class="project-cards-container__card__image project-cards-container__card3__image">
                 <figcaption class="project-cards-container__card3__caption">
                     <h3>Hang-man project</h3>
+                    <h5>Further development of a school group project</h5>
                     <ul>
-                        <li>Vanilla JavaScript</li>
                         <li>Array methods</li>
                         <li>Loops</li>
                         <li>Countdown timer</li>
@@ -136,30 +185,6 @@
                     </figcaption>
                 <button class="header__hero__button-section__project-button button-1">
                     <a href="Hang-man/" class="button-link3">Go to hang man project</a>
-                </button>
-            </figure>
-
-            <figure class="project-cards-container__card project-cards-container__card1">
-                <img src="/img/count-down.png" alt="Pomodoro screenshot" class="project-cards-container__card__image project-cards-container__card1__image">
-                <figcaption class="project-cards-container__card1__caption"><h3>Pomodoro project</h3><ul><li>countdown timer</li><li>stopwatch</li><li>to do list</li><li>local storage</li></ul></figcaption>
-                <button class="header__hero__button-section__project-button button-1">
-                    <a href="tomatodo/" class="button-link1">Go to pomodoro project</a>
-                </button>
-            </figure>
-        
-            <figure class="project-cards-container__card project-cards-container__card2">
-                <img src="/img/lunchtips-screenshot.jpg" alt="Lunchtips screenshot" class="project-cards-container__card__image project-cards-container__card2__image">
-                <figcaption class="project-cards-container__card2__caption"><h3>Lunchtips project</h3><ul><li>Fetch</li><li>SMHI API</li><li>JSON</li><li>async</li></ul></figcaption>
-                <button class="header__hero__button-section__project-button button-1">
-                    <a href="lunchtips/" class="button-link1">Go to Lunchtips project</a>
-                </button>
-            </figure>
-
-            <figure class="project-cards-container__card project-cards-container__card3">
-                <img src="/img/kampsport-screenshot.jpg" alt="Kampsport screenshot" class="project-cards-container__card__image project-cards-container__card3__image">
-                <figcaption class="project-cards-container__card3__caption"><h3>Kampsport project</h3><ul><li>CSS grid</li><li>CSS flexbox</li><li>CSS transitions</li><li>CSS animations</li></ul></figcaption>
-                <button class="header__hero__button-section__project-button button-1">
-                    <a href="HTML-CSS-slutprojekt/" class="button-link3">Go to Kampsport project</a>
                 </button>
             </figure>
         </section>

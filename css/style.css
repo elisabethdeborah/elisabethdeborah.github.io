@@ -13,6 +13,10 @@
     --text-color: #2e2e2d;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-repeat: no-repeat;
     background-size: cover;   
@@ -24,8 +28,7 @@ body {
     min-height: 100vh;
     position: relative;
     box-sizing: border-box;
-    scroll-behavior: smooth;
-    padding-top: 0;
+    padding-top: 0rem;
 }
 
 h1, h2, h3, h4 {
@@ -56,8 +59,39 @@ h4 {
     font-size: 1.8rem;
 }
 
+h5 {
+    font: 400;
+    font-size: 1rem;
+    text-align: center;
+}
+
 h2.header__hero__underrubrik {
     color: var(--light-grey);
+}
+
+.go-to-top {
+    background-color: var(--dark-grey);
+    color: white;
+    width: 50px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1rem;
+    border-radius: 10px;
+    padding-bottom: .5rem;
+}
+
+.go-to-top::after {
+    content: ' ';
+    height: 20px;
+    width: 20px;
+    border-left: 3px solid var(--light-grey);
+    border-bottom: 3px solid var(--light-grey);
+    border-bottom-left-radius: 2px;
+    transform: rotate(135deg);
 }
 
 nav ul {
@@ -83,6 +117,7 @@ p {
 .course-name, .my-CV li {
     margin: 1rem auto;
     font-size: 1.3rem;
+    text-align: left;
 }
 
 .navbar {
@@ -95,7 +130,7 @@ p {
     right: 0;
     z-index: 99;
     color: #fff;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -166,7 +201,7 @@ nav.synlig .navicon {
 
 .hero {
     width: 100vw;
-    height: 100vh;
+     height: 100vh; 
     margin: 0 auto;
     background-color: var(--dark-grey);
     display: flex;
@@ -179,6 +214,15 @@ nav.synlig .navicon {
     opacity: 1;
     transition: opacity .3s ease-out;
 }
+/* .main-header {
+    text-align: center;
+    font-size: 3rem;
+    line-height: 5rem;
+    width: 90vw;
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 30vh 0;
+} */
 
 .main-header {
     text-align: center;
@@ -187,8 +231,7 @@ nav.synlig .navicon {
     width: 90vw;
     max-width: 580px;
     margin: 0 auto;
-    padding: 30vh 0;
-    
+    padding: 20vh 0;
 }
 
  .header__hero__button-section {
@@ -197,8 +240,8 @@ nav.synlig .navicon {
     flex-wrap: wrap;
     width: 100%;
     max-width: 500px;
-    justify-content: space-around;
-    margin: 2rem auto 3rem;
+    /* justify-content: space-around; */
+    margin: 0rem auto 3rem;
 }
 
 .header__hero__button-section__project-button {
@@ -239,6 +282,7 @@ section ul {
     list-style-position: outside;
     padding-inline-start: 0;
     width: 65%;
+    text-align: center;
 }
 
 .about-me-initial {
@@ -290,7 +334,7 @@ section ul {
 
 .section-background, .projects-background, .different-background, .dark-background, .my-CV {
     width: 100vw;
-    max-width: 1200px;
+    max-width: 1400px;
     padding: 5rem 0 0;
 } 
 .header__hero__underrubrik {
@@ -419,7 +463,7 @@ section ul {
 
 .project-cards-container figure ul {
     list-style-type: square;
-    list-style-position: inside;
+    list-style-position: outside;
     text-align: left;
     padding-left: 60px;
 }
@@ -532,6 +576,33 @@ section ul {
     font-size: 1rem;
 }
 
+.hero-nav__ul {
+    list-style: none;
+    flex-direction: column;
+    justify-content: center;
+    height: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+    transform: translateX(0);
+    color: var(--light-grey);
+}
+
+.hero-nav__ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10vh;
+}
+
+.hero-nav__ul > li {
+    margin: 0 .5rem;
+    font-size: 1rem;
+}
+
+.navbar-link {
+    font-size: 1.2rem;
+}
+
 
 
 
@@ -550,7 +621,8 @@ section ul {
     /* HEADER, NAVBAR */
 
     .main-header {
-        padding: 30vh 0;
+        /* padding: 30vh 0; */
+        padding: 25vh 0 5vh;
         font-size: 4rem;
         color: var(--light-grey);
     }
@@ -561,6 +633,10 @@ section ul {
         border-bottom: 1px solid var(--light-grey);
     }
 
+  /*   .hero {
+        height: unset;
+    } */
+
     .navbar__ul {
         flex-direction: row;
         justify-content: space-around;
@@ -570,6 +646,16 @@ section ul {
         transform: translateX(0);
         color: var(--light-grey);
     }
+
+    .hero-nav__ul {
+        height: unset;
+        padding-bottom: unset;
+    }
+
+    .hero-nav__ul > li {
+        margin: 0 2rem;
+    }
+
 
     .navbar__listitem, .navbar__listitem a, .navbar__listitem, .navbar__listitem h2 {
         font-size: 1rem;
@@ -686,10 +772,30 @@ section ul {
 @media screen and (min-width: 800px) {
     .main-header {
         width: 75vw;
-        max-width: 1200px;
+        max-width: 1400px;
         font-size: 6rem;
         line-height: 8rem;
-        padding: 15vh 0;
+        padding: 15vh 0 5vh;
+    }
+
+    .hero {
+        height: 750px;
+    }
+
+/* 
+    .hero-nav__ul {
+        padding-bottom: 10rem;
+    } */
+
+    .hero-nav__ul  {
+        flex-direction: row;
+        justify-content: space-around;
+        height: 50px;
+        max-width: 1000px;
+        margin: 0 auto;
+        transform: translateX(0);
+        color: var(--light-grey);
+        padding-bottom: 10vh;
     }
 
     h2 {
@@ -705,7 +811,7 @@ section ul {
         padding: 7rem 0 4rem;
     }
     .hero {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0rem auto;
         padding-top: 3rem;
         
@@ -750,9 +856,9 @@ section ul {
 
 @media screen and (min-width: 1050px) {
 
-    .main-header {
+   /*  .main-header {
         padding: 30vh 0;
-    }
+    } */
 
 
     figure.large-figure{
@@ -789,14 +895,15 @@ section ul {
 
 
 @media screen and (min-width: 1200px) {
+   
     .section-background, .projects-background, .different-background {
         margin-top: 4rem;
     }
-    .project-cards-container {
+ /*    .project-cards-container {
         grid-template-columns: repeat(3, 1fr);
         max-width: 1000px;
         margin: 0 auto;
-    }
+    } */
 
     .footer {
         margin-top: 10rem;
