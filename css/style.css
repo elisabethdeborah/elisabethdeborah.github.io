@@ -3,11 +3,9 @@
     --dark-grey: #2e2e2d;
     --dark-grey-op: #2e2e2dd2;
     --mörkblå: #130080;
-/*     --mörklila: #342680; */
     --mörklila: #342680d6;
     --ljuslila: #674DFF;
     --mellanblå: #1F00CC;
-    /* --header: #001056; */
     --header: #001056d9;
     --header-font-style: 200;
     --text-color: #2e2e2d;
@@ -210,19 +208,19 @@ nav.synlig .navicon {
     align-items: center;
 }
 
-.profile-picture:hover {
-    opacity: 1;
-    transition: opacity .3s ease-out;
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    background-image: url(/img/profilbild.jpg);
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100%;
+    margin: 0 auto 2rem;
+    filter: grayscale(.4);
 }
-/* .main-header {
-    text-align: center;
-    font-size: 3rem;
-    line-height: 5rem;
-    width: 90vw;
-    max-width: 580px;
-    margin: 0 auto;
-    padding: 30vh 0;
-} */
+
 
 .main-header {
     text-align: center;
@@ -240,7 +238,6 @@ nav.synlig .navicon {
     flex-wrap: wrap;
     width: 100%;
     max-width: 500px;
-    /* justify-content: space-around; */
     margin: 0rem auto 3rem;
 }
 
@@ -271,11 +268,6 @@ main {
     align-items: center;
     margin: 0 auto;
 }
-
-
-/* .mobile {
-    font-size: 1.5rem;
-} */
 
 section ul {
     list-style: circle;
@@ -314,19 +306,6 @@ section ul {
     display: initial;
     transition: all 1s ease-in-out;
 }
-
-
-/* .view-hide {
-    height: 0;
-    font-size: 0;
-    background-color: blue;
-    transition: all 1s ease-in-out;
-}
-.view-open {
-    background-color: red;
-    height: 50px;
-    transition: all 1s ease-in-out;
-} */
 
 .projects {
     margin-top: 4rem;
@@ -621,7 +600,6 @@ section ul {
     /* HEADER, NAVBAR */
 
     .main-header {
-        /* padding: 30vh 0; */
         padding: 25vh 0 5vh;
         font-size: 4rem;
         color: var(--light-grey);
@@ -632,10 +610,6 @@ section ul {
         background-color: var(--dark-grey-op); 
         border-bottom: 1px solid var(--light-grey);
     }
-
-  /*   .hero {
-        height: unset;
-    } */
 
     .navbar__ul {
         flex-direction: row;
@@ -856,10 +830,6 @@ section ul {
 
 @media screen and (min-width: 1050px) {
 
-   /*  .main-header {
-        padding: 30vh 0;
-    } */
-
 
     figure.large-figure{
         max-width: 900px;
@@ -899,11 +869,6 @@ section ul {
     .section-background, .projects-background, .different-background {
         margin-top: 4rem;
     }
- /*    .project-cards-container {
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 1000px;
-        margin: 0 auto;
-    } */
 
     .footer {
         margin-top: 10rem;
