@@ -1,6 +1,6 @@
 //IMPORT FRÅN FILTER-FUNKTIONER.JS
 
-import {sorteraPopularitet, sorteraType, sorteraDatum, sorteraMiljö} from '/moduler/filter-functions.js';
+import {sorteraPopularitet, sorteraType, sorteraDatum, sorteraMiljö} from './filter-functions';
 
 const sorteraEfterDatumFallande = document.getElementById('filter-date-descending');
 const sorteraEfterDatumStegrande = document.getElementById('filter-date-ascending');
