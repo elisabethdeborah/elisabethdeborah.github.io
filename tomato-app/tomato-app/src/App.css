@@ -1,0 +1,367 @@
+:root {
+	--text-light: #f3f2f2;
+	--light-background: #e4adad;
+	--dark-background: #555858;
+
+	--light: #f3f2f2;
+	--dark: #323333;
+	--accent-red: #c41b05;
+
+	--timer-green: hsl(120, 100%, 25%);
+	--timer-yellow: hsl(60, 100%, 50%);
+	--timer-orange: hsl(39, 100%, 50%);
+	--timer-red: hsl(0, 100%, 50%);
+}
+
+
+html, body {
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+	width: 100vw;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  text-align: center;
+  background-color: var(--dark);
+  min-height: 100vh;
+  position: relative;
+  background-image: linear-gradient(to bottom, var(--dark), var(--dark-background));
+}
+
+.app-started {
+	background-image: none;
+	transition: background-color 1s linear;
+}
+
+.timebar-container {
+	width: 80vw;
+	border: 2px solid black;
+	border-radius: 10px;
+	height: 2.5em;
+	display: flex;
+	align-items: center;
+	justify-self: flex-start;
+	padding: .25em .5em;
+}
+
+.timebar {
+	height: 2em;
+	border-radius: 5px;
+	background-color: rgba(0, 0, 0, 0.555);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 2s linear;
+}
+
+.time-passed-container {
+	width: 90vw;
+	text-align: center;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+
+h1 {
+	font-size: 2em;
+}
+h2 {
+	font-size: 1.5em;
+}
+h3 {
+	font-size: 1.25em;
+}
+
+ul {
+	list-style: none;
+	padding-inline-start: 0;
+	font-size: 1.5em;
+}
+
+svg {
+	overflow: visible;
+}
+
+button:not(.close-timer > button) {
+	padding: .5em 0;
+	width: 10em;
+    background-color: #32333359;
+    border: 2px outset var(--light);
+    color: var(--light);
+    border-radius: 255px;
+    margin: .5em;
+    font-size: 1.5em;
+}
+
+button:hover {
+	background-color: var(--light);
+	color: var(--dark);
+}
+
+.timer-buttons button:disabled {
+	filter: brightness(.8) opacity(0.4);
+	border: 2px solid var(--light);
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover, .navbar-x:hover, button:not(:disabled):hover {
+	cursor: pointer;
+}
+
+a > li:hover {
+	border-bottom: 1px solid black;
+}
+section.links-top{
+	display: flex;
+	width: 50vw;
+	justify-content: space-between;
+}
+section.links-top a {
+	color: var(--light);
+}
+
+header {
+	padding: 2em;
+    display: flex;
+    width: 80vw;
+    justify-content: space-between;
+	list-style: none;
+}
+
+nav.navbar {
+	transform: translateX(100%);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+    top: 0;
+    left: 0;
+	background: var(--dark);
+	transition: all 250ms ease-in;
+	z-index: 9;
+}
+
+nav.navbar-open {
+	transform: translateX(0%); 
+	background: var(--dark);
+}
+
+nav.navbar a {
+	color: var(--light);
+}
+
+.navbar-x {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 3em;
+	width: 3em;
+	top: 1em;
+	right: 1em;
+	color:  var(--light);
+/* 	border: 2px inset var(--light); */
+	border-radius: 100%;
+	z-index: 99;
+	transition: all 250ms ease-in;
+}
+
+.navbar-x-open {
+	color:  var(--light);
+/* 	border: 2px inset var(--light); */
+}
+
+.line-1, .line-2, .line-3 {
+	transition: all 250ms ease-in;
+	z-index: 999;
+}
+
+.navbar-x-open .line-1 {
+	transform: translate(0.35em, -0.3em) rotate(45deg)
+}
+
+.navbar-x-open .line-2 {
+	opacity: 0;
+}
+
+.navbar-x-open .line-3 {
+	transform: translate(-0.3em, 0.5em) rotate(-45deg);
+}
+
+
+.navbar ul {
+	height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/*  */
+
+.settings-option {
+	display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100vw;
+}
+
+
+/* TOMATOES */
+
+.check-mark {
+	height: 30px;
+	width: 30px;
+	border-radius: 5px;
+	background-color: var(--dark);
+	border: 1px solid white;
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	justify-self: center;
+	transition: 250ms ease;
+}
+
+.check-mark.checked {
+	border-bottom: 3px solid red;
+	border-right: 3px solid red;
+	width: 30px;
+	height: 50px;
+	transform: rotate(45deg);
+	background-color: var(--light);
+	border-radius: 0;
+	border-top: 0;
+	border-left: 0;
+}
+
+.tomato-article {
+	display: flex;
+	flex-direction: row;
+	border: 1px solid blue;
+	width: 80vw;
+	align-items: center;
+	margin: 2em auto;
+}
+.tomato-article * {
+	display: flex;
+}
+
+.tomato-text-group {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+}
+
+.tomato-btn-group {
+	flex-direction: column;
+}
+.tomato-btn-group > button {
+	justify-content: center;
+}
+
+/* STOPWATCH */
+.stopwatch-container {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+/* TIMER */
+.countdown-container {
+	position: absolute;
+	display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+/* 	width: 100vw; */
+	color: var(--light);
+	transition: all 250s ease;
+}
+
+.countdown-container-started {
+	/* top: 20vh;
+	height: 50vh; */
+	top: 20vh;
+    height: 70vh;
+    justify-content: space-between;
+}
+
+.countdown-inputs {
+	position: relative;
+    width: 100vw;
+    height: 45vh;
+    left: 0;
+    top: 30vh;
+}
+
+.countdown-inputs input {
+	height: 2em;
+    width: 2em;
+    border-radius: 10px;
+    margin: .5em;
+    padding: 0;
+    text-align: center;
+    border: none;
+    font-size: 2.5em;
+}
+
+
+.countdown-inputs input:focus {
+	outline: none;
+	border: none;
+}
+
+.timer-container {
+	display: flex;
+    justify-content: space-evenly;
+	align-items: center;
+	width: 100vw;/* 
+	position: fixed;
+    top: 40%;
+    left: 0;
+    right: 0; */
+}
+
+.timer-container h2 {
+	width: 2em;
+	text-align: center;
+	font-size: 3em;
+}
+
+.timer-buttons {
+	position: relative;
+	align-self: center;
+}
+
+.close-timer {
+	position: relative;
+	align-self: flex-end;
+    right: 10vw;
+}
+
+.close-timer > button {
+	border-radius: 100%;
+    padding: 10px 12px;
+	background-color: #ffffff00;
+	color: var(--light);
+	border: 2px outset var(--light);
+}
+
+
+
+@media screen and (min-width: 700px) {
+	nav.navbar > ul {
+		flex-direction: row;
+	}
+}
