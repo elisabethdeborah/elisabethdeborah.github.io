@@ -1,28 +1,30 @@
 import Timer from "./Timer"
 import CountdownInput from "./CountdownInputs"
+import CloseButton from "./CloseButton"
 
-const CountdownSection = ({handleCloseCountdown, timePercent, timeLeft, setTotalTime, totalTime, beenStarted, setBeenStarted, validateNumbers, handlePause, handleStart, setRunning, running, currentHours, currentMinutes,currentSeconds, hours, minutes}) => {
+const CountdownSection = ({ handleCloseCountdown, timePercent, timeLeft, setTotalTime, totalTime, beenStarted, setBeenStarted, validateNumbers, handlePause, handleStart, setRunning, running, currentHours, currentMinutes,currentSeconds, hours, minutes}) => {
 
 
 
 
 	return (
-		<section className={beenStarted ? "countdown-container countdown-container-started":"countdown-container"}>
+		<section className={beenStarted && timeLeft> -1 ? "countdown-container countdown-container-started":"countdown-container"}>
 
-
-		{beenStarted ? <aside className="close-timer"><button onClick={() => handleCloseCountdown()}>
-		<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<line x1="2.12132" y1="3" x2="21.2132" y2="22.0919" stroke="white" strokeWidth="3" strokeLinecap="round"/>
-			<line x1="2.3934" y1="21.4852" x2="21.4853" y2="2.39336" stroke="white" strokeWidth="3" strokeLinecap="round"/>
-		</svg>
-			</button></aside>: <CountdownInput validateNumbers={validateNumbers} />}
+		{beenStarted ? 
+			<CloseButton handleCloseCountdown={handleCloseCountdown} />
+			:
+			<>
+				<h1 className="countdown-header">Start Countdown</h1> 
+				<CountdownInput validateNumbers={validateNumbers} />
+			</>
+		}
 		{beenStarted ? <Timer currentHours={currentHours} currentMinutes={currentMinutes} currentSeconds={currentSeconds} /> : null}
 		{
-			beenStarted ?
+			beenStarted && timeLeft > -1 ?
 				<section className="timer-buttons">
-					<button type="submit" onClick={handlePause} disabled={ ( !hours > 0 && !minutes > 0 ) ? true : false } >
+					{ beenStarted && timePercent!==100 ? <button type="submit" onClick={handlePause} disabled={ ( !hours > 0 && !minutes > 0 ) ? true : false } >
 						{running ? 'Pause' : 'Resume'}
-					</button>
+					</button>:null}
 					<button type="submit" onClick={handleStart} disabled={ ( !hours > 0 && !minutes > 0 ) ? true : false }>
 						{running ? 'Stop' : 'Restart'}
 					</button>
@@ -34,18 +36,21 @@ const CountdownSection = ({handleCloseCountdown, timePercent, timeLeft, setTotal
 				</section>
 		}
 		{
-			/* beenStarted ?  */
-			<article className="timebar-container">
-			{console.log('Timebar: ', timePercent)}
-				<section className="timebar" style={{ width: 100-timePercent +'%'}}></section>
-			</article> /* : null */
+			 beenStarted && timeLeft > -1 ?  
+			<section className="passed-time-container">
+				<article className="timebar-container">
+				{console.log('Timebar: ', timePercent)}
+					<section className="timebar" style={{ width: 100-timePercent +'%'}}></section>
+				</article>
+				<article className="time-passed-container">
+					<h3 className="time-passed">{ parseInt(((totalTime-1) - timeLeft)/60/60)} hours</h3> 
+					<h3 className="time-passed">{ parseInt(((totalTime-1) - timeLeft)/60) } min</h3> 
+					<h3 className="time-passed">{ ((totalTime-1) - timeLeft)%60 > -1? ((totalTime-1) - timeLeft)%60: 0 } seconds</h3>
+				</article>
+			</section>
+			:null
 		}
-		<article className="time-passed-container">
-			<h3 className="time-passed">{ parseInt(((totalTime-1) - timeLeft)/60/60)} hours</h3> 
-			<h3 className="time-passed">{ parseInt(((totalTime-1) - timeLeft)/60) } min</h3> 
-			<h3 className="time-passed">{((totalTime-1) - timeLeft)%60 } seconds</h3>
-		</article>
-	</section>
+		</section>
 	)
 }
 

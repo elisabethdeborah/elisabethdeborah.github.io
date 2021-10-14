@@ -11,6 +11,7 @@
 	--timer-yellow: hsl(60, 100%, 50%);
 	--timer-orange: hsl(39, 100%, 50%);
 	--timer-red: hsl(0, 100%, 50%);
+	--button-bg: #32333359;
 }
 
 
@@ -26,37 +27,40 @@ html, body {
   align-items: center;
   width: 100vw;
   text-align: center;
-  background-color: var(--dark);
   min-height: 100vh;
   position: relative;
+  background-color: var(--dark);
   background-image: linear-gradient(to bottom, var(--dark), var(--dark-background));
 }
 
 .app-started {
 	background-image: none;
 	transition: background-color 1s linear;
+	background-color: var(--timer-green);
 }
 
-.timebar-container {
-	width: 80vw;
-	border: 2px solid black;
-	border-radius: 10px;
-	height: 2.5em;
+
+
+.passed-time-container {
+	width: 100vw;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	justify-self: flex-start;
-	padding: .25em .5em;
+	justify-content: space-evenly;
 }
+
+
 
 .timebar {
 	height: 2em;
 	border-radius: 5px;
-	background-color: rgba(0, 0, 0, 0.555);
+	background-color: var(--button-bg);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	transition: all 2s linear;
 }
+
 
 .time-passed-container {
 	width: 90vw;
@@ -66,12 +70,62 @@ html, body {
 }
 
 
+
+.stage-2 *, .stage-2 .timer-buttons button, .close-timer > button {
+	transition: color 250ms ease-in;
+	color: var(--dark);
+}
+
+.stage-2 .timer-buttons button, .close-timer > button, .timebar-container {
+	border: 2px outset var(--dark);
+}
+
+.stage-2 svg line {
+	stroke: var(--dark)
+}
+
+.close-timer > button {
+	border-radius: 100%;
+    padding: 10px 12px;
+	color: var(--light);
+	background-color: var(--button-bg);
+}
+
+.close-timer > button:not(.stage-2 .close-timer > button) {
+	border: 2px outset var(--light);
+}
+
+.timebar-container {
+	width: 80vw;
+	border-radius: 10px;
+	height: 2.5em;
+	display: flex;
+	align-items: center;
+	justify-self: flex-start;
+	padding: .25em .5em;
+}
+
+.timebar-container:not(.stage-2 .timebar-container) {
+	border: 2px outset var(--light);
+}
+
 h1 {
 	font-size: 2em;
+	color: var(--light);
 }
+
+/* h1.countdown-header , h1.save-form-header , h1.time-tomato-header {
+	font-size: 2.5em;	
+} */
+
+h1.save-form-header {
+	margin-bottom: 2em;
+}
+
 h2 {
 	font-size: 1.5em;
 }
+
 h3 {
 	font-size: 1.25em;
 }
@@ -89,13 +143,15 @@ svg {
 button:not(.close-timer > button) {
 	padding: .5em 0;
 	width: 10em;
-    background-color: #32333359;
+    background-color: var(--button-bg);
     border: 2px outset var(--light);
     color: var(--light);
     border-radius: 255px;
     margin: .5em;
     font-size: 1.5em;
 }
+
+
 
 button:hover {
 	background-color: var(--light);
@@ -133,6 +189,7 @@ header {
     width: 80vw;
     justify-content: space-between;
 	list-style: none;
+	flex-grow: 1;
 }
 
 nav.navbar {
@@ -278,62 +335,124 @@ nav.navbar a {
 }
 
 /* TIMER */
-.countdown-container {
-	position: absolute;
+.countdown-container, .stopwatch-container, .save-form {
+	position: relative;
 	display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
+	justify-self: center;
 /* 	width: 100vw; */
 	color: var(--light);
+	transition: all 250ms ease;
+    height: 80vh;
+	bottom: 5vh;
+}
+
+.stopwatch-create-container {
+	flex-grow: 2;
+}
+
+.countdown-container, .save-form {
+    justify-content: space-evenly;
+}
+
+.countdown-container-started  {
+	position: relative;
+/* 	top: 5vh; */
+    height: 70vh;
+    justify-content: center;
 	transition: all 250s ease;
 }
 
-.countdown-container-started {
-	/* top: 20vh;
-	height: 50vh; */
+.countdown-container-ended {
 	top: 20vh;
-    height: 70vh;
-    justify-content: space-between;
+	height: 50vh;
 }
 
 .countdown-inputs {
 	position: relative;
     width: 100vw;
-    height: 45vh;
+    /* height: 45vh; */
     left: 0;
-    top: 30vh;
+    top: 0;
 }
 
-.countdown-inputs input {
+
+
+.countdown-inputs input, .save-form input {
 	height: 2em;
-    width: 2em;
     border-radius: 10px;
     margin: .5em;
     padding: 0;
     text-align: center;
     border: none;
-    font-size: 2.5em;
+	background-color: var(--dark-background);
+	color: var(--light);
 }
 
+.countdown-inputs input, .save-form input:not(.tomato-name-input) {
+    width: 2em;
+	font-size: 2.5em;
+}
 
-.countdown-inputs input:focus {
+.countdown-inputs input:focus, .save-form input:focus {
 	outline: none;
-	border: none;
+	background-color: var(--light);
+	color: var(--dark);
 }
+
+.countdown-inputs input::placeholder, .save-form input::placeholder {
+	color: var(--light);
+}
+
+.countdown-inputs input:focus::placeholder, .save-form input:focus::placeholder {
+	color: var(--dark);
+}
+
+.countdown-inputs input:focus label, .save-form input:focus::placeholder label {
+	position: absolute;
+}
+
+.tomato-name-input {
+	width: 80vw;
+	font-size: 2em;
+}
+
+.stopwatch-second-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* .save-number-input {
+	
+} */
+
+.save-form {
+	display: flex;
+	align-items: center;
+	height: 80vh;
+	justify-content: space-evenly;
+
+	transition: all 250ms ease;
+}
+
 
 .timer-container {
 	display: flex;
     justify-content: space-evenly;
 	align-items: center;
-	width: 100vw;/* 
+	height: 30vh;
+	width: 100vw;
+	transition: all 250s ease;
+	/* 
 	position: fixed;
     top: 40%;
     left: 0;
     right: 0; */
 }
 
-.timer-container h2 {
+.timer-container h2, .stopwatch-container h2 {
 	width: 2em;
 	text-align: center;
 	font-size: 3em;
@@ -342,6 +461,9 @@ nav.navbar a {
 .timer-buttons {
 	position: relative;
 	align-self: center;
+	margin-bottom: 2em;
+
+	transition: all 250ms ease;
 }
 
 .close-timer {
@@ -350,13 +472,7 @@ nav.navbar a {
     right: 10vw;
 }
 
-.close-timer > button {
-	border-radius: 100%;
-    padding: 10px 12px;
-	background-color: #ffffff00;
-	color: var(--light);
-	border: 2px outset var(--light);
-}
+
 
 
 

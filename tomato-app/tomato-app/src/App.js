@@ -21,7 +21,7 @@ function App() {
 	const [ seconds, setSeconds ] = useState(0)
 	const [ running, setRunning ] = useState(false)
 	const [ beenStarted, setBeenStarted ] = useState(false)
-	const [timeLeft, setTimeLeft] = useState(0);
+	const [ timeLeft, setTimeLeft ] = useState(0);
 	const [ currentHours, setCurrentHours ] = useState(hours)
 	const [ currentMinutes, setCurrentMinutes ] = useState(minutes)
 	const [ currentSeconds, setCurrentSeconds ] = useState(seconds)
@@ -33,16 +33,21 @@ function App() {
 	const [ colorCode, setColorCode ] = useState('')
 
 	//STOPWATCH
-	const [stopwatchTime, setStopwatchTime] = useState(0)
+	const [ stopwatchTime, setStopwatchTime ] = useState(0)
 	const [ counting, setCounting ] = useState(false)
 	const [ countingStarted, setCountingStarted ] = useState(false)
+	const [ viewStopwatch, setViewStopwatch ] = useState(false)
+
+	const [ chooseCreate, setChooseCreate ] = useState(true)
 
 	//MY TOMATOES
 
 	const [ tomatoName, setTomatoName ] = useState('')
 	const [ nameIsValid, setNameIsValid ] = useState(false)
 	const [ viewSaveForm, setViewSaveForm ] = useState(false)
-
+	const [ tomatoHours, setTomatoHours ] = useState(0)
+	const [ tomatoMinutes, setTomatoMinutes ] = useState(0)
+	const [ tomatoSeconds, setTomatoSeconds ] = useState(0)
 
 	//MY TOMATODOS
 	const [ checked, setChecked ] = useState(false)
@@ -53,6 +58,11 @@ function App() {
 		setRunning(!running)
 		setBeenStarted(true)
 		setTotalTime((Number(hours)*60*60)+(Number(minutes)*60)+Number(seconds))
+		if (timePercent!==100) {
+			setCurrentHours(0)
+			setCurrentMinutes(0)
+			setCurrentSeconds(0)
+		}
 	}
 
 	const handlePause = () => {
@@ -71,7 +81,16 @@ function App() {
 		setMinutes(0)
 		setSeconds(0)
 		setHours(0)
+		setViewStopwatch(false)
+		setViewSaveForm(false)
+		setCounting(false)
+		setCountingStarted(false)
+		setTomatoHours(0)
+		setTomatoMinutes(0)
+		setTomatoSeconds(0)
 	}
+
+
 
 	useEffect(() => {
 		if ( running ) {
@@ -103,7 +122,9 @@ useEffect(() => {
 	const intervalId = setInterval(() => {
 	  setStopwatchTime(stopwatchTime + 1);
 	}, 1000);
-
+	setTomatoHours(parseInt(stopwatchTime/60/60))
+	setTomatoMinutes(parseInt(stopwatchTime/60))
+	setTomatoSeconds(stopwatchTime%60)
 	// clear interval on re-render to avoid memory leaks
 	return () => clearInterval(intervalId);
 	// add timeLeft as a dependency to re-rerun the effect when we update it
@@ -123,6 +144,8 @@ const handleWatchReset = () => {
 	setCountingStarted(false)
 	setViewSaveForm(false)
 }
+
+
 
 //////
 
@@ -144,16 +167,28 @@ const generateId = () => {
 }
 
 const saveTomatoObj = () => {
-
+console.log('time: ', stopwatchTime);
 	let id = generateId()
 
 	let newTomato = {
 		id: id,
 		name: tomatoName,
-		time: parseInt(stopwatchTime)
+		time: stopwatchTime
 	}
+
 	console.log('newTomato inside savetomato: ', newTomato);
+	handleWatchReset()
+
+	setCounting(false)
+	setCountingStarted(false)
+	setViewSaveForm(false)
+
+	handleCloseCountdown()
+	setTomatoName('')
+	setNameIsValid(false)
+	
 }
+
 
 
 const saveTodoObj = () => {
@@ -215,54 +250,18 @@ useEffect(() => {
 //120 -> 60, procent , 25 -> 50
 
 	const handleBackgroundColor = () => {
+		console.log('dynamisk färgkod: ', parseInt(((timeLeft/totalTime)*100)*1.3), 'totaltime, timeleft: ', totalTime, timeLeft/* , '25+(totalTime - timeLeft)', 25+(1-(timeLeft/totalTime)) */, 'test: ', parseInt((1-(timeLeft/totalTime))*65)+25 );
 		if (timePeriod === 'stage-1'){
-			setColorCode(`hsl(${parseInt((timeLeft/totalTime)*100)*1.3}, 100%, ${25+(totalTime - timeLeft)}%`)
+			setColorCode(`hsl(${parseInt(((timeLeft/totalTime)*100)*1.3)}, 100%, ${parseInt((1-(timeLeft/totalTime))*65)+25}%`)
 		} else if (timePeriod !== 'stage-1'){
-			setColorCode(`hsl(${parseInt((timeLeft/totalTime)*100)*1.3}, 100%, 50%)`)
+			setColorCode(`hsl(${parseInt(((timeLeft/totalTime)*100)*1.3)}, 100%, 50%)`)
 		} 
 	}
-
-	/* 
-
-	--timer-green: hsl(120, 100%, 25%);
-	--timer-yellow: hsl(60, 100%, 50%);
-	--timer-orange: hsl(39, 100%, 50%);
-	--timer-red: hsl(0, 100%, 50%);
-
-
-	period-1: 120/2, 100, 25*2
-	--timer-green: hsl(120, 100%, 25%);
-
-	period-2: 60* 0.66, 100, 50
-	--timer-yellow: hsl(60, 100%, 50%);
-
-	period-3: 
-
-	--timer-orange: hsl(40, 100%, 50%);
-	period-3: 40*0, 100, 50
-	--timer-red: hsl(0, 100%, 50%);
-
-
---timer-green: hsl(100, 100%, 33%);
-	--timer-yellow: rgb(238, 255, 82);
-	--timer-orange: hsl(33, 100%, 66%);
-	--timer-red: hsl(0, 100%, 66%);
-
-
-		--timer-green: rgb(0, 128, 0);
-	--timer-yellow: rgb(255, 255, 0);
-	--timer-orange: rgb(255, 165, 0);
-	--timer-red: rgb(255, 0, 0);
-
-
-	*/
 
 	return (
 		<div className={ beenStarted ? `App app-started ${timePeriod}`: "App"} 
 		style={timeLeft < totalTime ? {
-			backgroundColor: colorCode /* `hsl(${parseInt((timeLeft/totalTime)*100)}, 100%, ${25+(totalTime - timeLeft)}%` */,
-			//transition: `background-color ${totalTime/3}s ease`,
-			//backgroundColor: `hsl(${parseInt(timeLeft/totalTime*100)}, 100%, ${(timeLeft/totalTime)*100})`
+			backgroundColor: colorCode
 		  }:null}>
 
 		<Router>
@@ -272,7 +271,7 @@ useEffect(() => {
 					<CountdownSection timePercent={timePercent} timeLeft={timeLeft} handleCloseCountdown={handleCloseCountdown} setTotalTime={setTotalTime} totalTime={totalTime} beenStarted={beenStarted} setBeenStarted={setBeenStarted} validateNumbers={validateNumbers} handlePause={handlePause} handleStart={handleStart} setRunning={setRunning} running={running} currentHours={currentHours} currentMinutes={currentMinutes} currentSeconds={currentSeconds} hours={hours} minutes={minutes} generateId={generateId} />
 				</Route>
 				<Route path="/createTomato">
-					<StopwatchSection stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} saveTodoObj={saveTodoObj} generateId={generateId} />
+					<StopwatchSection handleCloseCountdown={handleCloseCountdown} chooseCreate={chooseCreate} setChooseCreate={setChooseCreate} setTomatoHours={setTomatoHours} tomatoHours={tomatoHours} setTomatoMinutes={setTomatoMinutes} tomatoMinutes={tomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoSeconds={tomatoSeconds} stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} setViewStopwatch={setViewStopwatch} viewStopwatch={viewStopwatch} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} saveTodoObj={saveTodoObj} generateId={generateId} />
 				</Route>
 				<Route path="/myTomatoes">
 					<MyTomatoes />
