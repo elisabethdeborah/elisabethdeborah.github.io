@@ -21,7 +21,6 @@ const Header = () => {
 			</aside>
 			<nav className={`${open ? "navbar navbar-open":"navbar"}`}>
 				<ul onClick={handleToggle}>
-					{/* <Link to="/"><li>Start</li></Link> */}
 					<Link to="/"><li>Countdown timer</li></Link>
 					<Link to="/createTomato"><li>Create tomato</li></Link>
 					<Link to="/myTomatoes"><li>My Tomatoes</li></Link>

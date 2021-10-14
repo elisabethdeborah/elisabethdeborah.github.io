@@ -11,6 +11,7 @@ import Settings from './components/Settings';
 
 
 
+
 ///////////CONTEXT TILL SÅNT SOM INTE ÄNDRAS SÅ OFTA, RECOIL FÖR ANNAT!!!
 
 
@@ -25,11 +26,9 @@ function App() {
 	const [ currentHours, setCurrentHours ] = useState(hours)
 	const [ currentMinutes, setCurrentMinutes ] = useState(minutes)
 	const [ currentSeconds, setCurrentSeconds ] = useState(seconds)
-
 	const [ totalTime, setTotalTime ] = useState(0)
 	const [ timePeriod, setTimePeriod ] = useState('')
 	const [ timePercent, setTimePercent ] = useState(0)
-
 	const [ colorCode, setColorCode ] = useState('')
 
 	//STOPWATCH
@@ -37,8 +36,6 @@ function App() {
 	const [ counting, setCounting ] = useState(false)
 	const [ countingStarted, setCountingStarted ] = useState(false)
 	const [ viewStopwatch, setViewStopwatch ] = useState(false)
-
-	const [ chooseCreate, setChooseCreate ] = useState(true)
 
 	//MY TOMATOES
 
@@ -52,7 +49,73 @@ function App() {
 	//MY TOMATODOS
 	const [ checked, setChecked ] = useState(false)
 
-//COUNTDOWN
+
+
+//USEEFFECT-FUNCTIONS
+
+	//COUNTDOWN
+	useEffect(() => {
+		if ( running ) {
+		// exit early when we reach 0
+		if (timeLeft<0) return;
+
+		// save intervalId to clear the interval when the component re-renders
+		const intervalId = setInterval(() => {
+		setTimeLeft(timeLeft - 1);
+		setCurrentHours(parseInt((timeLeft/60)/60))
+		//console.log('minutes: ', parseInt(timeLeft/60)-currentHours*60);
+		setCurrentMinutes(parseInt(timeLeft/60)-currentHours*60)
+		setCurrentSeconds( timeLeft%60 )
+		}, 1000);
+
+		// clear interval on re-render to avoid memory leaks
+		return () => clearInterval(intervalId);
+		// add timeLeft as a dependency to re-rerun the effect when we update it
+	}
+	}, [timeLeft, running]);
+
+	//COUNTDOWN - COLOR BACKGROUND
+
+	useEffect(() => { 
+		let percent = (parseInt(timeLeft/totalTime*100))
+		setTimePercent(percent)
+		if (percent >= 66) {
+			setTimePeriod('stage-1') 
+		} else if(percent >= 33) {
+			setTimePeriod('stage-2') 
+		}else if(percent >= 12.5 ) {
+			setTimePeriod('stage-3') 
+		} else if (percent <12.5 ) {
+			setTimePeriod('stage-4')
+		}
+		handleBackgroundColor()
+	}, [timeLeft])
+
+
+	//STOPWATCH
+	useEffect(() => {
+		if ( counting ) {
+		// save intervalId to clear the interval when the component re-renders
+		const intervalId = setInterval(() => {
+		setStopwatchTime(stopwatchTime + 1);
+		}, 1000);
+		setTomatoHours(parseInt(stopwatchTime/60/60))
+		setTomatoMinutes(parseInt(stopwatchTime/60))
+		setTomatoSeconds(stopwatchTime%60)
+		// clear interval on re-render to avoid memory leaks
+		return () => clearInterval(intervalId);
+		// add timeLeft as a dependency to re-rerun the effect when we update it
+	}
+	}, [stopwatchTime, counting]);
+
+
+	useEffect(() => {
+		validateName()
+	}, [tomatoName])
+
+
+
+//COUNTDOWN HELP FUNCTIONS
 	const handleStart = () => {
 		setTimeLeft((Number(hours)*60*60)+(Number(minutes)*60)+Number(seconds))
 		setRunning(!running)
@@ -91,59 +154,31 @@ function App() {
 	}
 
 
-
-	useEffect(() => {
-		if ( running ) {
-		// exit early when we reach 0
-		if (timeLeft<0) return;
-	
-		// save intervalId to clear the interval when the component re-renders
-		const intervalId = setInterval(() => {
-		  setTimeLeft(timeLeft - 1);
-		  setCurrentHours(parseInt((timeLeft/60)/60))
-		  //console.log('minutes: ', parseInt(timeLeft/60)-currentHours*60);
-		  setCurrentMinutes(parseInt(timeLeft/60)-currentHours*60)
-		  setCurrentSeconds( timeLeft%60 )
-		}, 1000);
-	
-		// clear interval on re-render to avoid memory leaks
-		return () => clearInterval(intervalId);
-		// add timeLeft as a dependency to re-rerun the effect when we update it
-	  }
-	}, [timeLeft, running]);
+	const handleBackgroundColor = () => {
+		if (timePeriod === 'stage-1'){
+			setColorCode(`hsl(${parseInt(((timeLeft/totalTime)*100)*1.3)}, 100%, ${parseInt((1-(timeLeft/totalTime))*65)+25}%`)
+		} else if (timePeriod !== 'stage-1'){
+			setColorCode(`hsl(${parseInt(((timeLeft/totalTime)*100)*1.3)}, 100%, 50%)`)
+		} 
+	}
 
 ///////
 
-//STOPWATCH
+//STOPWATCH HELP FUNCTIONS
 
-useEffect(() => {
-	if ( counting ) {
-	// save intervalId to clear the interval when the component re-renders
-	const intervalId = setInterval(() => {
-	  setStopwatchTime(stopwatchTime + 1);
-	}, 1000);
-	setTomatoHours(parseInt(stopwatchTime/60/60))
-	setTomatoMinutes(parseInt(stopwatchTime/60))
-	setTomatoSeconds(stopwatchTime%60)
-	// clear interval on re-render to avoid memory leaks
-	return () => clearInterval(intervalId);
-	// add timeLeft as a dependency to re-rerun the effect when we update it
-  }
-}, [stopwatchTime, counting]);
+	const handleWatchStart = () => {
+		console.log('stopwatchTime inside handlewatch: ', stopwatchTime);
+			setCounting(!counting)
+			setCountingStarted(true)
+			setViewSaveForm(false)
+	}
 
-const handleWatchStart = () => {
-	console.log('stopwatchTime inside handlewatch: ', stopwatchTime);
-		setCounting(!counting)
-		setCountingStarted(true)
+	const handleWatchReset = () => {
+		setStopwatchTime(0)
+		setCounting(false)
+		setCountingStarted(false)
 		setViewSaveForm(false)
-}
-
-const handleWatchReset = () => {
-	setStopwatchTime(0)
-	setCounting(false)
-	setCountingStarted(false)
-	setViewSaveForm(false)
-}
+	}
 
 
 
@@ -151,70 +186,55 @@ const handleWatchReset = () => {
 
 //Save tomato
 
-
-const generateId = () => {
-	let date = new Date()
-	let year = date.getUTCFullYear().toString()
-	let month = date.getUTCMonth().toString()
-	let day = date.getUTCDate().toString()
-	let hour = date.getUTCHours().toString()
-	let minute = date.getUTCMinutes().toString()
-	let second = date.getUTCSeconds().toString()
-	let ms = date.getUTCMilliseconds().toString()
-	let random = Math.ceil(Math.random()*(99-10)+10).toString()
-	let newId = Number(year+month+day+hour+minute+second+ms+random)
-	return newId;
-}
-
-const saveTomatoObj = () => {
-console.log('time: ', stopwatchTime);
-	let id = generateId()
-
-	let newTomato = {
-		id: id,
-		name: tomatoName,
-		time: stopwatchTime
+	const generateId = () => {
+		let date = new Date()
+		let year = date.getUTCFullYear().toString()
+		let month = date.getUTCMonth().toString()
+		let day = date.getUTCDate().toString()
+		let hour = date.getUTCHours().toString()
+		let minute = date.getUTCMinutes().toString()
+		let second = date.getUTCSeconds().toString()
+		let ms = date.getUTCMilliseconds().toString()
+		let random = Math.ceil(Math.random()*(99-10)+10).toString()
+		let newId = Number(year+month+day+hour+minute+second+ms+random)
+		return newId;
 	}
 
-	console.log('newTomato inside savetomato: ', newTomato);
-	handleWatchReset()
-
-	setCounting(false)
-	setCountingStarted(false)
-	setViewSaveForm(false)
-
-	handleCloseCountdown()
-	setTomatoName('')
-	setNameIsValid(false)
-	
-}
-
-
-
-const saveTodoObj = () => {
-
-	let id = generateId()
-
-	let newTodo = {
-		id: id,
-		name: tomatoName,
-		time: parseInt(stopwatchTime),
-		checked: false,
-		/* checkedDate: , */
+	const saveTomatoObj = () => {
+	console.log('time: ', stopwatchTime);
+		let id = generateId()
+		let newTomato = {
+			id: id,
+			name: tomatoName,
+			time: stopwatchTime
+		}
+		console.log('newTomato inside savetomato: ', newTomato);
+		handleWatchReset()
+		setCounting(false)
+		setCountingStarted(false)
+		setViewSaveForm(false)
+		handleCloseCountdown()
+		setTomatoName('')
+		setNameIsValid(false)
 	}
-	console.log('newTodo inside savetodo: ', newTodo);
-}
 
 
-const validateName = () => {
-	setNameIsValid(tomatoName.length > 0)
-}
+	const saveTodoObj = () => {
+		let id = generateId()
+		let newTodo = {
+			id: id,
+			name: tomatoName,
+			time: parseInt(stopwatchTime),
+			checked: false,
+			/* checkedDate: , */
+		}
+		console.log('newTodo inside savetodo: ', newTodo);
+	}
 
-useEffect(() => {
-	validateName()
-}, [tomatoName])
 
-/////
+	const validateName = () => {
+		setNameIsValid(tomatoName.length > 0)
+	}
 
 
 	const validateNumbers = (input, value) => {
@@ -229,36 +249,10 @@ useEffect(() => {
 		setChecked(!checked)
 	}
 
-	useEffect(() => {
-		console.log('procent kvar: ', parseInt(timeLeft/totalTime*100) + '%') 
-		let percent = (parseInt(timeLeft/totalTime*100))
-		setTimePercent(percent)
-		if (percent >= 66) {
-			setTimePeriod('stage-1') 
-		} else if(percent >= 33) {
-			setTimePeriod('stage-2') 
-		}else if(percent >= 12.5 ) {
-			setTimePeriod('stage-3') 
-		} else if (percent <12.5 ) {
-			setTimePeriod('stage-4')
-		}
-		console.log(timePeriod);
-		handleBackgroundColor()
-		console.log(colorCode);
-	}, [timeLeft])
 
-//120 -> 60, procent , 25 -> 50
-
-	const handleBackgroundColor = () => {
-		console.log('dynamisk färgkod: ', parseInt(((timeLeft/totalTime)*100)*1.3), 'totaltime, timeleft: ', totalTime, timeLeft/* , '25+(totalTime - timeLeft)', 25+(1-(timeLeft/totalTime)) */, 'test: ', parseInt((1-(timeLeft/totalTime))*65)+25 );
-		if (timePeriod === 'stage-1'){
-			setColorCode(`hsl(${parseInt(((timeLeft/totalTime)*100)*1.3)}, 100%, ${parseInt((1-(timeLeft/totalTime))*65)+25}%`)
-		} else if (timePeriod !== 'stage-1'){
-			setColorCode(`hsl(${parseInt(((timeLeft/totalTime)*100)*1.3)}, 100%, 50%)`)
-		} 
-	}
 
 	return (
+
 		<div className={ beenStarted ? `App app-started ${timePeriod}`: "App"} 
 		style={timeLeft < totalTime ? {
 			backgroundColor: colorCode
@@ -268,10 +262,10 @@ useEffect(() => {
 			<Header />
 			<Switch>
 				<Route exact path="/">
-					<CountdownSection timePercent={timePercent} timeLeft={timeLeft} handleCloseCountdown={handleCloseCountdown} setTotalTime={setTotalTime} totalTime={totalTime} beenStarted={beenStarted} setBeenStarted={setBeenStarted} validateNumbers={validateNumbers} handlePause={handlePause} handleStart={handleStart} setRunning={setRunning} running={running} currentHours={currentHours} currentMinutes={currentMinutes} currentSeconds={currentSeconds} hours={hours} minutes={minutes} generateId={generateId} />
+					<CountdownSection timePercent={timePercent} timeLeft={timeLeft} handleCloseCountdown={handleCloseCountdown} totalTime={totalTime} beenStarted={beenStarted}  validateNumbers={validateNumbers} handlePause={handlePause} handleStart={handleStart} running={running} currentHours={currentHours} currentMinutes={currentMinutes} currentSeconds={currentSeconds} hours={hours} minutes={minutes} />
 				</Route>
 				<Route path="/createTomato">
-					<StopwatchSection handleCloseCountdown={handleCloseCountdown} chooseCreate={chooseCreate} setChooseCreate={setChooseCreate} setTomatoHours={setTomatoHours} tomatoHours={tomatoHours} setTomatoMinutes={setTomatoMinutes} tomatoMinutes={tomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoSeconds={tomatoSeconds} stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} setViewStopwatch={setViewStopwatch} viewStopwatch={viewStopwatch} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} saveTodoObj={saveTodoObj} generateId={generateId} />
+					<StopwatchSection handleCloseCountdown={handleCloseCountdown} setTomatoHours={setTomatoHours} tomatoHours={tomatoHours} setTomatoMinutes={setTomatoMinutes} tomatoMinutes={tomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoSeconds={tomatoSeconds} stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} setViewStopwatch={setViewStopwatch} viewStopwatch={viewStopwatch} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} saveTodoObj={saveTodoObj} generateId={generateId} />
 				</Route>
 				<Route path="/myTomatoes">
 					<MyTomatoes />
@@ -289,3 +283,4 @@ useEffect(() => {
 }
 
 export default App;
+
