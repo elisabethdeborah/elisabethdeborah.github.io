@@ -9,8 +9,8 @@ import MyTodos from './components/MyTodos';
 import MyTomatoes from './components/MyTomatoes';
 import Settings from './components/Settings';
 
-
-
+import jsonTomatoData from './myTomatoes.json'
+import jsonTodoData from './myTomatodos.json'
 
 ///////////CONTEXT TILL SÅNT SOM INTE ÄNDRAS SÅ OFTA, RECOIL FÖR ANNAT!!!
 
@@ -38,7 +38,8 @@ function App() {
 	const [ viewStopwatch, setViewStopwatch ] = useState(false)
 
 	//MY TOMATOES
-
+	const [ tomatoData, setTomatoData ] = useState([])
+	const [ todoData, setTodoData ] = useState([])
 	const [ tomatoName, setTomatoName ] = useState('')
 	const [ nameIsValid, setNameIsValid ] = useState(false)
 	const [ viewSaveForm, setViewSaveForm ] = useState(false)
@@ -49,7 +50,14 @@ function App() {
 	//MY TOMATODOS
 	const [ checked, setChecked ] = useState(false)
 
+	useEffect(() => {
+		console.log(jsonTomatoData);
+		setTomatoData(jsonTomatoData)
+	}, [])
 
+	useEffect(() => {
+		setTodoData(jsonTodoData)
+	}, [])
 
 //USEEFFECT-FUNCTIONS
 
@@ -268,10 +276,10 @@ function App() {
 					<StopwatchSection handleCloseCountdown={handleCloseCountdown} setTomatoHours={setTomatoHours} tomatoHours={tomatoHours} setTomatoMinutes={setTomatoMinutes} tomatoMinutes={tomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoSeconds={tomatoSeconds} stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} setViewStopwatch={setViewStopwatch} viewStopwatch={viewStopwatch} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} saveTodoObj={saveTodoObj} generateId={generateId} />
 				</Route>
 				<Route path="/myTomatoes">
-					<MyTomatoes />
+					<MyTomatoes tomatoData={tomatoData} setTomatoData={setTomatoData} />
 				</Route>
 				<Route path="/myTodos">
-					<MyTodos checked={checked} handleChecked={handleChecked} />
+					<MyTodos checked={checked} handleChecked={handleChecked}  todoData={todoData} setTodoData={setTodoData} />
 				</Route>
 				<Route path="/Settings">
 					<Settings />
