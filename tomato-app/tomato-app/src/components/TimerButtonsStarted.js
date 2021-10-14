@@ -1,3 +1,4 @@
+
 const TimerButtonsStarted = ({ beenStarted, timePercent, handlePause, handleStart, running, hours, minutes }) => {
 	return (
 		<section className="timer-buttons">

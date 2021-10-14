@@ -1,3 +1,4 @@
+
 const Timebar = ({timePercent, totalTime, timeLeft}) => {
 	return (
 		<section className="passed-time-container">

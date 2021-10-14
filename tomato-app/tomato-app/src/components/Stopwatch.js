@@ -26,20 +26,3 @@ const Stopwatch = (props) => {
 
 export default Stopwatch
 
-
-{/* <article className="time-passed-container">
-						<h3 className="time-passed">{ parseInt((props.stopwatchTime)/60/60)} hours</h3> 
-						<h3 className="time-passed">{ parseInt((props.stopwatchTime)/60) } min</h3> 
-						<h3 className="time-passed">{ (props.stopwatchTime)%60 > -1? (props.stopwatchTime)%60: 0 } seconds</h3>
-			</article> */}
-
-
-{/* <section className="stopwatch-buttons">
-					<button type="submit" onClick={props.handleWatchStart} >
-						{props.counting ? 'Pause' : 'Resume'}
-					</button>
-					<button type="submit" onClick={props.handleWatchReset}>
-						Reset
-					</button>
-					<button type="submit" onClick={() => props.toggleViewSaveForm()} disabled={props.counting ? true : false} > Save </button>
-				</section>  */} 

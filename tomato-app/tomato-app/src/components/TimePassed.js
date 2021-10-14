@@ -1,3 +1,4 @@
+
 const TimePassed = ({stopwatchTime}) => {
 	return (
 		<article className="time-passed-container">

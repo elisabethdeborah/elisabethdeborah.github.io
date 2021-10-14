@@ -1,3 +1,4 @@
+
 const StopwatchButtons = (props) => {
 	return (
 		<section className="stopwatch-buttons">

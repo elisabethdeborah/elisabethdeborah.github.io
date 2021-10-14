@@ -1,3 +1,4 @@
+
 const TimerButtonsNotStarted = ({handleStart, hours, minutes, running}) => {
 	return (
 		<section className="timer-buttons">
