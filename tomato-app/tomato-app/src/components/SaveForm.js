@@ -13,13 +13,16 @@ const SaveForm = ({setTomatoHours, setTomatoMinutes, setTomatoSeconds, tomatoHou
 
 	return (
 		<form className="save-form" method="POST" >
-			<CloseButton 
-				handleCloseCountdown={handleCloseCountdown} 
-			/>
 			<h1 className="save-form-header">Save Tomato</h1>
 			<input className="tomato-name-input" type="text" placeholder="tomato name" onChange={(e) => setTomatoName(e.target.value)} required />
 			<SaveNumberInput stopwatchTime={stopwatchTime} setTomatoHours={setTomatoHours} setTomatoMinutes={setTomatoMinutes} setTomatoSeconds={setTomatoSeconds} />
+			
+			<section className="countdown-settings">
 			<button type="button" value="save tomato" disabled={!nameIsValid} onClick={() => saveTomatoObj()}>Save tomato</button>
+			<CloseButton 
+				handleCloseCountdown={handleCloseCountdown} 
+			/>
+			</section>
 		</form>
 	)
 }

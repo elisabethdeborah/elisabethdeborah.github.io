@@ -2,19 +2,19 @@
 	{
 		"name": "todo-1",
 		"id": 234525,
-		"time": 10,
+		"time": 90,
 		"checked": false
 	},
 	{
 		"name": "todo-2",
 		"id": 2344455,
-		"time": 10,
+		"time": 60,
 		"checked": false
 	},
 	{
 		"name": "todo-3",
 		"id": 233434525,
-		"time": 10,
+		"time": 120,
 		"checked": false
 	}
 ]

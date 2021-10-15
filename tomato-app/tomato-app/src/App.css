@@ -69,18 +69,18 @@ html, body {
 	justify-content: space-evenly;
 }
 
-.tomato-btn-group button, .todo-btn-group button {
+.tomato-btn-group button, .todo-btn-group button, .soundOnOff, .edit-button-active {
 	font-size: 1em;
 	margin: .5em;
 }
 
 
-.stage-2 *, .stage-2 .timer-buttons button, .close-timer > button {
+.stage-2 *, .stage-2 .timer-buttons button, .close-timer > button, .close-timer a button {
 	transition: color 250ms ease-in;
 	color: var(--dark);
 }
 
-.stage-2 .timer-buttons button, .close-timer > button, .timebar-container {
+.stage-2 .timer-buttons button, .close-timer > button, .timebar-container, .close-timer a button  {
 	border: 2px outset var(--dark);
 }
 
@@ -88,14 +88,14 @@ html, body {
 	stroke: var(--dark)
 }
 
-.close-timer > button, .tomato-btn-group button, .todo-btn-group button {
+.close-timer > button, .tomato-btn-group button:not(.edit-button-active), .todo-btn-group button:not(.edit-button-active), .soundOnOff, .close-timer a button  {
 	border-radius: 100%;
     padding: 10px 12px;
 	color: var(--light);
 	background-color: var(--button-bg);
 }
 
-.close-timer > button:not(.stage-2 .close-timer > button) {
+.close-timer > button:not(.stage-2 .close-timer > button), .close-timer a button:not(.stage-2 .close-timer a button )  {
 	border: 2px outset var(--light);
 }
 
@@ -144,7 +144,7 @@ svg {
 	overflow: visible;
 }
 
-button:not(.close-timer > button, .tomato-btn-group > button, .todo-btn-group > button) {
+button:not(.close-timer > button, .close-timer a button, .tomato-btn-group button, .todo-btn-group button, .soundOnOff, .edit-button-active) {
 	padding: .5em 0;
 	width: 10em;
     background-color: var(--button-bg);
@@ -342,13 +342,23 @@ nav.navbar a {
 	justify-content: center;
 	align-items: center;
 	flex-grow: 1;
+	width: 90%;
+}
+
+.tomato-time-format {
+	width: 90%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
 
 .tomato-btn-group, .todo-btn-group {
 	flex-direction: row;
 }
 
-.tomato-btn-group button:nth-child(1), .todo-btn-group button:nth-child(1) {
+
+
+.tomato-btn-group button:nth-child(1):not(.edit-button-active), .todo-btn-group button:nth-child(1):not(.edit-button-active) {
 	color: var(--timer-green);
 }
 
@@ -362,9 +372,17 @@ nav.navbar a {
 	color: var(--timer-red);
 }
 
-.tomato-btn-group > button, .todo-btn-group > button {
+.tomato-btn-group button, .todo-btn-group button, .soundOnOff {
 	justify-content: center;
 	filter: brightness(1.3);
+}
+
+.edit-button-active {
+	border-radius: 100%;
+	background-color: var(--timer-green);
+	color: var(--dark);
+	
+    padding: 10px 12px;
 }
 
 /* STOPWATCH */
@@ -402,7 +420,7 @@ nav.navbar a {
 /* 	top: 5vh; */
     height: 70vh;
     justify-content: center;
-	transition: all 250s ease;
+	transition: all 250ms ease;
 }
 
 .countdown-container-ended {
@@ -484,8 +502,8 @@ nav.navbar a {
     justify-content: space-evenly;
 	align-items: center;
 	height: 30vh;
-	width: 100vw;
-	transition: all 250s ease;
+	width: 90vw;
+	transition: all 250ms ease;
 	/* 
 	position: fixed;
     top: 40%;
@@ -494,7 +512,7 @@ nav.navbar a {
 }
 
 .timer-container h2, .stopwatch-container h2 {
-	width: 2em;
+	width: 1.5em;
 	text-align: center;
 	font-size: 3em;
 }
@@ -503,7 +521,9 @@ nav.navbar a {
 	position: relative;
 	align-self: center;
 	margin-bottom: 2em;
-
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	transition: all 250ms ease;
 }
 
@@ -513,7 +533,22 @@ nav.navbar a {
     right: 10vw;
 }
 
+.countdown-settings {
+	display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
+}
+article .fa-bell-slash, article .fa-bell {
+	height: 1.5em;
+	width: 1.5em;
+}
 
+button .fa-bell-slash, button .fa-bell {
+	height: 2em;
+	width: 2em;
+}
 
 
 

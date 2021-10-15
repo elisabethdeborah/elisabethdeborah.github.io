@@ -1,6 +1,7 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes, faBellSlash, faBell } from '@fortawesome/free-solid-svg-icons'
 
-
-const Timer = ({ currentHours, currentMinutes, currentSeconds}) => {
+const Timer = ({ currentHours, currentMinutes, currentSeconds, sound}) => {
 
 	return (
 		<section className="timer-container">
@@ -13,6 +14,7 @@ const Timer = ({ currentHours, currentMinutes, currentSeconds}) => {
 			<article className="number numberSeconds">
 				<h2>{currentSeconds  < 10 && currentSeconds.toString().split('')[1] !=='0' ? '0' + currentSeconds : currentSeconds }</h2>
 			</article>
+			<article >{!sound ? <FontAwesomeIcon icon={faBellSlash} />:<FontAwesomeIcon icon={faBell} />}</article>
 		</section>
 	);
   };

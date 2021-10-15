@@ -13,7 +13,10 @@ import jsonTomatoData from './myTomatoes.json'
 import jsonTodoData from './myTomatodos.json'
 
 ///////////CONTEXT TILL SÅNT SOM INTE ÄNDRAS SÅ OFTA, RECOIL FÖR ANNAT!
-//VÄRDET SPARAS OCH KAN ANVÄNDAS AV FLER KOMPONENTER (READ-ONLY), FÖR ATT ÄNDRA (SET-FUNKTION) MÅSTE MAN GÖRA SOM VANLIGT
+//VÄRDET SPARAS OCH KAN ANVÄNDAS AV FLER KOMPONENTER (READ-ONLY), FÖR ATT ÄNDRA (SET-FUNKTION) MÅSTE MAN SKICKA SEPARAT
+//TEX INLOGGNING - BEHÖVER BARA ÄNDRAS I EN KOMPONENT, MEN VÄRDET BEHÖVS I FLER -> RECOIL/REDUX
+
+
 
 
 function App() {
@@ -28,9 +31,10 @@ function App() {
 	const [ currentMinutes, setCurrentMinutes ] = useState(minutes)
 	const [ currentSeconds, setCurrentSeconds ] = useState(seconds)
 	const [ totalTime, setTotalTime ] = useState(0)
-	const [ timePeriod, setTimePeriod ] = useState('')
-	const [ timePercent, setTimePercent ] = useState(0)
+	const [ timePeriod, setTimePeriod ] = useState('stage-1')
+	const [ timePercent, setTimePercent ] = useState(100)
 	const [ colorCode, setColorCode ] = useState('')
+	const [ sound, setSound ] = useState(true)
 
 	//STOPWATCH
 	const [ stopwatchTime, setStopwatchTime ] = useState(0)
@@ -50,6 +54,7 @@ function App() {
 
 	//MY TOMATODOS
 	const [ checked, setChecked ] = useState(false)
+	const [ currentTomato, setCurrentTomato ] = useState('')
 
 	useEffect(() => {
 		console.log(jsonTomatoData);
@@ -117,7 +122,7 @@ function App() {
 	}
 	}, [stopwatchTime, counting]);
 
-
+	//Change name-state onchange
 	useEffect(() => {
 		validateName()
 	}, [tomatoName])
@@ -125,11 +130,20 @@ function App() {
 
 
 //COUNTDOWN HELP FUNCTIONS
-	const handleStart = () => {
+	const handleStart = (timeParam) => {
+		console.log(timeParam, timeParam/60);
+		if (timeParam === undefined){
 		setTimeLeft((Number(hours)*60*60)+(Number(minutes)*60)+Number(seconds))
+		setTotalTime((Number(hours)*60*60)+(Number(minutes)*60)+Number(seconds))
+		} else {
+			setTimeLeft(timeParam)
+			setTotalTime(timeParam)
+			setHours(parseInt(timeParam/60/60))
+			setMinutes(parseInt(timeParam/60))
+		}
 		setRunning(!running)
 		setBeenStarted(true)
-		setTotalTime((Number(hours)*60*60)+(Number(minutes)*60)+Number(seconds))
+		
 		if (timePercent!==100) {
 			setCurrentHours(0)
 			setCurrentMinutes(0)
@@ -160,6 +174,8 @@ function App() {
 		setTomatoHours(0)
 		setTomatoMinutes(0)
 		setTomatoSeconds(0)
+		setRunning(false)
+		setCurrentTomato('')
 	}
 
 
@@ -271,13 +287,13 @@ function App() {
 			<Header />
 			<Switch>
 				<Route exact path="/">
-					<CountdownSection timePercent={timePercent} timeLeft={timeLeft} handleCloseCountdown={handleCloseCountdown} totalTime={totalTime} beenStarted={beenStarted}  validateNumbers={validateNumbers} handlePause={handlePause} handleStart={handleStart} running={running} currentHours={currentHours} currentMinutes={currentMinutes} currentSeconds={currentSeconds} hours={hours} minutes={minutes} />
+					<CountdownSection currentTomato={currentTomato} timeLeft={timeLeft} sound={sound} setSound={setSound} timePercent={timePercent} timeLeft={timeLeft} handleCloseCountdown={handleCloseCountdown} totalTime={totalTime} beenStarted={beenStarted}  validateNumbers={validateNumbers} handlePause={handlePause} handleStart={handleStart} running={running} currentHours={currentHours} currentMinutes={currentMinutes} currentSeconds={currentSeconds} hours={hours} minutes={minutes} />
 				</Route>
 				<Route path="/createTomato">
 					<StopwatchSection handleCloseCountdown={handleCloseCountdown} setTomatoHours={setTomatoHours} tomatoHours={tomatoHours} setTomatoMinutes={setTomatoMinutes} tomatoMinutes={tomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoSeconds={tomatoSeconds} stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} setViewStopwatch={setViewStopwatch} viewStopwatch={viewStopwatch} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} saveTodoObj={saveTodoObj} generateId={generateId} />
 				</Route>
 				<Route path="/myTomatoes">
-					<MyTomatoes tomatoData={tomatoData} setTomatoData={setTomatoData} />
+					<MyTomatoes timePercent={timePercent} setCurrentHours={setCurrentHours} setCurrentMinutes={setCurrentMinutes} setCurrentSeconds={setCurrentSeconds} setBeenStarted={setBeenStarted} setCurrentTomato={setCurrentTomato} setRunning={setRunning} setTimeLeft={setTimeLeft} setTotalTime={setTotalTime} tomatoData={tomatoData} setTomatoData={setTomatoData} handleStart={handleStart} />
 				</Route>
 				<Route path="/myTodos">
 					<MyTodos checked={checked} handleChecked={handleChecked}  todoData={todoData} setTodoData={setTodoData} />

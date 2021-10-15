@@ -13,7 +13,8 @@ import { faStopwatch,
 		faListUl,
 		faStopwatch20,
 		faClock,
-		faUndoAlt
+		faUndoAlt,
+		faTrashAlt
 	} from '@fortawesome/free-solid-svg-icons'
 import data from '../myTomatodos.json'
 
@@ -58,7 +59,7 @@ const MyTodos = (props) => {
 						<section className="todo-btn-group">
 						<button><FontAwesomeIcon icon={faEdit} /></button>
 							<button><FontAwesomeIcon icon={faStopwatch} /></button>
-							<button><FontAwesomeIcon icon={faTimes} /></button>
+							<button><FontAwesomeIcon icon={faTrashAlt} /></button>
 						</section>
 					</article>
 				)
