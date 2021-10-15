@@ -293,7 +293,7 @@ function App() {
 					<StopwatchSection handleCloseCountdown={handleCloseCountdown} setTomatoHours={setTomatoHours} tomatoHours={tomatoHours} setTomatoMinutes={setTomatoMinutes} tomatoMinutes={tomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoSeconds={tomatoSeconds} stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} setViewStopwatch={setViewStopwatch} viewStopwatch={viewStopwatch} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} saveTodoObj={saveTodoObj} generateId={generateId} />
 				</Route>
 				<Route path="/myTomatoes">
-					<MyTomatoes timePercent={timePercent} setCurrentHours={setCurrentHours} setCurrentMinutes={setCurrentMinutes} setCurrentSeconds={setCurrentSeconds} setBeenStarted={setBeenStarted} setCurrentTomato={setCurrentTomato} setRunning={setRunning} setTimeLeft={setTimeLeft} setTotalTime={setTotalTime} tomatoData={tomatoData} setTomatoData={setTomatoData} handleStart={handleStart} />
+					<MyTomatoes timePercent={timePercent} setCurrentHours={setCurrentHours} setCurrentMinutes={setCurrentMinutes} setCurrentSeconds={setCurrentSeconds} setBeenStarted={setBeenStarted} setCurrentTomato={setCurrentTomato} setRunning={setRunning} setTimeLeft={setTimeLeft} setTotalTime={setTotalTime} tomatoData={tomatoData} setTomatoData={setTomatoData} handleStart={handleStart} todoData={todoData} setTodoData={setTodoData} />
 				</Route>
 				<Route path="/myTodos">
 					<MyTodos checked={checked} handleChecked={handleChecked}  todoData={todoData} setTodoData={setTodoData} />

@@ -91,8 +91,11 @@ html, body {
 .close-timer > button, .tomato-btn-group button:not(.edit-button-active), .todo-btn-group button:not(.edit-button-active), .soundOnOff, .close-timer a button  {
 	border-radius: 100%;
     padding: 10px 12px;
-	color: var(--light);
 	background-color: var(--button-bg);
+}
+
+.close-timer > button, .soundOnOff, .close-timer a button {
+	color: var(--light);
 }
 
 .close-timer > button:not(.stage-2 .close-timer > button), .close-timer a button:not(.stage-2 .close-timer a button )  {
@@ -279,7 +282,6 @@ nav.navbar a {
 	height: 40px;
 	width: 40px;
 	border-radius: 5px;
-	background-color: var(--dark);
 	border: 1px solid white;
 	display: flex;
 	flex-direction: column;
@@ -287,6 +289,7 @@ nav.navbar a {
 	justify-self: center;
 	transition: 250ms ease;
 	position: relative;
+	margin-top: 1em;
 }
 
 .check-mark svg {
@@ -321,6 +324,7 @@ nav.navbar a {
 	color: var(--light);
 	transition: border 300ms ease;
 	border-radius: 5px;
+	min-height: 15em;
 }
 
 .tomato-article:nth-child(2) {
@@ -345,6 +349,20 @@ nav.navbar a {
 	width: 90%;
 }
 
+.tomato-article input {
+	background-color: var(--dark);
+	color: var(--light);
+	font-size: 1em;
+	text-align: center;
+	padding: .5em;
+	border-radius: 5px;
+	font-weight: 600;
+}
+
+.tomato-edit {
+	margin-bottom: 1em;
+}
+
 .tomato-time-format {
 	width: 90%;
 	display: flex;
@@ -356,10 +374,21 @@ nav.navbar a {
 	flex-direction: row;
 }
 
-
-
-.tomato-btn-group button:nth-child(1):not(.edit-button-active), .todo-btn-group button:nth-child(1):not(.edit-button-active) {
+.edit-btn {
 	color: var(--timer-green);
+}
+
+.stopwatch-btn {
+	color: var(--timer-yellow);
+}
+.task-btn {
+	color: var(--timer-orange);
+}
+.trash-btn {
+	color: var(--timer-red);
+}
+/* .tomato-btn-group button:nth-child(1):not(.edit-button-active), .todo-btn-group button:nth-child(1):not(.edit-button-active) {
+	color: var(--timer-yellow);
 }
 
 .tomato-btn-group button:nth-child(2), .todo-btn-group button:nth-child(2) {
@@ -370,7 +399,7 @@ nav.navbar a {
 }
 .tomato-btn-group button:nth-child(4), .todo-btn-group button:nth-child(3) {
 	color: var(--timer-red);
-}
+} */
 
 .tomato-btn-group button, .todo-btn-group button, .soundOnOff {
 	justify-content: center;

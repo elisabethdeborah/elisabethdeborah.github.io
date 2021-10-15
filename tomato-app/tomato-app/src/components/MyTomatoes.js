@@ -1,5 +1,5 @@
 
-import data from '../myTomatoes.json'
+/* import data from '../myTomatoes.json' */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStopwatch, faEdit, faTimes, faTasks, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { useState } from 'react/cjs/react.development';
 import SaveNumberInput from './SaveNumberInput';
 
 
-const MyTomatoes = ({handleStart, setCurrentTomato, tomatoData, setTomatoData, setRunning, setTimeLeft, setTotalTime, setBeenStarted, timePercent, setCurrentHours, setCurrentMinutes, setCurrentSeconds}) => {
+const MyTomatoes = ({handleStart, setCurrentTomato, tomatoData, setTomatoData, setRunning, setTimeLeft, setTotalTime, setBeenStarted, timePercent, setCurrentHours, setCurrentMinutes, setCurrentSeconds, todoData, setTodoData}) => {
 	
 	const [ editMatch, setEdit ] = useState('')
 	const [ newName, setNewName ] = useState('')
@@ -40,7 +40,24 @@ const MyTomatoes = ({handleStart, setCurrentTomato, tomatoData, setTomatoData, s
 		}
 
 		setEdit('')
-		console.log(editedTomato);
+
+		if(editedTomato.name === tomato.name && editedTomato.time === tomato.time ) {
+			console.log("NO CHANGE" , editedTomato)
+		} else {
+			console.log('CHANGE', editedTomato);
+			let match = tomatoData.find(x => x.id === tomato.id) 
+			let index = tomatoData.findIndex(x => x.id === tomato.id)
+
+			console.log(match, 'index', index);
+
+			let newDataArray = [...tomatoData]
+			newDataArray.splice(index, 1, editedTomato)
+			console.log(newDataArray);
+			setTomatoData(newDataArray)
+		}
+		
+	
+		
 	}
 	
 
@@ -58,6 +75,12 @@ const MyTomatoes = ({handleStart, setCurrentTomato, tomatoData, setTomatoData, s
 			setTomatoData(newDataArray)
 	}
 
+	const addToTodoList = (tomato) => {
+		tomato.checked = false;
+		let newTodoArray = [...todoData, tomato]
+		setTodoData(newTodoArray)
+	}
+
 	return (
 		<section className="mytomatoes-container">
 			<h1>My Tomatoes</h1>
@@ -65,7 +88,7 @@ const MyTomatoes = ({handleStart, setCurrentTomato, tomatoData, setTomatoData, s
 				return (
 					<article className="tomato-article" key={tomato.id}>
 					{ editMatch===tomato ?
-						<section onClick={() => console.log('click '+ tomato.name)} className="tomato-text-group">
+						<section onClick={() => console.log('click '+ tomato.name)} className="tomato-text-group tomato-edit">
 							<h3><input type="text" defaultValue={tomato.name} onChange={(e) => setNewName(e.target.value)} /></h3>
 							<section className="tomato-time-format">
 								<input type="number" defaultValue={Math.floor((tomato.time/60/60)%60) } min='0' max="24" name="hours" placeholder="HH" onChange={(e) => setNewHours(parseInt(e.target.value))} />
@@ -88,17 +111,17 @@ const MyTomatoes = ({handleStart, setCurrentTomato, tomatoData, setTomatoData, s
 					{	editMatch===tomato ?
 					
 						<section className="tomato-btn-group">
-							<button className="edit-button-active" onClick={() => handleEdit(tomato, index)} ><FontAwesomeIcon icon={faEdit} /></button>
-							<Link to="/"><button><FontAwesomeIcon icon={faStopwatch} onClick={() => handleStartTomato(tomato)} /></button></Link>
-							<button><FontAwesomeIcon icon={faTasks} /></button>
-							<button onClick={() => deleteTomato(tomato)} ><FontAwesomeIcon icon={faTrashAlt} /></button>
+							<button className="edit-btn edit-button-active" onClick={() => handleEdit(tomato, index)} ><FontAwesomeIcon icon={faEdit} /></button>
+							<Link to="/"><button className="stopwatch-btn" ><FontAwesomeIcon icon={faStopwatch} onClick={() => handleStartTomato(tomato)} /></button></Link>
+							<button className="task-btn"onClick={() =>addToTodoList(tomato)}><FontAwesomeIcon icon={faTasks} /></button>
+							<button className="trash-btn" onClick={() => deleteTomato(tomato)} ><FontAwesomeIcon icon={faTrashAlt} /></button>
 						</section>
 						:
 						<section className="tomato-btn-group">
-							<button onClick={() => setEdit(tomato)} ><FontAwesomeIcon icon={faEdit} /></button>
-							<Link to="/"><button><FontAwesomeIcon icon={faStopwatch} onClick={() => handleStartTomato(tomato)} /></button></Link>
-							<button><FontAwesomeIcon icon={faTasks} /></button>
-							<button onClick={() => deleteTomato(tomato)} ><FontAwesomeIcon icon={faTrashAlt} /></button>
+							<button className="edit-btn" onClick={() => setEdit(tomato)} ><FontAwesomeIcon icon={faEdit} /></button>
+							<Link to="/"><button className="stopwatch-btn" ><FontAwesomeIcon icon={faStopwatch} onClick={() => handleStartTomato(tomato)} /></button></Link>
+							<button className="task-btn" onClick={() =>addToTodoList(tomato)}><FontAwesomeIcon icon={faTasks} /></button>
+							<button className="trash-btn" onClick={() => deleteTomato(tomato)} ><FontAwesomeIcon icon={faTrashAlt} /></button>
 						</section>
 					}
 					</article>
