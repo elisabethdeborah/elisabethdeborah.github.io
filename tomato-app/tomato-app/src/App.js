@@ -12,7 +12,8 @@ import Settings from './components/Settings';
 import jsonTomatoData from './myTomatoes.json'
 import jsonTodoData from './myTomatodos.json'
 
-///////////CONTEXT TILL SÅNT SOM INTE ÄNDRAS SÅ OFTA, RECOIL FÖR ANNAT!!!
+///////////CONTEXT TILL SÅNT SOM INTE ÄNDRAS SÅ OFTA, RECOIL FÖR ANNAT!
+//VÄRDET SPARAS OCH KAN ANVÄNDAS AV FLER KOMPONENTER (READ-ONLY), FÖR ATT ÄNDRA (SET-FUNKTION) MÅSTE MAN GÖRA SOM VANLIGT
 
 
 function App() {

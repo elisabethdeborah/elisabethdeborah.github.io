@@ -320,6 +320,7 @@ nav.navbar a {
 	padding: 2em 0;
 	color: var(--light);
 	transition: border 300ms ease;
+	border-radius: 5px;
 }
 
 .tomato-article:nth-child(2) {

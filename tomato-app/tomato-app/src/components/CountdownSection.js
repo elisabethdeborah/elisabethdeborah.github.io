@@ -21,7 +21,7 @@ const CountdownSection = ({ handleCloseCountdown, timePercent, timeLeft, totalTi
 			{ 
 			beenStarted && timeLeft > -1 ?
 				<TimerButtonsStarted beenStarted={beenStarted} timePercent={timePercent} handlePause={handlePause} handleStart={handleStart} running={running} hours={hours} minutes={minutes} />
-				:<TimerButtonsNotStarted handleStart={handleStart} hours={hours} minutes={minutes} minutes={running} />
+				:<TimerButtonsNotStarted handleStart={handleStart} hours={hours} minutes={minutes} running={running} />
 			}
 			{ 
 			beenStarted && timeLeft > -1 ? 
