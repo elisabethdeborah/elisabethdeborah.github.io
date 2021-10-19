@@ -9,7 +9,7 @@ import TomatoTodoInfo from './TomatoTodoInfo'
 import SaveForm from './SaveForm'
 import AddTodoForm from './AddTodoForm'
 
-const MyTodos = ({nameIsValid, saveTomatoObj, setTodoName, viewAddTodoForm, setViewAddTodoForm, handleStart, setCurrentTomato, currentTomato, tomatoData, setTomatoData, setRunning, setTimeLeft, setTotalTime, setBeenStarted, timePercent, setCurrentHours, setCurrentMinutes, setCurrentSeconds, todoData, setTodoData, handleStartTomato, handleEdit, editMatch, setEdit, deleteTomato, addToTodoList, setNewName, setNewHours, setNewMinutes, setNewSeconds, setPagePath, pagePath}) => {
+const MyTodos = ({nameIsValid, saveTomatoObj, setTodoName, viewAddTodoForm, setViewAddTodoForm, handleStart, setCurrentTomato, currentTomato, tomatoData, setTomatoData, setRunning, setTimeLeft, setTotalTime, setBeenStarted, timePercent, setCurrentHours, setCurrentMinutes, setCurrentSeconds, todoData, setTodoData, handleStartTomato, handleEdit, editMatch, setEdit, deleteTomato, addToTodoList, setNewName, setNewHours, setNewMinutes, setNewSeconds, setPagePath, pagePath, todoName}) => {
 
 
 
@@ -65,14 +65,13 @@ const MyTodos = ({nameIsValid, saveTomatoObj, setTodoName, viewAddTodoForm, setV
 			
 			<section className="no-tomatoes">
 				<p>Looks like you don't have any TomaTodos.</p>
-				<p>Would you like to add one? </p>
-				<h3 onClick={() => setViewAddTodoForm(!viewAddTodoForm)} className="time-tomato-header">Add New Todo</h3>
-			{viewAddTodoForm ? <AddTodoForm viewAddTodoForm={viewAddTodoForm} setViewAddTodoForm={setViewAddTodoForm} setTodoData={setTodoData} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} objType="todo" setTodoName={setTodoName} />:null}
+				<h3 onClick={() => setViewAddTodoForm(!viewAddTodoForm)} className="time-tomato-header">Would you like to add one?</h3>
+			{viewAddTodoForm ? <AddTodoForm todoName={todoName} viewAddTodoForm={viewAddTodoForm} setViewAddTodoForm={setViewAddTodoForm} setTodoData={setTodoData} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} objType="todo" setTodoName={setTodoName} />:null}
 			</section>
 			
 			:<section className="stopwatch-create-container">
 			<h3 onClick={() => setViewAddTodoForm(!viewAddTodoForm)} className="time-tomato-header">Add New Todo</h3>
-			{viewAddTodoForm ? <AddTodoForm viewAddTodoForm={viewAddTodoForm} setViewAddTodoForm={setViewAddTodoForm} setTodoData={setTodoData} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} objType="todo" setTodoName={setTodoName} />:null}
+			{viewAddTodoForm ? <AddTodoForm todoName={todoName} viewAddTodoForm={viewAddTodoForm} setViewAddTodoForm={setViewAddTodoForm} setTodoData={setTodoData} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} objType="todo" setTodoName={setTodoName} />:null}
 		</section> }
 
 			{

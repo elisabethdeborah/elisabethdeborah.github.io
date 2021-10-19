@@ -3,12 +3,12 @@ import { useEffect } from "react"
 import CloseButton from "./CloseButton"
 import SaveNumberInput from "./SaveNumberInput"
 
-const AddTodoForm = ({ setTodoName, saveTomatoObj, nameIsValid, viewAddTodoForm, setViewAddTodoForm}) => {
+const AddTodoForm = ({ setTodoName, saveTomatoObj, todoName, viewAddTodoForm, setViewAddTodoForm}) => {
 	
 
 	return (
 		<form className="save-form save-todo-form" method="POST" >
-			<input className="todo-name-input" type="text" placeholder="todo name" onChange={(e) => setTodoName(e.target.value)} required />
+			<input className="todo-name-input" type="text" placeholder="todo name" onChange={(e) => setTodoName(e.target.value)} required  style={ !todoName && todoName.length < 1? {border: '2px solid red'}: { border: '2px solid green'} }  />
 			<section className="countdown-settings">
 			<button type="button" value="save todo" /* disabled={!nameIsValid} */ onClick={() => saveTomatoObj('todo')}>Save todo</button>
 			<aside className="close-timer">

@@ -4,8 +4,18 @@ import CloseButton from "./CloseButton"
 import Timebar from "./Timebar"
 import TimerButtonsStarted from "./TimerButtonsStarted"
 import TimerButtonsNotStarted from "./TimerButtonsNotStarted"
+import ReactAnime from 'react-animejs'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBell } from '@fortawesome/free-solid-svg-icons'
+import Sound from 'react-sound'
+import PlaySound from "./PlaySound"
+import { useState } from 'react/cjs/react.development'
+import BicycleBellRing from '../assets/BicycleBell.mp3'
+import AirRaidSirens from '../assets/AirRaidSirens.mp3'
 
-const CountdownSection = ({ currentTomato, handleCloseCountdown, timePercent, timeLeft, totalTime, beenStarted, validateNumbers, handlePause, handleStart, running, currentHours, currentMinutes,currentSeconds, hours, minutes, sound, setSound, setPagePath, pagePath}) => {
+const CountdownSection = ({ isPlaying, setIsPlaying, currentTomato, handleCloseCountdown, timePercent, timeLeft, totalTime, beenStarted, validateNumbers, handlePause, handleStart, running, currentHours, currentMinutes,currentSeconds, hours, minutes, sound, setSound, setPagePath, pagePath}) => {
+
+	const { Anime, stagger } = ReactAnime
 
 	return (
 
@@ -17,14 +27,38 @@ const CountdownSection = ({ currentTomato, handleCloseCountdown, timePercent, ti
 				null:<> <h1 className="countdown-header">Start Countdown</h1> 
 				<CountdownInput validateNumbers={validateNumbers} /> </>
 			}
-
 			{
 				beenStarted && timeLeft < 0 ? 
-				<h1>Time's up!!</h1>:null
+				<>
+				<PlaySound isPlaying={isPlaying} sound={sound} />
+				<Anime initial={[
+					{
+						targets: ".fa-bell",
+						keyframes: [
+							{
+								rotate: 30,
+							},
+							{
+								rotate:-30,
+							},
+							{
+								rotate: 30,
+							},
+						],
+						easing: 'spring',
+						duration: 250,
+						loop: true
+					}
+				]} >
+				<FontAwesomeIcon icon={faBell} size={'6x'} />
+				<h1 id="timesUp">Time's up!!</h1>
+				</Anime>
+				</>
+				:null
 			}
 
 			{ 
-			beenStarted ? 
+			beenStarted &&  timeLeft > 0  ? 
 				<Timer currentHours={currentHours} currentMinutes={currentMinutes} currentSeconds={currentSeconds} sound={sound} /> : null
 				
 			}

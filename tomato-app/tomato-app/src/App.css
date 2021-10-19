@@ -1,17 +1,13 @@
 :root {
-	--text-light: #f3f2f2;
-	--light-background: #e4adad;
-	--dark-background: #555858;
-
 	--light: #f3f2f2;
 	--dark: #323333;
-	--accent-red: #c41b05;
+	--dark-background: #555858;
+	--button-bg: #32333359;
 
-	--timer-green: hsl(120, 100%, 25%);
+	--timer-green: rgb(0, 128, 0);
 	--timer-yellow: hsl(60, 100%, 50%);
 	--timer-orange: hsl(39, 100%, 50%);
 	--timer-red: hsl(0, 100%, 50%);
-	--button-bg: #32333359;
 }
 
 
@@ -537,6 +533,7 @@ nav.navbar a {
 
 .countdown-container, .save-form {
     justify-content: space-evenly;
+	justify-content: center; /* SNYGGAST NÄR TIME'S UP */
 }
 
 .countdown-container-started  {
@@ -677,13 +674,19 @@ button .fa-bell-slash, button .fa-bell {
 
 
 @media screen and (min-width: 700px) {
+
 	nav.navbar > ul {
 		flex-direction: row;
 	}
 
+	a:hover {
+		cursor: pointer;
+	}
+	button:hover {
+		cursor: pointer;
+		background-color: var(--light);
+		color: var(--dark);
+	}
 
-button:hover {
-	background-color: var(--light);
-	color: var(--dark);
-}
+
 }
