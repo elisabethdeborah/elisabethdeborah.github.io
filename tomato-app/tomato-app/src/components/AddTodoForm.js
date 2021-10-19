@@ -3,18 +3,22 @@ import { useEffect } from "react"
 import CloseButton from "./CloseButton"
 import SaveNumberInput from "./SaveNumberInput"
 
-const AddTodoForm = ({ setTodoName, saveTodoObj, nameIsValid, handleCloseCountdown}) => {
+const AddTodoForm = ({ setTodoName, saveTomatoObj, nameIsValid, viewAddTodoForm, setViewAddTodoForm}) => {
 	
 
 	return (
-		<form className="save-form" method="POST" >
-			<h1 className="save-form-header">Save TomaTodo</h1>
+		<form className="save-form save-todo-form" method="POST" >
 			<input className="todo-name-input" type="text" placeholder="todo name" onChange={(e) => setTodoName(e.target.value)} required />
 			<section className="countdown-settings">
-			<button type="button" value="save todo" disabled={!nameIsValid} onClick={() => saveTodoObj()}>Save todo</button>
-			<CloseButton 
-				handleCloseCountdown={handleCloseCountdown}  
-			/>
+			<button type="button" value="save todo" /* disabled={!nameIsValid} */ onClick={() => saveTomatoObj('todo')}>Save todo</button>
+			<aside className="close-timer">
+				<button onClick={() => setViewAddTodoForm(!viewAddTodoForm)}>
+					<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<line x1="2.12132" y1="3" x2="21.2132" y2="22.0919" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+						<line x1="2.3934" y1="21.4852" x2="21.4853" y2="2.39336" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+					</svg>
+				</button>
+			</aside>
 			</section>
 		</form>
 	)

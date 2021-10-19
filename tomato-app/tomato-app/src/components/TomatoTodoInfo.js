@@ -19,11 +19,15 @@ const TomatoTodoInfo = ({tomato, editMatch, setNewName, setNewHours, setNewMinut
 			: 
 			<section className="tomato-text-group">
 				<h3>{tomato.name}</h3>
+				{
+				tomato.time > 0 ?
 				<section className="tomato-time-format">
+				
 				<h4>{(Math.floor((tomato.time/60/60)%60)) <10 ? '0'+ (Math.floor((tomato.time/60/60)%60)) : (Math.floor((tomato.time/60/60)%60)) }</h4>
 				<h4>{(Math.floor((tomato.time/60)%60)) < 10 ? '0'+(Math.floor((tomato.time/60)%60)):((Math.floor((tomato.time/60))%60))}</h4>
 				<h4>{(Math.floor(tomato.time%60)) < 10 ? '0'+(Math.floor(tomato.time%60)%60):((Math.floor(tomato.time%60)%60))}</h4>
 				</section>
+				: null}
 			</section>
 		}
 		</>

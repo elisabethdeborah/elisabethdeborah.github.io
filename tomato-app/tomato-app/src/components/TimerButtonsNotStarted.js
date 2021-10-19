@@ -1,8 +1,8 @@
 
-const TimerButtonsNotStarted = ({handleStart, hours, minutes, running}) => {
+const TimerButtonsNotStarted = ({handleStart, hours, minutes, running,  numberOneIsValid, numberTwoIsValid, setNumberOneIsValid, setNumberTwoIsValid}) => {
 	return (
 		<section className="timer-buttons">
-			<button type="submit" onClick={handleStart} /* disabled={ ( !hours > 0 && !minutes > 0 && running) ? true : false } */ >
+			<button type="submit" onClick={handleStart} disabled={ ( !hours > 0 && !minutes > 0 && !running) ? true : false } >
 				{running ? 'Stop' : 'Start'}
 			</button>	
 		</section>

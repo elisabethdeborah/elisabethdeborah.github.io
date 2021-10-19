@@ -6,8 +6,10 @@ import { faStopwatch,
 		faTrashAlt,
 	} from '@fortawesome/free-solid-svg-icons'
 import TomatoTodoInfo from './TomatoTodoInfo'
+import SaveForm from './SaveForm'
+import AddTodoForm from './AddTodoForm'
 
-const MyTodos = ({ handleStart, setCurrentTomato, currentTomato, tomatoData, setTomatoData, setRunning, setTimeLeft, setTotalTime, setBeenStarted, timePercent, setCurrentHours, setCurrentMinutes, setCurrentSeconds, todoData, setTodoData, handleStartTomato, handleEdit, editMatch, setEdit, deleteTomato, addToTodoList, setNewName, setNewHours, setNewMinutes, setNewSeconds, setPagePath, pagePath}) => {
+const MyTodos = ({nameIsValid, saveTomatoObj, setTodoName, viewAddTodoForm, setViewAddTodoForm, handleStart, setCurrentTomato, currentTomato, tomatoData, setTomatoData, setRunning, setTimeLeft, setTotalTime, setBeenStarted, timePercent, setCurrentHours, setCurrentMinutes, setCurrentSeconds, todoData, setTodoData, handleStartTomato, handleEdit, editMatch, setEdit, deleteTomato, addToTodoList, setNewName, setNewHours, setNewMinutes, setNewSeconds, setPagePath, pagePath}) => {
 
 
 
@@ -58,12 +60,20 @@ const MyTodos = ({ handleStart, setCurrentTomato, currentTomato, tomatoData, set
 				</section>
 				:null
 			}
+
 			{todoData[0] === undefined ? 
 			
 			<section className="no-tomatoes">
-				<h1>Looks like you don't have any TomaTodos.</h1>
-				<h3>Would you like to add one? </h3>
-			</section>:null}
+				<p>Looks like you don't have any TomaTodos.</p>
+				<p>Would you like to add one? </p>
+				<h3 onClick={() => setViewAddTodoForm(!viewAddTodoForm)} className="time-tomato-header">Add New Todo</h3>
+			{viewAddTodoForm ? <AddTodoForm viewAddTodoForm={viewAddTodoForm} setViewAddTodoForm={setViewAddTodoForm} setTodoData={setTodoData} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} objType="todo" setTodoName={setTodoName} />:null}
+			</section>
+			
+			:<section className="stopwatch-create-container">
+			<h3 onClick={() => setViewAddTodoForm(!viewAddTodoForm)} className="time-tomato-header">Add New Todo</h3>
+			{viewAddTodoForm ? <AddTodoForm viewAddTodoForm={viewAddTodoForm} setViewAddTodoForm={setViewAddTodoForm} setTodoData={setTodoData} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} objType="todo" setTodoName={setTodoName} />:null}
+		</section> }
 
 			{
 			todoData.map((todo, index) => {
@@ -103,9 +113,10 @@ const MyTodos = ({ handleStart, setCurrentTomato, currentTomato, tomatoData, set
 								<FontAwesomeIcon icon={faEdit} />
 							</button>
 							<Link to="/">
-								<button className="stopwatch-btn" >
+								{todo.time > 0 ? <button className="stopwatch-btn" >
 									<FontAwesomeIcon icon={faStopwatch} onClick={() => handleStartTomato(todo)} />
-								</button>
+								</button>:null
+								}
 							</Link>
 							<button className="trash-btn" onClick={() => deleteTomato(todo, todoData)} >
 								<FontAwesomeIcon icon={faTrashAlt} />
@@ -117,9 +128,10 @@ const MyTodos = ({ handleStart, setCurrentTomato, currentTomato, tomatoData, set
 								<FontAwesomeIcon icon={faEdit} />
 							</button>
 							<Link to="/">
-								<button className="stopwatch-btn" >
+								{todo.time > 0 ? <button className="stopwatch-btn" >
 									<FontAwesomeIcon icon={faStopwatch} onClick={() => handleStartTomato(todo)} />
-								</button>
+								</button>:null
+								}
 							</Link>
 							<button className="trash-btn" onClick={() => deleteTomato(todo, todoData)} >
 								<FontAwesomeIcon icon={faTrashAlt} />

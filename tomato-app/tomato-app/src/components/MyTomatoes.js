@@ -31,7 +31,6 @@ const MyTomatoes = ({handleStart, setCurrentTomato, tomatoData, setTomatoData, s
 				<h1>:(</h1>
 				<h1>You don't have any tomatoes.</h1>
 				<Link to="createTomato"> <h3> Would you like to add one? </h3> </Link>
-				<h3> Would you like to add one? </h3>
 			</section>:null}
 			{tomatoData.map((tomato, index) => {
 				return (
