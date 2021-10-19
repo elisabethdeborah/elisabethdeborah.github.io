@@ -17,8 +17,8 @@ const StopwatchSection = (props) => {
 		<>
 		{ !props.viewStopwatch && !props.viewSaveForm ?
 		<section className="stopwatch-create-container">
-			<h1 onClick={() => toggleViewStopwatch()} className="time-tomato-header">Time New </h1>
-			<h1 onClick={() => toggleViewSaveForm()} className="time-tomato-header">Input New Tomato</h1>
+			<h1 onClick={() => toggleViewStopwatch()} className="time-tomato-header">Time New Tomato</h1>
+			<h1 onClick={() => toggleViewSaveForm()} className="time-tomato-header">Create New Tomato</h1>
 		</section> 
 		: null
 		}

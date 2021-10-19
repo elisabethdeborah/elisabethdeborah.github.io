@@ -20,7 +20,7 @@ const SaveForm = ({setTomatoHours, setTomatoMinutes, setTomatoSeconds, tomatoHou
 			<section className="countdown-settings">
 			<button type="button" value="save tomato" disabled={!nameIsValid} onClick={() => saveTomatoObj()}>Save tomato</button>
 			<CloseButton 
-				handleCloseCountdown={handleCloseCountdown} 
+				handleCloseCountdown={handleCloseCountdown}  
 			/>
 			</section>
 		</form>

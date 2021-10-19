@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes, faBellSlash, faBell } from '@fortawesome/free-solid-svg-icons'
+import { faBellSlash, faBell } from '@fortawesome/free-solid-svg-icons'
 import CloseButton from './CloseButton'
 
-const TimerButtonsStarted = ({ timeLeft, beenStarted, timePercent, handlePause, handleStart, running, hours, minutes, sound, setSound, handleCloseCountdown }) => {
+const TimerButtonsStarted = ({ currentTomato, timeLeft, beenStarted, timePercent, handlePause, handleStart, running, hours, minutes, sound, setSound, handleCloseCountdown, pagePath, setPagePath }) => {
 	return (
 		<section className="timer-buttons">
 			<section className="countdown-settings">
 				<button className="soundOnOff" onClick={() => setSound(!sound)}>{sound ? <FontAwesomeIcon icon={faBellSlash} />:<FontAwesomeIcon icon={faBell} />}</button>
-				<CloseButton handleCloseCountdown={handleCloseCountdown} /> 
+				<CloseButton currentTomato={currentTomato} handleCloseCountdown={handleCloseCountdown} pagePath={pagePath} setPagePath={setPagePath} /> 
 			</section>
 			{ beenStarted && timePercent!==100 ? 
 				<button type="submit" onClick={handlePause} disabled={ ( !hours > 0 && !minutes > 0 && timeLeft === 0 ) ? true : false } >
