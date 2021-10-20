@@ -14,7 +14,17 @@ import jsonTomatoData from './myTomatoes.json'
 import jsonTodoData from './myTomatodos.json'
 
 
-
+import AirRaid from './assets/AirRaidSirens.mp3'
+import BicycleBell from './assets/BicycleBell.mp3'
+import CarHorn from './assets/CarHorn.mp3'
+import CatMeows from './assets/CatMeows.mp3'
+import CitySideStreet from './assets/CitySideStreet.mp3'
+import DogsBarking from './assets/DogsBarking.mp3'
+import KurrawongCallDista from './assets/KurrawongCallDista.mp3'
+import MotionHumMorph from './assets/MotionHumMorph.mp3'
+import MustangHotRevs from './assets/MustangHotRevs.mp3'
+import PoliceSiren from './assets/PoliceSiren.mp3'
+import TrainStnPassLounge from './assets/TrainStnPassLounge.mp3'
 
 
 
@@ -28,7 +38,12 @@ import jsonTodoData from './myTomatodos.json'
 
 function App() {
 	//SETTINGS
-	const [ settings, setSettings ] = useState({})
+	const [ settings, setSettings ] = useState({
+		colorTheme: "clean",
+			visualLanguage: "mixed",
+			language: "english",
+			alarmSound: BicycleBell
+	})
 
 
 	//COUNTDOWN
@@ -92,12 +107,7 @@ function App() {
 	useEffect(() => {
 		setTomatoData(jsonTomatoData)
 		setTodoData(jsonTodoData)
-
-		setSettings({
-			colorTheme: "clean",
-			visualLanguage: "mixed",
-			language: "english"
-		})
+		console.log(settings.alarmSound);
 	}, [])
 
 
@@ -200,7 +210,6 @@ function App() {
 			setCurrentHours(0)
 			setCurrentMinutes(0)
 			setCurrentSeconds(0)
-			setIsPlaying(false)
 		}
 	}
 
@@ -454,11 +463,11 @@ function App() {
 			<Switch>
 				<Route exact path="/">
 					<CountdownSection currentTomato={currentTomato} sound={sound} setSound={setSound} timePercent={timePercent} timeLeft={timeLeft} handleCloseCountdown={handleCloseCountdown} totalTime={totalTime} beenStarted={beenStarted}  validateNumbers={validateNumbers} handlePause={handlePause} handleStart={handleStart} running={running} currentHours={currentHours} currentMinutes={currentMinutes} currentSeconds={currentSeconds} hours={hours} minutes={minutes} numberOneIsValid={numberOneIsValid} numberTwoIsValid={numberTwoIsValid} setNumberOneIsValid={setNumberOneIsValid} setNumberTwoIsValid={setNumberTwoIsValid}
-					isPlaying={isPlaying} setIsPlaying={setIsPlaying}
+					isPlaying={isPlaying} setIsPlaying={setIsPlaying} alarmSound={settings.alarmSound}
 					/>
 				</Route>
 				<Route path="/createTomato">
-					<StopwatchSection handleCloseCountdown={handleCloseCountdown} setTomatoHours={setTomatoHours} tomatoHours={tomatoHours} setTomatoMinutes={setTomatoMinutes} tomatoMinutes={tomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoSeconds={tomatoSeconds} stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} setViewStopwatch={setViewStopwatch} viewStopwatch={viewStopwatch} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} tomatoData={tomatoData} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} generateId={generateId} viewAlert={viewAlert} setViewAlert={setViewAlert} />
+					<StopwatchSection handleCloseCountdown={handleCloseCountdown} setTomatoHours={setTomatoHours} tomatoHours={tomatoHours} setTomatoMinutes={setTomatoMinutes} tomatoMinutes={tomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoSeconds={tomatoSeconds} stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} setViewStopwatch={setViewStopwatch} viewStopwatch={viewStopwatch} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} tomatoData={tomatoData} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} generateId={generateId} viewAlert={viewAlert} setViewAlert={setViewAlert} alarmSound={settings.alarmSound}/>
 				</Route>
 				<Route path="/myTomatoes">
 					<MyTomatoes
@@ -466,15 +475,15 @@ function App() {
 					pagePath={pagePath} timePercent={timePercent} setCurrentHours={setCurrentHours}
 					setCurrentMinutes={setCurrentMinutes} setCurrentSeconds={setCurrentSeconds} setBeenStarted={setBeenStarted} setCurrentTomato={setCurrentTomato} setRunning={setRunning} setTimeLeft={setTimeLeft} setTotalTime={setTotalTime} tomatoData={tomatoData} setTomatoData={setTomatoData} handleStart={handleStart} todoData={todoData} setTodoData={setTodoData}	handleStartTomato={handleStartTomato} handleEdit={handleEdit} deleteTomato={deleteTomato} addToTodoList={addToTodoList}  editMatch={editMatch} setEdit={setEdit}  setNewName={setNewName} setNewHours={setNewHours} setNewMinutes={setNewMinutes} setNewSeconds={setNewSeconds} 
 
-					handleCloseCountdown={handleCloseCountdown} setTomatoHours={setTomatoHours} tomatoHours={tomatoHours} setTomatoMinutes={setTomatoMinutes} tomatoMinutes={tomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoSeconds={tomatoSeconds} stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} setViewStopwatch={setViewStopwatch} viewStopwatch={viewStopwatch} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} generateId={generateId} viewAlert={viewAlert} setViewAlert={setViewAlert}
+					handleCloseCountdown={handleCloseCountdown} setTomatoHours={setTomatoHours} tomatoHours={tomatoHours} setTomatoMinutes={setTomatoMinutes} tomatoMinutes={tomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoSeconds={tomatoSeconds} stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} setViewStopwatch={setViewStopwatch} viewStopwatch={viewStopwatch} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} generateId={generateId} viewAlert={viewAlert} setViewAlert={setViewAlert}  alarmSound={settings.alarmSound}
 	 />
 				</Route>
 				<Route path="/myTodos">
-					<MyTodos setTodoName={setTodoName} todoName={todoName} pagePath={pagePath} setPagePath={setPagePath} checked={checked} handleChecked={handleChecked}  todoData={todoData} timePercent={timePercent} setCurrentHours={setCurrentHours} setCurrentMinutes={setCurrentMinutes} setCurrentSeconds={setCurrentSeconds} setBeenStarted={setBeenStarted} setCurrentTomato={setCurrentTomato} setRunning={setRunning} setTimeLeft={setTimeLeft} setTotalTime={setTotalTime} tomatoData={tomatoData} setTomatoData={setTomatoData} handleStart={handleStart} setTodoData={setTodoData}	handleStartTomato={handleStartTomato} handleEdit={handleEdit} deleteTomato={deleteTomato} addToTodoList={addToTodoList}  editMatch={editMatch} setEdit={setEdit}  setNewName={setNewName} setNewHours={setNewHours} setNewMinutes={setNewMinutes} setNewSeconds={setNewSeconds} viewAddTodoForm={viewAddTodoForm} setViewAddTodoForm={setViewAddTodoForm}  saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} validateName={validateName} viewAlert={viewAlert} setViewAlert={setViewAlert}
+					<MyTodos setTodoName={setTodoName} todoName={todoName} pagePath={pagePath} setPagePath={setPagePath} checked={checked} handleChecked={handleChecked}  todoData={todoData} timePercent={timePercent} setCurrentHours={setCurrentHours} setCurrentMinutes={setCurrentMinutes} setCurrentSeconds={setCurrentSeconds} setBeenStarted={setBeenStarted} setCurrentTomato={setCurrentTomato} setRunning={setRunning} setTimeLeft={setTimeLeft} setTotalTime={setTotalTime} tomatoData={tomatoData} setTomatoData={setTomatoData} handleStart={handleStart} setTodoData={setTodoData}	handleStartTomato={handleStartTomato} handleEdit={handleEdit} deleteTomato={deleteTomato} addToTodoList={addToTodoList}  editMatch={editMatch} setEdit={setEdit}  setNewName={setNewName} setNewHours={setNewHours} setNewMinutes={setNewMinutes} setNewSeconds={setNewSeconds} viewAddTodoForm={viewAddTodoForm} setViewAddTodoForm={setViewAddTodoForm}  saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} validateName={validateName} viewAlert={viewAlert} setViewAlert={setViewAlert}  alarmSound={settings.alarmSound}
 	 				/>
 				</Route>
 				<Route path="/Settings">
-					<Settings />
+					<Settings settings={settings} setSettings={setSettings} />
 				</Route>
 			</Switch>
 		</Router>

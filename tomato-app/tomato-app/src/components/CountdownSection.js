@@ -13,7 +13,7 @@ import { useState } from 'react/cjs/react.development'
 import BicycleBellRing from '../assets/BicycleBell.mp3'
 import AirRaidSirens from '../assets/AirRaidSirens.mp3'
 
-const CountdownSection = ({ isPlaying, setIsPlaying, currentTomato, handleCloseCountdown, timePercent, timeLeft, totalTime, beenStarted, validateNumbers, handlePause, handleStart, running, currentHours, currentMinutes,currentSeconds, hours, minutes, sound, setSound, setPagePath, pagePath}) => {
+const CountdownSection = ({ isPlaying, setIsPlaying, currentTomato, handleCloseCountdown, timePercent, timeLeft, totalTime, beenStarted, validateNumbers, handlePause, handleStart, running, currentHours, currentMinutes,currentSeconds, hours, minutes, sound, setSound, setPagePath, pagePath, alarmSound}) => {
 
 	const { Anime, stagger } = ReactAnime
 
@@ -30,7 +30,7 @@ const CountdownSection = ({ isPlaying, setIsPlaying, currentTomato, handleCloseC
 			{
 				beenStarted && timeLeft < 0 ? 
 				<>
-				<PlaySound isPlaying={isPlaying} sound={sound} />
+				<PlaySound isPlaying={isPlaying} sound={sound} alarmSound={alarmSound} />
 				<Anime initial={[
 					{
 						targets: ".fa-bell",
