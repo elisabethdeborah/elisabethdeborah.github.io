@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBellSlash, faBell } from '@fortawesome/free-solid-svg-icons'
-import CloseButton from './CloseButton'
+import CloseButton from '../CloseButton'
 
 const TimerButtonsStarted = ({ currentTomato, timeLeft, beenStarted, timePercent, handlePause, handleStart, running, hours, minutes, sound, setSound, handleCloseCountdown }) => {
 	return (

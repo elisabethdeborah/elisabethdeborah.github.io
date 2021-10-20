@@ -1,6 +1,6 @@
 
 import { useEffect } from "react"
-import CloseButton from "./CloseButton"
+import CloseButton from "../CloseButton"
 import SaveNumberInput from "./SaveNumberInput"
 
 const SaveForm = ({ setTomatoHours, setTomatoMinutes, setTomatoSeconds, tomatoHours, tomatoMinutes,tomatoSeconds, setTomatoName, saveTomatoObj, stopwatchTime, setStopwatchTime, nameIsValid, handleCloseCountdown}) => {

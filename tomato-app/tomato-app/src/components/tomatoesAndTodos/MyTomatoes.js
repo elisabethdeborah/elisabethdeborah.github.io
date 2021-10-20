@@ -16,8 +16,10 @@ const MyTomatoes = ({tomatoData, handleStartTomato, handleEdit, deleteTomato, ad
 	}
 
 	return (
+		<>
+		<h1>My Tomatoes</h1>
 		<section className="mytomatoes-container">
-			<h1>My Tomatoes</h1>
+			
 			{
 				tomatoData[0] === undefined ? 
 				<section className="no-tomatoes">
@@ -93,6 +95,7 @@ const MyTomatoes = ({tomatoData, handleStartTomato, handleEdit, deleteTomato, ad
 			}
 
 		</section>
+		</>
 	)
 }
 

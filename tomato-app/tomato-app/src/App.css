@@ -29,6 +29,9 @@ html, body {
   background-image: linear-gradient(to bottom, var(--dark), var(--dark-background));
 }
 
+
+
+
 .app-started {
 	background-image: none;
 	transition: background-color 1s linear;
@@ -92,19 +95,37 @@ html, body {
 	justify-content: space-evenly;
 }
 
+button:active {
+	filter: invert();
+}
+
 .tomato-btn-group button, .todo-btn-group button, .edit-button-active, .close-timer a button, .close-timer button {
 	font-size: 1em;
 	margin: .5em;
+	padding: 1em;
+}
+
+.svg-inline--fa {
+	font-size: 1em;
+}
+
+.soundOnOff {
+	margin: .5em;
+	padding: 1em;
+}
+
+.stage-4 .countdown-container .svg-inline--fa {
+	font-size: 6em;
 }
 
 
-.stage-2 *, .stage-2 .timer-buttons button, .close-timer a button, .close-timer button {
+.stage-2 *, .stage-2 .timer-buttons button, .close-timer a button, .close-timer button, .stage-2 .countdown-settings button {
 	transition: color 250ms ease-in;
 	color: var(--dark);
 }
 
-.stage-2 .timer-buttons button, .timebar-container, .stage-2 .close-timer a button, .stage-2 .soundOnOff, .close-timer button  {
-	border: 2px outset var(--dark);
+.stage-2 .timer-buttons button, .timebar-container, .stage-2 .close-timer a button, .stage-2 .soundOnOff, .close-timer button, .stage-2 .countdown-settings button   {
+	border: 2px outset var(--dark-background);
 }
 
 .stage-2 svg line {
@@ -113,8 +134,10 @@ html, body {
 
 .tomato-btn-group button:not(.edit-button-active), .todo-btn-group button:not(.edit-button-active), .soundOnOff, .close-timer a button, .close-timer button  {
 	border-radius: 100%;
-    padding: 10px 12px;
 	background-color: var(--button-bg);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .soundOnOff, .close-timer a button , .close-timer button{
@@ -123,6 +146,9 @@ html, body {
 
 .close-timer a button:not(.stage-2 .close-timer a button ), .soundOnOff:not(.stage-2 .soundOnOff ), .close-timer button:not(.stage-2 .close-timer button) {
 	border: 2px outset var(--light);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .timebar-container {
@@ -224,9 +250,9 @@ a:hover, .navbar-x:hover, button:not(:disabled):hover {
 	cursor: pointer;
 }
 
-a > li:hover {
+/* a > li:hover {
 	border-bottom: 1px solid black;
-}
+} */
 section.links-top{
 	display: flex;
 	width: 50vw;
@@ -342,6 +368,7 @@ nav.navbar a {
 
 .settings-option input[type="radio"] {
 	margin: 0 4em;
+	filter: invert(.8);
 
 }
 
@@ -428,19 +455,13 @@ nav.navbar a {
 	padding: 2em 0;
 	color: var(--light);
 	transition: border 300ms ease;
-	border-radius: 5px;
 	min-height: 20em;
 	position: relative;
 }
 
-.tomato-article:nth-child(2) {
-	padding-top: 2em;
-	border-top: 2px solid var(--dark-background);
-}
 
 .tomato-article:last-child {
 	margin-bottom: 5em;
-	border-bottom: none;
 }
 
 .tomato-article * {
@@ -610,9 +631,13 @@ nav.navbar a {
     padding: 0;
     text-align: center;
     border: none;
-	background-color: var(--dark-background);
+	background-color: var(--button-bg);
 	color: var(--light);
 	z-index: 999;
+}
+
+.stage-2 .countdown-inputs input, .stage-2 .save-form input, .stage-2 .tomato-name-input {
+	color: var(--dark);
 }
 
 .countdown-inputs input, .save-form input:not(.tomato-name-input, .todo-name-input) {
@@ -627,11 +652,11 @@ nav.navbar a {
 	
 }
 
-.countdown-inputs input::placeholder, .save-form input::placeholder {
+.countdown-inputs input::placeholder, .save-form input::placeholder, .tomato-name-input::placeholder {
 	color: var(--light);
 }
 
-.countdown-inputs input:focus::placeholder, .save-form input:focus::placeholder {
+.countdown-inputs input:focus::placeholder, .save-form input:focus::placeholder, .tomato-name-input:focus::placeholder {
 	color: var(--dark);
 }
 
@@ -708,20 +733,235 @@ button .fa-bell-slash, button .fa-bell {
 
 
 
+
+
+
+
+
+
+
+
+
 @media screen and (min-width: 700px) {
+
+	section.links-top, .navbar-x, .navbar-x-open {
+		display: none;
+	}
+
+	nav.navbar {
+		transform: translate(0);
+		height: 3em;
+		flex-direction: row;
+		background-color: var(--button-bg);
+	}
 
 	nav.navbar > ul {
 		flex-direction: row;
+		font-size: .9em;
+		height: 2em;
+		width: 80vw;
+	}
+	a:hover:not(.tomato-btn-group a:hover), .time-tomato-header:hover {
+		cursor: pointer;
+		text-decoration: none;
+		border-bottom: 1px outset var(--light);
+
 	}
 
-	a:hover {
+	button:hover{
 		cursor: pointer;
-	}
-	button:hover {
-		cursor: pointer;
-		background-color: var(--light);
-		color: var(--dark);
+		opacity: .5;
 	}
 
+	.timer-buttons {
+		flex-direction: row;
+	}
+
+	button:not(.close-timer button, .close-timer a button, .tomato-btn-group button, .todo-btn-group button, .soundOnOff, .edit-button-active, .close-timer button) {
+		width: 7em;
+		font-size: 1em;
+		padding: .75em 0;
+	}
+
+
+
+	.soundOnOff, .close-timer a button, .close-timer button {
+		padding: .5em;
+	}
+
+	.countdown-settings, .tomato-name-input, .todo-name-input {
+		width: unset;
+	}
+
+	.countdown-settings button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.countdown-inputs input, .save-form input:not(.tomato-name-input, .todo-name-input) {
+		width: 1.6em;
+		padding-left: 0.4em;
+	}
+	.countdown-inputs input {
+		width: 2.1em;
+	}
+
+	.countdown-container-started {
+		justify-content: space-between;
+	}
+
+
+	.stopwatch-create-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.todo-create-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.todo-create-container h3 {
+		margin: 2em auto;
+	}
+
+
+	.stopwatch-create-container h1 {
+		margin: 0 2em;
+	}
+
+	article .fa-bell-slash, article .fa-bell {
+		height: 2em;
+		width: 2em;
+	}
+
+	.timer-container {
+		flex-grow: 1;
+		max-width: 800px;
+		justify-content: space-between;
+	}
+	.timebar-container {
+		height: 1em;
+		max-width: 800px;
+		justify-content: space-between;
+	}
+	.timebar {
+		height: 1em;
+	}
+
+	.time-passed-container {
+		width: 700px;
+	}
+
+	.tomato-text-group {
+		justify-content: flex-end;
+		width: 250px;
+	}
+	
+
+	.tomato-article {
+		width: unset;
+		height: unset;
+		border: none;
+	}
+
+	.logo, .todo-svg-container {
+		height: 400px;
+		width: 400px;
+	}
+
+	.alert-message {
+		text-align: center;
+		padding: .25em .5em;
+		position: fixed;
+		top: 70vh;
+		left: 30vw;
+		right: 30vw;
+		border: 2px solid var(--light);
+		z-index: 9999;
+		border-radius: 5px;
+		font-size: 1.3em;
+		font-weight: 600;
+	}
+
+	.mytomatoes-container {
+		display: grid;
+		justify-content: space-evenly;
+		align-items: start;
+		width: 80vw;
+		margin-bottom: 10em;
+		transition: all 250ms ease-in;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, 400px);
+	}
+
+	.tomato-article:nth-child(2) {
+		border: none;
+	}
+	
+	.settings-option:not(.alarm-settings) {
+		width: unset;
+	}
+
+	.settings-list {
+		margin-top: 3em;
+		margin-bottom: 10em;
+		width: 80vw;
+		max-width: 1000px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.settings-list li:first-child {
+		border-bottom: 1px solid var(--dark-background);
+    	border-right: 1px solid var(--dark-background);
+		border-top: none;
+	}
+	.settings-list li:nth-child(2) {
+		border-bottom: 1px solid var(--dark-background);
+    	border-left: 1px solid var(--dark-background);
+		border-top: none;
+	}
+	.settings-list li:nth-child(3) {
+		border-top: 1px solid var(--dark-background);
+    	border-right: 1px solid var(--dark-background);
+	}
+	.settings-list li:nth-child(4) {
+		border-top: 1px solid var(--dark-background);
+    	border-left: 1px solid var(--dark-background);
+	}
+
+	.settings-list h3 {
+		margin-inline-start: 2em;
+		text-align: left;
+	}
+
+	
+	#alarm-select {
+		margin: 0 0 0 2.4em;
+	}
+
+	.countdown-container .times-up-fa-bell {
+		font-size: 10em;
+	}
 
 }
+
+/* 
+
+colorful theme: 
+.tomato-kropp {
+	fill: var(--timer-red);
+	stroke: var(--button-bg);
+}
+
+.tomato-blast {
+	fill: var(--timer-green);
+	stroke: var(--button-bg);
+
+	NÅN SLAGS GRADIENT???
+
+*/

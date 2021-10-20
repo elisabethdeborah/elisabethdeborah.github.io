@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell } from '@fortawesome/free-solid-svg-icons'
 import PlaySound from "./PlaySound"
 
-const CountdownSection = ({ currentTomato, handleCloseCountdown, timePercent, timeLeft, totalTime, beenStarted, validateNumbers, handlePause, handleStart, running, currentHours, currentMinutes,currentSeconds, hours, minutes, sound, setSound, alarmSound }) => {
+const CountdownSection = ({ currentTomato, handleCloseCountdown, timePercent, timeLeft, totalTime, beenStarted, validateNumbers, handlePause, handleStart, running, currentHours, currentMinutes,currentSeconds, hours, minutes, sound, setSound, alarmSound, numberIsValid }) => {
 
 	const { Anime, stagger } = ReactAnime
 
@@ -19,7 +19,7 @@ const CountdownSection = ({ currentTomato, handleCloseCountdown, timePercent, ti
 				null
 				:<>
 					<h1 className="countdown-header">Start Countdown</h1> 
-					<CountdownInput validateNumbers={validateNumbers} /> 
+					<CountdownInput validateNumbers={validateNumbers} numberIsValid={numberIsValid} /> 
 				</>
 			}
 			{
@@ -45,7 +45,7 @@ const CountdownSection = ({ currentTomato, handleCloseCountdown, timePercent, ti
 							loop: true
 						}
 					]} >
-						<FontAwesomeIcon icon={faBell} size={'6x'} />
+						<FontAwesomeIcon icon={faBell} className="times-up-fa-bell" />
 						<h1 id="timesUp">Time's up!!</h1>
 					</Anime>
 				</>

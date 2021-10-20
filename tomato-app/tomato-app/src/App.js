@@ -2,11 +2,11 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import CountdownSection from './components/CountdownSection';
-import StopwatchSection from './components/StopwatchSection';
+import CountdownSection from './components/countdownComponents/CountdownSection';
+import StopwatchSection from './components/stopwatchComponents/StopwatchSection';
 import Header from './components/Header'
-import MyTodos from './components/MyTodos';
-import MyTomatoes from './components/MyTomatoes';
+import MyTodos from './components/tomatoesAndTodos/MyTodos';
+import MyTomatoes from './components/tomatoesAndTodos/MyTomatoes';
 import Settings from './components/Settings';
 import AlertMessage from './components/AlertMessage';
 
@@ -62,6 +62,7 @@ function App() {
 	const [ todoData, setTodoData ] = useState([])
 	const [ tomatoName, setTomatoName ] = useState('')
 	const [ nameIsValid, setNameIsValid ] = useState(false)
+	const [ numberIsValid, setNumberIsValid ] = useState(false)
 	const [ viewSaveForm, setViewSaveForm ] = useState(false)
 	const [ tomatoHours, setTomatoHours ] = useState(0)
 	const [ tomatoMinutes, setTomatoMinutes ] = useState(0)
@@ -321,10 +322,13 @@ function App() {
 
 
 	const validateNumbers = (input, value) => {
-		if (value === 'hours') {
+		console.log(input, value);
+		if (value === 'hours' && Number(input < 24) && Number(input >= 0)) {
 			setHours(Number(input))
-		} else if ( value === 'minutes' ) {
+			setNumberIsValid(true)
+		} else if ( value === 'minutes' && Number(input < 59) && Number(input >= 0)) {
 			setMinutes(Number(input))
+			setNumberIsValid(true)
 		}
 	}
 
@@ -367,7 +371,9 @@ function App() {
 	
 		console.log(editedTomato.name, tomato.name, editedTomato.time, tomato.time);
 
-		if(editedTomato.name !== tomato.name && editedTomato.time !== tomato.time ) {
+		if(editedTomato.name === tomato.name && editedTomato.time === tomato.time ) {
+			console.log('same');
+		} else {
 			console.log('CHANGE', editedTomato);
 			console.log(match, 'index', index);
 			let newDataArray = [...data]
@@ -384,6 +390,10 @@ function App() {
 			}
 		}
 		setEdit('')
+		setNewName('')
+		setNewHours(0)
+		setNewMinutes(0)
+		setNewSeconds(0)
 	}
 
 
@@ -427,7 +437,7 @@ function App() {
 				<Header />
 				<Switch>
 					<Route exact path="/">
-						<CountdownSection currentTomato={currentTomato} sound={sound} setSound={setSound} timePercent={timePercent} timeLeft={timeLeft} handleCloseCountdown={handleCloseCountdown} totalTime={totalTime} beenStarted={beenStarted}  validateNumbers={validateNumbers} handlePause={handlePause} handleStart={handleStart} running={running} currentHours={currentHours} currentMinutes={currentMinutes} currentSeconds={currentSeconds} hours={hours} minutes={minutes} alarmSound={settings.alarmSound}
+						<CountdownSection currentTomato={currentTomato} sound={sound} setSound={setSound} timePercent={timePercent} timeLeft={timeLeft} handleCloseCountdown={handleCloseCountdown} totalTime={totalTime} beenStarted={beenStarted}  validateNumbers={validateNumbers} handlePause={handlePause} handleStart={handleStart} running={running} currentHours={currentHours} currentMinutes={currentMinutes} currentSeconds={currentSeconds} hours={hours} minutes={minutes} alarmSound={settings.alarmSound} numberIsValid={numberIsValid}
 						/>
 					</Route>
 					<Route path="/createTomato">

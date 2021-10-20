@@ -48,9 +48,9 @@ const MyTodos = ({saveTomatoObj, setTodoName, viewAddTodoForm, setViewAddTodoFor
 	let notCheckedTodos = todoData.filter(x => !x.checked) 
 
 	return (
-		<section className="mytomatoes-container">
-			<h1>My TomaToDos</h1>
-			{
+		<>
+		<h1>My TomaToDos</h1>
+		{
 				notCheckedTodos.length ===0 && todoData[0] !== undefined? 
 				<section className="all-checked">
 					<h1>Yay, every task is checked!</h1>
@@ -74,7 +74,7 @@ const MyTodos = ({saveTomatoObj, setTodoName, viewAddTodoForm, setViewAddTodoFor
 						:null
 					}
 				</section>
-				:<section className="stopwatch-create-container">
+				:<section className="todo-create-container">
 					<h3 onClick={() => setViewAddTodoForm(!viewAddTodoForm)} className="time-tomato-header">Add New Todo</h3>
 					{
 						viewAddTodoForm ? 
@@ -85,6 +85,9 @@ const MyTodos = ({saveTomatoObj, setTodoName, viewAddTodoForm, setViewAddTodoFor
 					}
 				</section> 
 			}
+		<section className="mytomatoes-container">
+			
+	
 
 			{
 				todoData.map((todo) => {
@@ -161,6 +164,7 @@ const MyTodos = ({saveTomatoObj, setTodoName, viewAddTodoForm, setViewAddTodoFor
 			}
 
 		</section>
+		</>
 	)
 }
 
