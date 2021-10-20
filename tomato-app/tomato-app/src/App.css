@@ -316,12 +316,47 @@ nav.navbar a {
     justify-content: space-between;
 }
 
+.settings-container {
+	margin-top: 2em;
+}
 
-.settings-option {
+.settings-list {
+	margin-top: 3em;
+	margin-bottom: 10em;
+}
+
+.settings-list li {
+	border-top: 1px solid var(--light);
+	padding-bottom: 2em;
+}
+
+
+.settings-option:not(.alarm-settings) {
 	display: flex;
+	flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
-    width: 100vw;
+    justify-content: flex-start;
+    width: 80vw;
+	
+}
+
+.settings-option input[type="radio"] {
+	margin: 0 4em;
+
+}
+
+#alarm-select {
+	display: flex;
+	justify-content: center;
+	font-size: 1em;
+    padding: .2em 1em;
+    border-radius: 5px;
+    color: var(--light);
+    background: var(--dark);
+    border: 1px solid var(--light);
+	height: 2.5em;
+	text-align: center;
+	margin: 0 auto;
 }
 
 
@@ -544,7 +579,7 @@ nav.navbar a {
 	transition: all 250ms ease;
 }
 
-.countdown-container-started h3 {
+.countdown-container-started h3, .settings-list h3 {
 	margin-block-start: 1.5em;
 	margin-block-end: 1.5em;
 }

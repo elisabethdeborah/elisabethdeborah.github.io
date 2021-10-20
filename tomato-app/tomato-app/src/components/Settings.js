@@ -20,35 +20,43 @@ const Settings = ({ setSettings }) => {
 				<li className="theme">
 					<h3>Color theme</h3>
 					<article className="settings-option">
-					<input type="radio" name="theme" defaultChecked />
-					<p>Clean</p>
-					<input type="radio" name="theme" />
-					<p>Colorful</p>
+						<input type="radio" name="theme" defaultChecked />
+						<p>Clean</p>
+					</article>
+					<article className="settings-option">
+						<input type="radio" name="theme" />
+						<p>Colorful</p>
 					</article>
 				</li>
 				<li className="visual-language">
 					<h3>Visual language</h3>
 					<article className="settings-option">
-					<input type="radio" name="visual" defaultChecked />
-					<p>Mixed</p>
-					<input type="radio" name="visual" />
-					<p>Text</p>
-					<input type="radio" name="visual" />
-					<p>Pictures</p>
+						<input type="radio" name="visual" defaultChecked />
+						<p>Mixed</p>
+					</article>
+					<article className="settings-option">
+						<input type="radio" name="visual" />
+						<p>Text</p>
+					</article>
+					<article className="settings-option">
+						<input type="radio" name="visual" />
+						<p>Pictures</p>
 					</article>
 				</li>
 				<li className="lanugage">
 					<h3>Language</h3>
 					<article className="settings-option">
-					<input type="radio" name="language" defaultChecked />
-					<p>English</p>
-					<input type="radio" name="language" />
-					<p>Svenska</p>
+						<input type="radio" name="language" defaultChecked />
+						<p>English</p>
+					</article>
+					<article className="settings-option">
+						<input type="radio" name="language" />
+						<p>Svenska</p>
 					</article>
 				</li>
 				<li>
 					<h3>Alarm sound</h3>
-					<article className="settings-option">
+					<article className="settings-option alarm-settings">
 						<select 
 							id="alarm-select" 
 							onChange={(e) => setSettings({ colorTheme: 'clean', visualLanguage: 'mixed', language: 'english', alarmSound: e.target.value })}

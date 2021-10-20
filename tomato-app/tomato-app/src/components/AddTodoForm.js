@@ -9,7 +9,7 @@ const AddTodoForm = ({ setTodoName, saveTomatoObj, todoName, viewAddTodoForm, se
 				onChange={(e) => setTodoName(e.target.value)} required  style={ !todoName && todoName.length < 1? {border: '2px solid red'}: { border: '2px solid green'} }  
 			/>
 			<section className="countdown-settings">
-				<button type="button" value="save todo" onClick={() => saveTomatoObj('todo')}>
+				<button type="button" value="save todo"  disabled={!todoName || todoName.length < 0} onClick={() => saveTomatoObj('todo')}>
 					Save todo
 				</button>
 				<aside className="close-timer">
