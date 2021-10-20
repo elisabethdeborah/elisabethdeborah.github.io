@@ -12,7 +12,8 @@ import PoliceSiren from '../assets/PoliceSiren.mp3'
 import TrainStnPassLounge from '../assets/TrainStnPassLounge.mp3'
 
 
-const Settings = ({ setSettings }) => {
+const Settings = ({ setSettings, settings }) => {
+
 	return (
 		<section className="settings-container">
 			<h1>Settings</h1>
@@ -20,37 +21,37 @@ const Settings = ({ setSettings }) => {
 				<li className="theme">
 					<h3>Color theme</h3>
 					<article className="settings-option">
-						<input type="radio" name="theme" defaultChecked />
+						<input type="radio" value="clean" name="theme" defaultChecked onChange={(e) => setSettings({ ...settings, colorTheme: e.target.value })} />
 						<p>Clean</p>
 					</article>
 					<article className="settings-option">
-						<input type="radio" name="theme" />
+						<input type="radio" name="theme" value="colorful" onChange={(e) => setSettings({ ...settings, colorTheme: e.target.value })} />
 						<p>Colorful</p>
 					</article>
 				</li>
 				<li className="visual-language">
 					<h3>Visual language</h3>
 					<article className="settings-option">
-						<input type="radio" name="visual" defaultChecked />
+						<input type="radio" name="visual" value="mixed" defaultChecked onChange={(e) => setSettings({ ...settings, visualLanguage: e.target.value })} />
 						<p>Mixed</p>
 					</article>
 					<article className="settings-option">
-						<input type="radio" name="visual" />
+						<input type="radio" name="visual" value="text" onChange={(e) => setSettings({ ...settings, visualLanguage: e.target.value })} />
 						<p>Text</p>
 					</article>
 					<article className="settings-option">
-						<input type="radio" name="visual" />
+						<input type="radio" name="visual" value="pictures" onChange={(e) => setSettings({ ...settings, visualLanguage: e.target.value })} />
 						<p>Pictures</p>
 					</article>
 				</li>
 				<li className="lanugage">
 					<h3>Language</h3>
 					<article className="settings-option">
-						<input type="radio" name="language" defaultChecked />
+						<input type="radio" name="language" value="english" defaultChecked onChange={(e) => setSettings({ ...settings, language: e.target.value })} />
 						<p>English</p>
 					</article>
 					<article className="settings-option">
-						<input type="radio" name="language" />
+						<input type="radio" name="language" value="svenska" onChange={(e) => setSettings({ ...settings, language: e.target.value })}/>
 						<p>Svenska</p>
 					</article>
 				</li>
@@ -59,7 +60,7 @@ const Settings = ({ setSettings }) => {
 					<article className="settings-option alarm-settings">
 						<select 
 							id="alarm-select" 
-							onChange={(e) => setSettings({ colorTheme: 'clean', visualLanguage: 'mixed', language: 'english', alarmSound: e.target.value })}
+							onChange={(e) => setSettings({ ...settings, alarmSound: e.target.value })}
 						>
 							<option value={BicycleBell} >Bicycle Bell</option>
 							<option value={AirRaid}>Air Siren</option>

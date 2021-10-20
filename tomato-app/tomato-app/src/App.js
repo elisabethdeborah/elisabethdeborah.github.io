@@ -225,6 +225,7 @@ function App() {
 		setRunning(false)
 		setCurrentTomato('')
 		setPagePath('')
+		setNumberIsValid(false)
 	}
 
 
@@ -252,6 +253,7 @@ function App() {
 		setCounting(false)
 		setCountingStarted(false)
 		setViewSaveForm(false)
+		setNumberIsValid(false)
 	}
 
 
@@ -312,6 +314,7 @@ function App() {
 		handleCloseCountdown()
 		setTomatoName('')
 		setNameIsValid(false)
+		setNumberIsValid(false)
 		setViewAddTodoForm(false)
 	}
 
@@ -454,7 +457,7 @@ function App() {
 						/>
 					</Route>
 					<Route path="/Settings">
-						<Settings setSettings={setSettings} />
+						<Settings setSettings={setSettings} settings={settings} />
 					</Route>
 				</Switch>
 			</Router>
