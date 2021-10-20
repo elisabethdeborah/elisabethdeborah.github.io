@@ -13,18 +13,7 @@ import AlertMessage from './components/AlertMessage';
 import jsonTomatoData from './myTomatoes.json'
 import jsonTodoData from './myTomatodos.json'
 
-
-import AirRaid from './assets/AirRaidSirens.mp3'
 import BicycleBell from './assets/BicycleBell.mp3'
-import CarHorn from './assets/CarHorn.mp3'
-import CatMeows from './assets/CatMeows.mp3'
-import CitySideStreet from './assets/CitySideStreet.mp3'
-import DogsBarking from './assets/DogsBarking.mp3'
-import KurrawongCallDista from './assets/KurrawongCallDista.mp3'
-import MotionHumMorph from './assets/MotionHumMorph.mp3'
-import MustangHotRevs from './assets/MustangHotRevs.mp3'
-import PoliceSiren from './assets/PoliceSiren.mp3'
-import TrainStnPassLounge from './assets/TrainStnPassLounge.mp3'
 
 
 
@@ -61,8 +50,6 @@ function App() {
 	const [ timePercent, setTimePercent ] = useState(100)
 	const [ colorCode, setColorCode ] = useState('')
 	const [ sound, setSound ] = useState(true)
-	const [ numberOneIsValid, setNumberOneIsValid ] = useState(false)
-	const [ numberTwoIsValid, setNumberTwoIsValid ] = useState(false)
 
 	//STOPWATCH
 	const [ stopwatchTime, setStopwatchTime ] = useState(0)
@@ -89,7 +76,7 @@ function App() {
 
 
 	//MY TOMATODOS
-	const [ checked, setChecked ] = useState(false)
+	//const [ checked, setChecked ] = useState(false)
 	const [ currentTomato, setCurrentTomato ] = useState('')
 	const [ pagePath, setPagePath ] = useState('')
 	const [ viewAddTodoForm, setViewAddTodoForm ] = useState(false)
@@ -100,9 +87,6 @@ function App() {
 	const [ viewAlert, setViewAlert ] = useState(false)
 	const [alertProperties, setAlertProperties] = useState({})
 
-	//ALARM
-	const [isPlaying, setIsPlaying] = useState(true)
-
 
 	useEffect(() => {
 		setTomatoData(jsonTomatoData)
@@ -112,7 +96,7 @@ function App() {
 
 
 
-//USEEFFECT-FUNCTIONS
+	//USEEFFECT-FUNCTIONS
 
 	//COUNTDOWN
 	useEffect(() => {
@@ -192,7 +176,7 @@ function App() {
 		}, 3000);
 	}
 
-//COUNTDOWN HELP FUNCTIONS
+	//COUNTDOWN HELP FUNCTIONS
 	const handleStart = (timeParam) => {
 		if (timeParam === undefined){
 		setTimeLeft((Number(hours)*60*60)+(Number(minutes)*60)+Number(seconds))
@@ -251,9 +235,9 @@ function App() {
 		} 
 	}
 
-///////
+	///////
 
-//STOPWATCH HELP FUNCTIONS
+	//STOPWATCH HELP FUNCTIONS
 
 	const handleWatchStart = () => {
 		console.log('stopwatchTime inside handlewatch: ', stopwatchTime);
@@ -271,9 +255,9 @@ function App() {
 
 
 
-//////
+	//////
 
-//Save tomato
+	//Save tomato
 
 	const generateId = () => {
 		let date = new Date()
@@ -344,10 +328,6 @@ function App() {
 		}
 	}
 
-	const handleChecked = () => {
-		setChecked(!checked)
-	}
-
 
 	//MYTOMATOES- AND TOMATODO-FUNCTIONS
 
@@ -366,7 +346,6 @@ function App() {
 
 		let editedTomato;		
 		if (tomato.hasOwnProperty('checked')){
-
 			editedTomato = {
 				id: tomato.id,
 				name: name,
@@ -388,54 +367,44 @@ function App() {
 	
 		console.log(editedTomato.name, tomato.name, editedTomato.time, tomato.time);
 
-		if(editedTomato.name === tomato.name && editedTomato.time === tomato.time ) {
+		if(editedTomato.name !== tomato.name && editedTomato.time !== tomato.time ) {
+			console.log('CHANGE', editedTomato);
+			console.log(match, 'index', index);
+			let newDataArray = [...data]
+			newDataArray.splice(index, 1, editedTomato)
+			console.log(newDataArray);
+			if (tomato.hasOwnProperty('checked')) {
+				console.log('set todo:',newDataArray);
+				setTodoData(newDataArray)
+				showAlertMessage('Todo', 'edited', 'blue')
 			} else {
-				console.log('CHANGE', editedTomato);
-
-				console.log(match, 'index', index);
-				let newDataArray = [...data]
-				newDataArray.splice(index, 1, editedTomato)
-				console.log(newDataArray);
-				
-				if (tomato.hasOwnProperty('checked')) {
-
-					console.log('set todo:',newDataArray);
-					setTodoData(newDataArray)
-					showAlertMessage('Todo', 'edited', 'yellow')
-				} else {
-
-					console.log('set tomato:',newDataArray);
-					setTomatoData(newDataArray)
-					showAlertMessage('Tomato', 'edited', 'blue')
-				}
+				console.log('set tomato:',newDataArray);
+				setTomatoData(newDataArray)
+				showAlertMessage('Tomato', 'edited', 'blue')
 			}
+		}
 		setEdit('')
-	
-		
 	}
 
 
 
 	const deleteTomato = (tomato, data) => {
-			console.log('click '+ tomato.name)
-	
-			let match = data.find(x => x.id === tomato.id) 
-			let index = data.findIndex(x => x.id === tomato.id)
-	
-			console.log('match:',match, 'index', index);
-	
-			let newDataArray = [...data]
-			newDataArray.splice(index, 1)
-			console.log(newDataArray);
+		console.log('click '+ tomato.name)
+		let match = data.find(x => x.id === tomato.id) 
+		let index = data.findIndex(x => x.id === tomato.id)
+		console.log('match:',match, 'index', index);
+		let newDataArray = [...data]
+		newDataArray.splice(index, 1)
+		console.log(newDataArray);
 
-			if (tomato.hasOwnProperty('checked')) {
-				console.log('currentTomato.checked:', tomato.checked);
-				setTodoData(newDataArray)
-				showAlertMessage('Todo', 'deleted', 'red')
-			} else {
-				setTomatoData(newDataArray)
-				showAlertMessage('Tomato', 'deleted', 'red')
-			}
+		if (tomato.hasOwnProperty('checked')) {
+			console.log('currentTomato.checked:', tomato.checked);
+			setTodoData(newDataArray)
+			showAlertMessage('Todo', 'deleted', 'red')
+		} else {
+			setTomatoData(newDataArray)
+			showAlertMessage('Tomato', 'deleted', 'red')
+		}
 	}
 
 	const addToTodoList = (tomato) => {
@@ -448,47 +417,46 @@ function App() {
 		showAlertMessage('Todo', 'added', 'green')
 	}
 
-
-
-
 	return (
 
-		<div className={ beenStarted ? `App app-started ${timePeriod}`: "App"} 
-		style={timeLeft < totalTime ? {
-			backgroundColor: colorCode
-		  }:null}>
-
-		<Router>
-			<Header />
-			<Switch>
-				<Route exact path="/">
-					<CountdownSection currentTomato={currentTomato} sound={sound} setSound={setSound} timePercent={timePercent} timeLeft={timeLeft} handleCloseCountdown={handleCloseCountdown} totalTime={totalTime} beenStarted={beenStarted}  validateNumbers={validateNumbers} handlePause={handlePause} handleStart={handleStart} running={running} currentHours={currentHours} currentMinutes={currentMinutes} currentSeconds={currentSeconds} hours={hours} minutes={minutes} numberOneIsValid={numberOneIsValid} numberTwoIsValid={numberTwoIsValid} setNumberOneIsValid={setNumberOneIsValid} setNumberTwoIsValid={setNumberTwoIsValid}
-					isPlaying={isPlaying} setIsPlaying={setIsPlaying} alarmSound={settings.alarmSound}
-					/>
-				</Route>
-				<Route path="/createTomato">
-					<StopwatchSection handleCloseCountdown={handleCloseCountdown} setTomatoHours={setTomatoHours} tomatoHours={tomatoHours} setTomatoMinutes={setTomatoMinutes} tomatoMinutes={tomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoSeconds={tomatoSeconds} stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} setViewStopwatch={setViewStopwatch} viewStopwatch={viewStopwatch} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} tomatoData={tomatoData} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} generateId={generateId} viewAlert={viewAlert} setViewAlert={setViewAlert} alarmSound={settings.alarmSound}/>
-				</Route>
-				<Route path="/myTomatoes">
-					<MyTomatoes
-					setPagePath={()=> setPagePath('/myTomatoes')}
-					pagePath={pagePath} timePercent={timePercent} setCurrentHours={setCurrentHours}
-					setCurrentMinutes={setCurrentMinutes} setCurrentSeconds={setCurrentSeconds} setBeenStarted={setBeenStarted} setCurrentTomato={setCurrentTomato} setRunning={setRunning} setTimeLeft={setTimeLeft} setTotalTime={setTotalTime} tomatoData={tomatoData} setTomatoData={setTomatoData} handleStart={handleStart} todoData={todoData} setTodoData={setTodoData}	handleStartTomato={handleStartTomato} handleEdit={handleEdit} deleteTomato={deleteTomato} addToTodoList={addToTodoList}  editMatch={editMatch} setEdit={setEdit}  setNewName={setNewName} setNewHours={setNewHours} setNewMinutes={setNewMinutes} setNewSeconds={setNewSeconds} 
-
-					handleCloseCountdown={handleCloseCountdown} setTomatoHours={setTomatoHours} tomatoHours={tomatoHours} setTomatoMinutes={setTomatoMinutes} tomatoMinutes={tomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoSeconds={tomatoSeconds} stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} setViewStopwatch={setViewStopwatch} viewStopwatch={viewStopwatch} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} generateId={generateId} viewAlert={viewAlert} setViewAlert={setViewAlert}  alarmSound={settings.alarmSound}
-	 />
-				</Route>
-				<Route path="/myTodos">
-					<MyTodos setTodoName={setTodoName} todoName={todoName} pagePath={pagePath} setPagePath={setPagePath} checked={checked} handleChecked={handleChecked}  todoData={todoData} timePercent={timePercent} setCurrentHours={setCurrentHours} setCurrentMinutes={setCurrentMinutes} setCurrentSeconds={setCurrentSeconds} setBeenStarted={setBeenStarted} setCurrentTomato={setCurrentTomato} setRunning={setRunning} setTimeLeft={setTimeLeft} setTotalTime={setTotalTime} tomatoData={tomatoData} setTomatoData={setTomatoData} handleStart={handleStart} setTodoData={setTodoData}	handleStartTomato={handleStartTomato} handleEdit={handleEdit} deleteTomato={deleteTomato} addToTodoList={addToTodoList}  editMatch={editMatch} setEdit={setEdit}  setNewName={setNewName} setNewHours={setNewHours} setNewMinutes={setNewMinutes} setNewSeconds={setNewSeconds} viewAddTodoForm={viewAddTodoForm} setViewAddTodoForm={setViewAddTodoForm}  saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} validateName={validateName} viewAlert={viewAlert} setViewAlert={setViewAlert}  alarmSound={settings.alarmSound}
-	 				/>
-				</Route>
-				<Route path="/Settings">
-					<Settings settings={settings} setSettings={setSettings} />
-				</Route>
-			</Switch>
-		</Router>
+		<div 
+			className={ beenStarted ? `App app-started ${timePeriod}`: "App" } 
+			style={ timeLeft < totalTime ? { backgroundColor: colorCode }: null }
+		>
+			<Router>
+				<Header />
+				<Switch>
+					<Route exact path="/">
+						<CountdownSection currentTomato={currentTomato} sound={sound} setSound={setSound} timePercent={timePercent} timeLeft={timeLeft} handleCloseCountdown={handleCloseCountdown} totalTime={totalTime} beenStarted={beenStarted}  validateNumbers={validateNumbers} handlePause={handlePause} handleStart={handleStart} running={running} currentHours={currentHours} currentMinutes={currentMinutes} currentSeconds={currentSeconds} hours={hours} minutes={minutes} alarmSound={settings.alarmSound}
+						/>
+					</Route>
+					<Route path="/createTomato">
+						<StopwatchSection handleCloseCountdown={handleCloseCountdown} setTomatoHours={setTomatoHours} tomatoHours={tomatoHours} setTomatoMinutes={setTomatoMinutes} tomatoMinutes={tomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoSeconds={tomatoSeconds} stopwatchTime={stopwatchTime} countingStarted={countingStarted} counting={counting} setViewStopwatch={setViewStopwatch} viewStopwatch={viewStopwatch} viewSaveForm={viewSaveForm} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} setViewSaveForm={setViewSaveForm} saveTomatoObj={saveTomatoObj} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} />
+					</Route>
+					<Route path="/myTomatoes">
+						<MyTomatoes
+						setPagePath={()=> setPagePath('/myTomatoes')}
+						tomatoData={tomatoData} handleStart={handleStart} handleStartTomato={handleStartTomato} handleEdit={handleEdit} deleteTomato={deleteTomato} addToTodoList={addToTodoList}  editMatch={editMatch} setEdit={setEdit}  setNewName={setNewName} setNewHours={setNewHours} setNewMinutes={setNewMinutes} setNewSeconds={setNewSeconds} 
+						/>
+					</Route>
+					<Route path="/myTodos">
+						<MyTodos setTodoName={setTodoName} todoName={todoName} todoData={todoData} setTodoData={setTodoData} handleStartTomato={handleStartTomato} handleEdit={handleEdit} deleteTomato={deleteTomato} editMatch={editMatch} setEdit={setEdit}  setNewName={setNewName} setNewHours={setNewHours} setNewMinutes={setNewMinutes} setNewSeconds={setNewSeconds} viewAddTodoForm={viewAddTodoForm} setViewAddTodoForm={setViewAddTodoForm} saveTomatoObj={saveTomatoObj} 
+						/>
+					</Route>
+					<Route path="/Settings">
+						<Settings setSettings={setSettings} />
+					</Route>
+				</Switch>
+			</Router>
 			{
-				viewAlert ? <AlertMessage className={"alert-message "+alertProperties.color} object={alertProperties.type} action={alertProperties.action} color={alertProperties.color} /> : null
+				viewAlert ? 
+				<AlertMessage 
+					className={"alert-message "+alertProperties.color} 
+					object={alertProperties.type} 
+					action={alertProperties.action} 
+					color={alertProperties.color} 
+				/> 
+				: null
 			}
 		</div> 
 	)

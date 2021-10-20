@@ -1,14 +1,17 @@
 
-const StopwatchButtons = (props) => {
+const StopwatchButtons = ({handleWatchStart, handleWatchReset, counting, toggleViewSaveForm}) => {
+
 	return (
 		<section className="stopwatch-buttons">
-			<button type="submit" onClick={props.handleWatchStart} >
-				{props.counting ? 'Pause' : 'Resume'}
+			<button type="submit" onClick={handleWatchStart} >
+				{counting ? 'Pause' : 'Resume'}
 			</button>
-			<button type="submit" onClick={props.handleWatchReset}>
+			<button type="submit" onClick={handleWatchReset}>
 				Reset
 			</button>
-			<button type="submit" onClick={() => props.toggleViewSaveForm()} disabled={props.counting ? true : false} > Save </button>
+			<button type="submit" onClick={() => toggleViewSaveForm()} disabled={counting ? true : false} > 
+				Save 
+			</button>
 		</section> 
 	)
 }

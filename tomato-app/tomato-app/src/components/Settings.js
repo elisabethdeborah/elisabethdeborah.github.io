@@ -1,6 +1,3 @@
-/* import { useState } from 'react';
-import { Link } from 'react-router-dom';
- */
 
 import AirRaid from '../assets/AirRaidSirens.mp3'
 import BicycleBell from '../assets/BicycleBell.mp3'
@@ -15,7 +12,7 @@ import PoliceSiren from '../assets/PoliceSiren.mp3'
 import TrainStnPassLounge from '../assets/TrainStnPassLounge.mp3'
 
 
-const Settings = ({settings, setSettings}) => {
+const Settings = ({ setSettings }) => {
 	return (
 		<section className="settings-container">
 			<h1>Settings</h1>
@@ -52,7 +49,10 @@ const Settings = ({settings, setSettings}) => {
 				<li>
 					<h3>Alarm sound</h3>
 					<article className="settings-option">
-						<select id="alarm-select" onChange={(e) => setSettings({ colorTheme: 'clean', visualLanguage: 'mixed', language: 'english', alarmSound: e.target.value })}>
+						<select 
+							id="alarm-select" 
+							onChange={(e) => setSettings({ colorTheme: 'clean', visualLanguage: 'mixed', language: 'english', alarmSound: e.target.value })}
+						>
 							<option value={BicycleBell} >Bicycle Bell</option>
 							<option value={AirRaid}>Air Siren</option>
 							<option value={PoliceSiren}>Police Siren</option>
@@ -65,9 +65,7 @@ const Settings = ({settings, setSettings}) => {
 							<option value={TrainStnPassLounge}>Train Station</option>
 							<option value={MotionHumMorph}>Motion Hum Morph</option>
 						</select>
-						
 					</article>
-
 				</li>
 			</ul>
 		</section>

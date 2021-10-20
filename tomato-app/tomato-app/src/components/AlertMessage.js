@@ -1,4 +1,4 @@
-const AlertMessage = ({object, action, color, viewAlert, setViewAlert}) => {
+const AlertMessage = ({object, action, color}) => {
 	return (
 		<article className={'alert-message ' + color}>
 			<p>{`${object} ${action}`}</p>

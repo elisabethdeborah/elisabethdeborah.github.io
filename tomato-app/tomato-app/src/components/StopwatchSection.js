@@ -2,39 +2,45 @@
 import SaveForm from "./SaveForm"
 import Stopwatch from "./Stopwatch"
 
-const StopwatchSection = (props) => {
+const StopwatchSection = ({handleCloseCountdown, setTomatoHours, tomatoHours, setTomatoMinutes, tomatoMinutes, setTomatoSeconds,tomatoSeconds, stopwatchTime, setStopwatchTime, countingStarted, counting, setViewStopwatch, viewStopwatch, viewSaveForm, handleWatchStart, handleWatchReset, setViewSaveForm, saveTomatoObj, nameIsValid, setTomatoName, validateName}) => {
+
 	
 	const toggleViewStopwatch=() => {
-		props.setViewStopwatch(true)
-		props.setViewSaveForm(false)
+		setViewStopwatch(true)
+		setViewSaveForm(false)
 	}
 	const toggleViewSaveForm=() => {
-		props.setViewStopwatch(false)
-		props.setViewSaveForm(true)
+		setViewStopwatch(false)
+		setViewSaveForm(true)
 	}
 	
 	return (
 		<>
-		{ !props.viewStopwatch && !props.viewSaveForm ?
-		<section className="stopwatch-create-container">
-			<h1 onClick={() => toggleViewStopwatch()} className="time-tomato-header">Time New Tomato</h1>
-			<h1 onClick={() => toggleViewSaveForm()} className="time-tomato-header">Create New Tomato</h1>
-		</section> 
-		: null
-		}
+			{ 
+				!viewStopwatch && !viewSaveForm ?
+				<section className="stopwatch-create-container">
+					<h1 onClick={() => toggleViewStopwatch()} className="time-tomato-header">Time New Tomato</h1>
+					<h1 onClick={() => toggleViewSaveForm()} className="time-tomato-header">Create New Tomato</h1>
+				</section> 
+				: null
+			}
 
-		{
-		!props.viewSaveForm && props.viewStopwatch ?
-		<Stopwatch 
-			toggleViewSaveForm={toggleViewSaveForm} setViewSaveForm={props.setViewSaveForm} countingStarted={props.countingStarted} handleCloseCountdown={props.handleCloseCountdown} stopwatchTime={props.stopwatchTime} handleWatchStart={props.handleWatchStart} handleWatchReset={props.handleWatchReset} counting={props.counting} />
-		: null
-}
-{
-	props.viewSaveForm && !props.viewStopwatch ?
-		<SaveForm 
-			handleCloseCountdown={props.handleCloseCountdown}  setTomatoHours={props.setTomatoHours} setTomatoMinutes={props.setTomatoMinutes} setTomatoSeconds={props.setTomatoSeconds} tomatoHours={props.tomatoHours} tomatoMinutes={props.tomatoMinutes} tomatoSeconds={props.tomatoSeconds} setViewSaveForm={props.setViewSaveForm} viewSaveForm={props.viewSaveForm} saveTomatoObj={props.saveTomatoObj} stopwatchTime={props.stopwatchTime} nameIsValid={props.nameIsValid} setStopwatchTime={props.setStopwatchTime} setTomatoName={props.setTomatoName} validateName={props.validateName} />
-		:null}
+			{
+				!viewSaveForm && viewStopwatch ?
+				<Stopwatch 
+					toggleViewSaveForm={toggleViewSaveForm} countingStarted={countingStarted} handleCloseCountdown={handleCloseCountdown} stopwatchTime={stopwatchTime} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} counting={counting} 
+				/>
+				: null
+			}
+			{
+				viewSaveForm && !viewStopwatch ?
+				<SaveForm 
+					handleCloseCountdown={handleCloseCountdown}  setTomatoHours={setTomatoHours} setTomatoMinutes={setTomatoMinutes} setTomatoSeconds={setTomatoSeconds} tomatoHours={tomatoHours} tomatoMinutes={tomatoMinutes} tomatoSeconds={tomatoSeconds} saveTomatoObj={saveTomatoObj} stopwatchTime={stopwatchTime} nameIsValid={nameIsValid} setStopwatchTime={setStopwatchTime} setTomatoName={setTomatoName} validateName={validateName} 
+				/>
+				:null
+			}
 		</>
+
 	)
 }
 
