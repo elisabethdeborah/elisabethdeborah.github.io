@@ -1,6 +1,6 @@
 
 import './App.css';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import CountdownSection from './components/countdownComponents/CountdownSection';
 import StopwatchSection from './components/stopwatchComponents/StopwatchSection';
@@ -15,12 +15,13 @@ import jsonTodoData from './myTomatodos.json'
 
 import BicycleBell from './assets/BicycleBell.mp3'
 
-
+import { AppContext } from './context'
 
 
 ///////////CONTEXT TILL SÅNT SOM INTE ÄNDRAS SÅ OFTA, RECOIL FÖR ANNAT!
 //VÄRDET SPARAS OCH KAN ANVÄNDAS AV FLER KOMPONENTER (READ-ONLY), FÖR ATT ÄNDRA (SET-FUNKTION) MÅSTE MAN SKICKA SEPARAT
 //TEX INLOGGNING - BEHÖVER BARA ÄNDRAS I EN KOMPONENT, MEN VÄRDET BEHÖVS I FLER -> RECOIL/REDUX
+//EJ TOMATO/TODO -> COUNTDOWN-FUNKTIONEN FUNKAR INTE ALLTID MED CONTEXT
 
 
 
@@ -95,8 +96,7 @@ function App() {
 		console.log(settings.alarmSound);
 	}, [])
 
-
-
+	
 	//USEEFFECT-FUNCTIONS
 
 	//COUNTDOWN
@@ -431,7 +431,7 @@ function App() {
 	}
 
 	return (
-
+	<AppContext.Provider value={{tomatoData, todoData, settings}} >
 		<div 
 			className={ beenStarted ? `App app-started ${timePeriod}`: "App" } 
 			style={ timeLeft < totalTime ? { backgroundColor: colorCode }: null }
@@ -449,15 +449,18 @@ function App() {
 					<Route path="/myTomatoes">
 						<MyTomatoes
 						setPagePath={()=> setPagePath('/myTomatoes')}
-						tomatoData={tomatoData} handleStart={handleStart} handleStartTomato={handleStartTomato} handleEdit={handleEdit} deleteTomato={deleteTomato} addToTodoList={addToTodoList}  editMatch={editMatch} setEdit={setEdit}  setNewName={setNewName} setNewHours={setNewHours} setNewMinutes={setNewMinutes} setNewSeconds={setNewSeconds} 
+						 handleStart={handleStart} handleStartTomato={handleStartTomato} tomatoData={tomatoData} handleEdit={handleEdit} deleteTomato={deleteTomato} addToTodoList={addToTodoList}  editMatch={editMatch} setEdit={setEdit}  setNewName={setNewName} setNewHours={setNewHours} setNewMinutes={setNewMinutes} setNewSeconds={setNewSeconds} 
 						/>
 					</Route>
 					<Route path="/myTodos">
-						<MyTodos setTodoName={setTodoName} todoName={todoName} todoData={todoData} setTodoData={setTodoData} handleStartTomato={handleStartTomato} handleEdit={handleEdit} deleteTomato={deleteTomato} editMatch={editMatch} setEdit={setEdit}  setNewName={setNewName} setNewHours={setNewHours} setNewMinutes={setNewMinutes} setNewSeconds={setNewSeconds} viewAddTodoForm={viewAddTodoForm} setViewAddTodoForm={setViewAddTodoForm} saveTomatoObj={saveTomatoObj} 
+					
+						<MyTodos 
+						setPagePath={()=> setPagePath('/myTodos')}
+						setTodoName={setTodoName} todoName={todoName} todoData={todoData} setTodoData={setTodoData} handleStartTomato={handleStartTomato} handleEdit={handleEdit} deleteTomato={deleteTomato} editMatch={editMatch} setEdit={setEdit}  setNewName={setNewName} setNewHours={setNewHours} setNewMinutes={setNewMinutes} setNewSeconds={setNewSeconds} viewAddTodoForm={viewAddTodoForm} setViewAddTodoForm={setViewAddTodoForm} saveTomatoObj={saveTomatoObj} 
 						/>
 					</Route>
 					<Route path="/Settings">
-						<Settings setSettings={setSettings} settings={settings} />
+						<Settings setSettings={setSettings} />
 					</Route>
 				</Switch>
 			</Router>
@@ -472,6 +475,7 @@ function App() {
 				: null
 			}
 		</div> 
+	</AppContext.Provider>
 	)
 }
 

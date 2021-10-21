@@ -4,9 +4,9 @@ import { faStopwatch, faEdit, faTasks, faTrashAlt } from '@fortawesome/free-soli
 import { Link } from 'react-router-dom';
 import TomatoTodoInfo from './TomatoTodoInfo';
 
-
-const MyTomatoes = ({tomatoData, handleStartTomato, handleEdit, deleteTomato, addToTodoList,editMatch, setEdit,setNewName, setNewHours, setNewMinutes, setNewSeconds
+const MyTomatoes = ({ handleStartTomato, tomatoData, handleEdit, deleteTomato, addToTodoList,editMatch, setEdit,setNewName, setNewHours, setNewMinutes, setNewSeconds
 }) => {
+	
 
 	const startEdit = (tomato) => {
 		setEdit(tomato)

@@ -1,4 +1,5 @@
 
+import { useContext } from 'react'
 import AirRaid from '../assets/AirRaidSirens.mp3'
 import BicycleBell from '../assets/BicycleBell.mp3'
 import CarHorn from '../assets/CarHorn.mp3'
@@ -10,10 +11,12 @@ import MotionHumMorph from '../assets/MotionHumMorph.mp3'
 import MustangHotRevs from '../assets/MustangHotRevs.mp3'
 import PoliceSiren from '../assets/PoliceSiren.mp3'
 import TrainStnPassLounge from '../assets/TrainStnPassLounge.mp3'
+import React, { useState, useEffect } from 'react';
+import { AppContext } from '../context';
 
-
-const Settings = ({ setSettings, settings }) => {
-
+const Settings = ({ setSettings }) => {
+	const { settings } = useContext(AppContext)
+	console.log('settings', settings);
 	return (
 		<section className="settings-container">
 			<h1>Settings</h1>
