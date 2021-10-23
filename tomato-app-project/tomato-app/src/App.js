@@ -18,15 +18,20 @@ import BicycleBell from './assets/BicycleBell.mp3'
 import { AppContext } from './context'
 
 
+
 ///////////CONTEXT TILL SÅNT SOM INTE ÄNDRAS SÅ OFTA, RECOIL FÖR ANNAT!
 //VÄRDET SPARAS OCH KAN ANVÄNDAS AV FLER KOMPONENTER (READ-ONLY), FÖR ATT ÄNDRA (SET-FUNKTION) MÅSTE MAN SKICKA SEPARAT
 //TEX INLOGGNING - BEHÖVER BARA ÄNDRAS I EN KOMPONENT, MEN VÄRDET BEHÖVS I FLER -> RECOIL/REDUX
 //EJ TOMATO/TODO -> COUNTDOWN-FUNKTIONEN FUNKAR INTE ALLTID MED CONTEXT
 
 
-
+//ACTION: 
 
 function App() {
+
+
+
+
 	//SETTINGS
 	const [ settings, setSettings ] = useState({
 		colorTheme: "clean",
@@ -84,19 +89,34 @@ function App() {
 	const [ viewAddTodoForm, setViewAddTodoForm ] = useState(false)
 	const [ todoName, setTodoName ] = useState('')
 
+	const [fetched, setFetched] = useState('')
+
 
 	//ALERT
 	const [ viewAlert, setViewAlert ] = useState(false)
 	const [alertProperties, setAlertProperties] = useState({})
 
 
+	const fetchTomatoes = async() => {
+		const response = await fetch('http://localhost:1337/tomatoes/')
+		const tomatoesFromApi = await response.json()
+		setTomatoData(tomatoesFromApi)
+	}
+	
+	const fetchTodos = async() => {
+		const response = await fetch('http://localhost:1337/todos/')
+		const todosFromApi = await response.json()
+		setTodoData(todosFromApi)
+	}
+
+
 	useEffect(() => {
-		setTomatoData(jsonTomatoData)
-		setTodoData(jsonTodoData)
-		console.log(settings.alarmSound);
+		//setTomatoData(jsonTomatoData)
+		//setTodoData(jsonTodoData)
+		fetchTomatoes()
+		fetchTodos()
 	}, [])
 
-	
 	//USEEFFECT-FUNCTIONS
 
 	//COUNTDOWN
@@ -163,7 +183,7 @@ function App() {
 	//ALERT-MESSAGE
 	const showAlertMessage = (type, action, color) => {
 		setViewAlert(true)
-		console.log('show alert start');
+		//console.log('show alert start');
 		setAlertProperties({
 			type: type,
 			action: action,
@@ -173,7 +193,7 @@ function App() {
 		setTimeout(() => {
 			setViewAlert(false)
 			setAlertProperties({})
-			console.log('show alert stop');
+			//console.log('show alert stop');
 		}, 3000);
 	}
 
@@ -204,7 +224,7 @@ function App() {
 	}
 
 	const handleCloseCountdown = () => {
-		console.log(currentTomato);
+		//console.log(currentTomato);
 		setBeenStarted(false)
 		setTimePeriod('')
 		setTotalTime(0)
@@ -242,10 +262,10 @@ function App() {
 	//STOPWATCH HELP FUNCTIONS
 
 	const handleWatchStart = () => {
-		console.log('stopwatchTime inside handlewatch: ', stopwatchTime);
-			setCounting(!counting)
-			setCountingStarted(true)
-			setViewSaveForm(false)
+		//console.log('stopwatchTime inside handlewatch: ', stopwatchTime);
+		setCounting(!counting)
+		setCountingStarted(true)
+		setViewSaveForm(false)
 	}
 
 	const handleWatchReset = () => {
@@ -277,7 +297,7 @@ function App() {
 	}
 
 	const saveTomatoObj = (objType) => {
-		console.log('time: ', stopwatchTime, tomatoData, todoData, objType);
+		//console.log('time: ', stopwatchTime, tomatoData, todoData, objType);
 		let id = generateId()
 		let newTomato;
 		if (objType==='tomato') {
@@ -306,7 +326,7 @@ function App() {
 		}
 
 		
-		console.log('newTomato inside savetomato: ', newTomato);
+		//console.log('newTomato inside savetomato: ', newTomato);
 		handleWatchReset()
 		setCounting(false)
 		setCountingStarted(false)
@@ -325,7 +345,7 @@ function App() {
 
 
 	const validateNumbers = (input, value) => {
-		console.log(input, value);
+		//console.log(input, value);
 		if (value === 'hours' && Number(input < 24) && Number(input >= 0)) {
 			setHours(Number(input))
 			setNumberIsValid(true)
@@ -345,7 +365,7 @@ function App() {
 	}
 
 	const handleEdit = (tomato, data) => {
-		console.log('newHours:', newHours, 'newMins:', newMinutes, 'newSecs:', newSeconds);
+		//console.log('newHours:', newHours, 'newMins:', newMinutes, 'newSecs:', newSeconds);
 		 let name;
 		newName ? 
 			name = newName : 
@@ -359,35 +379,35 @@ function App() {
 				time: (newHours*60*60 )+ (newMinutes*60) + newSeconds,
 				checked: false
 			} 
-			console.log('edited todo:', editedTomato);
+			//console.log('edited todo:', editedTomato);
 		} else {
 			editedTomato = {
 				id: tomato.id,
 				name: name,
 				time:  (newHours*60*60 )+ (newMinutes*60) + newSeconds,
 			}
-			console.log('edited tomato:', editedTomato);
+			//console.log('edited tomato:', editedTomato);
 		}
 
 		let match = data.find(x => x.id === tomato.id) 
 		let index = data.findIndex(x => x.id === tomato.id)
 	
-		console.log(editedTomato.name, tomato.name, editedTomato.time, tomato.time);
+		//console.log(editedTomato.name, tomato.name, editedTomato.time, tomato.time);
 
 		if(editedTomato.name === tomato.name && editedTomato.time === tomato.time ) {
-			console.log('same');
+		//	console.log('same');
 		} else {
-			console.log('CHANGE', editedTomato);
-			console.log(match, 'index', index);
+		//	console.log('CHANGE', editedTomato);
+		//	console.log(match, 'index', index);
 			let newDataArray = [...data]
 			newDataArray.splice(index, 1, editedTomato)
 			console.log(newDataArray);
 			if (tomato.hasOwnProperty('checked')) {
-				console.log('set todo:',newDataArray);
+		//		console.log('set todo:',newDataArray);
 				setTodoData(newDataArray)
 				showAlertMessage('Todo', 'edited', 'blue')
 			} else {
-				console.log('set tomato:',newDataArray);
+		//		console.log('set tomato:',newDataArray);
 				setTomatoData(newDataArray)
 				showAlertMessage('Tomato', 'edited', 'blue')
 			}
@@ -402,16 +422,16 @@ function App() {
 
 
 	const deleteTomato = (tomato, data) => {
-		console.log('click '+ tomato.name)
+		//console.log('click '+ tomato.name)
 		let match = data.find(x => x.id === tomato.id) 
 		let index = data.findIndex(x => x.id === tomato.id)
-		console.log('match:',match, 'index', index);
+		//console.log('match:',match, 'index', index);
 		let newDataArray = [...data]
 		newDataArray.splice(index, 1)
-		console.log(newDataArray);
+		//console.log(newDataArray);
 
 		if (tomato.hasOwnProperty('checked')) {
-			console.log('currentTomato.checked:', tomato.checked);
+		//	console.log('currentTomato.checked:', tomato.checked);
 			setTodoData(newDataArray)
 			showAlertMessage('Todo', 'deleted', 'red')
 		} else {

@@ -25,7 +25,7 @@ const StopwatchSection = ({handleCloseCountdown, setTomatoHours, tomatoHours, se
 				: null
 			}
 
-			{
+			{+
 				!viewSaveForm && viewStopwatch ?
 				<Stopwatch 
 					toggleViewSaveForm={toggleViewSaveForm} countingStarted={countingStarted} handleCloseCountdown={handleCloseCountdown} stopwatchTime={stopwatchTime} handleWatchStart={handleWatchStart} handleWatchReset={handleWatchReset} counting={counting} 

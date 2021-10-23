@@ -1,6 +1,6 @@
 import CloseButton from "../CloseButton"
 import StopwatchButtons from "./StopwatchButtons"
-import TimePassed from "../countdownComponents/TimePassed"
+import TimePassed from "../countdownComponents/TimerButtonsStarted"
 
 const Stopwatch = ({toggleViewSaveForm, countingStarted, handleCloseCountdown, stopwatchTime, handleWatchStart, handleWatchReset, counting}) => {
 
