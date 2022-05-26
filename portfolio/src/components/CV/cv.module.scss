@@ -1,0 +1,136 @@
+@import '../../globals.module.scss';
+
+.cvWrapper {
+	width: 90vw;
+	max-width: $content-width;
+	margin: 0px auto;
+	
+	@media screen and (min-width: 600px) {
+		padding: 50px;
+		margin: 50px auto;
+	}
+}
+
+.experience {
+	position: relative;
+	height: fit-content;
+}
+
+.cardContainer {
+	display: grid;
+	flex-wrap: wrap;
+	transition: all 0.2s ease-in-out;
+	grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+	grid-template-rows: max-content;
+	gap: 50px;
+	margin: 20px 0 100px;
+
+	@media screen and (min-width: 890px) {
+		grid-template-rows: max-content;
+		gap: 20px;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		margin: 50px auto 100px;
+		padding-bottom: 20px;
+	}
+}
+
+.cvItem {
+	color: $color-text-primary;
+	padding: 0;
+	height: fit-content;
+
+	h4, p, ul {
+		margin: 70px auto 40px;
+		width: fit-content;
+
+		@media screen and (min-width: 600px) {
+			margin: 25px 0 10px 25px;
+		}
+	}
+
+	h3 {
+		margin: 100px auto 40px;
+		width: fit-content;
+
+		@media screen and (min-width: 600px) {
+			margin: 25px 0 50px 25px;
+		}
+	}
+
+	p {
+		font-size: 0.875rem;
+		font-family: $font-family-body;
+		line-height: 1.1rem;
+	}
+
+	span, ul {
+		font-family: $font-family-thin;
+	}
+
+	span {
+		font-size: 0.75rem;
+		display: inline;
+		margin: 10px 0 0 25px;
+		padding-bottom: 5px;
+		width: fit-content;
+		max-width: 70%;
+		border-bottom: 1px solid $color-text-hint;
+	}
+
+	ul {
+		list-style: outside;
+		font-size: 0.75rem;
+		padding-inline-start: 20px;
+		max-width: 80%;
+
+		li {
+			margin: 10px auto;
+		}
+	}
+
+	@media screen and (min-width: 600px) {
+		height: 100%;
+	}
+}
+
+h2 {
+	color: $color-text-grey;
+	margin: 100px auto 50px;
+}
+
+.plus {
+	top: 15px;
+	color: $color-nav-bg;
+	transition: all 0.2s ease-in-out;
+	width: fit-content;
+
+	&.up {
+		transform: rotate(180deg);
+		transition: all 0.2s ease-in-out;
+		&:hover {
+			transform: scale(1.2) rotate(180deg);
+			color: $color-dark-background;
+			transition: all 0.2s ease-in-out;
+			cursor: pointer;
+		}
+	}
+
+	&:hover {
+		transform: scale(1.2);
+		color: $color-dark-background;
+		transition: all 0.2s ease-in-out;
+		cursor: pointer;
+	}
+}
+
+.allHeader {
+	display: flex;
+	flex-direction: row;
+	max-width: 90%;
+	margin: 90px auto 45px;
+
+	@media screen and (min-width: 600px) {
+		width: 100%;
+		margin: 120px auto 5px;
+	}
+}
