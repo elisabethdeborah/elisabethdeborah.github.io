@@ -1,0 +1,301 @@
+@import '../../../styles/variables.scss';
+
+.formContainer {
+	z-index: 9999999;
+	position: fixed;
+	top: 5vh;
+    right: 5vw;
+    bottom: 5vw;
+    left: 5vw;
+    height: 80vh;
+	padding: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	background-color: $color-container-bg;
+	max-width: 364px;
+	border-radius: 20px;
+	opacity: 1;
+	transition: opacity 0.5s ease;
+
+	&:not(.userForm) {
+		min-height: 450px;
+		box-shadow: 0px 1px 10px $color-darkgrey;
+	}
+	&.todoListFormContainer {
+		height: 400px;
+		min-height: 200px;
+	}
+	
+	.formHeader {
+		color: $color-pink;
+		margin: 0 auto;
+		font-size: 2rem;
+		letter-spacing: 2px;
+		word-break: break-word;
+		text-align: center;
+		white-space: pre-line;
+	}
+
+	.input {
+		border: 1px solid $color-pink;
+		border-radius: 100px;
+		color: $color-darkgrey;
+		margin: 10px auto;
+
+		&.textInput {
+			font-size: 0.85rem;
+			line-height: 2.7rem;
+			padding: 0 22px;
+			font-weight: bold;
+			width: 100%;
+
+			&:focus {
+				outline: 2px solid $color-pink;
+			}
+		}
+	}
+
+	.btnContainer {
+		display: flex;
+		flex-direction: row;
+		width: 80%;
+		> input {
+			@include pink-btn;
+			@include hover-btn;
+			@include active-btn;
+		}
+		.closeForm {
+			@include white-btn;
+			@include hover-btn;
+			@include active-btn;
+			flex: 1;
+			margin-right: 3px;
+		}
+
+		.addBtn {
+			@include pink-btn;
+			@include hover-btn;
+			@include active-btn;
+			flex: 1;
+			margin-left: 3px;
+		}
+	}
+
+	&.formIsVisible {
+		opacity: 1;
+	transition: opacity 0.5s ease;
+	}
+
+	@media screen and (min-width:600px) {
+		top: 100px;
+		left: calc(50vw - 414px /2);
+		max-width: 364px;
+		max-height: 600px;
+		min-height: 550px;
+
+		&.archObj {
+			top: 0;
+			left:0;
+			height: 100%;
+		}
+
+		.smallTomato {
+			position: absolute;
+			top: -58px;
+			height: 110px;
+			width: 110px;
+			background-image: url('../../../svgAssets/vitkant-small.svg');
+			background-repeat: no-repeat;
+			overflow: visible;
+			background-size: contain;
+			background-position: center;
+		}
+	}
+
+	&.archObj {
+		top: 0;
+		left:0;
+	}
+
+	> a {
+		color: $color-pink;
+		font-weight: 600;
+		font-size: 0.75rem;
+		margin: 8px auto 0;
+		border-bottom: 1px solid $color-pink;
+	}
+}
+
+.timeInputContainer {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	border: 1px solid $color-pink;
+	border-radius: 20px;
+	font-size: 1rem;
+	color: $color-darkgrey;
+	background-color: $color-white;
+
+	> select {
+		border: none;
+		padding: 1rem;
+		font-size: 1rem;
+		text-align: center;
+		width: 45%;
+		background-color: transparent;
+
+		&:focus {
+			color: $color-pink;
+			outline: none;
+			font-weight: bold;
+		}
+	}
+}
+
+.errMessageContainer {
+	position: relative;
+	font-weight: bold;
+	width: 100%;
+	height: 30px;
+
+	.errMessage {
+		font-size: 0.75rem;
+		position: absolute;
+		margin: 0;
+		text-align: center;
+	}
+}
+
+
+
+.loginPageWrapper {
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.userForm {
+
+		top: 30%;
+		height: 55%;
+		
+		@media screen and (min-width:600px) {
+			position: relative;
+			top: 10px;
+			width: 315px;
+			height: 10vh;
+			min-height: 415px;
+			height: fit-content;
+			left: 0;
+			margin: 0 auto;
+			padding: 0;
+	
+			h1 {
+				margin-bottom: 1rem;
+			}
+	
+			a {
+				margin: 15px auto;
+			}
+	
+			input {
+				margin: 5px auto;
+			}
+		}
+	}
+
+	.loginContainer {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 90%;
+		
+		min-height: 85vh;
+		height: fit-content;
+		margin-top: 7vh;
+		background-color: $color-container-bg;
+		border-radius: 20px;
+		transition: opacity 0.5s ease;
+		box-shadow: 0px 1px 10px $color-darkgrey;
+
+		.headerTextContainer {
+			display: flex;
+			flex-direction: row;
+			width: fit-content;
+			position: relative;
+			margin-top: 80px;
+		
+			.logoHeader {
+				font-size: 2.5rem;
+						z-index: 99999999;
+				margin-bottom: 32px;
+				font-family: $font-family;
+				width: fit-content;
+				
+				letter-spacing: 1px;
+				&.partOne {
+					@supports (-webkit-text-stroke: 1px $color-pink) {
+						-webkit-text-stroke: 1px $color-pink;
+						-webkit-text-fill-color: transparent;
+					}
+				}
+				&.partTwo {
+					color: $color-pink;
+				}
+
+				@media screen and (min-width:600px) {
+					font-size: 4.5rem;
+				}
+			}
+		}
+		
+
+		.errMessageContainer {
+			height: 40px;
+		}
+		.errMessage {
+			line-height: unset;
+			width: 100%;
+			top: 0;
+			position: absolute;
+		}
+
+		.blast {
+			z-index: 99999999;
+			position: absolute;
+			transform: rotate(6deg);
+			width: 170px;
+			left: 0;
+			top: -55px;
+		}
+
+		@media screen and (min-width: 600px) {
+			width: 500px;
+			min-height: 80vh;
+			margin-bottom: 100px;
+			overflow-y: hidden;
+
+			.blast {
+				top: -30px;
+				width: 210px;
+			}
+			.errMessageContainer {
+				height: 40px;
+			}
+			.errMessage {
+				line-height: 40px;
+				width: 100%;
+			}
+			
+		}
+
+	}
+}
+
+

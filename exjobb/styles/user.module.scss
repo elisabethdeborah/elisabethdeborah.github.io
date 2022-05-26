@@ -1,0 +1,108 @@
+@import './variables.scss';
+
+.userContainer {
+	//z-index: 99999;
+	z-index: 99;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	width: 100vw;
+	height: 50px;
+	background-color: #bce2f9dc;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 10px 50px 10px 10px;
+
+	.textContent {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		color: $color-white;
+		margin-right: 10px;
+
+		.inloggad, .userName {
+			font-size: 0.7rem;
+			margin: 0;
+			font-weight: bold;
+		}
+
+		.inloggad {
+			text-transform: uppercase;
+			opacity: 1;
+			line-height: 1rem;
+		}
+		.userName {
+			text-transform: uppercase;
+			opacity: 1;
+			line-height: 1rem;
+		}
+		@media screen and (min-width: 600px) {
+			color: $color-darkgrey;
+			margin-top: 5px;
+			.inloggad, .userName {
+				font-size: 0.65rem;
+			}
+
+			.inloggad {
+				text-transform: uppercase;
+				opacity: 0.8;
+				line-height: 0.7rem;
+			}
+			.userName {
+				text-transform: uppercase;
+				opacity: 0.5;
+				line-height: 0.7rem;
+			}
+		}
+	}
+
+	.userClickBtn {
+		@include hover-btn-secondary;
+		@include active-btn;
+		font-weight: 600;
+		margin: 0 2px;
+		border-radius: 100px;
+		padding: 0 10px;
+		height: 30px;
+		border: none;
+		border-radius: 7px;
+
+		&.createBtn {
+			background-color: $color-blue;
+		}
+
+		&.login {
+			background-color: $color-pink;
+		}
+
+		&.settingsBtn {
+			@include active-btn;
+			height: 25px;
+			width: 25px;
+			background-image: url(../svgAssets/settingsIcon.svg);
+			background-color: transparent;
+			background-repeat: no-repeat;
+			background-position: center;
+			margin: 0 10px;
+		}
+
+		&.logoutBtn {
+			border: none;
+			border-radius: 0;
+			height: 33px;
+			width: 33px;
+			margin: 2px 10px 0;
+			background-image: url(../svgAssets/logoutIcon.svg);
+			background-color: transparent;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	}
+
+	&.mobile {
+		position: relative;
+		background-color: transparent;
+		justify-content: center;
+	}
+}

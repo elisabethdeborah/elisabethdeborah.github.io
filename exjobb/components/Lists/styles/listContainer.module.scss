@@ -1,0 +1,315 @@
+@import '../../../styles/variables.scss';
+
+.listContainer {
+	position: relative;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+	padding: 49px 0 0;
+	width: 100%;
+	max-width: 700px;
+	height: 0;
+	background-color: $color-container-bg;
+	transition: all 0.2s ease-in-out;
+	border-radius: 20px 20px 0 0;
+	box-shadow: 0px 0px 5px $color-box-shadow-dark;
+
+	.link {
+		font-weight: bold;
+		width: fit-content;
+		text-align: center;
+		margin: 1.5rem auto;
+		opacity: 1;
+		&.tomatoes {
+			color: $color-pink;
+			border-bottom: 1px solid $color-pink;
+		}
+
+		&.currentTodos {
+			color: $color-orange;
+			border-bottom: 1px solid $color-orange;
+		}
+
+		&.savedTodos {
+			color: $color-darkgrey;
+			border-bottom: 1px solid $color-darkgrey;
+		}
+	}
+
+	&.showContent {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 200px;
+		transition: all 0.2s ease-in-out;
+
+		h4 {
+			text-align: center;
+		}
+
+		.listTop > svg {
+			transform: rotate(180deg);
+		}
+
+		.contentBox {
+			overflow-y: scroll;
+			height: fit-content;
+		}
+
+		.emptyListText {
+			text-align: center;
+			color: $color-darkgrey;
+		}
+
+		@media screen and (min-width: 600px) {
+			height: fit-content;
+			svg {
+				display: none;
+			}
+		}
+	}
+
+	&:first-child {
+		.listTop {
+			border-radius: 20px 20px 0 0;
+			@media screen and (min-width: 600px) {
+				border-radius: 30px 30px 0 0;
+			}
+		}
+	}
+
+	&.homePage {
+		&:last-child {
+			border-radius: 20px;
+			height: fit-content;
+			overflow-y: visible;
+			padding-bottom: 2rem;
+			box-shadow: 0px 0px 5px $color-box-shadow-dark;
+			svg {
+				display: none;
+			}
+
+			@media screen and (min-width: 600px) {
+				border-radius: 30px;
+			}
+		}
+	}
+
+	.emptyListText {
+		text-align: center;
+		color: transparent;
+	}
+
+	&.todolistPage,
+	&.tomatoPage {
+		.link {
+			display: none;
+		}
+	}
+
+	.contentBox {
+		width: 100%;
+		overflow-y: scroll;
+	}
+	
+	@media screen and (min-width: 600px) {
+		position: relative;
+		width: 80%;
+		max-width: 500px;
+		margin: 0 3px 1rem;
+		max-height: calc(100vh - 250px);
+		height: fit-content;
+		padding: 49px 0 1.5rem;
+		border-radius: 30px;
+
+		.emptyListText {
+			text-align: center;
+			color: $color-darkgrey;
+		}
+
+		&.todoListPage {
+			&.showContent {
+				margin-right: 0.5rem;
+			}
+		}
+
+		&.homePage {
+			margin-bottom: 5rem;
+		}
+
+		.link {
+			border-bottom: 1px solid $color-darkgrey;
+			font-size: 0.75rem;
+			font-weight: bold;
+			margin-top: 1rem;
+			opacity: 1;
+			transition: opacity 0.2s ease;
+			&:hover {
+				opacity: 0.5;
+				cursor: pointer;
+				transition: opacity 0.2s ease;
+			}
+		}
+
+		&.todolistPage {
+	
+			&.showContent {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 200px;
+				transition: all 0.2s ease-in-out;
+				.contentBox {
+					overflow-y: scroll;
+					height: fit-content;
+				}
+			}
+		}
+	}
+
+	&.tomatoPage {
+		background-color: transparent;
+	}	
+
+	@media screen and (min-width: 1000px) {
+		height: 100%;
+		border-radius: 30px;
+
+		.listTop {
+			border-radius: 30px 30px 0 0;
+		}
+		&.homePage {
+			border-radius: 30px;
+			max-height: calc(90vh - 385px);
+			min-height: 200px;
+		}
+
+		&.todolistPage {
+			justify-content: space-evenly;
+			align-items: center;
+			height: 200px;
+			margin: 1rem auto 2rem;
+			
+			&.showContent {
+				display: flex;
+				min-height: 200px;
+				transition: all 0.2s ease-in-out;
+				height: fit-content;
+			}
+
+			@media screen and (min-width: 600px) {
+				justify-content: flex-start;
+				min-height: 200px;
+				height: fit-content;
+
+				&.showContent {
+					display: flex;
+					justify-content: flex-start;
+					min-height: 200px;
+					transition: all 0.2s ease-in-out;
+				}
+			}
+		}
+	}
+}
+
+.listTop {
+	z-index: 4;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	color: $color-white;
+	border-radius: 0;
+	transition: all 0.2s ease-in-out;
+	> svg {
+		position: absolute;
+		right: 50px;
+		width: 14px;
+		height: 14px;
+		transition: all 0.2s ease-in-out;
+	}
+
+	.arrowRight {
+		display: none;
+	}
+
+	&.tomatoes {
+		background-color: $color-pink;
+	}
+
+	&.currentTodos {
+		background-color: $color-orange;
+	}
+
+	&.savedTodos {
+		background-color: $color-yellow;
+	} 
+
+	@media screen and (min-width: 600px) {
+		border-radius: 30px 30px 0 0;
+
+		> svg {
+			display: none;
+		}
+		
+	}
+}
+
+.todolistPage {
+	.arrowRight {
+		@include hover-btn;
+		display: none;
+	
+		@media screen and (min-width: 600px) {
+			display: flex;
+			position: absolute;
+			right: 1rem;
+			font-size: 1.5rem;
+		}
+	}
+}
+
+.optionContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 2rem auto;
+	position: absolute;
+    bottom: 0;
+    width: 100%;
+
+	.addTodoList {
+		@include hover-btn-secondary;
+		@include active-btn;
+		background-color: transparent;
+		border: none;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		> h2 {
+			display: inline-block;
+			margin: 0;
+			margin-block-start: 0;
+    		margin-block-end: 0;
+		}
+
+		> svg {
+			margin: 5px;
+		}
+	}
+}
+
+.tomtHeader {
+	text-align: center;
+	margin: 4rem auto;
+	font-size: 1.5rem;
+}
