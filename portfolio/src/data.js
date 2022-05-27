@@ -255,7 +255,7 @@ const kontakta_mig = [
 const projekt = [
 	{
 		title: "Tomatodo",
-		url: "/#",
+		url: "/mitt-examensarbete",
 		githubRepo: "https://github.com/elisabethdeborah/mitt-examensarbete",
 		description: "Tomatodo är mitt examensarbete under utbildningen till frontend developer. Jag har använt mig av next.js, och sanity för att skapa en app för time management.\n\nAppen kombinerar en todo-list-app med ett bibliotek för att spara tidtagna uppgifter, som sedan kan läggas till i todo-listor. Todo-objekten kan sedan starta en nedräkning, som visar tiden genom att ändra bakgrundsfärgen från grön till röd, utöver att visa siffror och animera tidsåtgången med en pie-chart och en progressbar. Användaren skapar en egen profil och sparar sin egen data.",
 		tools: ["Next.js", "Sanity", "Sass", "GROQ"],
@@ -275,7 +275,7 @@ const projekt = [
 	},
 	{
 		title: "Flickr API",
-		url: "https://elisabethdeborah.github.io/flickr/",
+		url: "/flickr/",
 		githubRepo: "https://github.com/elisabethdeborah/elisabethdeborah.github.io/tree/master/flickr",
 		description: "Hämtar data från Flickr:s API utifrån användarens input.\n\nSlutuppgift i kursen JavaScript 1.",
 		tools: ["HTML", "CSS", "JavaScript", "Flickr API"],
@@ -285,7 +285,7 @@ const projekt = [
 	},
 	{
 		title: "Lunchtips",
-		url: "https://elisabethdeborah.github.io/lunchtips/index.html", 
+		url: "/olderProjects/lunchtips/index.html", 
 		githubRepo: "https://github.com/elisabethdeborah/elisabethdeborah.github.io/tree/master/lunchtips",
 		description: "Ett projekt jag gjorde för skojs skull när jag precis började lära mig JavaScript.\n\nProjektet rekommenderar ett eller flera av mina tio favorit-lunchställen i Borås centrum baserat på väder och temperatur. Rekommendationen görs för lunchtid, kl 11-14, samma dag eller dagen efter och väderprognoserna kommer från SMHI.",
 		tools: ["HTML", "CSS", "JavaScript", "SMHI API"],
@@ -295,8 +295,8 @@ const projekt = [
 	},
 	{
 		title: "Hang Man",
-		url: "https://elisabethdeborah.github.io/hang-man/",
-		githubRepo: "https://github.com/elisabethdeborah/elisabethdeborah.github.io/tree/master/hang-man",
+		url: "/hang-man/",
+		githubRepo: "/master/hang-man",
 		description: "Hänga gubbe, på tid.\n\nVidareutveckling av ett grupparbete i skolan.",
 		tools: ["HTML", "CSS", "JavaScript"],
 		imgSrc: "assets/images/hangman2.png",
@@ -304,8 +304,8 @@ const projekt = [
 		gridNo: 5,
 	},
 	{
-		name: "quickfix",
-		title: "UX",
+		title: "quickfix",
+		category: "UX",
 		figma: "https://www.figma.com/file/9QsN1GkAdIs6imeamewjXr/Stickan-%E2%80%93-Elisabeth-Rumar?node-id=0%3A1",
 		prototype: "https://www.figma.com/proto/9QsN1GkAdIs6imeamewjXr/Stickan-%E2%80%93-Elisabeth-Rumar?node-id=139%3A867&scaling=scale-down&page-id=0%3A1&starting-point-node-id=139%3A867",
 		description: "App-design för utlåningsbibliotek med verktyg, på uppdrag från en fikttiv samfällighetsförening.\n\nSlutuppgift i kursen \"UX och Usability\"",
@@ -313,8 +313,8 @@ const projekt = [
 		list : ["Målgruppsanalyser och användartester", "Lätthanterliga och lättbegripliga gränssnitt", "Wireframes"],
 	},
 	{
-		name: "Sinus Skateboard webshop",
-		title: "Design",
+		title: "Sinus Skateboard webshop",
+		category: "Design",
 		figma: "https://www.figma.com/file/b6LEaZrtsDdTeZlg5MXYb4/Sinus-Webshop-Elisabeth-Rumar",
 		prototype: "https://www.figma.com/proto/b6LEaZrtsDdTeZlg5MXYb4/Sinus-Webshop-Elisabeth-Rumar?scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=1%3A2&node-id=1%3A2",
 		description: "Desktopesign för webshopen \"Sinus skateboards\".\n\nSlutuppgift i kursen \"Grafiska verktyg för gränssnittsdesign\"",

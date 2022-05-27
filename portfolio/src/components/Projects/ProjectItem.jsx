@@ -95,11 +95,15 @@ const ProjectItem = ({project, index, allLogos}) => {
 						}
 					</ul>
 					<div className={styles.projectLinks}>
-						<BtnGroup hrefs={[project.url,project.githubRepo]}  target="_blank">
+						<BtnGroup hrefs={[project.url, project.githubRepo]}  target="_blank">
 							{project.title !== 'Examensarbete: - "Tomatodo"'? project.title : 'Tomatodo'}
 							<>
+							{ project.githubRepo ?
+							(<>
 								{"repo"} 
 								<img className={styles.icon} src={GithubIcon} alt="githubIcon" />
+							</> ) : ("figma")
+							}
 							</>
 						</BtnGroup>
 					</div>
