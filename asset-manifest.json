@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.fa0d214d.css",
-    "main.js": "/static/js/main.5b81dce6.js",
+    "main.js": "/static/js/main.f70ddd68.js",
     "static/media/design.png": "/static/media/design.470d0759fea4355981ca.png",
     "static/media/profile.png": "/static/media/profile.a7bb28203f39697faceb.png",
     "static/media/hamsterwars.png": "/static/media/hamsterwars.9b93ce9bee8329717fe9.png",
@@ -33,10 +33,10 @@
     "index.html": "/index.html",
     "static/media/figma-1.svg": "/static/media/figma-1.72ff35026c53ba574aef54c980db0e8d.svg",
     "main.fa0d214d.css.map": "/static/css/main.fa0d214d.css.map",
-    "main.5b81dce6.js.map": "/static/js/main.5b81dce6.js.map"
+    "main.f70ddd68.js.map": "/static/js/main.f70ddd68.js.map"
   },
   "entrypoints": [
     "static/css/main.fa0d214d.css",
-    "static/js/main.5b81dce6.js"
+    "static/js/main.f70ddd68.js"
   ]
 }
