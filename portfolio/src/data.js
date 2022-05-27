@@ -164,7 +164,7 @@ const cvRegular = [
 							"Terminskurs 6: Förvaltningsrätt och internationell rätt",
 							"Migrationsrätt", 
 							"Rätt och psykologi", 
-							"Examensarbete \”Religionsfriheten under den Palestinska myndigheten i ljuset av Palestinska myndighetens tillträde till ICCPR\".", 
+							"Examensarbete \"Religionsfriheten under den Palestinska myndigheten i ljuset av Palestinska myndighetens tillträde till ICCPR\".", 
 						],
 						other: "Jag gjorde uppsatspraktik på Jerusalem Institute of Justice (JIJ) i Jerusalem, Israel. Där arbetade jag med att skriva rapporter om mänskliga rättigheter, intervjua personer inför rapporterna samt hjälpte till vid event som anordnades av JIJ."
 					}
