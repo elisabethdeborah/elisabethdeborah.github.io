@@ -1,0 +1,68 @@
+@import '../../globals.module.scss';
+
+.experienceWrapper {
+	width: 100vw;
+	margin: 50px auto;
+	background-color: $color-text-secondary;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.logoContainer {
+	width: 90%;
+	height: fit-content;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-wrap: wrap;
+	padding-bottom: 50px;
+	border-bottom: 2px solid #efbcca8c;
+
+	.js {
+		transform: scale(1.1);
+		z-index: 0;
+	}
+
+	.pixi {
+		max-width: 130px;
+	}
+}
+
+.logoMain {
+    width: 100px;
+    max-height: 100px;
+    height: 100%;
+	margin: 10px;
+	border-radius: 5px;
+
+	@media screen and (min-width: 600px) {
+		width: auto;
+		max-height: 75px;
+		max-width: 170px;
+		height: 100%;
+	}
+}
+
+.logoPlaceholder {
+	width: 100px;
+    max-height: 100px;
+    height: 100%;
+	margin: 10px;
+	background-color: $color-nav-bg;
+	color: $color-text-hint;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0.7;
+	border-radius: 5px;
+
+	h5 {
+		width: fit-content;
+	}
+}
+
+h2 {
+	color: $color-text-grey;
+}
+

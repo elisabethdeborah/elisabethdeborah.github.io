@@ -275,7 +275,7 @@ const projekt = [
 	},
 	{
 		title: "Flickr API",
-		url: "/flickr-projekt/",
+		url: "/flickr/",
 		githubRepo: "https://github.com/elisabethdeborah/elisabethdeborah.github.io/tree/master/flickr",
 		description: "Hämtar data från Flickr:s API utifrån användarens input.\n\nSlutuppgift i kursen JavaScript 1.",
 		tools: ["HTML", "CSS", "JavaScript", "Flickr API"],

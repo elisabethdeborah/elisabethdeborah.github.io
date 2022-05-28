@@ -56,11 +56,9 @@ const ProjectItem = ({project, index, allLogos}) => {
 					[styles.hide]: infoIsVisible
 				})}
 			>
-				{project.category ? 
-					<>
-					{project.category} <span className={styles.h3Span}>{project.title}</span>
-					</>
-					: project.title
+				{project.title}
+				{
+					project.name && <span className={styles.h3Span}>{project.name}</span>
 				}
 			</h1>
 			<section className={clsx(styles.showInfo, {[styles.visible]: infoIsVisible})}>
@@ -98,7 +96,7 @@ const ProjectItem = ({project, index, allLogos}) => {
 					</ul>
 					<div className={styles.projectLinks}>
 						<BtnGroup hrefs={[project.url, project.githubRepo]}  target="_blank">
-							{project.title !== 'Examensarbete: - "Tomatodo"'? (project.category !== 'Design' ? project.title : 'sinus skateboard') : 'Tomatodo'}
+							{project.title !== 'Examensarbete: - "Tomatodo"'? project.title : 'Tomatodo'}
 							<>
 							{ project.githubRepo ?
 							(<>

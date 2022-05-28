@@ -1,0 +1,138 @@
+@font-face {
+	font-family: basementGrotesque;
+	src: url('./assets/fonts/BasementGrotesque-Black_v1.202.otf');
+}
+
+@font-face {
+	font-family: roboto;
+	src: url('./assets/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+	font-family: robotoLight;
+	src: url('./assets/fonts/Roboto-Light.ttf');
+}
+
+$color-text-primary: #434343; 
+$color-text-secondary: #fff;
+$color-text-hint: #3d0e1a;
+$color-text-grey: #48353a;
+$color-text-lightgrey: #dcd9dac7;
+$color-text-subheader: #808080;
+
+$color-header-bg: #ffc0cb;
+$color-hero-overlay: #c007504d;
+
+$color-nav-bg: #ed8ea6;
+$color-nav-text: #efbcca;
+$color-dark-background: #211f1fe3;
+$color-lightgrey-background: #ed8ea649;
+
+$font-family-header: basementGrotesque;
+$font-family-body: roboto;
+$font-family-thin: robotoLight;
+$content-width: 1000px;
+
+* {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	overflow-x: hidden;
+	color: $color-text-primary;
+	margin: 0;
+	padding: 0;
+	font-family: $font-family-body;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	letter-spacing: 1px;
+}
+
+h1, h2, h3, h4, h5, h6, .h3Span {
+	font-family: $font-family-header;
+	word-break: break-all;
+	word-break: break-word;
+	hyphens: auto;
+}
+
+h1 {
+	display: flex;
+	margin: 0;
+	font-size: 3rem;
+	color: $color-text-secondary;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	-webkit-text-stroke: 3px $color-text-hint;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-text-fill-color: transparent;
+	max-width: 100%;
+	width: 90vw;
+}
+
+h2 {
+	font-size: 2rem;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: center;
+	max-width: $content-width;
+
+	@media screen and (min-width: 600px) {
+		width: fit-content;
+		text-align: left;
+	}
+}
+
+h3, .h3Span {
+	font-size: 1.375rem;
+	width: fit-content;
+}
+
+@media screen and (max-width: 500px) {
+	h1 {
+		font-size: 2rem;
+	}
+
+	h2 {
+		font-size: 1.7rem;
+		word-break: break-word;
+		margin: 20px auto;
+	}
+}
+
+@media screen and (min-width: 930px) {
+	h1 {
+		font-size: 4.5rem;
+	}
+
+	h2 {
+		font-size: 3rem;
+	}
+}
+
+ul {
+	list-style: none;
+	padding-inline-start: 0;
+	width: fit-content;
+}
+
+p {
+	max-width: 90vw;
+}
+
+a {
+	font-family: $font-family-header;
+	text-decoration: none;
+	color: inherit;
+	transition: all 0.2s ease-in-out;
+
+	&:hover {
+		cursor: pointer;
+		transition: all 0.2s ease-in-out;
+		color: $color-text-secondary;
+	}
+}
+
